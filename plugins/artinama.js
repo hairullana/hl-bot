@@ -6,14 +6,14 @@ let handler  = async (m, { conn, args, usedPrefix, command }) => {
 	await conn.updatePresence(m.chat, Presence.composing) 
 	conn.reply(m.chat, `*Sedang mencari data . . .*`, m)
 	fetch('http://api.arugaz.my.id/api/primbon/artinama?name=' + encodeURIComponent(text))
-    	.then(res => res.json())
-    	.then(batch => {
-    		if(batch.status !== 200) {
-    			conn.reply(m.chat, `*Data tidak ditemukan!*`, m)   
-    		} else {
-    			conn.updatePresence(m.chat, Presence.composing) 
-    			conn.reply(m.chat, `*Ini hasilnya ya bangsat*\n\n${batch.result.arti}\n\n${batch.result.desc}`, m)   
-    	}
+		.then(res => res.json())
+		.then(batch => {
+			if(batch.status !== 200) {
+				conn.reply(m.chat, `*Data tidak ditemukan!*`, m)   
+			} else {
+				conn.updatePresence(m.chat, Presence.composing) 
+				conn.reply(m.chat, `*Ini hasilnya ya bangsat*\n\n${batch.result.arti}\n\n${batch.result.desc}`, m)   
+		}
 	}) .catch(() => { conn.reply(m.chat, `_Error!_`, m) })
 }
 handler.help = ['artinama'].map(v => v + ' <query>')
@@ -28,5 +28,5 @@ handler.admin = false
 handler.botAdmin = false
 handler.fail = null
 handler.limit = true
-handler.exp = 800
+handler.exp = 500
 module.exports = handler

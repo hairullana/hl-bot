@@ -156,12 +156,12 @@ try {
 // } 
 	
 	// if(enable.novirtex == true) {
-	// if(!m.fromMe && m.isGroup && !isAdmin && isBotAdmin) {
-  //           if (m.text.match(/(৭৭৭৭৭৭৭৭|๒๒๒๒๒๒๒๒|๑๑๑๑๑๑๑๑|ดุท้่เึางืผิดุท้่เึางื)/gi)) {
-  //           	conn.updatePresence(m.chat, Presence.composing) 
-	// 			conn.groupRemove(m.chat, [m.sender]) 	 
-  //           }
-  //       }
+	if(!m.fromMe && m.isGroup && !isAdmin && isBotAdmin) {
+    if (m.text.match(/(৭৭৭৭৭৭৭৭|๒๒๒๒๒๒๒๒|๑๑๑๑๑๑๑๑|ดุท้่เึางืผิดุท้่เึางื)/gi)) {
+      conn.updatePresence(m.chat, Presence.composing) 
+      conn.groupRemove(m.chat, [m.sender]) 	 
+    }
+  }
 	// }
 	
 	
@@ -171,60 +171,38 @@ try {
   let ajg = "6283119526456-1567564396@g.us"
   // klo user ga di ban
   if(m.sender !== bottt && m.chat !== ajg){
-    if(m.text.match(/(ilkom)/gi)){
-      conn.updatePresence(m.chat, Presence.composing) 
-      conn.sendFile(m.chat, 'media/ilkom.opus', 'tts.opus', null, m, true)
-    }else if(m.text.match(/^(iri|iri bilang|iri bilang bos)$/gi)){
-      conn.updatePresence(m.chat, Presence.composing) 
-      const buffer = fs.readFileSync("./media/desahh.mp3")
-      const options = { ptt: true } 
-      conn.sendMessage(m.chat, buffer, MessageType.audio, options)
-    }else if(m.text.match(/^(nico)$/gi)){
+    if(m.text.match(/^(nico)$/gi)){
       conn.updatePresence(m.chat, Presence.composing) 
       const buffer = fs.readFileSync("./media/nico.mp3")
       const options = { ptt: true } 
       conn.sendMessage(m.chat, buffer, MessageType.audio, options)
-    }else if(m.text.match(/^(ah)$/gi)){
-      conn.updatePresence(m.chat, Presence.composing) 
-      conn.sendPtt(m.chat, 'media/desah.mp3',m)
     }else if (m.text.match(/(mkasih|makasih|thanks|thx|mksih|tq|mksi|makasi|mksh)/gi)) {
       conn.updatePresence(m.chat, Presence.composing) 
       conn.sendFile(m.chat, 'media/sama-sama.opus', 'tts.opus', null, m, true)
     }else if (m.text.match(/(assalamualaikum|assalamu'alaikum|asalamualaikum|assalam)/gi)) {
       conn.updatePresence(m.chat, Presence.composing) 
       conn.sendFile(m.chat, 'media/waalaikumussalam.opus', 'tts.opus', null, m, true)
-    }else if (m.text.match(/(salken|salam kenal|love you)/i)) {
+    }else if (m.text.match(/(salken|salam kenal)/i)) {
       conn.updatePresence(m.chat, Presence.composing) 
-      conn.reply(m.chat, `Iya kak😊\nSemoga perkenalan kita bukan hanya sekedar dekat lalu asing\n\nAku ingin kita spesial❤`, m)
+      conn.reply(m.chat, `Salken juga kak😊\nSemoga perkenalan kita bukan hanya sekedar dekat lalu asing\n\nAku ingin kita spesial❤`, m)
     }else if (m.text.match(/^(p)$/i)) {
       conn.updatePresence(m.chat, Presence.composing) 
       conn.sendFile(m.chat, 'media/waalaikumussalam.opus', 'tts.opus', null, m, true)
     }else if (m.text == "menu" || m.text == "help"  || m.text ==  "?menu" || m.text ==  "#menu" || m.text == "+menu"  || m.text == ".help"  || m.text == "#help" || m.text ==  "+help" || m.text == "!help" || m.text == "!menu" || m.text == "/help" || m.text == "/menu" || m.text == "?help" || m.text == "*menu" || m.text == "*help" || m.text == "bot" || m.text == ".bot" || m.text == "*bot" || m.text == "!bot" || m.text == "?bot" || m.text == "#bot" || m.text == "Menu" || m.text == "Help" || m.text == "Bot" || m.text == "+bot" || m.text ==  "hi" || m.text ==  "Hi" || m.text ==  "Hai"  || m.text ==  "hai" || m.text ==  "hallo" || m.text ==  "Hallo" || m.text ==  "Halo" || m.text ==  "halo") {
       conn.updatePresence(m.chat, Presence.composing) 
       conn.reply(m.chat, `Pake *.menu* buat liat menunya sayaaang❤\n\nBetah betah ya sama aku, aku sayang kamu😘😘`, m)
-    }else if (m.text.match(/(hairul|lana)/gi)) {
-      conn.updatePresence(m.chat, Presence.composing)
-      //conn.sendFile(m.chat, 'media/hl.opus', 'tts.opus', null, m, true)
-      //conn.sendFile(m.chat, 'media/hl2.opus', 'tts.opus', null, m, true)
-      //conn.sendFile(m.chat, 'media/hl3.opus', 'tts.opus', null, m, true)
-      //conn.sendFile(m.chat, 'media/hl4.opus', 'tts.opus', null, m, true)
-      //conn.sendFile(m.chat, 'media/hl5.opus', 'tts.opus', null, m, true)
-      //conn.sendFile(m.chat, 'media/hl6.opus', 'tts.opus', null, m, true)
-      //conn.sendFile(m.chat, 'media/hl7.opus', 'tts.opus', null, m, true)
-      conn.sendFile(m.chat, 'media/hl8.opus', 'tts.opus', null, m, true)
-    }else if (m.text.match(/(gmn|gimana)/i)) {
-      conn.updatePresence(m.chat, Presence.composing) 
-      conn.reply(m.chat, `Ya gak giimana giimana lah sayaaaang😘😘😘`, m)
-    }else if (m.text.match(/(woy|gelud|woi)/gi)) {
-      conn.updatePresence(m.chat, Presence.composing) 
-      conn.reply(m.chat, `Napa ? Ga Suka ? Sini geluuud online bangsat !`, m)
-    }else if (m.text.match(/^(y|ya|iy|yh|iyh|g|oh|ohh|o)$/i)) {
-      conn.updatePresence(m.chat, Presence.composing) 
-      conn.reply(m.chat, `Bales itu yg bener kak\nJangan singkat-singkat kayak hubungan kita :))`, m)
-    }else if (m.text.match(/(sv gw|sv gue)/i)) {
-      conn.updatePresence(m.chat, Presence.composing) 
-      conn.reply(m.chat, `Percuma save save an kontak wa kalo cuma deket tapi gak jadian\n\nMending save nomor B0T aja😗😗😗`, m)
     }
+    // else if (m.text.match(/(hairul|lana)/gi)) {
+    //   conn.updatePresence(m.chat, Presence.composing)
+    //   //conn.sendFile(m.chat, 'media/hl.opus', 'tts.opus', null, m, true)
+    //   //conn.sendFile(m.chat, 'media/hl2.opus', 'tts.opus', null, m, true)
+    //   //conn.sendFile(m.chat, 'media/hl3.opus', 'tts.opus', null, m, true)
+    //   //conn.sendFile(m.chat, 'media/hl4.opus', 'tts.opus', null, m, true)
+    //   //conn.sendFile(m.chat, 'media/hl5.opus', 'tts.opus', null, m, true)
+    //   //conn.sendFile(m.chat, 'media/hl6.opus', 'tts.opus', null, m, true)
+    //   //conn.sendFile(m.chat, 'media/hl7.opus', 'tts.opus', null, m, true)
+    //   conn.sendFile(m.chat, 'media/hl8.opus', 'tts.opus', null, m, true)
+    // }
   }
     
     

@@ -5,9 +5,9 @@ let { spawn } = require('child_process')
 let handler  = async (m, { conn }) => {
 	conn.sendFile(m.chat, 'media/anu.opus', 'tts.opus', null, m, true)
 }
-handler.help = ['inggris','anu']
+handler.help = ['anu']
 handler.tags = ['fun']
-handler.command = /^(inggris|anu)$/i
+handler.command = /^(anu)$/i
 handler.owner = false
 handler.mods = false
 handler.premium = false

@@ -62,6 +62,7 @@ handler.mods = false
 handler.premium = false
 handler.group = false
 handler.private = false
+handler.exp = 500
 
 handler.admin = false
 handler.botAdmin = false

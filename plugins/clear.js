@@ -9,7 +9,7 @@ let handler = async (m, { conn, command, args }) => {
 }
 handler.help = ['clearchat']
 handler.tags = ['owner']
-handler.command = /^(clearchat)$/i
+handler.command = /^(clearchat|clear)$/i
 handler.owner = true
 handler.mods = false
 handler.premium = false

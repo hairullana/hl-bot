@@ -9,7 +9,9 @@ let handler = async (m, { conn, args }) => {
 handler.help = ['tts <lang> <teks>']
 handler.tags = ['tools']
 handler.command = /^g?tts$/i
+handler.exp = 250
 module.exports = handler
+
 
 function tts(lang, text) {
   return new Promise((resolve, reject) => {

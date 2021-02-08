@@ -6,5 +6,5 @@ let handler = async (m, { command, text }) => {
 handler.help = [...'aiueo'].map(v => `h${v}l${v}h <teks>`)
 handler.tags = ['tools']
 handler.command = /^h([aiueo])l\1h/i
-
+handler.exp = 100
 module.exports = handler

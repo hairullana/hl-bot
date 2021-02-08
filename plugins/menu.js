@@ -110,7 +110,7 @@ handler.admin = false
 handler.botAdmin = false
 
 handler.fail = null
-handler.exp = 3
+handler.exp = 250
 
 module.exports = handler
 

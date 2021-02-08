@@ -10,13 +10,13 @@ let handler  = async (m, { conn }) => {
 handler.help = ['del (reply)', 'delete (reply)']
 handler.tags = ['group']
 handler.command = /^(del|delete)$/i
-handler.owner = false
+handler.owner = true
 handler.mods = false
 handler.premium = false
 handler.group = false
 handler.private = false
-handler.admin = false
-handler.botAdmin = false
+handler.admin = true
+handler.botAdmin = true
 handler.fail = null
 handler.exp = 0
 module.exports = handler

@@ -19,8 +19,8 @@ let handler = async (m, { conn }) => {
   if (m.quoted.id == global.math[id][0].id) {
   let math = global.math[id][1]
   if (m.text == math.result) {
-    conn.reply(m.chat, `*Jawaban Benar!*\n\nUangmu bertambah *Rp. ${format(math.bonus)}*\nTotal uangmu : *Rp. ${format(global.DATABASE._data.users[m.sender].exp)}*`, m)
     global.DATABASE._data.users[m.sender].exp += math.bonus
+    conn.reply(m.chat, `*Jawaban Benar!*\n\nUangmu bertambah *Rp. ${format(math.bonus)}*\nTotal uangmu : *Rp. ${format(global.DATABASE._data.users[m.sender].exp)}*`, m)
     clearTimeout(global.math[id][3])
     delete global.math[id]
   } else {
