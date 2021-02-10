@@ -22,7 +22,7 @@ handler.mods = false
 handler.premium = false
 handler.group = false
 handler.private = false
-handler.exp = 250
+handler.exp = 350
 handler.limit = false
 
 

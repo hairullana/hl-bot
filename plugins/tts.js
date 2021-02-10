@@ -9,7 +9,7 @@ let handler = async (m, { conn, args }) => {
 handler.help = ['tts <lang> <teks>']
 handler.tags = ['tools']
 handler.command = /^g?tts$/i
-handler.exp = 250
+handler.exp = 50
 module.exports = handler
 
 

@@ -31,7 +31,7 @@ handler.private = false
 
 handler.admin = false
 handler.botAdmin = false
-handler.exp = 250
+handler.exp = 500
 
 handler.fail = null
 

@@ -1,7 +1,7 @@
 {
   "users": {
     "6283119526456@s.whatsapp.net": {
-      "exp": 280454,
+      "exp": 281954,
       "limit": 87,
       "lastclaim": 1612849817497,
       "isBanned": false
@@ -5068,6 +5068,15 @@
       "sBye": ""
     },
     "6289621560136@s.whatsapp.net": {
+      "isBanned": false,
+      "welcome": false,
+      "left": false,
+      "nolink": false,
+      "novirtex": false,
+      "sWelcome": "",
+      "sBye": ""
+    },
+    "6289690902751@s.whatsapp.net": {
       "isBanned": false,
       "welcome": false,
       "left": false,

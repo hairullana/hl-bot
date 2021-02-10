@@ -16,9 +16,9 @@ let handler  = async (m, { conn, args, usedPrefix, command }) => {
     	}
 	}) .catch(() => { conn.reply(m.chat, `_Error!_`, m) })
 }
-//handler.help = ['anime'].map(v => v + ' <query>')
+handler.help = ['anime'].map(v => v + ' <query> (OFF)')
 handler.tags = ['data']
-//handler.command = /^(anime)$/i
+// handler.command = /^(anime)$/i
 handler.owner = false
 handler.mods = false
 handler.premium = false
