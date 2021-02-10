@@ -38,7 +38,7 @@ ${sortedExp.slice(0, len).map(([user, data], i) => (i + 1) + '. @' + user.split`
   }
 
 }
-handler.help = ['rank [jumlah user]']
+handler.help = ['rank','rank <jumlah>']
 handler.tags = ['xp']
 handler.command = /^(rank)$/i
 handler.owner = false

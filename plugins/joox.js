@@ -28,6 +28,6 @@ handler.private = false
 handler.admin = false
 handler.botAdmin = false
 handler.fail = null
-handler.limit = false
+handler.limit = true
 handler.exp = 500
 module.exports = handler

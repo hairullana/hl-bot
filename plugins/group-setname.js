@@ -11,7 +11,7 @@ let handler  = async (m, { conn, args }) => {
 		conn.groupUpdateSubject(m.chat, text)
 	} 
 }
-handler.help = ['setname']
+handler.help = ['setname <teks>']
 handler.tags = ['group']
 handler.command = /^(setname)$/i
 handler.owner = false

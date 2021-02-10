@@ -69,7 +69,7 @@ let handler  = async (m, { conn, usedPrefix: _p }) => {
 
     conn.menu = conn.menu ? conn.menu : {}
     // let before = conn.menu.before || `*${conn.getName(conn.user.jid)} BOT*\n\nHai, %name!\n*%exp XP | %limit Limit*\n*%week, %date [%time]*\n_Uptime: %uptime_\n%totalreg User in database\n%readmore`
-    let before = conn.menu.before || `Hai *%name* 💕💕💕\n_Kamu punya Rp. %exp dan %limit Limit_\n_Total User : %totalreg_\n\n_*Karena BOT ini GRATIS dan bukan BAPAKMU yang buat, jadi jangan di spam ya Maniiieeezzz*_!\n\n╔════════════════\n╠═══✪〘 INFO 〙✪\n║ Invite BOT ke Grup ?\n║❖ *wa.me/6283119526456*\n║ Follow IG biar kamu\n║ makin di sayang owner :*\n║❖ *instagram.com/hairullana_*\n╚════════════════\n%readmore`
+    let before = conn.menu.before || `Hai *%name* 💕💕💕\n_Kamu punya Rp. %exp dan %limit Limit_\n_Total User : %totalreg_\n\n_*Karena BOT ini GRATIS dan bukan BAPAKMU yang buat, jadi jangan di spam ya Maniiieeezzz*_!\n\n╔════════════════\n╠═══✪〘 INFO 〙✪\n║ Ada Masalah? Chat Owner!\n║❖ *wa.me/6283119526456*\n╚════════════════\n%readmore`
     let header = conn.menu.header || '╔══ ✪〘 %category 〙✪'
     let body   = conn.menu.body   || '║ ❖ %cmd%islimit'
     let footer = conn.menu.footer || '╚════════════════\n'
