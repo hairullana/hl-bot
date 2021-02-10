@@ -10,31 +10,29 @@ let path = require('path')
 let util = require('util')
 let WAConnection = simple.WAConnection(_WAConnection)
 
-
-global.owner = ['6283119526456'] // Put your number here
-global.mods = [] // Want some help?
-global.prems = [] // Premium user has unlimited limit
-
-
+global.owner = ['6285221100126', '6285887776722']
+global.mods = []
+global.prems = []
 global.timestamp = {
   start: new Date
 }
 const PORT = process.env.PORT || 3000
 let opts = yargs(process.argv.slice(2)).exitProcess(false).parse()
 global.opts = Object.freeze({...opts})
-global.prefix = new RegExp('^[' + (opts['prefix'] || '.') + ']')
-
-// set db awal
 global.DATABASE = new (require('./lib/database'))(opts._[0] ? opts._[0] + '_' : '' + 'database.json', null, 2)
 if (!global.DATABASE.data.users) global.DATABASE.data = {
-  users: {},
-  groups: {},
-  chats: {},
-  blocked: 0,
-  banned: 0,
+	users: {},
+	groups: {},
+	chats: {},
+	blocked: 0,
+	banned: 0,
+	prefix: "+"
 }
 if (!global.DATABASE.data.groups) global.DATABASE.data.groups = {}
 if (!global.DATABASE.data.chats) global.DATABASE.data.chats = {}
+
+var myprefix = global.DATABASE.data.prefix
+global.prefix = new RegExp('^[' + (opts['prefix'] || myprefix) + ']')
 
 if (opts['server']) {
   let express = require('express')
@@ -52,7 +50,6 @@ if (opts['big-qr'] || opts['server']) conn.on('qr', qr => generate(qr, { small: 
 if (opts['server']) conn.on('qr', qr => { global.qr = qr })
 conn.on('credentials-updated', () => fs.writeFileSync(authFile, JSON.stringify(conn.base64EncodedAuthInfo())))
 let lastJSON = JSON.stringify(global.DATABASE.data)
-
 setInterval(async () => {
   conn.logger.info('Saving database . . .')
   if (JSON.stringify(global.DATABASE.data) == lastJSON) conn.logger.info('Database is up to date')
@@ -61,7 +58,7 @@ setInterval(async () => {
     conn.logger.info('Done saving database!')
     lastJSON = JSON.stringify(global.DATABASE.data)
   }
-}, 60 * 1000) // Save every 1 second
+}, 60 * 1000)
 conn.handler = async function (m) {
 
 try {
@@ -80,7 +77,7 @@ try {
         exp: 0,
         limit: 10,
         lastclaim: 0,
-        // badword: 0,
+        warning: 0,
         isBanned: false
       }
       
@@ -89,18 +86,20 @@ try {
         if (!'isBanned' in chat) chat.isBanned = false
         if (!'welcome' in chat) chat.welcome = false
         if (!'left' in chat) chat.left = false
-        // if (!'nobadword' in chat) chat.nobadword = false
+        if (!'nobadword' in chat) chat.nobadword = false
         if (!'nolink' in chat) chat.nolink = false
         if (!'novirtex' in chat) chat.novirtex = false
+        if (!'nodelete' in chat) chat.nodelete = false
         if (!'sWelcome' in chat) chat.sWelcome = ''
         if (!'sBye' in chat) chat.sBye = ''
       } else global.DATABASE._data.chats[m.chat] = {
         isBanned: false,
         welcome: false,
         left: false,
-        // nobadword: false,
+        nobadword: false,
         nolink: false,
         novirtex: false,
+        nodelete: false,
         sWelcome: '',
         sBye: ''
       }
@@ -120,99 +119,93 @@ try {
     if (m.isBaileys) return
     m.exp += 0
     
-  let groupMetadata = m.isGroup ? await this.groupMetadata(m.chat) : {}
-  let participants = m.isGroup ? groupMetadata.participants : []
-  let user = m.isGroup ? participants.find(u => u.jid == m.sender) : {}
-  let bot = m.isGroup ? participants.find(u => u.jid == this.user.jid) : {}
-  let isAdmin = user.isAdmin || user.isSuperAdmin || false
-  let isBotAdmin = bot.isAdmin || bot.isSuperAdmin || false  
-	let enable = global.DATABASE._data.chats[m.chat]
-	
-	if(m.isGroup && !isAdmin && isBotAdmin) {
-    if (m.text.match(/(https:\/\/chat.whatsapp.com)/gi)) {
-      conn.updatePresence(m.chat, Presence.composing) 
-      conn.reply(m.chat, `*Sorry motherfucker, you will be removed from this group !*`, m).then(() => {
-        conn.groupRemove(m.chat, [m.sender])
-      })
+    	let groupMetadata = m.isGroup ? await this.groupMetadata(m.chat) : {}
+        let participants = m.isGroup ? groupMetadata.participants : []
+        let user = m.isGroup ? participants.find(u => u.jid == m.sender) : {}
+        let bot = m.isGroup ? participants.find(u => u.jid == this.user.jid) : {}
+        let isAdmin = user.isAdmin || user.isSuperAdmin || false
+        let isBotAdmin = bot.isAdmin || bot.isSuperAdmin || false  
+		let enable = global.DATABASE._data.chats[m.chat]
+		// let uS = global.DATABASE._data.users[m.chat].block
+	 
+	// if(enable.nolink == true) {  
+    if(m.isGroup && !isAdmin && isBotAdmin) {
+      if (m.text.match(/(https:\/\/chat.whatsapp.com)/gi)) {
+        conn.updatePresence(m.chat, Presence.composing) 
+        conn.reply(m.chat, `*Sorry, you will be removed from this group!*`, m).then(() => {
+          conn.groupRemove(m.chat, [m.sender])
+        })
+      }
     }
-  }
-  // }
-     
-  // if(enable.nobadword == true) {  
-  // if(enable.nobadword && m.isGroup && !isAdmin && isBotAdmin) {
-  // if (!m.fromMe && m.text.match(/(bitch|keparat|fuck|bastard|anjing|babi|pantek|bajingan|coli|colmek|anjim|pilat|pukimak|lonte|lont|dongo|biadab|biadap|ngocok|toket|anjas|tempek|tomlol|henceut|kanjut|oppai|tete|kanyut|itil|titit|tytyd|tolol|idiot|bangsat|bangsad|pucek|kontol|pantek|memek|puki|jembut|meki|jingan|bodoh|goblok|bokep|dajjal|silit|setan|sange|jancok|dancok|goblog|autis|bagong|peler|ngentot|ngentod|ngewe|pler|ngtd|kntl|ajg|ajig|asw|njing|njeng|kafir|xnxx|xvideos|redhub)/gi)) {
-  // 	conn.updatePresence(m.chat, Presence.composing) 
-  // 	var cBad = global.DATABASE.data.users[m.sender].badword += 1
-  // 	var badword = global.DATABASE.data.users[m.sender].badword
-  // 		if(badword > 4) {
-  // 			conn.reply(m.chat, `*Over badword!*`, m).then(() => {
-  // 			conn.groupRemove(m.chat, [m.sender])
-  // 			global.DATABASE.data.users[m.sender].badword = 0
-  //          	 })
-  // 		} else {
-  // 			conn.reply(m.chat, `*⺀ BADWORD DETECTOR ⺀*\n\n*Kamu mendapat peringatan : [ ${badword} / 5 ]*\n\n*Jangan berkata kasar atau menggunakan kalimat sampah sebanyak 5x atau kamu akan dikeluarkan dari grup secara otomatis.*\n\n▌│█║▌║▌║║▌║▌║█│▌▌│█║`, m)
-  // 		}
-  // 	}
-  // }
-// } 
-  
-  // if(enable.novirtex == true) {
-  if(!m.fromMe && m.isGroup && !isAdmin && isBotAdmin) {
-    if (m.text.match(/(৭৭৭৭৭৭৭৭|๒๒๒๒๒๒๒๒|๑๑๑๑๑๑๑๑|ดุท้่เึางืผิดุท้่เึางื)/gi)) {
-      conn.updatePresence(m.chat, Presence.composing) 
-      conn.groupRemove(m.chat, [m.sender]) 	 
+    // }
+       
+    // if(enable.nobadword == true) {  
+    // if(enable.nobadword && m.isGroup && !isAdmin && isBotAdmin) {
+    // if (!m.fromMe && m.text.match(/(bitch|keparat|fuck|bastard|anjing|babi|pantek|bajingan|coli|colmek|anjim|pilat|pukimak|lonte|lont|dongo|biadab|biadap|ngocok|toket|anjas|tempek|tomlol|henceut|kanjut|oppai|tete|kanyut|itil|titit|tytyd|tolol|idiot|bangsat|bangsad|pucek|kontol|pantek|memek|puki|jembut|meki|jingan|bodoh|goblok|bokep|dajjal|silit|setan|sange|jancok|dancok|goblog|autis|bagong|peler|ngentot|ngentod|ngewe|pler|ngtd|kntl|ajg|ajig|asw|njing|njeng|kafir|xnxx|xvideos|redhub)/gi)) {
+    // 	conn.updatePresence(m.chat, Presence.composing) 
+    // 	var cBad = global.DATABASE.data.users[m.sender].badword += 1
+    // 	var badword = global.DATABASE.data.users[m.sender].badword
+    // 		if(badword > 4) {
+    // 			conn.reply(m.chat, `*Over badword!*`, m).then(() => {
+    // 			conn.groupRemove(m.chat, [m.sender])
+    // 			global.DATABASE.data.users[m.sender].badword = 0
+    //          	 })
+    // 		} else {
+    // 			conn.reply(m.chat, `*⺀ BADWORD DETECTOR ⺀*\n\n*Kamu mendapat peringatan : [ ${badword} / 5 ]*\n\n*Jangan berkata kasar atau menggunakan kalimat sampah sebanyak 5x atau kamu akan dikeluarkan dari grup secara otomatis.*\n\n▌│█║▌║▌║║▌║▌║█│▌▌│█║`, m)
+    // 		}
+    // 	}
+    // }
+  // } 
+    
+    // if(enable.novirtex == true) {
+    if(!m.fromMe && m.isGroup && !isAdmin && isBotAdmin) {
+      if (m.text.match(/(৭৭৭৭৭৭৭৭|๒๒๒๒๒๒๒๒|๑๑๑๑๑๑๑๑|ดุท้่เึางืผิดุท้่เึางื)/gi)) {
+        conn.updatePresence(m.chat, Presence.composing) 
+        conn.groupRemove(m.chat, [m.sender]) 	 
+      }
     }
-  }
-  // }
-  
-  
-  // no bot sendiri
-  let bottt = "6282363173075@s.whatsapp.net"
-  // gc ajg
-  // let ajg = "6283119526456-1567564396@g.us"
-  // klo user ga di ban
-  if(m.sender !== bottt){
-    if(m.text.match(/^(nico)$/gi)){
-      conn.updatePresence(m.chat, Presence.composing) 
-      const buffer = fs.readFileSync("./media/nico.mp3")
-      const options = { ptt: true } 
-      conn.sendMessage(m.chat, buffer, MessageType.audio, options)
-    }else if (m.text.match(/(mkasih|makasih|thanks|thx|mksih|tq|mksi|makasi|mksh)/gi)) {
-      conn.updatePresence(m.chat, Presence.composing) 
-      conn.sendFile(m.chat, 'media/sama-sama.opus', 'tts.opus', null, m, true)
-    }else if (m.text.match(/(assalamualaikum|assalamu'alaikum|asalamualaikum|assalam)/gi)) {
-      conn.updatePresence(m.chat, Presence.composing) 
-      conn.sendFile(m.chat, 'media/waalaikumussalam.opus', 'tts.opus', null, m, true)
-    }else if (m.text.match(/(salken|salam kenal)/i)) {
-      conn.updatePresence(m.chat, Presence.composing) 
-      conn.reply(m.chat, `Salken juga kak😊\nSemoga perkenalan kita bukan hanya sekedar dekat lalu asing\n\nAku ingin kita spesial❤`, m)
-    }else if (m.text.match(/^(p)$/i)) {
-      conn.updatePresence(m.chat, Presence.composing) 
-      conn.sendFile(m.chat, 'media/waalaikumussalam.opus', 'tts.opus', null, m, true)
-    }else if (m.text == "menu" || m.text == "help"  || m.text ==  "?menu" || m.text ==  "#menu" || m.text == "+menu"  || m.text == ".help"  || m.text == "#help" || m.text ==  "+help" || m.text == "!help" || m.text == "!menu" || m.text == "/help" || m.text == "/menu" || m.text == "?help" || m.text == "*menu" || m.text == "*help" || m.text == "bot" || m.text == ".bot" || m.text == "*bot" || m.text == "!bot" || m.text == "?bot" || m.text == "#bot" || m.text == "Menu" || m.text == "Help" || m.text == "Bot" || m.text == "+bot" || m.text ==  "hi" || m.text ==  "Hi" || m.text ==  "Hai"  || m.text ==  "hai" || m.text ==  "hallo" || m.text ==  "Hallo" || m.text ==  "Halo" || m.text ==  "halo") {
-      conn.updatePresence(m.chat, Presence.composing) 
-      conn.reply(m.chat, `Pake *.menu* buat liat menunya sayaaang❤\n\nBetah betah ya sama aku, aku sayang kamu😘😘`, m)
-    }
-    else if (m.text.match(/(hairul|lana)/gi)) {
-      conn.updatePresence(m.chat, Presence.composing)
-      // conn.sendFile(m.chat, 'media/hl.opus', 'tts.opus', null, m, true)
-      // conn.sendFile(m.chat, 'media/hl2.opus', 'tts.opus', null, m, true)
-      // conn.sendFile(m.chat, 'media/hl3.opus', 'tts.opus', null, m, true)
-      // conn.sendFile(m.chat, 'media/hl4.opus', 'tts.opus', null, m, true)
-      // conn.sendFile(m.chat, 'media/hl5.opus', 'tts.opus', null, m, true)
-      // conn.sendFile(m.chat, 'media/hl6.opus', 'tts.opus', null, m, true)
-      // conn.sendFile(m.chat, 'media/hl7.opus', 'tts.opus', null, m, true)
-      conn.sendFile(m.chat, 'media/hl8.opus', 'tts.opus', null, m, true)
-      // conn.sendFile(m.chat, 'media/hl-muah.opus', 'tts.opus', null, m, true)
-    }else if(m.text.match(/^(kntl|kontol)$/gi)){
-      conn.updatePresence(m.chat, Presence.composing) 
-      const buffer = fs.readFileSync("./media/kntl.mp3")
-      const options = { ptt: true } 
-      conn.sendMessage(m.chat, buffer, MessageType.audio, options)
-    }
-  }
+    // }
     
     
+    // no bot sendiri
+    let bottt = "6282363173075@s.whatsapp.net"
+    // gc ajg
+    let ajg = "6283119526456-1567564396@g.us"
+    // klo user ga di ban
+    if(m.sender !== bottt && m.chat !== ajg){
+      if(m.text.match(/^(nico)$/gi)){
+        conn.updatePresence(m.chat, Presence.composing) 
+        const buffer = fs.readFileSync("./media/nico.mp3")
+        const options = { ptt: true } 
+        conn.sendMessage(m.chat, buffer, MessageType.audio, options)
+      }else if (m.text.match(/(mkasih|makasih|thanks|thx|mksih|tq|mksi|makasi|mksh)/gi)) {
+        conn.updatePresence(m.chat, Presence.composing) 
+        conn.sendFile(m.chat, 'media/sama-sama.opus', 'tts.opus', null, m, true)
+      }else if (m.text.match(/(assalamualaikum|assalamu'alaikum|asalamualaikum|assalam)/gi)) {
+        conn.updatePresence(m.chat, Presence.composing) 
+        conn.sendFile(m.chat, 'media/waalaikumussalam.opus', 'tts.opus', null, m, true)
+      }else if (m.text.match(/(salken|salam kenal)/i)) {
+        conn.updatePresence(m.chat, Presence.composing) 
+        conn.reply(m.chat, `Salken juga kak😊\nSemoga perkenalan kita bukan hanya sekedar dekat lalu asing\n\nAku ingin kita spesial❤`, m)
+      }else if (m.text.match(/^(p)$/i)) {
+        conn.updatePresence(m.chat, Presence.composing) 
+        conn.sendFile(m.chat, 'media/waalaikumussalam.opus', 'tts.opus', null, m, true)
+      }else if (m.text == "menu" || m.text == "help"  || m.text ==  "?menu" || m.text ==  "#menu" || m.text == "+menu"  || m.text == ".help"  || m.text == "#help" || m.text ==  "+help" || m.text == "!help" || m.text == "!menu" || m.text == "/help" || m.text == "/menu" || m.text == "?help" || m.text == "*menu" || m.text == "*help" || m.text == "bot" || m.text == ".bot" || m.text == "*bot" || m.text == "!bot" || m.text == "?bot" || m.text == "#bot" || m.text == "Menu" || m.text == "Help" || m.text == "Bot" || m.text == "+bot" || m.text ==  "hi" || m.text ==  "Hi" || m.text ==  "Hai"  || m.text ==  "hai" || m.text ==  "hallo" || m.text ==  "Hallo" || m.text ==  "Halo" || m.text ==  "halo") {
+        conn.updatePresence(m.chat, Presence.composing) 
+        conn.reply(m.chat, `Pake *.menu* buat liat menunya sayaaang❤\n\nBetah betah ya sama aku, aku sayang kamu😘😘`, m)
+      }
+      // else if (m.text.match(/(hairul|lana)/gi)) {
+      //   conn.updatePresence(m.chat, Presence.composing)
+      //   //conn.sendFile(m.chat, 'media/hl.opus', 'tts.opus', null, m, true)
+      //   //conn.sendFile(m.chat, 'media/hl2.opus', 'tts.opus', null, m, true)
+      //   //conn.sendFile(m.chat, 'media/hl3.opus', 'tts.opus', null, m, true)
+      //   //conn.sendFile(m.chat, 'media/hl4.opus', 'tts.opus', null, m, true)
+      //   //conn.sendFile(m.chat, 'media/hl5.opus', 'tts.opus', null, m, true)
+      //   //conn.sendFile(m.chat, 'media/hl6.opus', 'tts.opus', null, m, true)
+      //   //conn.sendFile(m.chat, 'media/hl7.opus', 'tts.opus', null, m, true)
+      //   conn.sendFile(m.chat, 'media/hl8.opus', 'tts.opus', null, m, true)
+      // }
+    }
     
   	let usedPrefix
   	for (let name in global.plugins) {
@@ -295,7 +288,7 @@ try {
         }
 
         m.isCommand = true
-        let xp = 'exp' in plugin ? parseInt(plugin.exp) : 50 // XP Earning per command
+        let xp = 'exp' in plugin ? parseInt(plugin.exp) : 150000 // XP Earning per command
     	m.exp += xp
         if (!isPrems && global.DATABASE._data.users[m.sender].limit < m.limit * 1 && plugin.limit) {
           this.reply(m.chat, `*Limit kamu sudah habis silahkan beli limit terlebih dahulu dengan uang yang kamu miliki.*`, m)
@@ -345,19 +338,20 @@ try {
   }
 }
 
-conn.welcome = 'Hai, *@user* !\nSelamat datang di grup *@subject*'
-conn.bye = 'Selamat Tinggal *@user* !\nJangan Balik Lagi Ya Bgst !'
+conn.welcome = '\n*Hi* +tag ソ\n\n*Selamat datang di +grup silahkan memperkenalkan diri kemudian silahkan keluar bangsat!*\n\n▌│█║▌║▌║║▌║▌║█│▌█║'
+conn.bye = '*Selamat tinggal* +tag *dasar bajingan!*'
 conn.onAdd = async function ({ m, participants }) {
   let chat = global.DATABASE._data.chats[m.key.remoteJid]
   if (!chat.welcome) return
   for (let user of participants) {
-    let pp = './src/avatar_contact.png'
+    let pp = 'src/avatar_contact.png'
     try {
-      pp = await this.getProfilePicture(user)
-    } catch (e) {
+      pp = await this.getProfilePicture(user).catch(() => {})
     } finally {
-      let text = (chat.sWelcome || this.welcome || conn.welcome || 'Welcome, @user!').replace('@user', '@' + user.split('@')[0]).replace('@subject', this.getName(m.key.remoteJid))
-      this.sendFile(m.key.remoteJid, pp, 'pp.jpg', text, m, false, {
+	  conn.updatePresence(m.chat, Presence.composing) 
+      let text = (chat.sWelcome || this.welcome || conn.welcome || 'Selamat datang, +tag!').replace('+tag', '@' + user.split('@')[0]).replace('+grup', this.getName(m.key.remoteJid))
+   //   this.reply(m.key.remoteJid, text, m, false, {
+   	this.sendFile(m.key.remoteJid, pp, 'profile.jpg', text, m, false, {
         contextInfo: {
           mentionedJid: [user]
         }
@@ -365,7 +359,6 @@ conn.onAdd = async function ({ m, participants }) {
     }
   }
 }
-
 
 conn.onLeave = async function  ({ m, participants }) {
   let chat = global.DATABASE._data.chats[m.key.remoteJid]
@@ -377,7 +370,7 @@ conn.onLeave = async function  ({ m, participants }) {
       pp = await this.getProfilePicture(user).catch(() => {})
     } finally {
       conn.updatePresence(m.chat, Presence.composing) 
-      let text = (chat.sBye || this.bye || conn.bye || 'Selamat tinggal, @user!').replace('@user', '@' + user.split('@')[0]).replace('@subject', this.getName(m.key.remoteJid))
+      let text = (chat.sBye || this.bye || conn.bye || 'Selamat tinggal, +tag!').replace('+tag', '@' + user.split('@')[0]).replace('+grup', this.getName(m.key.remoteJid))
     //  this.reply(m.key.remoteJid, text, m, false, {
     	this.sendFile(m.key.remoteJid, pp, 'profile.jpg', text, m, false, {
         contextInfo: {
@@ -389,6 +382,8 @@ conn.onLeave = async function  ({ m, participants }) {
 }
 
 conn.onDelete = async function (m) {
+  let chat = global.DATABASE._data.chats[m.key.remoteJid]
+  if (!chat.nodelete) return
   await this.reply(m.key.remoteJid, `*⺀ DELETING MESSAGE ⺀*\n\n	○ *Dari :* @${m.participant.split`@`[0]}\n\n*Tunggu sebentar BOT akan mengembalikan pesan . . .*\n\n▌│█║▌║▌║║▌║▌║█│▌▌│█║`, m.message, {
     contextInfo: {
       mentionedJid: [m.participant]
