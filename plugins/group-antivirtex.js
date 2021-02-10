@@ -5,26 +5,26 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
 		await conn.updatePresence(m.chat, Presence.composing) 
 		conn.reply(m.chat, `*Format salah! Contoh :*\n\n	*○ ${usedPrefix + command} on*\n	*○ ${usedPrefix + command} off*`, m)
 	} else if(args[0] == 'on') {
-		let cek = global.DATABASE._data.chats[m.chat].welcome
-	if(cek) return conn.reply(m.chat, `*Welcome Message telah aktif pada grup ini.*`, m)
+		let cek = global.DATABASE._data.chats[m.chat].novirtex
+	if(cek) return conn.reply(m.chat, `*Anti Virtex telah aktif pada grup ini.*`, m)
 		await conn.updatePresence(m.chat, Presence.composing) 
-		global.DATABASE._data.chats[m.chat].welcome = true
-		conn.reply(m.chat, `*Welcome Message berhasil diaktifkan.*`, m)
+		global.DATABASE._data.chats[m.chat].novirtex = true
+		conn.reply(m.chat, `*Anti Virtex berhasil diaktifkan.*`, m)
 	} else if(args[0] == 'off') {
-		let cek = global.DATABASE._data.chats[m.chat].welcome
+		let cek = global.DATABASE._data.chats[m.chat].novirtex
 
-	if(!cek) return conn.reply(m.chat, `*Welcome Message telah di nonaktifkan pada grup ini.*`, m)
+	if(!cek) return conn.reply(m.chat, `*Anti Virtex telah di nonaktifkan pada grup ini.*`, m)
 		await conn.updatePresence(m.chat, Presence.composing) 
-		global.DATABASE._data.chats[m.chat].welcome = false
-		conn.reply(m.chat, `*Welcome Message berhasil di nonaktifkan.*`, m)
+		global.DATABASE._data.chats[m.chat].novirtex = false
+		conn.reply(m.chat, `*Anti Virtex berhasil di nonaktifkan.*`, m)
 	} else {
 		await conn.updatePresence(m.chat, Presence.composing) 
 		conn.reply(m.chat, `*Format salah! Contoh :*\n\n	*○ ${usedPrefix + command} on*\n	*○ ${usedPrefix + command} off*`, m)
 	} 
 }
-handler.help = ['welcome on/off']
+handler.help = ['antivirtex on/off']
 handler.tags = ['group']
-handler.command = /^(welcome)$/i
+handler.command = /^(antivirtex)$/i
 handler.owner = false
 handler.admin = true
 handler.botAdmin = true

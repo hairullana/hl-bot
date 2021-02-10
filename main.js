@@ -128,15 +128,16 @@ try {
   let isBotAdmin = bot.isAdmin || bot.isSuperAdmin || false  
 	let enable = global.DATABASE._data.chats[m.chat]
 	
-	if(m.isGroup && !isAdmin && isBotAdmin) {
-    if (m.text.match(/(https:\/\/chat.whatsapp.com)/gi)) {
-      conn.updatePresence(m.chat, Presence.composing) 
-      conn.reply(m.chat, `*Sorry motherfucker, you will be removed from this group !*`, m).then(() => {
-        conn.groupRemove(m.chat, [m.sender])
-      })
+  if(enable.nolink == true) {  
+    if(m.isGroup && !isAdmin && isBotAdmin) {
+      if (m.text.match(/(https:\/\/chat.whatsapp.com)/gi)) {
+        conn.updatePresence(m.chat, Presence.composing) 
+        conn.reply(m.chat, `*Sorry motherfucker, you will be removed from this group !*`, m).then(() => {
+          conn.groupRemove(m.chat, [m.sender])
+        })
+      }
     }
   }
-  // }
      
   // if(enable.nobadword == true) {  
   // if(enable.nobadword && m.isGroup && !isAdmin && isBotAdmin) {
@@ -156,14 +157,14 @@ try {
   // }
 // } 
   
-  // if(enable.novirtex == true) {
-  if(!m.fromMe && m.isGroup && !isAdmin && isBotAdmin) {
-    if (m.text.match(/(৭৭৭৭৭৭৭৭|๒๒๒๒๒๒๒๒|๑๑๑๑๑๑๑๑|ดุท้่เึางืผิดุท้่เึางื)/gi)) {
-      conn.updatePresence(m.chat, Presence.composing) 
-      conn.groupRemove(m.chat, [m.sender]) 	 
+  if(enable.novirtex == true) {
+    if(!m.fromMe && m.isGroup && !isAdmin && isBotAdmin) {
+      if (m.text.match(/(৭৭৭৭৭৭৭৭|๒๒๒๒๒๒๒๒|๑๑๑๑๑๑๑๑|ดุท้่เึางืผิดุท้่เึางื)/gi)) {
+        conn.updatePresence(m.chat, Presence.composing) 
+        conn.groupRemove(m.chat, [m.sender]) 	 
+      }
     }
   }
-  // }
   
   
   // no bot sendiri
@@ -388,18 +389,18 @@ conn.onLeave = async function  ({ m, participants }) {
   }
 }
 
-conn.onDelete = async function (m) {
-  await this.reply(m.key.remoteJid, `*⺀ DELETING MESSAGE ⺀*\n\n	○ *Dari :* @${m.participant.split`@`[0]}\n\n*Tunggu sebentar BOT akan mengembalikan pesan . . .*\n\n▌│█║▌║▌║║▌║▌║█│▌▌│█║`, m.message, {
-    contextInfo: {
-      mentionedJid: [m.participant]
-    }
-  })
-  await conn.updatePresence(m.chat, Presence.composing) 
-  this.copyNForward(m.key.remoteJid, m.message).catch(e => console.log(e, m))
-}
+// conn.onDelete = async function (m) {
+//   await this.reply(m.key.remoteJid, `*⺀ DELETING MESSAGE ⺀*\n\n	○ *Dari :* @${m.participant.split`@`[0]}\n\n*Tunggu sebentar BOT akan mengembalikan pesan . . .*\n\n▌│█║▌║▌║║▌║▌║█│▌▌│█║`, m.message, {
+//     contextInfo: {
+//       mentionedJid: [m.participant]
+//     }
+//   })
+//   await conn.updatePresence(m.chat, Presence.composing) 
+//   this.copyNForward(m.key.remoteJid, m.message).catch(e => console.log(e, m))
+// }
 
 conn.on('message-new', conn.handler)
-conn.on('message-delete', conn.onDelete)
+// conn.on('message-delete', conn.onDelete)
 conn.on('group-add', conn.onAdd)
 conn.on('group-leave', conn.onLeave)
 conn.on('error', conn.logger.error)

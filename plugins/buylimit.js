@@ -1,5 +1,5 @@
 // harga limit
-const hargaLimit = 1000
+const hargaLimit = 2500
 
 // format mata uang
 const format = num => {
