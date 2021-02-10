@@ -1,7 +1,7 @@
 {
   "users": {
     "6283119526456@s.whatsapp.net": {
-      "exp": 279904,
+      "exp": 280454,
       "limit": 87,
       "lastclaim": 1612849817497,
       "isBanned": false
@@ -67,7 +67,7 @@
       "isBanned": false
     },
     "6288228868943@s.whatsapp.net": {
-      "exp": 177359,
+      "exp": 185009,
       "limit": 10,
       "lastclaim": 1612707641335,
       "isBanned": false
@@ -1711,7 +1711,7 @@
       "isBanned": false
     },
     "6282135578720@s.whatsapp.net": {
-      "exp": 107353,
+      "exp": 107653,
       "limit": 9,
       "lastclaim": 1612946475621,
       "isBanned": false
@@ -2653,7 +2653,7 @@
       "isBanned": false
     },
     "6281267877001@s.whatsapp.net": {
-      "exp": 166200,
+      "exp": 210000,
       "limit": 7,
       "lastclaim": 1612953232483,
       "isBanned": false
@@ -3994,6 +3994,18 @@
       "limit": 10,
       "lastclaim": 0,
       "isBanned": false
+    },
+    "6289652418323@s.whatsapp.net": {
+      "exp": 0,
+      "limit": 10,
+      "lastclaim": 0,
+      "isBanned": false
+    },
+    "6289690902751@s.whatsapp.net": {
+      "exp": 0,
+      "limit": 10,
+      "lastclaim": 0,
+      "isBanned": false
     }
   },
   "groups": {},
@@ -5025,8 +5037,8 @@
       "left": true,
       "nolink": true,
       "novirtex": true,
-      "sWelcome": "",
-      "sBye": ""
+      "sWelcome": "halo anak anjing @user. selamat datang di @subject",
+      "sBye": "babay bangsat @user"
     },
     "62895423029179@s.whatsapp.net": {
       "isBanned": false,
