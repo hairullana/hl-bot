@@ -367,20 +367,18 @@ conn.onAdd = async function ({ m, participants }) {
   }
 }
 
-
 conn.onLeave = async function  ({ m, participants }) {
   let chat = global.DATABASE._data.chats[m.key.remoteJid]
   if (!chat.left) return
   for (let user of participants) {
     if (this.user.jid == user) continue
-    let pp = 'src/avatar_contact.png'
+    let pp = './src/avatar_contact.png'
     try {
-      pp = await this.getProfilePicture(user).catch(() => {})
-    } finally {
-      conn.updatePresence(m.chat, Presence.composing) 
+      pp = await this.getProfilePicture(user)
+    } catch (e) {
+    }finally {
       let text = (chat.sBye || this.bye || conn.bye || 'Selamat tinggal, @user!').replace('@user', '@' + user.split('@')[0]).replace('@subject', this.getName(m.key.remoteJid))
-    //  this.reply(m.key.remoteJid, text, m, false, {
-    	this.sendFile(m.key.remoteJid, pp, 'profile.jpg', text, m, false, {
+    	this.sendFile(m.key.remoteJid, pp, 'pp.jpg', text, m, false, {
         contextInfo: {
           mentionedJid: [user]
         }
