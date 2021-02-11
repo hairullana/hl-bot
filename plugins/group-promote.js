@@ -1,12 +1,14 @@
 let handler = async (m, { conn, text }) => {
-	if(isNaN(text)) {
+	if(isNaN(text) && !text.match(/@/g)){
+		return conn.reply(m.chat, `*Penggunaan yang benar*\n\n.promote @user\n.promote -> reply chat`, m)
+	}else if(isNaN(text)) {
 		var number = text.split`@`[1]
-	} else if(!isNaN(text)) {
+	}else if(!isNaN(text)) {
 		var number = text
 	}
 	
-	if(!text && !m.quoted) return conn.reply(m.chat, `*Give a number or reply chat target.*`, m)
-	if(number.length > 15) return conn.reply(m.chat, `*Format is Invalid.*`, m)
+	if(!text && !m.quoted) return conn.reply(m.chat, `*Penggunaan yang benar*\n\n.promote @user\n.promote -> reply chat`, m)
+	if(number.length > 15 || (number.length < 9 && number.length > 0)) return conn.reply(m.chat, `*Masukin nomor yg bener gblk !*`, m)
 	
 try {
 	if(text) {
