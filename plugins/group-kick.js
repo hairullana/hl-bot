@@ -24,7 +24,7 @@ try {
 			await conn.groupRemove(m.chat, [user])
 	}	
 }
-handler.help = ['kick *62xx*', 'kick (reply)']
+handler.help = ['kick *62xx*', 'kick *(reply)*','kick *@user*']
 handler.tags = ['group']
 handler.command = /^(kick)$/i
 handler.owner = false

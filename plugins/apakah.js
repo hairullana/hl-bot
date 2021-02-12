@@ -4,9 +4,9 @@ let handler = async (m, { conn, command, text }) => {
 *Jawaban:* ${pickRandom(['Ya','Mungkin iya','Mungkin','Mungkin tidak','Tidak','Tidak mungkin','Mana gw tau','Kepo bangsat'])}
 `.trim(), m)
 }
-handler.help = ['apakah <pertanyaan>']
+handler.help = ['apakah','apa'].map(v => v + ' *question*')
 handler.tags = ['kerang']
-handler.command = /^apakah/i
+handler.command = /^apakah|apa/i
 handler.owner = false
 handler.mods = false
 handler.premium = false

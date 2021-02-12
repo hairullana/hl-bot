@@ -7,7 +7,7 @@ let handler = async (m, { conn, command, args }) => {
   }
   conn.reply(m.chat, chats.length + ' chat grup telah dib' + (isDelete ? 'ersihkan' : 'isukan selamanya'), m)
 }
-handler.help = ['clearchat']
+handler.help = ['clearchat','clear']
 handler.tags = ['owner']
 handler.command = /^(clearchat|clear)$/i
 handler.owner = true

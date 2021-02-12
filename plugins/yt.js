@@ -16,7 +16,7 @@ let handler  = async (m, { conn, args, usedPrefix, command }) => {
     	}
 	}) .catch(() => { conn.reply(m.chat, `_Error!_`, m) })
 }
-handler.help = ['yt'].map(v => v + ' <query> (OFF)')
+handler.help = ['yt'].map(v => v + ' *query* (OFF)')
 handler.tags = ['data']
 // handler.command = /^(yt)$/i
 handler.owner = false

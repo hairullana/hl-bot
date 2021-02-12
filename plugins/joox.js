@@ -17,7 +17,7 @@ let handler = async (m, { conn, args, isPrems, isOwner, usedPrefix, command }) =
 		})
 	}) .catch(() => { conn.reply(m.chat, `_Error!_`, m) })
 }
-handler.help = ['joox'].map(v => v + ' <judul>')
+handler.help = ['joox'].map(v => v + ' *title*')
 handler.tags = ['downloader']
 //handler.command = /^(joox)$/i
 handler.owner = false

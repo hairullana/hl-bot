@@ -16,7 +16,7 @@ let handler  = async (m, { conn, args, usedPrefix, command }) => {
 		}
 	}) .catch(() => { conn.reply(m.chat, `_Error!_`, m) })
 }
-handler.help = ['artinama'].map(v => v + ' <query> (OFF)')
+handler.help = ['artinama'].map(v => v + ' *query* (OFF)')
 handler.tags = ['fun','data']
 // handler.command = /^(artinama)$/i
 handler.owner = false

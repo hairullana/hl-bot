@@ -6,7 +6,7 @@ let handler = async (m, { conn, args }) => {
   if (args.length < 2) return m.reply('Tidak ada teks nya')
   conn.sendFile(m.chat, await tts(args[0], args.slice(1).join(' ')).catch(err => m.reply(err + '')), 'tts.opus', null, m, true)
 }
-handler.help = ['tts <lang> <teks>']
+handler.help = ['tts *lang* *text*']
 handler.tags = ['tools']
 handler.command = /^g?tts$/i
 handler.exp = 50

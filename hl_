@@ -1,7 +1,7 @@
 {
   "users": {
     "6283119526456@s.whatsapp.net": {
-      "exp": 307154,
+      "exp": 330954,
       "limit": 87,
       "lastclaim": 1613011409248,
       "isBanned": false
@@ -25,8 +25,8 @@
       "isBanned": false
     },
     "6285221100126@s.whatsapp.net": {
-      "exp": 3970,
-      "limit": 5,
+      "exp": 5070,
+      "limit": 4,
       "lastclaim": 0,
       "isBanned": false
     },
@@ -43,8 +43,8 @@
       "isBanned": false
     },
     "6285385299031@s.whatsapp.net": {
-      "exp": 5250,
-      "limit": 1,
+      "exp": 29900,
+      "limit": -1,
       "lastclaim": 0,
       "isBanned": false
     },
@@ -67,7 +67,7 @@
       "isBanned": false
     },
     "6288228868943@s.whatsapp.net": {
-      "exp": 492159,
+      "exp": 618559,
       "limit": 10,
       "lastclaim": 1613038894629,
       "isBanned": false
@@ -85,13 +85,13 @@
       "isBanned": false
     },
     "6283147317544@s.whatsapp.net": {
-      "exp": 152756,
+      "exp": 153356,
       "limit": 9,
       "lastclaim": 0,
       "isBanned": false
     },
     "6289691323807@s.whatsapp.net": {
-      "exp": 4317,
+      "exp": 5517,
       "limit": 1812,
       "lastclaim": 1612954860807,
       "isBanned": false
@@ -271,7 +271,7 @@
       "isBanned": false
     },
     "6282315257822@s.whatsapp.net": {
-      "exp": 50,
+      "exp": 650,
       "limit": 10,
       "lastclaim": 0,
       "isBanned": false
@@ -289,8 +289,8 @@
       "isBanned": false
     },
     "6281919422297@s.whatsapp.net": {
-      "exp": 1453,
-      "limit": 10,
+      "exp": 2653,
+      "limit": 9,
       "lastclaim": 0,
       "isBanned": false
     },
@@ -325,7 +325,7 @@
       "isBanned": false
     },
     "6285601237295@s.whatsapp.net": {
-      "exp": 3600,
+      "exp": 4600,
       "limit": 7,
       "lastclaim": 0,
       "isBanned": false
@@ -451,8 +451,8 @@
       "isBanned": false
     },
     "6287878747008@s.whatsapp.net": {
-      "exp": 0,
-      "limit": 10,
+      "exp": 7550,
+      "limit": 4,
       "lastclaim": 0,
       "isBanned": false
     },
@@ -523,7 +523,7 @@
       "isBanned": false
     },
     "6285691736988@s.whatsapp.net": {
-      "exp": 2000,
+      "exp": 2350,
       "limit": 10,
       "lastclaim": 0,
       "isBanned": false
@@ -535,7 +535,7 @@
       "isBanned": false
     },
     "6282363173075@s.whatsapp.net": {
-      "exp": 3300,
+      "exp": 9050,
       "limit": 10,
       "lastclaim": 0,
       "isBanned": false
@@ -619,9 +619,9 @@
       "isBanned": false
     },
     "6283195765751@s.whatsapp.net": {
-      "exp": 335332,
-      "limit": 2367,
-      "lastclaim": 1613023410145,
+      "exp": 539232,
+      "limit": 2365,
+      "lastclaim": 1613115196529,
       "isBanned": false
     },
     "6281388848411@s.whatsapp.net": {
@@ -799,7 +799,7 @@
       "isBanned": false
     },
     "6285740277834@s.whatsapp.net": {
-      "exp": 14250,
+      "exp": 75750,
       "limit": 7,
       "lastclaim": 1612764940517,
       "isBanned": false
@@ -853,13 +853,13 @@
       "isBanned": false
     },
     "6289620394668@s.whatsapp.net": {
-      "exp": 166965,
-      "limit": 10,
+      "exp": 18815,
+      "limit": 85,
       "lastclaim": 1613023399773,
       "isBanned": false
     },
     "6285731617322@s.whatsapp.net": {
-      "exp": 128553,
+      "exp": 178753,
       "limit": 8,
       "lastclaim": 0,
       "isBanned": false
@@ -889,8 +889,8 @@
       "isBanned": false
     },
     "62895323133060@s.whatsapp.net": {
-      "exp": 8318,
-      "limit": 16,
+      "exp": 4218,
+      "limit": 21,
       "lastclaim": 0,
       "isBanned": false
     },
@@ -901,7 +901,7 @@
       "isBanned": false
     },
     "6283142933894@s.whatsapp.net": {
-      "exp": 700,
+      "exp": 750,
       "limit": 10,
       "lastclaim": 0,
       "isBanned": false
@@ -997,13 +997,13 @@
       "isBanned": false
     },
     "6282268014766@s.whatsapp.net": {
-      "exp": 2509,
+      "exp": 3459,
       "limit": 9,
       "lastclaim": 0,
       "isBanned": false
     },
     "6285398700993@s.whatsapp.net": {
-      "exp": 0,
+      "exp": 850,
       "limit": 10,
       "lastclaim": 0,
       "isBanned": false
@@ -1069,7 +1069,7 @@
       "isBanned": true
     },
     "6285348619990@s.whatsapp.net": {
-      "exp": 756,
+      "exp": 1206,
       "limit": 10,
       "lastclaim": 1612530052982,
       "isBanned": false
@@ -1111,8 +1111,8 @@
       "isBanned": false
     },
     "6283147899329@s.whatsapp.net": {
-      "exp": 11300,
-      "limit": 7,
+      "exp": 16600,
+      "limit": 3,
       "lastclaim": 0,
       "isBanned": false
     },
@@ -1159,19 +1159,19 @@
       "isBanned": false
     },
     "6287830669596@s.whatsapp.net": {
-      "exp": 6950,
+      "exp": 7300,
       "limit": 6,
       "lastclaim": 0,
       "isBanned": false
     },
     "6281278683001@s.whatsapp.net": {
-      "exp": 10753,
+      "exp": 12403,
       "limit": 22,
       "lastclaim": 0,
       "isBanned": false
     },
     "628985826877@s.whatsapp.net": {
-      "exp": 850,
+      "exp": 1350,
       "limit": 10,
       "lastclaim": 0,
       "isBanned": false
@@ -1189,8 +1189,8 @@
       "isBanned": false
     },
     "6285330235288@s.whatsapp.net": {
-      "exp": 21703,
-      "limit": 9,
+      "exp": 30253,
+      "limit": 6,
       "lastclaim": 0,
       "isBanned": false
     },
@@ -1261,8 +1261,8 @@
       "isBanned": false
     },
     "6285805831688@s.whatsapp.net": {
-      "exp": 130603,
-      "limit": 641,
+      "exp": 1196153,
+      "limit": 642,
       "lastclaim": 1612953223846,
       "isBanned": false
     },
@@ -1687,7 +1687,7 @@
       "isBanned": false
     },
     "6288223761814@s.whatsapp.net": {
-      "exp": 74600,
+      "exp": 99700,
       "limit": 10,
       "lastclaim": 0,
       "isBanned": false
@@ -1705,7 +1705,7 @@
       "isBanned": false
     },
     "6289522982484@s.whatsapp.net": {
-      "exp": 100100,
+      "exp": 107550,
       "limit": 9,
       "lastclaim": 0,
       "isBanned": false
@@ -1729,7 +1729,7 @@
       "isBanned": false
     },
     "6283192688230@s.whatsapp.net": {
-      "exp": 4156,
+      "exp": 5006,
       "limit": 9,
       "lastclaim": 0,
       "isBanned": false
@@ -1771,7 +1771,7 @@
       "isBanned": false
     },
     "6282268257518@s.whatsapp.net": {
-      "exp": 10600,
+      "exp": 10650,
       "limit": 9,
       "lastclaim": 1613033162245,
       "isBanned": false
@@ -1969,8 +1969,8 @@
       "isBanned": false
     },
     "6282285401507@s.whatsapp.net": {
-      "exp": 1650,
-      "limit": 7,
+      "exp": 5650,
+      "limit": 3,
       "lastclaim": 0,
       "isBanned": false
     },
@@ -2029,7 +2029,7 @@
       "isBanned": false
     },
     "6281527639241@s.whatsapp.net": {
-      "exp": 250,
+      "exp": 2600,
       "limit": 10,
       "lastclaim": 0,
       "isBanned": false
@@ -2053,13 +2053,13 @@
       "isBanned": false
     },
     "6281343137933@s.whatsapp.net": {
-      "exp": 2122300,
-      "limit": 190,
+      "exp": 2127100,
+      "limit": 186,
       "lastclaim": 1613023416392,
       "isBanned": false
     },
     "6282180412021@s.whatsapp.net": {
-      "exp": 2017500,
+      "exp": 2017850,
       "limit": 7,
       "lastclaim": 1612932094754,
       "isBanned": false
@@ -2083,7 +2083,7 @@
       "isBanned": false
     },
     "6285834662007@s.whatsapp.net": {
-      "exp": 1650,
+      "exp": 2000,
       "limit": 96,
       "lastclaim": 1612941958881,
       "isBanned": false
@@ -2095,9 +2095,9 @@
       "isBanned": false
     },
     "6285394113670@s.whatsapp.net": {
-      "exp": 130200,
-      "limit": 10176,
-      "lastclaim": 1612932164854,
+      "exp": 417100,
+      "limit": 10174,
+      "lastclaim": 1613060723576,
       "isBanned": false
     },
     "6281313709504@s.whatsapp.net": {
@@ -2299,7 +2299,7 @@
       "isBanned": false
     },
     "6281262714500@s.whatsapp.net": {
-      "exp": 3950,
+      "exp": 5850,
       "limit": 11,
       "lastclaim": 1612943799765,
       "isBanned": false
@@ -2317,7 +2317,7 @@
       "isBanned": false
     },
     "6285846436561@s.whatsapp.net": {
-      "exp": 8200,
+      "exp": 9400,
       "limit": 10,
       "lastclaim": 0,
       "isBanned": false
@@ -2443,7 +2443,7 @@
       "isBanned": false
     },
     "62895365693074@s.whatsapp.net": {
-      "exp": 250,
+      "exp": 600,
       "limit": 10,
       "lastclaim": 0,
       "isBanned": false
@@ -2653,9 +2653,9 @@
       "isBanned": false
     },
     "6281267877001@s.whatsapp.net": {
-      "exp": 874650,
+      "exp": 1115150,
       "limit": 5,
-      "lastclaim": 1612953232483,
+      "lastclaim": 1613098145534,
       "isBanned": false
     },
     "6285891309782@s.whatsapp.net": {
@@ -2665,9 +2665,9 @@
       "isBanned": false
     },
     "6285726227427@s.whatsapp.net": {
-      "exp": 378350,
+      "exp": 550100,
       "limit": 10,
-      "lastclaim": 1612947651725,
+      "lastclaim": 1613094152450,
       "isBanned": false
     },
     "62895378616466@s.whatsapp.net": {
@@ -2761,9 +2761,9 @@
       "isBanned": false
     },
     "6281245794538@s.whatsapp.net": {
-      "exp": 16800,
-      "limit": 3,
-      "lastclaim": 0,
+      "exp": 189100,
+      "limit": 6,
+      "lastclaim": 1613127485676,
       "isBanned": false
     },
     "6282250755289@s.whatsapp.net": {
@@ -2833,9 +2833,9 @@
       "isBanned": false
     },
     "6289603950636@s.whatsapp.net": {
-      "exp": 123450,
-      "limit": -1,
-      "lastclaim": 1612962817116,
+      "exp": 2075950,
+      "limit": 25,
+      "lastclaim": 1613104281312,
       "isBanned": false
     },
     "6289699521434@s.whatsapp.net": {
@@ -3264,7 +3264,7 @@
       "isBanned": false
     },
     "6281242975313@s.whatsapp.net": {
-      "exp": 3100,
+      "exp": 3150,
       "limit": 11,
       "lastclaim": 0,
       "isBanned": false
@@ -3402,7 +3402,7 @@
       "isBanned": false
     },
     "6283140863395@s.whatsapp.net": {
-      "exp": 15350,
+      "exp": 15100,
       "limit": -1,
       "lastclaim": 0,
       "isBanned": false
@@ -3522,7 +3522,7 @@
       "isBanned": false
     },
     "6289524142964@s.whatsapp.net": {
-      "exp": 600,
+      "exp": 10700,
       "limit": 10,
       "lastclaim": 0,
       "isBanned": false
@@ -3552,13 +3552,13 @@
       "isBanned": false
     },
     "6281242595253@s.whatsapp.net": {
-      "exp": 35200,
+      "exp": 45200,
       "limit": -1,
-      "lastclaim": 1612945961244,
+      "lastclaim": 1613096069451,
       "isBanned": false
     },
     "6288245825458@s.whatsapp.net": {
-      "exp": 250,
+      "exp": 1050,
       "limit": 10,
       "lastclaim": 0,
       "isBanned": false
@@ -3606,7 +3606,7 @@
       "isBanned": false
     },
     "6283808484588@s.whatsapp.net": {
-      "exp": 0,
+      "exp": 1100,
       "limit": 10,
       "lastclaim": 0,
       "isBanned": false
@@ -3630,8 +3630,8 @@
       "isBanned": false
     },
     "62895705614969@s.whatsapp.net": {
-      "exp": 1500,
-      "limit": 10,
+      "exp": 128250,
+      "limit": 51,
       "lastclaim": 0,
       "isBanned": false
     },
@@ -3708,7 +3708,7 @@
       "isBanned": false
     },
     "6281367449258@s.whatsapp.net": {
-      "exp": 1600,
+      "exp": 1950,
       "limit": 9,
       "lastclaim": 0,
       "isBanned": false
@@ -3816,13 +3816,13 @@
       "isBanned": false
     },
     "6281314338950@s.whatsapp.net": {
-      "exp": 186550,
+      "exp": 189900,
       "limit": 9,
       "lastclaim": 1612962431352,
       "isBanned": false
     },
     "6285272907136@s.whatsapp.net": {
-      "exp": 0,
+      "exp": 7000,
       "limit": 10,
       "lastclaim": 0,
       "isBanned": false
@@ -3852,7 +3852,7 @@
       "isBanned": false
     },
     "6281227556656@s.whatsapp.net": {
-      "exp": 11700,
+      "exp": 22550,
       "limit": 10,
       "lastclaim": 1612966228840,
       "isBanned": false
@@ -4197,7 +4197,7 @@
       "exp": 0,
       "limit": 10,
       "lastclaim": 0,
-      "isBanned": false
+      "isBanned": true
     },
     "6285362888005@s.whatsapp.net": {
       "exp": 0,
@@ -4300,6 +4300,792 @@
       "limit": 10,
       "lastclaim": 0,
       "isBanned": false
+    },
+    "6283849184451@s.whatsapp.net": {
+      "exp": 0,
+      "limit": 10,
+      "lastclaim": 0,
+      "isBanned": false
+    },
+    "62895327064706@s.whatsapp.net": {
+      "exp": 0,
+      "limit": 10,
+      "lastclaim": 0,
+      "isBanned": false
+    },
+    "6281217287255@s.whatsapp.net": {
+      "exp": 0,
+      "limit": 10,
+      "lastclaim": 0,
+      "isBanned": false
+    },
+    "6282287660096@s.whatsapp.net": {
+      "exp": 0,
+      "limit": 10,
+      "lastclaim": 0,
+      "isBanned": false
+    },
+    "62895601640088@s.whatsapp.net": {
+      "exp": 0,
+      "limit": 10,
+      "lastclaim": 0,
+      "isBanned": false
+    },
+    "628813937138@s.whatsapp.net": {
+      "exp": 0,
+      "limit": 10,
+      "lastclaim": 0,
+      "isBanned": false
+    },
+    "6281563910260@s.whatsapp.net": {
+      "exp": 0,
+      "limit": 10,
+      "lastclaim": 0,
+      "isBanned": false
+    },
+    "6282132810481@s.whatsapp.net": {
+      "exp": 0,
+      "limit": 10,
+      "lastclaim": 0,
+      "isBanned": false
+    },
+    "6283827590146@s.whatsapp.net": {
+      "exp": 0,
+      "limit": 10,
+      "lastclaim": 0,
+      "isBanned": false
+    },
+    "62895380206688@s.whatsapp.net": {
+      "exp": 0,
+      "limit": 10,
+      "lastclaim": 0,
+      "isBanned": false
+    },
+    "6287758555215@s.whatsapp.net": {
+      "exp": 0,
+      "limit": 10,
+      "lastclaim": 0,
+      "isBanned": false
+    },
+    "6287763089874@s.whatsapp.net": {
+      "exp": 0,
+      "limit": 10,
+      "lastclaim": 0,
+      "isBanned": false
+    },
+    "6289637977944@s.whatsapp.net": {
+      "exp": 0,
+      "limit": 10,
+      "lastclaim": 0,
+      "isBanned": false
+    },
+    "260762714809@s.whatsapp.net": {
+      "exp": 0,
+      "limit": 10,
+      "lastclaim": 0,
+      "isBanned": false
+    },
+    "6288291289454@s.whatsapp.net": {
+      "exp": 0,
+      "limit": 10,
+      "lastclaim": 0,
+      "isBanned": false
+    },
+    "60179106705@s.whatsapp.net": {
+      "exp": 0,
+      "limit": 10,
+      "lastclaim": 0,
+      "isBanned": false
+    },
+    "6289516193660@s.whatsapp.net": {
+      "exp": 0,
+      "limit": 10,
+      "lastclaim": 0,
+      "isBanned": false
+    },
+    "60163603107@s.whatsapp.net": {
+      "exp": 0,
+      "limit": 10,
+      "lastclaim": 0,
+      "isBanned": false
+    },
+    "6281809580913@s.whatsapp.net": {
+      "exp": 0,
+      "limit": 10,
+      "lastclaim": 0,
+      "isBanned": false
+    },
+    "6289519769978@s.whatsapp.net": {
+      "exp": 0,
+      "limit": 10,
+      "lastclaim": 0,
+      "isBanned": false
+    },
+    "628126571862@s.whatsapp.net": {
+      "exp": 0,
+      "limit": 10,
+      "lastclaim": 0,
+      "isBanned": false
+    },
+    "6281264707574@s.whatsapp.net": {
+      "exp": 0,
+      "limit": 10,
+      "lastclaim": 0,
+      "isBanned": false
+    },
+    "15163730713@s.whatsapp.net": {
+      "exp": 0,
+      "limit": 10,
+      "lastclaim": 0,
+      "isBanned": false
+    },
+    "6289524228872@s.whatsapp.net": {
+      "exp": 0,
+      "limit": 10,
+      "lastclaim": 0,
+      "isBanned": false
+    },
+    "6283196498032@s.whatsapp.net": {
+      "exp": 0,
+      "limit": 10,
+      "lastclaim": 0,
+      "isBanned": false
+    },
+    "6282313243050@s.whatsapp.net": {
+      "exp": 0,
+      "limit": 10,
+      "lastclaim": 0,
+      "isBanned": false
+    },
+    "6282394035228@s.whatsapp.net": {
+      "exp": 0,
+      "limit": 10,
+      "lastclaim": 0,
+      "isBanned": false
+    },
+    "60128344862@s.whatsapp.net": {
+      "exp": 0,
+      "limit": 10,
+      "lastclaim": 0,
+      "isBanned": false
+    },
+    "6282172877141@s.whatsapp.net": {
+      "exp": 0,
+      "limit": 10,
+      "lastclaim": 0,
+      "isBanned": false
+    },
+    "6285871625883@s.whatsapp.net": {
+      "exp": 0,
+      "limit": 10,
+      "lastclaim": 0,
+      "isBanned": false
+    },
+    "6285799576843@s.whatsapp.net": {
+      "exp": 10850,
+      "limit": 10,
+      "lastclaim": 1613093849827,
+      "isBanned": false
+    },
+    "6282260133409@s.whatsapp.net": {
+      "exp": 12350,
+      "limit": -1,
+      "lastclaim": 0,
+      "isBanned": false
+    },
+    "6289507102104@s.whatsapp.net": {
+      "exp": 0,
+      "limit": 10,
+      "lastclaim": 0,
+      "isBanned": false
+    },
+    "6285236599675@s.whatsapp.net": {
+      "exp": 0,
+      "limit": 10,
+      "lastclaim": 0,
+      "isBanned": false
+    },
+    "6281524067202@s.whatsapp.net": {
+      "exp": 0,
+      "limit": 10,
+      "lastclaim": 0,
+      "isBanned": false
+    },
+    "6287810818235@s.whatsapp.net": {
+      "exp": 0,
+      "limit": 10,
+      "lastclaim": 0,
+      "isBanned": false
+    },
+    "6285274104224@s.whatsapp.net": {
+      "exp": 350,
+      "limit": 10,
+      "lastclaim": 0,
+      "isBanned": false
+    },
+    "6282348771007@s.whatsapp.net": {
+      "exp": 5050,
+      "limit": 5,
+      "lastclaim": 0,
+      "isBanned": false
+    },
+    "601123633475@s.whatsapp.net": {
+      "exp": 0,
+      "limit": 10,
+      "lastclaim": 0,
+      "isBanned": false
+    },
+    "6285226138300@s.whatsapp.net": {
+      "exp": 700,
+      "limit": 10,
+      "lastclaim": 0,
+      "isBanned": false
+    },
+    "6281913447444@s.whatsapp.net": {
+      "exp": 0,
+      "limit": 10,
+      "lastclaim": 0,
+      "isBanned": false
+    },
+    "6283113930266@s.whatsapp.net": {
+      "exp": 0,
+      "limit": 10,
+      "lastclaim": 0,
+      "isBanned": false
+    },
+    "212771918933@s.whatsapp.net": {
+      "exp": 0,
+      "limit": 10,
+      "lastclaim": 0,
+      "isBanned": false
+    },
+    "628984686184@s.whatsapp.net": {
+      "exp": 0,
+      "limit": 10,
+      "lastclaim": 0,
+      "isBanned": false
+    },
+    "6283105227416@s.whatsapp.net": {
+      "exp": 0,
+      "limit": 10,
+      "lastclaim": 0,
+      "isBanned": false
+    },
+    "923040490849@s.whatsapp.net": {
+      "exp": 0,
+      "limit": 10,
+      "lastclaim": 0,
+      "isBanned": false
+    },
+    "6285859209330@s.whatsapp.net": {
+      "exp": 0,
+      "limit": 10,
+      "lastclaim": 0,
+      "isBanned": false
+    },
+    "6285764069424@s.whatsapp.net": {
+      "exp": 0,
+      "limit": 10,
+      "lastclaim": 0,
+      "isBanned": false
+    },
+    "6283185635262@s.whatsapp.net": {
+      "exp": 0,
+      "limit": 10,
+      "lastclaim": 0,
+      "isBanned": false
+    },
+    "62895610340104@s.whatsapp.net": {
+      "exp": 0,
+      "limit": 10,
+      "lastclaim": 0,
+      "isBanned": false
+    },
+    "6285718947357@s.whatsapp.net": {
+      "exp": 0,
+      "limit": 10,
+      "lastclaim": 0,
+      "isBanned": false
+    },
+    "6283803933589@s.whatsapp.net": {
+      "exp": 0,
+      "limit": 10,
+      "lastclaim": 0,
+      "isBanned": false
+    },
+    "6285788183124@s.whatsapp.net": {
+      "exp": 0,
+      "limit": 10,
+      "lastclaim": 0,
+      "isBanned": false
+    },
+    "6287760299062@s.whatsapp.net": {
+      "exp": 0,
+      "limit": 10,
+      "lastclaim": 0,
+      "isBanned": false
+    },
+    "6285786561596@s.whatsapp.net": {
+      "exp": 0,
+      "limit": 10,
+      "lastclaim": 0,
+      "isBanned": false
+    },
+    "6283120024211@s.whatsapp.net": {
+      "exp": 0,
+      "limit": 10,
+      "lastclaim": 0,
+      "isBanned": false
+    },
+    "923038774614@s.whatsapp.net": {
+      "exp": 0,
+      "limit": 10,
+      "lastclaim": 0,
+      "isBanned": false
+    },
+    "6285706858265@s.whatsapp.net": {
+      "exp": 350,
+      "limit": 10,
+      "lastclaim": 0,
+      "isBanned": false
+    },
+    "6285705629293@s.whatsapp.net": {
+      "exp": 0,
+      "limit": 10,
+      "lastclaim": 0,
+      "isBanned": false
+    },
+    "6282158086775@s.whatsapp.net": {
+      "exp": 0,
+      "limit": 10,
+      "lastclaim": 0,
+      "isBanned": false
+    },
+    "60136445945@s.whatsapp.net": {
+      "exp": 0,
+      "limit": 10,
+      "lastclaim": 0,
+      "isBanned": false
+    },
+    "60182911559@s.whatsapp.net": {
+      "exp": 0,
+      "limit": 10,
+      "lastclaim": 0,
+      "isBanned": false
+    },
+    "6287886671270@s.whatsapp.net": {
+      "exp": 0,
+      "limit": 10,
+      "lastclaim": 0,
+      "isBanned": false
+    },
+    "62895363341063@s.whatsapp.net": {
+      "exp": 0,
+      "limit": 10,
+      "lastclaim": 0,
+      "isBanned": false
+    },
+    "6285783179974@s.whatsapp.net": {
+      "exp": 0,
+      "limit": 10,
+      "lastclaim": 0,
+      "isBanned": false
+    },
+    "6287799247528@s.whatsapp.net": {
+      "exp": 0,
+      "limit": 10,
+      "lastclaim": 0,
+      "isBanned": false
+    },
+    "6285374192782@s.whatsapp.net": {
+      "exp": 0,
+      "limit": 10,
+      "lastclaim": 0,
+      "isBanned": false
+    },
+    "6285242763226@s.whatsapp.net": {
+      "exp": 0,
+      "limit": 10,
+      "lastclaim": 0,
+      "isBanned": false
+    },
+    "601121905824@s.whatsapp.net": {
+      "exp": 0,
+      "limit": 10,
+      "lastclaim": 0,
+      "isBanned": false
+    },
+    "6281999450920@s.whatsapp.net": {
+      "exp": 0,
+      "limit": 10,
+      "lastclaim": 0,
+      "isBanned": false
+    },
+    "923047407695@s.whatsapp.net": {
+      "exp": 0,
+      "limit": 10,
+      "lastclaim": 0,
+      "isBanned": false
+    },
+    "6281285002571@s.whatsapp.net": {
+      "exp": 0,
+      "limit": 10,
+      "lastclaim": 0,
+      "isBanned": false
+    },
+    "6283132155979@s.whatsapp.net": {
+      "exp": 0,
+      "limit": 10,
+      "lastclaim": 0,
+      "isBanned": false
+    },
+    "923495853018@s.whatsapp.net": {
+      "exp": 0,
+      "limit": 10,
+      "lastclaim": 0,
+      "isBanned": false
+    },
+    "62895339007841@s.whatsapp.net": {
+      "exp": 0,
+      "limit": 10,
+      "lastclaim": 0,
+      "isBanned": false
+    },
+    "6283833345898@s.whatsapp.net": {
+      "exp": 0,
+      "limit": 10,
+      "lastclaim": 0,
+      "isBanned": false
+    },
+    "62895354489100@s.whatsapp.net": {
+      "exp": 0,
+      "limit": 10,
+      "lastclaim": 0,
+      "isBanned": false
+    },
+    "6282151748772@s.whatsapp.net": {
+      "exp": 850,
+      "limit": 10,
+      "lastclaim": 0,
+      "isBanned": false
+    },
+    "6285712065967@s.whatsapp.net": {
+      "exp": 0,
+      "limit": 10,
+      "lastclaim": 0,
+      "isBanned": false
+    },
+    "6283101315023@s.whatsapp.net": {
+      "exp": 0,
+      "limit": 10,
+      "lastclaim": 0,
+      "isBanned": false
+    },
+    "6285368481717@s.whatsapp.net": {
+      "exp": 0,
+      "limit": 10,
+      "lastclaim": 0,
+      "isBanned": false
+    },
+    "6283873922826@s.whatsapp.net": {
+      "exp": 500,
+      "limit": 10,
+      "lastclaim": 0,
+      "isBanned": false
+    },
+    "601125251971@s.whatsapp.net": {
+      "exp": 0,
+      "limit": 10,
+      "lastclaim": 0,
+      "isBanned": false
+    },
+    "62838089186184@s.whatsapp.net": {
+      "exp": 0,
+      "limit": 10,
+      "lastclaim": 0,
+      "isBanned": false
+    },
+    "6283844605365@s.whatsapp.net": {
+      "exp": 0,
+      "limit": 10,
+      "lastclaim": 0,
+      "isBanned": false
+    },
+    "628813187818@s.whatsapp.net": {
+      "exp": 950,
+      "limit": 10,
+      "lastclaim": 0,
+      "isBanned": false
+    },
+    "6281226718268@s.whatsapp.net": {
+      "exp": 0,
+      "limit": 10,
+      "lastclaim": 0,
+      "isBanned": false
+    },
+    "6285854534589@s.whatsapp.net": {
+      "exp": 0,
+      "limit": 10,
+      "lastclaim": 0,
+      "isBanned": false
+    },
+    "62895621057323@s.whatsapp.net": {
+      "exp": 0,
+      "limit": 10,
+      "lastclaim": 0,
+      "isBanned": false
+    },
+    "62895411937958@s.whatsapp.net": {
+      "exp": 350,
+      "limit": 10,
+      "lastclaim": 0,
+      "isBanned": false
+    },
+    "6281277148476@s.whatsapp.net": {
+      "exp": 0,
+      "limit": 10,
+      "lastclaim": 0,
+      "isBanned": false
+    },
+    "62895347316535@s.whatsapp.net": {
+      "exp": 0,
+      "limit": 10,
+      "lastclaim": 0,
+      "isBanned": false
+    },
+    "6285334398268@s.whatsapp.net": {
+      "exp": 0,
+      "limit": 10,
+      "lastclaim": 0,
+      "isBanned": false
+    },
+    "6282284876710@s.whatsapp.net": {
+      "exp": 0,
+      "limit": 10,
+      "lastclaim": 0,
+      "isBanned": false
+    },
+    "62895621919398@s.whatsapp.net": {
+      "exp": 350,
+      "limit": 10,
+      "lastclaim": 0,
+      "isBanned": false
+    },
+    "6282231276710@s.whatsapp.net": {
+      "exp": 350,
+      "limit": 10,
+      "lastclaim": 0,
+      "isBanned": false
+    },
+    "923345951043@s.whatsapp.net": {
+      "exp": 0,
+      "limit": 10,
+      "lastclaim": 0,
+      "isBanned": false
+    },
+    "6281535402098@s.whatsapp.net": {
+      "exp": 0,
+      "limit": 10,
+      "lastclaim": 0,
+      "isBanned": false
+    },
+    "6285815310616@s.whatsapp.net": {
+      "exp": 0,
+      "limit": 10,
+      "lastclaim": 0,
+      "isBanned": false
+    },
+    "6285856150130@s.whatsapp.net": {
+      "exp": 0,
+      "limit": 10,
+      "lastclaim": 0,
+      "isBanned": false
+    },
+    "6282275549784@s.whatsapp.net": {
+      "exp": 0,
+      "limit": 10,
+      "lastclaim": 0,
+      "isBanned": false
+    },
+    "6285708896504@s.whatsapp.net": {
+      "exp": 0,
+      "limit": 10,
+      "lastclaim": 0,
+      "isBanned": false
+    },
+    "6281264249147@s.whatsapp.net": {
+      "exp": 0,
+      "limit": 10,
+      "lastclaim": 0,
+      "isBanned": false
+    },
+    "6288227206741@s.whatsapp.net": {
+      "exp": 0,
+      "limit": 10,
+      "lastclaim": 0,
+      "isBanned": false
+    },
+    "6281257416122@s.whatsapp.net": {
+      "exp": 0,
+      "limit": 10,
+      "lastclaim": 0,
+      "isBanned": false
+    },
+    "6285804282572@s.whatsapp.net": {
+      "exp": 0,
+      "limit": 10,
+      "lastclaim": 0,
+      "isBanned": false
+    },
+    "6288286949837@s.whatsapp.net": {
+      "exp": 0,
+      "limit": 10,
+      "lastclaim": 0,
+      "isBanned": false
+    },
+    "6283149734639@s.whatsapp.net": {
+      "exp": 950,
+      "limit": 10,
+      "lastclaim": 0,
+      "isBanned": false
+    },
+    "6285233126829@s.whatsapp.net": {
+      "exp": 400,
+      "limit": 10,
+      "lastclaim": 0,
+      "isBanned": false
+    },
+    "923146406273@s.whatsapp.net": {
+      "exp": 0,
+      "limit": 10,
+      "lastclaim": 0,
+      "isBanned": false
+    },
+    "6285963979265@s.whatsapp.net": {
+      "exp": 0,
+      "limit": 10,
+      "lastclaim": 0,
+      "isBanned": false
+    },
+    "6282297652707@s.whatsapp.net": {
+      "exp": 0,
+      "limit": 10,
+      "lastclaim": 0,
+      "isBanned": false
+    },
+    "6281213360161@s.whatsapp.net": {
+      "exp": 0,
+      "limit": 10,
+      "lastclaim": 0,
+      "isBanned": false
+    },
+    "6281214190596@s.whatsapp.net": {
+      "exp": 0,
+      "limit": 10,
+      "lastclaim": 0,
+      "isBanned": false
+    },
+    "6281260558416@s.whatsapp.net": {
+      "exp": 0,
+      "limit": 10,
+      "lastclaim": 0,
+      "isBanned": false
+    },
+    "6287771733201@s.whatsapp.net": {
+      "exp": 0,
+      "limit": 10,
+      "lastclaim": 0,
+      "isBanned": false
+    },
+    "6283832678250@s.whatsapp.net": {
+      "exp": 0,
+      "limit": 10,
+      "lastclaim": 0,
+      "isBanned": false
+    },
+    "6287761517842@s.whatsapp.net": {
+      "exp": 750,
+      "limit": 10,
+      "lastclaim": 0,
+      "isBanned": false
+    },
+    "6283892211044@s.whatsapp.net": {
+      "exp": 0,
+      "limit": 10,
+      "lastclaim": 0,
+      "isBanned": false
+    },
+    "6282225328063@s.whatsapp.net": {
+      "exp": 0,
+      "limit": 10,
+      "lastclaim": 0,
+      "isBanned": false
+    },
+    "923103108087@s.whatsapp.net": {
+      "exp": 0,
+      "limit": 10,
+      "lastclaim": 0,
+      "isBanned": false
+    },
+    "6287853468107@s.whatsapp.net": {
+      "exp": 0,
+      "limit": 10,
+      "lastclaim": 0,
+      "isBanned": false
+    },
+    "6287874550705@s.whatsapp.net": {
+      "exp": 0,
+      "limit": 10,
+      "lastclaim": 0,
+      "isBanned": false
+    },
+    "6285703435495@s.whatsapp.net": {
+      "exp": 0,
+      "limit": 10,
+      "lastclaim": 0,
+      "isBanned": false
+    },
+    "6285369164043@s.whatsapp.net": {
+      "exp": 600,
+      "limit": 10,
+      "lastclaim": 0,
+      "isBanned": false
+    },
+    "628886559392@s.whatsapp.net": {
+      "exp": 0,
+      "limit": 10,
+      "lastclaim": 0,
+      "isBanned": false
+    },
+    "6285730093965@s.whatsapp.net": {
+      "exp": 0,
+      "limit": 10,
+      "lastclaim": 0,
+      "isBanned": false
+    },
+    "6282278031937@s.whatsapp.net": {
+      "exp": 0,
+      "limit": 10,
+      "lastclaim": 0,
+      "isBanned": false
+    },
+    "6285312454024@s.whatsapp.net": {
+      "exp": 0,
+      "limit": 10,
+      "lastclaim": 0,
+      "isBanned": false
+    },
+    "6289514548796@s.whatsapp.net": {
+      "exp": 0,
+      "limit": 10,
+      "lastclaim": 0,
+      "isBanned": false
+    },
+    "6289530309477@s.whatsapp.net": {
+      "exp": 0,
+      "limit": 10,
+      "lastclaim": 0,
+      "isBanned": false
     }
   },
   "groups": {},
@@ -4311,12 +5097,12 @@
       "nolink": true,
       "novirtex": true,
       "sWelcome": "*HALO @user ANAK KONTOL !!! SILAHKAN INTRO LALU KELUAR DARI GRUP YA BANGSAT*",
-      "sBye": "dah kntl"
+      "sBye": "Selamat tinggal bangsat, gausah balik lagi @user anak kntl !"
     },
     "6282245496356-1602153905@g.us": {
       "isBanned": false,
-      "welcome": true,
-      "left": true,
+      "welcome": false,
+      "left": false,
       "nolink": true,
       "novirtex": true,
       "sWelcome": "",
@@ -4868,8 +5654,8 @@
       "left": true,
       "nolink": true,
       "novirtex": true,
-      "sWelcome": "Selamat datang bangsat @user betah betah di grub ya anggap aja grub sendiri",
-      "sBye": "@user Selamat tinggal bangsat jangan datang lagi"
+      "sWelcome": "*Selamat datang @user bangsat betah betah di grub ya anggap aja grub sendiri*",
+      "sBye": "*Selamat tinggal bangsat @user jangan datang lagi ya bangsat*"
     },
     "6285893123964-1602987472@g.us": {
       "isBanned": false,
@@ -5331,7 +6117,7 @@
       "left": true,
       "nolink": true,
       "novirtex": true,
-      "sWelcome": "*HALO @user ANAK KONTOL !!! SILAHKAN INTRO LALU KELUAR DARI GRUP YA BANGSAT*",
+      "sWelcome": "Selamat datang @user sayang. Silahkan intro lalu keluar ! Anda tidak berguna",
       "sBye": "babay bangsat @user"
     },
     "62895423029179@s.whatsapp.net": {
@@ -5486,9 +6272,306 @@
       "novirtex": false,
       "sWelcome": "",
       "sBye": ""
+    },
+    "6285895742989-1612564335@g.us": {
+      "isBanned": true,
+      "welcome": false,
+      "left": false,
+      "nolink": false,
+      "novirtex": false,
+      "sWelcome": "",
+      "sBye": ""
+    },
+    "6282323881018@s.whatsapp.net": {
+      "isBanned": false,
+      "welcome": false,
+      "left": false,
+      "nolink": false,
+      "novirtex": false,
+      "sWelcome": "",
+      "sBye": ""
+    },
+    "6288291289454-1609080773@g.us": {
+      "isBanned": false,
+      "welcome": false,
+      "left": false,
+      "nolink": false,
+      "novirtex": false,
+      "sWelcome": "",
+      "sBye": ""
+    },
+    "6281215299062-1611693303@g.us": {
+      "isBanned": false,
+      "welcome": false,
+      "left": false,
+      "nolink": false,
+      "novirtex": false,
+      "sWelcome": "",
+      "sBye": ""
+    },
+    "601116505175-1531233305@g.us": {
+      "isBanned": true,
+      "welcome": false,
+      "left": false,
+      "nolink": false,
+      "novirtex": false,
+      "sWelcome": "",
+      "sBye": ""
+    },
+    "6285786561596-1608266559@g.us": {
+      "isBanned": false,
+      "welcome": false,
+      "left": false,
+      "nolink": false,
+      "novirtex": false,
+      "sWelcome": "",
+      "sBye": ""
+    },
+    "628987250011-1599753249@g.us": {
+      "isBanned": false,
+      "welcome": false,
+      "left": false,
+      "nolink": false,
+      "novirtex": false,
+      "sWelcome": "",
+      "sBye": ""
+    },
+    "6283862651952-1610294538@g.us": {
+      "isBanned": false,
+      "welcome": false,
+      "left": false,
+      "nolink": false,
+      "novirtex": false,
+      "sWelcome": "",
+      "sBye": ""
+    },
+    "6281809580913@s.whatsapp.net": {
+      "isBanned": false,
+      "welcome": false,
+      "left": false,
+      "nolink": false,
+      "novirtex": false,
+      "sWelcome": "",
+      "sBye": ""
+    },
+    "6283871044902@s.whatsapp.net": {
+      "isBanned": false,
+      "welcome": false,
+      "left": false,
+      "nolink": false,
+      "novirtex": false,
+      "sWelcome": "",
+      "sBye": ""
+    },
+    "6285329837509-1599931016@g.us": {
+      "isBanned": false,
+      "welcome": false,
+      "left": false,
+      "nolink": false,
+      "novirtex": false,
+      "sWelcome": "",
+      "sBye": ""
+    },
+    "6282313243050@s.whatsapp.net": {
+      "isBanned": false,
+      "welcome": false,
+      "left": false,
+      "nolink": false,
+      "novirtex": false,
+      "sWelcome": "",
+      "sBye": ""
+    },
+    "6287810818235@s.whatsapp.net": {
+      "isBanned": false,
+      "welcome": false,
+      "left": false,
+      "nolink": false,
+      "novirtex": false,
+      "sWelcome": "",
+      "sBye": ""
+    },
+    "6285900084858@s.whatsapp.net": {
+      "isBanned": false,
+      "welcome": false,
+      "left": false,
+      "nolink": false,
+      "novirtex": false,
+      "sWelcome": "",
+      "sBye": ""
+    },
+    "6285764069424@s.whatsapp.net": {
+      "isBanned": false,
+      "welcome": false,
+      "left": false,
+      "nolink": false,
+      "novirtex": false,
+      "sWelcome": "",
+      "sBye": ""
+    },
+    "6281285002571-1611657696@g.us": {
+      "isBanned": false,
+      "welcome": false,
+      "left": false,
+      "nolink": false,
+      "novirtex": false,
+      "sWelcome": "",
+      "sBye": ""
+    },
+    "6283890756661@s.whatsapp.net": {
+      "isBanned": false,
+      "welcome": false,
+      "left": false,
+      "nolink": false,
+      "novirtex": false,
+      "sWelcome": "",
+      "sBye": ""
+    },
+    "6285226138300@s.whatsapp.net": {
+      "isBanned": false,
+      "welcome": false,
+      "left": false,
+      "nolink": false,
+      "novirtex": false,
+      "sWelcome": "",
+      "sBye": ""
+    },
+    "6287724377096@s.whatsapp.net": {
+      "isBanned": false,
+      "welcome": false,
+      "left": false,
+      "nolink": false,
+      "novirtex": false,
+      "sWelcome": "",
+      "sBye": ""
+    },
+    "923047407695@s.whatsapp.net": {
+      "isBanned": false,
+      "welcome": false,
+      "left": false,
+      "nolink": false,
+      "novirtex": false,
+      "sWelcome": "",
+      "sBye": ""
+    },
+    "923495853018@s.whatsapp.net": {
+      "isBanned": false,
+      "welcome": false,
+      "left": false,
+      "nolink": false,
+      "novirtex": false,
+      "sWelcome": "",
+      "sBye": ""
+    },
+    "62895339007841@s.whatsapp.net": {
+      "isBanned": false,
+      "welcome": false,
+      "left": false,
+      "nolink": false,
+      "novirtex": false,
+      "sWelcome": "",
+      "sBye": ""
+    },
+    "601125251971@s.whatsapp.net": {
+      "isBanned": false,
+      "welcome": false,
+      "left": false,
+      "nolink": false,
+      "novirtex": false,
+      "sWelcome": "",
+      "sBye": ""
+    },
+    "6287853468107-1612210079@g.us": {
+      "isBanned": true,
+      "welcome": false,
+      "left": false,
+      "nolink": false,
+      "novirtex": false,
+      "sWelcome": "",
+      "sBye": ""
+    },
+    "6282284876710@s.whatsapp.net": {
+      "isBanned": false,
+      "welcome": false,
+      "left": false,
+      "nolink": false,
+      "novirtex": false,
+      "sWelcome": "",
+      "sBye": ""
+    },
+    "6283892211044@s.whatsapp.net": {
+      "isBanned": false,
+      "welcome": false,
+      "left": false,
+      "nolink": false,
+      "novirtex": false,
+      "sWelcome": "",
+      "sBye": ""
+    },
+    "6288286949837@s.whatsapp.net": {
+      "isBanned": false,
+      "welcome": false,
+      "left": false,
+      "nolink": false,
+      "novirtex": false,
+      "sWelcome": "",
+      "sBye": ""
+    },
+    "6287853468107@s.whatsapp.net": {
+      "isBanned": false,
+      "welcome": false,
+      "left": false,
+      "nolink": false,
+      "novirtex": false,
+      "sWelcome": "",
+      "sBye": ""
+    },
+    "6285233126829@s.whatsapp.net": {
+      "isBanned": false,
+      "welcome": false,
+      "left": false,
+      "nolink": false,
+      "novirtex": false,
+      "sWelcome": "",
+      "sBye": ""
+    },
+    "628886559392@s.whatsapp.net": {
+      "isBanned": false,
+      "welcome": false,
+      "left": false,
+      "nolink": false,
+      "novirtex": false,
+      "sWelcome": "",
+      "sBye": ""
+    },
+    "6285730093965@s.whatsapp.net": {
+      "isBanned": false,
+      "welcome": false,
+      "left": false,
+      "nolink": false,
+      "novirtex": false,
+      "sWelcome": "",
+      "sBye": ""
+    },
+    "6282278031937@s.whatsapp.net": {
+      "isBanned": false,
+      "welcome": false,
+      "left": false,
+      "nolink": false,
+      "novirtex": false,
+      "sWelcome": "",
+      "sBye": ""
+    },
+    "6285723215364@s.whatsapp.net": {
+      "isBanned": false,
+      "welcome": false,
+      "left": false,
+      "nolink": false,
+      "novirtex": false,
+      "sWelcome": "",
+      "sBye": ""
     }
   },
   "blocked": 0,
   "banned": 0,
-  "isBanned": 9
+  "isBanned": 10
 }

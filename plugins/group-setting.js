@@ -12,7 +12,7 @@ let handler  = async (m, { conn, args }) => {
 		conn.reply(m.chat, `Give a argument close or open!`, m)
 	} 
 }
-handler.help = ['group open/close']
+handler.help = ['group *open/close*']
 handler.tags = ['group']
 handler.command = /^(group)$/i
 handler.owner = false

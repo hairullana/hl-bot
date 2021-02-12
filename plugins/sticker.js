@@ -9,18 +9,25 @@ let handler  = async (m, { conn, args }) => {
   let stiker = false
   try {
     let q = m.quoted ? { message: { [m.quoted.mtype]: m.quoted }} : m
-    if (/image/.test((m.quoted ? m.quoted : m.msg).mimetype || '')) {
+    if (/image/.test((m.quoted ? m.quoted : m.msg).mimetype || '')) {  
       let img = await conn.downloadM(q)
       if (!img) throw img
       stiker = await sticker2(img)
-    } else if (args[0]) stiker = await sticker2(false, args[0])
+    } else if (args[0]){
+      var pat = /^https?:\/\//i;
+      if (pat.test(args[0])) {
+        stiker = await sticker2(false, args[0])
+      } else {
+        conn.reply(m.chat, `Masukkan URL Yang Benar !\nReply Gambar / Caption Juga Bisa !\n\nBaca Menu Jika Kurang Mengerti . . .`, m)
+      }
+    }
   } finally {
     if (stiker) conn.sendMessage(m.chat, stiker, MessageType.sticker, {
       quoted: m
     })
   }
 }
-handler.help = ['stiker (caption|reply media)', 'stiker <url>']
+handler.help = ['sticker *(reply)*', 'sticker *(caption)*', 'sticker *url*']
 handler.tags = ['sticker']
 handler.command = /^stic?ker|sk$/i
 handler.owner = false

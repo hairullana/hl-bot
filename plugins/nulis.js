@@ -54,7 +54,7 @@ let handler  = async (m, { conn, args }) => {
     conn.sendFile(m.chat, outputPath, 'nulis.jpg', 'Ni hasilnya beb, lain kali jangan males nulis ya bangsat', m)
   })
 }
-handler.help = ['n'].map(v => v + 'ulis <teks>')
+handler.help = ['nulis'].map(v => v + ' *text*')
 handler.tags = ['tools']
 handler.command = /^nulis$/i
 handler.owner = false
@@ -70,6 +70,3 @@ handler.botAdmin = false
 handler.fail = null
 
 module.exports = handler
-
-// BY MFARELS NJEENK
-// https://GitHub.com/MFarelS/

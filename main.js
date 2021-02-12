@@ -131,10 +131,7 @@ try {
   if(enable.nolink == true) {  
     if(m.isGroup && !isAdmin && isBotAdmin) {
       if (m.text.match(/(chat.whatsapp.com)/gi)) {
-          conn.updatePresence(m.chat, Presence.composing) 
-          conn.reply(m.chat, `*Sorry motherfucker, you will be removed from this group !*`, m).then(() => {
-          conn.groupRemove(m.chat, [m.sender])
-        })
+        conn.groupRemove(m.chat, [m.sender])
       }
     }
   }

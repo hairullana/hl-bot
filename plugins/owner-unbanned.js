@@ -30,7 +30,7 @@ try {
 	}	
 }
 
-handler.help = ['unban']
+handler.help = ['*62xx*','*@user*','*(reply)*'].map(v => 'unban ' + v)
 handler.tags = ['']
 handler.command = /^unban$/i
 handler.owner = true

@@ -66,7 +66,7 @@ let handler = async (m, { conn, text }) => {
 		} conn.sendFile(m.chat, pp, 'profile.jpg', `*IDENTITAS MEMBER*\n\n○ *Nama : ${name}*\n○ *Tentang : ${about}*\n○ *Nomor : ${nomor}*\n○ *Uang : Rp. ${Number(money).toLocaleString().replace(/,/g, '.')},-*\n○ *Limit : ${format(limit)}*\n○ *Banned : ${banned}*\n\n▌│█║▌║▌║║▌║▌║█│▌█║`, m)
 	}
 }
-handler.help = ['profile']
+handler.help = ['*62xx*','*@user*','*(reply)*'].map(v => 'profile ' + v)
 handler.tags = ['group']
 handler.command = /^(profile|profil)$/i
 handler.exp = 0

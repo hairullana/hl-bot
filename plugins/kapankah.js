@@ -4,7 +4,7 @@ let handler = async (m, { conn, command, text }) => {
 *Jawaban:* ${Math.floor(Math.random() * 10)} ${pickRandom(['detik', 'menit', 'jam', 'hari', 'minggu', 'bulan', 'tahun', 'dekade', 'abad'])} lagi ...
 `.trim(), m)
 }
-handler.help = [''].map(v => 'kapan' + v + ' <pertanyaan>')
+handler.help = ['kapan','kapankah'].map(v => v + ' *question*')
 handler.tags = ['kerang']
 handler.command = /^kapan(kah)?/i
 handler.owner = false

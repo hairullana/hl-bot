@@ -15,7 +15,7 @@ let handler = async (m, { conn, args, isPrems, isOwner }) => {
 *Filesize:* ${filesizeF}
 `.trim(), m, false, { asDocument: true })
 }
-handler.help = ['mp3','a'].map(v => 'yt' + v + ' <url>')
+handler.help = ['mp3','a'].map(v => 'yt' + v + ' *url*')
 handler.tags = ['downloader']
 //handler.command = /^yt(a|mp3)$/i
 handler.owner = false

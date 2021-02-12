@@ -24,7 +24,7 @@ try {
 			conn.reply(m.chat, `*Target has promoted.*`, m)
 	}	
 }
-handler.help = ['promote @user']
+handler.help = ['*62xx*','*@user*','*(reply)*'].map(v => 'promote ' + v)
 handler.tags = ['group']
 handler.command = /^(promote)$/i
 handler.owner = false
