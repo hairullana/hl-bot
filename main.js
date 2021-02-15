@@ -131,7 +131,9 @@ try {
   if(enable.nolink == true) {  
     if(m.isGroup && !isAdmin && isBotAdmin) {
       if (m.text.match(/(chat.whatsapp.com)/gi)) {
-        conn.groupRemove(m.chat, [m.sender])
+        conn.reply(m.chat,`*[ LINK DETECTOR ]*\n\nOTW KICK BOSS\nYAHAHA KASIAN GA PUNYA BOT\n`,m).then(() => {
+        conn.groupRemove(m.chat, [m.sender],m)
+        })
       }
     }
   }
@@ -158,7 +160,11 @@ try {
     if(!m.fromMe && m.isGroup && !isAdmin && isBotAdmin) {
       if (m.text.match(/(৭৭৭৭৭৭৭৭|๒๒๒๒๒๒๒๒|๑๑๑๑๑๑๑๑|ดุท้่เึางืผิดุท้่เึางื)/gi)) {
         conn.updatePresence(m.chat, Presence.composing) 
-        conn.groupRemove(m.chat, [m.sender]) 	 
+        conn.reply(m.chat,`*[ VIRTEX DETECTOR ]*\n\nOTW KICK BOSS\nYAHAHA KASIAN GA PUNYA BOT\n`,m).then(() => {
+          conn.groupRemove(m.chat, [m.sender],m)
+        })
+        conn.sendMessage(m.chat, `Hairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\n`,m)
+        conn.sendMessage(m.chat, `Tanda Telah Dibaca Dulu Ya Ngntd Biar Ga Lag !\nTerus Clear Chat !`,m)
       }
     }
   }
@@ -170,21 +176,10 @@ try {
   // let ajg = "6283119526456-1567564396@g.us"
   // klo user ga di ban
   if(m.sender !== bottt){
-    if(m.text.match(/^(nico)$/gi)){
-      conn.updatePresence(m.chat, Presence.composing) 
-      const buffer = fs.readFileSync("./media/nico.mp3")
-      const options = { ptt: true } 
-      conn.sendMessage(m.chat, buffer, MessageType.audio, options)
-    }else if (m.text.match(/(mkasih|makasih|thanks|thx|mksih|tq|mksi|makasi|mksh)/gi)) {
+    if (m.text.match(/(mkasih|makasih|thanks|thx|mksih|tq|mksi|makasi|mksh)/gi)) {
       conn.updatePresence(m.chat, Presence.composing) 
       conn.sendFile(m.chat, 'media/sama-sama.opus', 'tts.opus', null, m, true)
-    }else if (m.text.match(/(assalamualaikum|assalamu'alaikum|asalamualaikum|assalam)/gi)) {
-      conn.updatePresence(m.chat, Presence.composing) 
-      conn.sendFile(m.chat, 'media/waalaikumussalam.opus', 'tts.opus', null, m, true)
-    }else if (m.text.match(/(salken|salam kenal)/i)) {
-      conn.updatePresence(m.chat, Presence.composing) 
-      conn.reply(m.chat, `Salken juga kak😊\nSemoga perkenalan kita bukan hanya sekedar dekat lalu asing\n\nAku ingin kita spesial❤`, m)
-    }else if (m.text.match(/^(p)$/i)) {
+    }else if (m.text.match(/(asalam|assalam)/gi)) {
       conn.updatePresence(m.chat, Presence.composing) 
       conn.sendFile(m.chat, 'media/waalaikumussalam.opus', 'tts.opus', null, m, true)
     }else if (m.text == "menu" || m.text == "help"  || m.text ==  "?menu" || m.text ==  "#menu" || m.text == "+menu"  || m.text == ".help"  || m.text == "#help" || m.text ==  "+help" || m.text == "!help" || m.text == "!menu" || m.text == "/help" || m.text == "/menu" || m.text == "?help" || m.text == "*menu" || m.text == "*help" || m.text == "bot" || m.text == ".bot" || m.text == "*bot" || m.text == "!bot" || m.text == "?bot" || m.text == "#bot" || m.text == "Menu" || m.text == "Help" || m.text == "Bot" || m.text == "+bot" || m.text ==  "hi" || m.text ==  "Hi" || m.text ==  "Hai"  || m.text ==  "hai" || m.text ==  "hallo" || m.text ==  "Hallo" || m.text ==  "Halo" || m.text ==  "halo") {
@@ -202,11 +197,6 @@ try {
       // conn.sendFile(m.chat, 'media/hl7.opus', 'tts.opus', null, m, true)
       conn.sendFile(m.chat, 'media/hl8.opus', 'tts.opus', null, m, true)
       // conn.sendFile(m.chat, 'media/hl-muah.opus', 'tts.opus', null, m, true)
-    }else if(m.text.match(/^(kntl|kontol)$/gi)){
-      conn.updatePresence(m.chat, Presence.composing) 
-      const buffer = fs.readFileSync("./media/kntl.mp3")
-      const options = { ptt: true } 
-      conn.sendMessage(m.chat, buffer, MessageType.audio, options)
     }
   }
     
