@@ -1,32 +1,26 @@
 let { Presence } = require('@adiwajshing/baileys')
-
 let handler = async (m, { conn }) => {
 	conn.updatePresence(m.chat, Presence.composing) 
 	let pp = './src/avatar_contact.png'
   try {
-		pp = await conn.getProfilePicture(m.chat)
-	} catch (e) {
-	
+	pp = await conn.getProfilePicture(m.chat)
+		} catch (e) {
 	} finally {
 	
 		let welcome = global.DATABASE.data.chats[m.chat].welcome
 		let left = global.DATABASE.data.chats[m.chat].left
-		// let filter = global.DATABASE.data.chats[m.chat].nobadword
+		let filter = global.DATABASE.data.chats[m.chat].nobadword
 		let nolink = global.DATABASE.data.chats[m.chat].nolink
 		let novirtex = global.DATABASE.data.chats[m.chat].novirtex
-    // let nodelete = global.DATABASE.data.chats[m.chat].nodelete
     
-		var isName = conn.getName(m.chat)
-		if (typeof isName !== 'undefined') {
-			var name = isName
-		} else {
-			var name = '(Tanpa Nama)'
-		} conn.sendFile(m.chat, pp, 'profile.jpg', `*${ucword(name)}*\n\n- *Anti-Link : ${data(nolink)}*\n- *Anti-Virtex : ${data(novirtex)}*\n- *Welcome Msg : ${data(welcome)}*\n- *Leave Msg : ${data(left)}*`, m)
+	var name = conn.getName(m.chat)
+	
+	conn.sendFile(m.chat, pp, 'profile.jpg', `*[ ${ucword(name)} ]*\n\n  - Anti-Link : ${data(nolink)}\n  - Anti-Virtex : ${data(novirtex)}\n  - Anti-Badword : ${data(filter)}\n  - Welcome Msg : ${data(welcome)}\n  - Leave Msg : ${data(left)}`, m)
 	}
 }
-handler.help = ['info','groupinfo']
+handler.help = ['groupinfo']
 handler.tags = ['group']
-handler.command = /^(info|groupinfo)$/i
+handler.command = /^(groupinfo)$/i
 handler.exp = 0
 handler.group = true
 handler.limit = false

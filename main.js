@@ -80,7 +80,7 @@ try {
         exp: 0,
         limit: 10,
         lastclaim: 0,
-        // badword: 0,
+        badword: 0,
         isBanned: false
       }
       
@@ -89,7 +89,7 @@ try {
         if (!'isBanned' in chat) chat.isBanned = false
         if (!'welcome' in chat) chat.welcome = false
         if (!'left' in chat) chat.left = false
-        // if (!'nobadword' in chat) chat.nobadword = false
+        if (!'nobadword' in chat) chat.nobadword = false
         if (!'nolink' in chat) chat.nolink = false
         if (!'novirtex' in chat) chat.novirtex = false
         if (!'sWelcome' in chat) chat.sWelcome = ''
@@ -98,7 +98,7 @@ try {
         isBanned: false,
         welcome: false,
         left: false,
-        // nobadword: false,
+        nobadword: false,
         nolink: false,
         novirtex: false,
         sWelcome: '',
@@ -131,40 +131,40 @@ try {
   if(enable.nolink == true) {  
     if(m.isGroup && !isAdmin && isBotAdmin) {
       if (m.text.match(/(chat.whatsapp.com)/gi)) {
-        conn.reply(m.chat,`*[ LINK DETECTOR ]*\n\nOTW KICK BOSS\nYAHAHA KASIAN GA PUNYA BOT\n`,m).then(() => {
+        conn.reply(m.chat,`*[ LINK DETECTOR ]*\n\nSorry motherfucker, you will be removed from this group !`,m).then(() => {
         conn.groupRemove(m.chat, [m.sender],m)
         })
       }
     }
   }
      
-  // if(enable.nobadword == true) {  
-  // if(enable.nobadword && m.isGroup && !isAdmin && isBotAdmin) {
-  // if (!m.fromMe && m.text.match(/(bitch|keparat|fuck|bastard|anjing|babi|pantek|bajingan|coli|colmek|anjim|pilat|pukimak|lonte|lont|dongo|biadab|biadap|ngocok|toket|anjas|tempek|tomlol|henceut|kanjut|oppai|tete|kanyut|itil|titit|tytyd|tolol|idiot|bangsat|bangsad|pucek|kontol|pantek|memek|puki|jembut|meki|jingan|bodoh|goblok|bokep|dajjal|silit|setan|sange|jancok|dancok|goblog|autis|bagong|peler|ngentot|ngentod|ngewe|pler|ngtd|kntl|ajg|ajig|asw|njing|njeng|kafir|xnxx|xvideos|redhub)/gi)) {
-  // 	conn.updatePresence(m.chat, Presence.composing) 
-  // 	var cBad = global.DATABASE.data.users[m.sender].badword += 1
-  // 	var badword = global.DATABASE.data.users[m.sender].badword
-  // 		if(badword > 4) {
-  // 			conn.reply(m.chat, `*Over badword!*`, m).then(() => {
-  // 			conn.groupRemove(m.chat, [m.sender])
-  // 			global.DATABASE.data.users[m.sender].badword = 0
-  //          	 })
-  // 		} else {
-  // 			conn.reply(m.chat, `*⺀ BADWORD DETECTOR ⺀*\n\n*Kamu mendapat peringatan : [ ${badword} / 5 ]*\n\n*Jangan berkata kasar atau menggunakan kalimat sampah sebanyak 5x atau kamu akan dikeluarkan dari grup secara otomatis.*\n\n▌│█║▌║▌║║▌║▌║█│▌▌│█║`, m)
-  // 		}
-  // 	}
-  // }
-// } 
+  if(enable.nobadword == true) {  
+  if(enable.nobadword && m.isGroup && !isAdmin && isBotAdmin) {
+  if (!m.fromMe && m.text.match(/(bitch|keparat|fuck|bastard|anjing|babi|pantek|bajingan|coli|colmek|anjim|pilat|pukimak|lonte|lont|dongo|biadab|biadap|ngocok|toket|anjas|tempek|tomlol|henceut|kanjut|oppai|tete|kanyut|itil|titit|tytyd|tolol|idiot|bangsat|bangsad|pucek|kontol|pantek|memek|puki|jembut|meki|jingan|bodoh|goblok|bokep|dajjal|silit|setan|sange|jancok|dancok|goblog|autis|bagong|peler|ngentot|ngentod|ngewe|pler|ngtd|kntl|ajg|ajig|asw|njing|njeng|kafir|xnxx|xvideos|redhub)/gi)) {
+  	conn.updatePresence(m.chat, Presence.composing) 
+  	var cBad = global.DATABASE.data.users[m.sender].badword += 1
+  	var badword = global.DATABASE.data.users[m.sender].badword
+  		if(badword > 4) {
+  			conn.reply(m.chat, `*[ OVER BADWORD ]\n\nSorry motherfucker, you will be removed from this group !*`, m).then(() => {
+  			conn.groupRemove(m.chat, [m.sender])
+  			global.DATABASE.data.users[m.sender].badword = 0
+           	 })
+  		} else {
+  			conn.reply(m.chat, `*[ BADWORD DETECTOR ]*\n\nYou get a warning : [ ${badword} / 5 ]\n\nDon't be toxic or I will removed you motherfucker !`, m)
+  		}
+  	}
+  }
+} 
   
-  if(enable.novirtex == true) {
+  if(enable.novirtex == true && m.chat !== "6283876884369-1610348450@g.us") {
     if(!m.fromMe && m.isGroup && !isAdmin && isBotAdmin) {
       if (m.text.match(/(৭৭৭৭৭৭৭৭|๒๒๒๒๒๒๒๒|๑๑๑๑๑๑๑๑|ดุท้่เึางืผิดุท้่เึางื)/gi)) {
         conn.updatePresence(m.chat, Presence.composing) 
-        conn.reply(m.chat,`*[ VIRTEX DETECTOR ]*\n\nOTW KICK BOSS\nYAHAHA KASIAN GA PUNYA BOT\n`,m).then(() => {
+        conn.reply(m.chat,`*[ VIRTEX DETECTOR ]*\n\nSorry motherfucker, you will be removed from this group !`,m).then(() => {
           conn.groupRemove(m.chat, [m.sender],m)
         })
-        conn.sendMessage(m.chat, `Hairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\n`,m)
-        conn.sendMessage(m.chat, `Tanda Telah Dibaca Dulu Ya Ngntd Biar Ga Lag !\nTerus Clear Chat !`,m)
+        conn.reply(m.chat, `Hairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\n`,m)
+        conn.reply(m.chat, `Tanda Telah Dibaca Dulu Ya Ngntd Biar Ga Lag !\nTerus Clear Chat !`,m)
       }
     }
   }
