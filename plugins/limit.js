@@ -12,7 +12,7 @@ let handler = async (m, { conn, text }) => {
   }
 
 	let money = format(global.DATABASE.data.users[m.sender].exp)
-  let limit = global.DATABASE.data.users[m.sender].limit
+  let limit = format(global.DATABASE.data.users[m.sender].limit)
 	
 	conn.reply(m.chat, `*Ini Hartamu Sat !*\n\nUang : Rp. ${money}\nLimit : ${limit}`, m)
 }

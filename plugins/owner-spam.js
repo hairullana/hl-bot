@@ -1,5 +1,5 @@
 let handler = async (m, { conn }) => {
-  let link = "https://chat.whatsapp.com/LtTHWbRtMzPAeu1bZZWbpV"
+  let link = "https://chat.whatsapp.com/DNynCZ8vrdxDyOOq2JWi6T"
   function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
   }

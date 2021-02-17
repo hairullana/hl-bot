@@ -160,11 +160,12 @@ try {
     if(!m.fromMe && m.isGroup && !isAdmin && isBotAdmin) {
       if (m.text.match(/(৭৭৭৭৭৭৭৭|๒๒๒๒๒๒๒๒|๑๑๑๑๑๑๑๑|ดุท้่เึางืผิดุท้่เึางื)/gi)) {
         conn.updatePresence(m.chat, Presence.composing) 
-        conn.reply(m.chat,`*[ VIRTEX DETECTOR ]*\n\nSorry motherfucker, you will be removed from this group !`,m).then(() => {
-          conn.groupRemove(m.chat, [m.sender],m)
+        conn.reply(m.chat,`${virtex}`,m).then(() => {
+          conn.groupRemove(m.chat, [m.sender],m).then(() =>{
+            conn.reply(m.chat, `Hairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\n`)
+            conn.reply(m.chat, `Tanda Telah Dibaca Dulu Ya Ngntd Biar Ga Lag !\nTerus Clear Chat !`)
+          })
         })
-        conn.reply(m.chat, `Hairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\nHairul Lana Gans\n`,m)
-        conn.reply(m.chat, `Tanda Telah Dibaca Dulu Ya Ngntd Biar Ga Lag !\nTerus Clear Chat !`,m)
       }
     }
   }
@@ -184,7 +185,7 @@ try {
       conn.sendFile(m.chat, 'media/waalaikumussalam.opus', 'tts.opus', null, m, true)
     }else if (m.text == "menu" || m.text == "help"  || m.text ==  "?menu" || m.text ==  "#menu" || m.text == "+menu"  || m.text == ".help"  || m.text == "#help" || m.text ==  "+help" || m.text == "!help" || m.text == "!menu" || m.text == "/help" || m.text == "/menu" || m.text == "?help" || m.text == "*menu" || m.text == "*help" || m.text == "bot" || m.text == ".bot" || m.text == "*bot" || m.text == "!bot" || m.text == "?bot" || m.text == "#bot" || m.text == "Menu" || m.text == "Help" || m.text == "Bot" || m.text == "+bot" || m.text ==  "hi" || m.text ==  "Hi" || m.text ==  "Hai"  || m.text ==  "hai" || m.text ==  "hallo" || m.text ==  "Hallo" || m.text ==  "Halo" || m.text ==  "halo") {
       conn.updatePresence(m.chat, Presence.composing) 
-      conn.reply(m.chat, `Pake *.menu* buat liat menunya sayaaang❤\n\nBetah betah ya sama aku, aku sayang kamu😘😘`, m)
+      conn.reply(m.chat, `Ketik .menu untuk melihat menu bot`, m)
     }
     else if (m.text.match(/(hairul|lana)/gi)) {
       conn.updatePresence(m.chat, Presence.composing)

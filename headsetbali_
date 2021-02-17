@@ -1302,6 +1302,13 @@
       "lastclaim": 0,
       "badword": 0,
       "isBanned": false
+    },
+    "6283123144859@s.whatsapp.net": {
+      "exp": 0,
+      "limit": 10,
+      "lastclaim": 0,
+      "badword": 0,
+      "isBanned": false
     }
   },
   "groups": {},
@@ -1789,6 +1796,16 @@
       "sBye": ""
     },
     "6285275024034@s.whatsapp.net": {
+      "isBanned": false,
+      "welcome": false,
+      "left": false,
+      "nobadword": false,
+      "nolink": false,
+      "novirtex": false,
+      "sWelcome": "",
+      "sBye": ""
+    },
+    "6283123144859-1609819654@g.us": {
       "isBanned": false,
       "welcome": false,
       "left": false,
