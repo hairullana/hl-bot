@@ -25,7 +25,7 @@ try {
 	}	
 }
 handler.help = ['kick *62xx*', 'kick *(reply)*','kick *@user*']
-handler.tags = ['group']
+handler.tags = ['group admin']
 handler.command = /^(kick)$/i
 handler.owner = false
 handler.mods = false

@@ -5,7 +5,7 @@ let handler = async (m, { conn, command, text }) => {
 `.trim(), m)
 }
 handler.help = ['kapan','kapankah'].map(v => v + ' *question*')
-handler.tags = ['kerang']
+handler.tags = ['fun']
 handler.command = /^kapan(kah)?/i
 handler.owner = false
 handler.mods = false

@@ -5,7 +5,7 @@ let handler = async (m, { conn, text }) => {
 	} else throw `*Masukkan teks untuk dijadikan Welcome Message.*`
 }
 handler.help = ['setwelcome *text*']
-handler.tags = ['group']
+handler.tags = ['group admin']
 handler.command = /^setwelcome$/i
 handler.admin = true
 handler.botAdmin = true

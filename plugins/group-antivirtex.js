@@ -23,7 +23,7 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
 	} 
 }
 handler.help = ['antivirtex *on/off*']
-handler.tags = ['group']
+handler.tags = ['group admin']
 handler.command = /^(antivirtex)$/i
 handler.owner = false
 handler.admin = true

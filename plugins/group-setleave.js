@@ -5,7 +5,7 @@ let handler = async (m, { conn, text }) => {
 	} else throw `*Masukkan teks untuk dijadikan Leave Message.*`
 }
 handler.help = ['setleave *text*']
-handler.tags = ['group']
+handler.tags = ['group admin']
 handler.command = /^setleave$/i
 handler.admin = true
 handler.botAdmin = true

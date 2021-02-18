@@ -6,7 +6,7 @@ let handler = async (m, { conn, args }) => {
   })
 }
 handler.help = ['here','listonline','online']
-handler.tags = ['group']
+handler.tags = ['group admin']
 handler.command = /^(here|(list)?online)$/i
 handler.owner = true
 handler.mods = false

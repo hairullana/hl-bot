@@ -19,7 +19,7 @@ let handler = async (m, { conn }) => {
 	}
 }
 handler.help = ['groupinfo']
-handler.tags = ['group']
+handler.tags = ['group admin','group tools']
 handler.command = /^(groupinfo)$/i
 handler.exp = 0
 handler.group = true

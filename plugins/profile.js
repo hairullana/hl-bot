@@ -68,7 +68,7 @@ let handler = async (m, { conn, text }) => {
 	}
 }
 handler.help = ['*62xx*','*@user*','*(reply)*'].map(v => 'profile ' + v)
-handler.tags = ['group']
+handler.tags = ['group tools','tools']
 handler.command = /^(profile|profil)$/i
 handler.exp = 0
 handler.limit = false

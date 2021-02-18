@@ -21,9 +21,9 @@ try {
 			await conn.groupAdd(m.chat, [user])
 	}	
 }
-// handler.help = ['add 62xx','add (reply)']
-handler.tags = ['group']
-// handler.command = /^(add)$/i
+handler.help = ['add *62xx*','add *(reply)*']
+handler.tags = ['group admin']
+handler.command = /^(add)$/i
 handler.owner = false
 handler.mods = false
 handler.premium = false

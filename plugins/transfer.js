@@ -41,7 +41,7 @@ try {
 }
 
 handler.help = ['transfer','tf'].map(v => v + " *total*")
-handler.tags = ['']
+handler.tags = ['xp']
 handler.command = /^transfer|tf$/i
 handler.owner = false
 module.exports = handler

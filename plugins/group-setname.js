@@ -12,7 +12,7 @@ let handler  = async (m, { conn, args }) => {
 	} 
 }
 handler.help = ['setname *text*']
-handler.tags = ['group']
+handler.tags = ['group admin']
 handler.command = /^(setname)$/i
 handler.owner = false
 handler.mods = false

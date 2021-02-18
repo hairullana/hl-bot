@@ -33,17 +33,18 @@ let handler  = async (m, { conn, usedPrefix: _p }) => {
     let uptime = clockString(_uptime)
     let totalreg = Object.keys(global.DATABASE._data.users).length
     let tags = {
-      'xp': 'EXP & Limit',
-      'info': 'Info',
-      'sticker': 'Sticker',
-      'data' : 'Searching',
-      'tools': 'Tools',
-      'fun': 'Fun',
-      'kerang': 'Kerang Ajaib',
-      'downloader': 'Downloader [OFF]',
-      'group': 'Group',
-      'owner': 'Owner Bot',
-      'advanced': 'Advanced'
+      'info': 'INFO',
+      'xp': 'MONEY & LIMIT',
+      'game': 'GAME',
+      'sticker': 'STICKER',
+      'data' : 'SEARCHING',
+      'tools': 'TOOLS',
+      'fun': 'FUN',
+      'text': 'RANDOM TEXT',
+      'downloader': 'DOWNLOADER [OFF]',
+      'group tools' : 'GROUP TOOLS',
+      'group admin': 'GROUP ADMIN',
+      'owner': 'OWNER'
     }
     for (let plugin of Object.values(global.plugins))
       if (plugin && 'tags' in plugin)
@@ -69,7 +70,7 @@ let handler  = async (m, { conn, usedPrefix: _p }) => {
 
     conn.menu = conn.menu ? conn.menu : {}
     // let before = conn.menu.before || `*${conn.getName(conn.user.jid)} BOT*\n\nHai, %name!\n*%exp XP | %limit Limit*\n*%week, %date [%time]*\n_Uptime: %uptime_\n%totalreg User in database\n%readmore`
-    let before = conn.menu.before || `Hai *%name* 💕💕💕\n_Kamu punya Rp. %exp dan %limit Limit_\n_Total User : %totalreg_\n\n_*Karena BOT ini GRATIS dan bukan BAPAKMU yang buat, jadi jangan di spam ya Maniiieeezzz*_!\n\n╔════════════════\n╠═══✪〘 INFO 〙✪\n║ Ada Masalah? Chat Owner!\n║❖ *wa.me/6283119526456*\n╚════════════════\n%readmore`
+    let before = conn.menu.before || `Hai *%name* 💕💕💕\n_Kamu punya Rp. %exp dan %limit Limit_\n_Total User : %totalreg_\n\n_*Karena BOT ini GRATIS dan bukan BAPAKMU yang buat, jadi jangan di spam ya Maniiieeezzz*_!\n%readmore`
     let header = conn.menu.header || '╔══ ✪〘 %category 〙✪'
     let body   = conn.menu.body   || '║ ❖ %cmd%islimit'
     let footer = conn.menu.footer || '╚════════════════\n'
@@ -99,7 +100,7 @@ let handler  = async (m, { conn, usedPrefix: _p }) => {
   }
 }
 handler.help = ['menu']
-handler.tags = ['main']
+handler.tags = ['info']
 handler.command = /^(menu)$/i
 handler.owner = false
 handler.mods = false

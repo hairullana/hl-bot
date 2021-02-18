@@ -5,8 +5,8 @@ let handler = async (m, { conn }) => {
   let neww = performance.now()
   m.reply(neww - old + 'ms')
 }
-handler.help = ['speed','ping']
-handler.tags = ['info', 'tools']
+handler.help = ['ping']
+handler.tags = ['info']
 
-handler.command = /^(speed|ping)$/i
+handler.command = /^(speed)$/i
 module.exports = handler

@@ -8,7 +8,7 @@ let handler  = async (m, { conn }) => {
 	} 
 }
 handler.help = ['del *(reply)*', 'delete *(reply)*']
-handler.tags = ['group']
+handler.tags = ['group admin']
 handler.command = /^(del|delete)$/i
 handler.owner = false
 handler.mods = false

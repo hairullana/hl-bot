@@ -22,7 +22,7 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
 	} 
 }
 handler.help = ['nobadword *on/off*']
-handler.tags = ['group']
+handler.tags = ['group admin']
 handler.command = /^(nobadword)$/i
 handler.owner = false
 handler.admin = true

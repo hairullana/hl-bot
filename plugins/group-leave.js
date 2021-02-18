@@ -21,7 +21,7 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
 	} 
 }
 handler.help = ['leave *on/off*']
-handler.tags = ['group']
+handler.tags = ['group admin']
 handler.command = /^(leave)$/i
 handler.owner = false
 handler.admin = true

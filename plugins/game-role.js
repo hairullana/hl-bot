@@ -29,8 +29,8 @@ let handler = async (m, { conn, args }) => {
 	} 
 }
 handler.help = ['rolling','spin'].map(v => v + " *total*")
-handler.tags = ['']
-handler.command = /^(rolling|spin)$/i
+handler.tags = ['game']
+// handler.command = /^(rolling|spin)$/i
 handler.owner = false
 handler.group = true
 handler.limit = true

@@ -25,7 +25,7 @@ try {
 	}	
 }
 handler.help = ['*62xx*','*@user*','*(reply)*'].map(v => 'demote ' + v)
-handler.tags = ['group']
+handler.tags = ['group admin']
 handler.command = /^(demote)$/i
 handler.owner = false
 handler.mods = false

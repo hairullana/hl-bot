@@ -145,12 +145,12 @@ try {
   	var cBad = global.DATABASE.data.users[m.sender].badword += 1
   	var badword = global.DATABASE.data.users[m.sender].badword
   		if(badword > 4) {
-  			conn.reply(m.chat, `*[ OVER BADWORD ]\n\nSorry motherfucker, you will be removed from this group !*`, m).then(() => {
+  			conn.reply(m.chat, `*[ MEMBER WARNING ]*\n\nSorry motherfucker, you will be removed from this group !`, m).then(() => {
   			conn.groupRemove(m.chat, [m.sender])
   			global.DATABASE.data.users[m.sender].badword = 0
            	 })
   		} else {
-  			conn.reply(m.chat, `*[ BADWORD DETECTOR ]*\n\nYou get a warning : [ ${badword} / 5 ]\n\nDon't be toxic or I will removed you motherfucker !`, m)
+  			conn.reply(m.chat, `*[ MEMBER WARNING ]*\n\nYou get a warning : [ ${badword} / 5 ]\n\nDon't be toxic or I will removed you motherfucker !`, m)
   		}
   	}
   }
@@ -177,7 +177,7 @@ try {
   // let ajg = "6283119526456-1567564396@g.us"
   // klo user ga di ban
   if(m.sender !== bottt){
-    if (m.text.match(/(mkasih|makasih|thanks|thx|mksih|tq|mksi|makasi|mksh)/gi)) {
+    if (m.text.match(/(mkasih|makasih|thanks|thx|mksih|mksi|makasi|mksh)/gi)) {
       conn.updatePresence(m.chat, Presence.composing) 
       conn.sendFile(m.chat, 'media/sama-sama.opus', 'tts.opus', null, m, true)
     }else if (m.text.match(/(asalam|assalam)/gi)) {

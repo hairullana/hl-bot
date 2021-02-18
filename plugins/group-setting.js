@@ -13,7 +13,7 @@ let handler  = async (m, { conn, args }) => {
 	} 
 }
 handler.help = ['group *open/close*']
-handler.tags = ['group']
+handler.tags = ['group admin']
 handler.command = /^(group)$/i
 handler.owner = false
 handler.mods = false
