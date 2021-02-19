@@ -24,7 +24,9 @@ try {
 		} finally {
       money = parseInt(money)
       var minimal = global.DATABASE._data.users[m.sender].exp - 10000
-      if (money < 10000){
+      if (money < 1){
+        return conn.reply(m.chat,`Dasar miskin !\nTransfer uang kok minus, cuih !`,m)
+      }else if (money < 10000){
         return conn.reply(m.chat,'Dasar miskin !!!\n\nMinimal Rp. 10.000,- untuk transfer\nkalau ga punya duit gausah sok transfer miskin!')
       }else if (money > minimal){
         return conn.reply(m.chat,'Dasar miskin ! Uangmu tidak mencukupi untuk melakukan transfer !\n\nMinimal uangmu Rp. 10.000,- setelah ditransfer')
