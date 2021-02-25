@@ -22,26 +22,7 @@ function pickRandom(list) {
   return list[Math.floor(list.length * Math.random())]
 }
 
-let kata = [
-  'babi',
-  'monyet',
-  'anjing',
-  'bool',
-  'jembut',
-  'memek',
-  'kontol',
-  'tempik',
-  'ngentod',
-  'gay',
-  'lesbi',
-  'wildan',
-  'setan',
-  'pepek',
-  'cangcut',
-  'bagong',
-  'bangsat',
-  'ngentot'
-]
+let kata = ['babi', 'monyet', 'anjing', 'bool', 'jembut', 'memek', 'kontol', 'tempik', 'ngentod', 'gay', 'lesbi', 'wildan', 'setan', 'pepek', 'cangcut', 'bagong', 'bangsat', 'ngentot']
 let randKata = kata[Math.floor(Math.random() * kata.length)]
 global.toxic = [
   `muka lo kek ${randKata}`, `anda tau ${randKata} ?`,`${randKata} Lo ${randKata}`,
