@@ -164,7 +164,7 @@ try {
   }
 } 
   
-  if(enable.novirtex == true && m.chat !== "6283876884369-1610348450@g.us") {
+  if(enable.novirtex == true) {
     if(!m.fromMe && m.isGroup && !isAdmin && isBotAdmin) {
       if (m.text.match(/(৭৭৭৭৭৭৭৭|๒๒๒๒๒๒๒๒|๑๑๑๑๑๑๑๑|ดุท้่เึางืผิดุท้่เึางื)/gi)) {
         conn.updatePresence(m.chat, Presence.composing) 
@@ -179,12 +179,7 @@ try {
   }
   
   
-  // no bot sendiri
-  let bottt = "6282363173075@s.whatsapp.net"
-  // gc ajg
-  // let ajg = "6283119526456-1567564396@g.us"
-  // klo user ga di ban
-  if(m.sender !== bottt){
+  if(m.chat.split('@')[1] == "g.us"){
     if (m.text.match(/(mkasih|makasih|thanks|thx|mksih|mksi|makasi|mksh)/gi)) {
       conn.updatePresence(m.chat, Presence.composing) 
       conn.sendFile(m.chat, 'media/sama-sama.opus', 'tts.opus', null, m, true)
@@ -237,7 +232,7 @@ try {
               plugin.command === command :
               false
 
-	if (!isAccept) continue
+        if (!isAccept) continue
         let isMods = isOwner || global.mods.map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').includes(m.sender)
         let isPrems = isROwner || global.prems.map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').includes(m.sender)
         let groupMetadata = m.isGroup ? await this.groupMetadata(m.chat) : {}
@@ -276,7 +271,7 @@ try {
           fail('premium', m, this)
           continue
         }
-  			if (plugin.group && !m.isGroup) { // Group Only
+        if (plugin.group && !m.isGroup) { // Group Only
           fail('group', m, this)
           continue
         } else if (plugin.botAdmin && !isBotAdmin) { // You Admin
@@ -286,46 +281,46 @@ try {
           fail('admin', m, this)
           continue
         }
-  			if (plugin.private && m.isGroup) { // Private Chat Only
+        if (plugin.private && m.isGroup) { // Private Chat Only
           fail('private', m, this)
           continue
         }
 
         m.isCommand = true
         let xp = 'exp' in plugin ? parseInt(plugin.exp) : 50 // XP Earning per command
-    	m.exp += xp
-        if (!isPrems && global.DATABASE._data.users[m.sender].limit < m.limit * 1 && plugin.limit) {
-          this.reply(m.chat, `*Limit kamu sudah habis silahkan beli limit terlebih dahulu dengan uang yang kamu miliki.*`, m)
-          continue // Limit habis
-        }
-        try {
-          await plugin(m, {
-            usedPrefix,
-            noPrefix,
-            _args,
-            args,
-            command,
-            text,
-            conn: this,
-            participants,
-            groupMetadata,
-            isROwner,
-            isOwner,
-            isAdmin,
-            isBotAdmin,
-            isPrems
-          })
-          if (!isPrems) m.limit = m.limit || plugin.limit || false
-        } catch (e) {
-          // Error occured
-          m.error = e
-          console.log(e)
-          m.reply(util.format(e))
-        } finally {
-          // if (m.limit) m.reply(+ m.limit + ' Limit terpakai')
-        }
-  			break
-  		}
+        m.exp += xp
+          if (!isPrems && global.DATABASE._data.users[m.sender].limit < m.limit * 1 && plugin.limit) {
+            this.reply(m.chat, `*[ EMPTY LIMIT ]*\n\nSilahkan beli limit menggunakan command *.buy _jumlah_* !\nSesuaikan dengan uang anda, kalau miskin gada duit yaudah diem.`, m)
+            continue // Limit habis
+          }
+          try {
+            await plugin(m, {
+              usedPrefix,
+              noPrefix,
+              _args,
+              args,
+              command,
+              text,
+              conn: this,
+              participants,
+              groupMetadata,
+              isROwner,
+              isOwner,
+              isAdmin,
+              isBotAdmin,
+              isPrems
+            })
+            if (!isPrems) m.limit = m.limit || plugin.limit || false
+          } catch (e) {
+            // Error occured
+            m.error = e
+            console.log(e)
+            m.reply(util.format(e))
+          } finally {
+            // if (m.limit) m.reply(+ m.limit + ' Limit terpakai')
+          }
+          break
+      }
   	}
   } finally {
     //console.log(global.DATABASE._data.users[m.sender])
@@ -343,7 +338,7 @@ try {
 }
 
 conn.welcome = 'Hai, *@user* !\nSelamat datang di grup *@subject*'
-conn.bye = 'Selamat Tinggal *@user* !\nJangan Balik Lagi Ya Bgst !'
+conn.bye = 'Selamat Tinggal *@user* !'
 conn.onAdd = async function ({ m, participants }) {
   let chat = global.DATABASE._data.chats[m.key.remoteJid]
   if (!chat.welcome) return
@@ -408,14 +403,14 @@ conn.on('close', async () => {
 
 global.dfail = (type, m, conn) => {
   let msg = {
-    	rowner: '*Hanya owner yang dapat menggunakan perintah ini.*',
-    	owner : '*Hanya owner yang dapat menggunakan perintah ini.*',
-		mods : '*Hanya owner yang dapat menggunakan perintah ini.*',
-		premium : '*Fitur ini khusus untuk user premium.*',
-		group : '*Perintah ini hanya dapat digunakan didalam grup.*',
-		private : '*Perintah ini hanya dapat digunakan di privat chat.*',
-		admin : '*Fitur ini khusus untuk admin grup.*',
-		botAdmin : '*Perintah ini akan hanya dapat digunakan ketika BOT menjadi admin.*'
+    rowner: '*[ ERROR COMMAND ]*\n\nHanya owner yang dapat menggunakan perintah ini !',
+    owner : '*[ ERROR COMMAND ]*\n\nHanya owner yang dapat menggunakan perintah ini !',
+		mods : '*[ ERROR COMMAND ]*\n\nHanya owner yang dapat menggunakan perintah ini !',
+		premium : '*[ ERROR COMMAND ]*\n\nFitur ini khusus untuk user premium !',
+		group : '*[ ERROR COMMAND ]*\n\nPerintah ini hanya dapat digunakan didalam grup !',
+		private : '*[ ERROR COMMAND ]*\n\nPerintah ini hanya dapat digunakan di privat chat !',
+		admin : '*[ ERROR COMMAND ]*\n\nFitur ini khusus untuk admin grup !',
+		botAdmin : '*[ ERROR COMMAND ]*\n\nPerintah ini akan hanya dapat digunakan ketika BOT menjadi admin !'
   }[type]
   if (msg) conn.reply(m.chat, msg, m)
 }

@@ -8,13 +8,13 @@ let handler = async (m, { conn, command, args }) => {
     )
   }
 	
-  if(!m.quoted) return conn.reply(m.chat, `*Tag orangnya !*`, m)
-	if(!args[0]) return conn.reply(m.chat, `*Kasi jumlah uang nya !*`, m)
+  if(!m.quoted) return conn.reply(m.chat, `*[ ERROR ]*\n\nTag orang yang ingin di transfer !`, m)
+	if(!args[0]) return conn.reply(m.chat, `*[ ERROR ]*\n\nKasi jumlah uang nya !`, m)
 	// if(number.length > 15) return conn.reply(m.chat, `*Format is Invalid.*`, m)
 	
 try {
 	if(isNaN(args[0])) {
-		return conn.reply(m.chat, `*Jumlah uangnya pake angka !*`, m)
+		return conn.reply(m.chat, `*[ ERROR ]*\n\nJumlah uangnya pake angka blok !`, m)
 	} else {
 		var user = m.quoted.sender
     var money = args[0]
@@ -24,12 +24,14 @@ try {
 		} finally {
       money = parseInt(money)
       var minimal = global.DATABASE._data.users[m.sender].exp - 10000
-      if (money < 1){
-        return conn.reply(m.chat,`Dasar miskin !\nTransfer uang kok minus, cuih !`,m)
+      if (m.sender == user){
+        return conn.reply(m.chat,`*[ ERROR ]*\n\nTidak bisa transfer ke diri sendiri !`,m)
+      }else if (money < 1){
+        return conn.reply(m.chat,`*[ ERROR ]*\n\nDasar miskin !\nTransfer uang kok minus, cuih !`,m)
       }else if (money < 10000){
-        return conn.reply(m.chat,'Dasar miskin !!!\n\nMinimal Rp. 10.000,- untuk transfer\nkalau ga punya duit gausah sok transfer miskin!')
+        return conn.reply(m.chat,'*[ ERROR ]*\n\nDasar miskin !!!\nMinimal Rp. 10.000,- untuk transfer\nkalau ga punya duit gausah sok transfer miskin!')
       }else if (money > minimal){
-        return conn.reply(m.chat,'Dasar miskin ! Uangmu tidak mencukupi untuk melakukan transfer !\n\nMinimal uangmu Rp. 10.000,- setelah ditransfer')
+        return conn.reply(m.chat,'*[ ERROR ]*\n\nDasar miskin ! Uangmu tidak mencukupi untuk melakukan transfer !\nMinimal uangmu Rp. 10.000,- setelah ditransfer')
       }else {
         // return conn.reply(m.chat, user, m)
         global.DATABASE._data.users[user].exp += money

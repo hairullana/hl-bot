@@ -8,13 +8,13 @@ let handler = async (m, { conn, command, args }) => {
     )
   }
 	
-  if(!m.quoted) return conn.reply(m.chat, `*Tag orangnya !*`, m)
-	if(!args[0]) return conn.reply(m.chat, `*Kasi jumlah uang nya !*`, m)
+  if(!m.quoted) return conn.reply(m.chat, `*[ ERROR ]*\n\nTag orang yang ingin di transfer limit / gift limit !`, m)
+	if(!args[0]) return conn.reply(m.chat, `*[ ERROR ]*\n\nKasi jumlah limitnya !`, m)
 	// if(number.length > 15) return conn.reply(m.chat, `*Format is Invalid.*`, m)
 	
 try {
 	if(isNaN(args[0])) {
-		return conn.reply(m.chat, `*Jumlah uangnya pake angka !*`, m)
+		return conn.reply(m.chat, `*[ ERROR ]*\n\nJumlah limitnya pake angka blok !`, m)
 	} else {
 		var user = m.quoted.sender
     var limit = args[0]
@@ -24,10 +24,12 @@ try {
 		} finally {
       limit = parseInt(limit)
       var minimal = global.DATABASE._data.users[m.sender].limit - 10
-      if (limit < 1){
-        return conn.reply(m.chat,`Dasar miskin !\n_Gift_ limit kok minus, cuih !`,m)
+      if (m.sender == user){
+        return conn.reply(m.chat,`*[ ERROR ]*\n\nTidak bisa gift limit ke diri sendiri !`,m)
+      }else if (limit < 1){
+        return conn.reply(m.chat,`*[ ERROR ]*\n\nDasar miskin !\nGift limit kok minus, cuih !`,m)
       }else if (limit > minimal){
-        return conn.reply(m.chat,`Dasar miskin !\n\nLimit cuma ${global.DATABASE._data.users[m.sender].limit} sok-sok an mau kasi _gift_\nLimit di atas 10 baru bisa kasi _gift_ gblk!`)
+        return conn.reply(m.chat,`*[ ERROR ]*\n\nDasar miskin !\nLimit cuma ${global.DATABASE._data.users[m.sender].limit} sok-sok an mau kasi gift\nLimit di atas 10 baru bisa kasi gift gblk!`)
       }else {
         // return conn.reply(m.chat, user, m)
         global.DATABASE._data.users[user].limit += limit
