@@ -21,7 +21,7 @@ let handler = async (m, { conn, command, args }) => {
     conn.reply(m.chat, `Berhasil membeli *${count} Limit* seharga *Rp. ${format(hargaLimit * count)}*\n\nSisa uangmu Rp. ${format(global.DATABASE._data.users[m.sender].exp)}`, m)
   } else conn.reply(m.chat, `Dasar miskin ! Uangmu tidak mencukupi untuk membeli ${count} limit sat !\n\n1 Limit = Rp. ${format(hargaLimit)}\nUangmu cuma Rp. ${format(global.DATABASE._data.users[m.sender].exp)}`, m)
 }
-handler.help = ['buy *jumlah*', 'buyall']
+handler.help = ['buy *total*', 'buyall']
 handler.tags = ['xp']
 handler.command = /^buy([0-9]+)|buy|buyall$/i
 handler.owner = false

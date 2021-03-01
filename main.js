@@ -39,7 +39,7 @@ if (!global.DATABASE.data.users) global.DATABASE.data = {
   groups: {},
   chats: {},
   blocked: 0,
-  banned: 0,
+  banned: 0
 }
 if (!global.DATABASE.data.groups) global.DATABASE.data.groups = {}
 if (!global.DATABASE.data.chats) global.DATABASE.data.chats = {}
@@ -84,6 +84,7 @@ try {
         if (!isNumber(user.exp)) user.exp = 0
         if (!isNumber(user.limit)) user.limit = 10
         if (!isNumber(user.lastclaim)) user.lastclaim = 0
+        if (!isNumber(user.spam)) user.spam = 0
       } else global.DATABASE._data.users[m.sender] = {
         exp: 0,
         limit: 10,
@@ -95,7 +96,7 @@ try {
       }
       
       let chat
-        if (chat = global.DATABASE._data.chats[m.chat]) {
+      if (chat = global.DATABASE._data.chats[m.chat]) {
         if (!'isBanned' in chat) chat.isBanned = false
         if (!'welcome' in chat) chat.welcome = false
         if (!'left' in chat) chat.left = false
@@ -139,7 +140,7 @@ try {
 	let enable = global.DATABASE._data.chats[m.chat]
 
   // anti spam
-  if(!m.fromMe) {
+  if(!m.fromMe && global.DATABASE.data.users[m.sender].whitelist == false) {
 		global.DATABASE.data.users[m.sender].spam += 1
 		var spam = global.DATABASE.data.users[m.sender].spam
 
