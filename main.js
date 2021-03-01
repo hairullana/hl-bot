@@ -39,7 +39,9 @@ if (!global.DATABASE.data.users) global.DATABASE.data = {
   groups: {},
   chats: {},
   blocked: 0,
-  banned: 0
+  banned: 0,
+  groupMode: false,
+  command: 0
 }
 if (!global.DATABASE.data.groups) global.DATABASE.data.groups = {}
 if (!global.DATABASE.data.chats) global.DATABASE.data.chats = {}
@@ -138,6 +140,7 @@ try {
   let isAdmin = user.isAdmin || user.isSuperAdmin || false
   let isBotAdmin = bot.isAdmin || bot.isSuperAdmin || false  
 	let enable = global.DATABASE._data.chats[m.chat]
+  let onGroup = global.DATABASE.data.groupMode
 
   // anti spam
   if(!m.fromMe && global.DATABASE.data.users[m.sender].whitelist == false) {
@@ -148,9 +151,9 @@ try {
       global.DATABASE.data.users[m.sender].spam = 0
     }, 10000)
 
-    if(spam == 10) return conn.reply(m.chat, `*[ SPAM DETECTED ]*\n\nTolong @${m.sender.split('@')[0]} untuk tidak spam, atau anda akan di banned !`, null, {contextInfo: { mentionedJid: [m.sender] }})
+    if(spam == 8) return conn.reply(m.chat, `*[ SPAM DETECTED ]*\n\nTolong @${m.sender.split('@')[0]} untuk tidak spam, atau anda akan di banned !`, null, {contextInfo: { mentionedJid: [m.sender] }})
 
-    if (spam == 15){
+    if (spam == 10){
       if(m.isGroup && !isAdmin && isBotAdmin) {
         conn.updatePresence(m.chat, Presence.composing) 
         return conn.reply(m.chat, `*[ OVER SPAM DETECTED ]*\n\nMaaf kamu di kick dari grup !`, m).then(() => {
@@ -177,6 +180,8 @@ try {
         })
       }
     }
+
+    
     
     //else if (m.isGroup && !isAdmin && !status.isBanned && spam == 7) {
     //   global.DATABASE._data.users[m.sender].isBanned = true
@@ -187,6 +192,30 @@ try {
     //   return conn.reply(m.chat, `*Over spam!, nomormu telah dimasukkan kedalam banned list.*`, m)
     // }
 
+	}
+
+  // ANTI-SPAM COMMAND
+  if(m.text.match(/[' + . + ']/g)) { global.DATABASE.data.chats[m.chat].command += 1 }
+  let cmd = global.DATABASE.data.chats[m.chat].command
+  if(cmd >= 1) setTimeout(() => { global.DATABASE.data.chats[m.chat].command = 0 }, 5000)
+  if(cmd <= 1) {
+    if (!m.fromMe && opts['self']) return
+  } else {
+    if (!m.fromMe && !opts['self']) return
+  }
+
+
+  // GROUP ONLY == TRUE
+  let owner = global.owner.map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').includes(m.sender)
+  var commandNYA = m.text.slice(0,1);
+
+
+	if(!m.fromMe && !m.isGroup && !owner && onGroup && commandNYA == '.') {
+    var head = '*[ GROUP MODE ]*\n\nSilahkan masuk grup untuk menggunakan bot'
+    var grup1 = 'https://chat.whatsapp.com/' + (await conn.groupInviteCode('6285892821182-1510584700@g.us'))
+    var grup2 = 'https://chat.whatsapp.com/' + (await conn.groupInviteCode('62881023070715-1607687086@g.us'))
+    var grup3 = 'https://chat.whatsapp.com/' + (await conn.groupInviteCode('6282245496356-1602153905@g.us'))
+    return conn.reply(m.chat, `${head}\n\n*Grup 1* : ${grup1}\n*Grup 2* : ${grup2}\n*Grup 3* : ${grup3}`, m)
 	}
 	
   if(enable.nolink == true) {  

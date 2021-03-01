@@ -23,8 +23,8 @@ try {
 			}else{
 				global.DATABASE._data.users[user].isBanned = false
 				global.DATABASE._data.users[user].isBanned = false
-				global.DATABASE._data.isBanned -= 1
-				var banTotal = global.DATABASE._data.isBanned
+				global.DATABASE._data.banned -= 1
+				var banTotal = global.DATABASE._data.banned
 				conn.reply(m.chat, `*UnBanned Sukses*\n*Bilang Makasih Dulu Sama Owner*\n\n○ *Total Banned : ${banTotal}*`, m)
 			}
 	}	

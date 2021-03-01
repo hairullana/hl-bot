@@ -70,7 +70,7 @@ let handler  = async (m, { conn, usedPrefix: _p }) => {
 
     conn.menu = conn.menu ? conn.menu : {}
     // let before = conn.menu.before || `*${conn.getName(conn.user.jid)} BOT*\n\nHai, %name!\n*%exp XP | %limit Limit*\n*%week, %date [%time]*\n_Uptime: %uptime_\n%totalreg User in database\n%readmore`
-    let before = conn.menu.before || `Hai *%name* 💕💕💕\n_Kamu punya Rp. %exp dan %limit Limit_\n_Total User : %totalreg_\n\n_*Karena BOT ini GRATIS dan bukan BAPAKMU yang buat, jadi jangan di spam ya Maniiieeezzz*_!\n%readmore`
+    let before = conn.menu.before || `Hai *%name* 💕💕💕\n_Kamu punya Rp. %exp dan %limit Limit_\n_Total User : %totalreg_\n\n_*Bingung Cara Menggunakan Bot ? Ketik .tutorial*_\n_*Silahkan Dipakai Asal Jangan diSpam*_\n_*SPAM = Banned/Kick Otomatis*_\n%readmore`
     let header = conn.menu.header || '╔══ ✪〘 %category 〙✪'
     let body   = conn.menu.body   || '║ ❖ %cmd%islimit'
     let footer = conn.menu.footer || '╚════════════════\n'

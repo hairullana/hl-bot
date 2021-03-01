@@ -22,8 +22,8 @@ try {
 			  conn.reply(m.chat, `*Target is already isBanned.*`, m)
 			}else {
         global.DATABASE._data.users[user].isBanned = true
-				global.DATABASE._data.isBanned += 1
-				var banTotal = global.DATABASE._data.isBanned
+				global.DATABASE._data.banned += 1
+				var banTotal = global.DATABASE._data.banned
 				conn.reply(m.chat, `*MAMPUS DI BANNED !*\n\n○ *Total Banned : ${banTotal}*`, m)
 			}
 	}	
