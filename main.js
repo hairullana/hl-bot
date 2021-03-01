@@ -88,8 +88,10 @@ try {
         exp: 0,
         limit: 10,
         lastclaim: 0,
-        badword: 0,
-        isBanned: false
+        warning: 0,
+        whitelist: false,
+        isBanned: false,
+        spam: 0
       }
       
       let chat
@@ -97,7 +99,7 @@ try {
         if (!'isBanned' in chat) chat.isBanned = false
         if (!'welcome' in chat) chat.welcome = false
         if (!'left' in chat) chat.left = false
-        if (!'nobadword' in chat) chat.nobadword = false
+        if (!'warningGroup' in chat) chat.warningGroup = false
         if (!'nolink' in chat) chat.nolink = false
         if (!'novirtex' in chat) chat.novirtex = false
         if (!'sWelcome' in chat) chat.sWelcome = ''
@@ -106,7 +108,7 @@ try {
         isBanned: false,
         welcome: false,
         left: false,
-        nobadword: false,
+        warningGroup: false,
         nolink: false,
         novirtex: false,
         sWelcome: '',
@@ -135,6 +137,56 @@ try {
   let isAdmin = user.isAdmin || user.isSuperAdmin || false
   let isBotAdmin = bot.isAdmin || bot.isSuperAdmin || false  
 	let enable = global.DATABASE._data.chats[m.chat]
+
+  // anti spam
+  if(!m.fromMe) {
+		global.DATABASE.data.users[m.sender].spam += 1
+		var spam = global.DATABASE.data.users[m.sender].spam
+
+		if(spam >= 0) setTimeout(() => {
+      global.DATABASE.data.users[m.sender].spam = 0
+    }, 10000)
+
+    if(spam == 10) return conn.reply(m.chat, `*[ SPAM DETECTED ]*\n\nTolong @${m.sender.split('@')[0]} untuk tidak spam, atau anda akan di banned !`, null, {contextInfo: { mentionedJid: [m.sender] }})
+
+    if (spam == 15){
+      if(m.isGroup && !isAdmin && isBotAdmin) {
+        conn.updatePresence(m.chat, Presence.composing) 
+        return conn.reply(m.chat, `*[ OVER SPAM DETECTED ]*\n\nMaaf kamu di kick dari grup !`, m).then(() => {
+          conn.groupRemove(m.chat, [m.sender])
+          global.DATABASE.data.users[m.sender].spam = 0
+          global.DATABASE.data.users[m.sender].isBanned = true
+        })
+      }else if(m.isGroup && isAdmin && isBotAdmin) {
+        conn.updatePresence(m.chat, Presence.composing) 
+        return conn.reply(m.chat, `*[ OVER SPAM DETECTED ]*\n\nMaaf kamu di banned dari bot!`, m).then(() => {
+          global.DATABASE.data.users[m.sender].spam = 0
+          global.DATABASE.data.users[m.sender].isBanned = true
+        })
+      }else if (m.isGroup && !isBotAdmin){
+        conn.updatePresence(m.chat, Presence.composing) 
+        return conn.reply(m.chat, `*[ OVER SPAM DETECTED ]*\n\nMaaf kamu di banned dari bot!`, m).then(() => {
+          global.DATABASE.data.users[m.sender].spam = 0
+          global.DATABASE.data.users[m.sender].isBanned = true
+        })
+      }else if (!m.isGroup){
+        conn.updatePresence(m.chat, Presence.composing) 
+        return conn.reply(m.chat, `*[ OVER SPAM DETECTED ]*\n\nMaaf kamu di banned dari bot !`, m).then(() => {
+          global.DATABASE.data.users[m.sender].isBanned = true
+        })
+      }
+    }
+    
+    //else if (m.isGroup && !isAdmin && !status.isBanned && spam == 7) {
+    //   global.DATABASE._data.users[m.sender].isBanned = true
+    //   global.DATABASE._data.banned += 1
+    //   global.DATABASE._data.users[m.sender].isBlocked = true
+    //   conn.blockUser (m.sender, "add")
+    //   global.DATABASE._data.blocked += 1
+    //   return conn.reply(m.chat, `*Over spam!, nomormu telah dimasukkan kedalam banned list.*`, m)
+    // }
+
+	}
 	
   if(enable.nolink == true) {  
     if(m.isGroup && !isAdmin && isBotAdmin) {
@@ -146,23 +198,23 @@ try {
     }
   }
      
-  if(enable.nobadword == true) {  
-  if(enable.nobadword && m.isGroup && !isAdmin && isBotAdmin) {
-  if (!m.fromMe && m.text.match(/(bitch|keparat|fuck|bastard|anjing|babi|pantek|bajingan|coli|colmek|anjim|pilat|pukimak|lonte|lont|dongo|biadab|biadap|ngocok|toket|anjas|tempek|tomlol|henceut|kanjut|oppai|tete|kanyut|itil|titit|tytyd|tolol|idiot|bangsat|bangsad|pucek|kontol|pantek|memek|puki|jembut|meki|jingan|bodoh|goblok|bokep|dajjal|silit|setan|sange|jancok|dancok|goblog|autis|bagong|peler|ngentot|ngentod|ngewe|pler|ngtd|kntl|ajg|ajig|asw|njing|njeng|kafir|xnxx|xvideos|redhub)/gi)) {
-  	conn.updatePresence(m.chat, Presence.composing) 
-  	var cBad = global.DATABASE.data.users[m.sender].badword += 1
-  	var badword = global.DATABASE.data.users[m.sender].badword
-  		if(badword > 4) {
-  			conn.reply(m.chat, `*[ MEMBER WARNING ]*\n\nSorry motherfucker, you will be removed from this group !`, m).then(() => {
-  			conn.groupRemove(m.chat, [m.sender])
-  			global.DATABASE.data.users[m.sender].badword = 0
-           	 })
-  		} else {
-  			conn.reply(m.chat, `*[ MEMBER WARNING ]*\n\nYou get a warning : [ ${badword} / 5 ]\n\nDon't be toxic or I will removed you motherfucker !`, m)
-  		}
-  	}
-  }
-} 
+  if(enable.warningGroup == true) {  
+    if(enable.warningGroup && m.isGroup && !isAdmin && isBotAdmin) {
+      if (!m.fromMe && m.text.match(/(bitch|keparat|fuck|bastard|anjing|babi|pantek|bajingan|coli|colmek|anjim|pilat|pukimak|lonte|lont|dongo|biadab|biadap|ngocok|toket|anjas|tempek|tomlol|henceut|kanjut|oppai|tete|kanyut|itil|titit|tytyd|tolol|idiot|bangsat|bangsad|pucek|kontol|pantek|memek|puki|jembut|meki|jingan|bodoh|goblok|bokep|dajjal|silit|setan|sange|jancok|dancok|goblog|autis|bagong|peler|ngentot|ngentod|ngewe|pler|ngtd|kntl|ajg|ajig|asw|njing|njeng|kafir|xnxx|xvideos|redhub)/gi)) {
+  	    conn.updatePresence(m.chat, Presence.composing) 
+  	    var cBad = global.DATABASE.data.users[m.sender].badword += 1
+  	    var badword = global.DATABASE.data.users[m.sender].badword
+  		  if(badword > 4) {
+  			  conn.reply(m.chat, `*[ MEMBER WARNING ]*\n\nSorry motherfucker, you will be removed from this group !`, m).then(() => {
+  			    conn.groupRemove(m.chat, [m.sender])
+  			    global.DATABASE.data.users[m.sender].badword = 0
+          })
+  		  } else {
+  			  conn.reply(m.chat, `*[ MEMBER WARNING ]*\n\nYou get a warning : [ ${badword} / 5 ]\n\nDon't be toxic or I will removed you motherfucker !`, m)
+  		  }
+  	  }
+    }
+  } 
   
   if(enable.novirtex == true) {
     if(!m.fromMe && m.isGroup && !isAdmin && isBotAdmin) {
@@ -177,9 +229,8 @@ try {
       }
     }
   }
-  
-  
-  if(m.chat.split('@')[1] == "g.us"){
+   
+  if(m.isGroup){
     if (m.text.match(/(mkasih|makasih|thanks|thx|mksih|mksi|makasi|mksh)/gi)) {
       conn.updatePresence(m.chat, Presence.composing) 
       conn.sendFile(m.chat, 'media/sama-sama.opus', 'tts.opus', null, m, true)
@@ -203,8 +254,6 @@ try {
       // conn.sendFile(m.chat, 'media/hl-muah.opus', 'tts.opus', null, m, true)
     }
   }
-    
-    
     
   	let usedPrefix
   	for (let name in global.plugins) {
@@ -290,7 +339,7 @@ try {
         let xp = 'exp' in plugin ? parseInt(plugin.exp) : 50 // XP Earning per command
         m.exp += xp
           if (!isPrems && global.DATABASE._data.users[m.sender].limit < m.limit * 1 && plugin.limit) {
-            this.reply(m.chat, `*[ EMPTY LIMIT ]*\n\nSilahkan beli limit menggunakan command *.buy _jumlah_* !\nSesuaikan dengan uang anda, kalau miskin gada duit yaudah diem.`, m)
+            this.reply(m.chat, `*[ EMPTY LIMIT ]*\n\nSilahkan beli limit menggunakan command *.buy _total_* !\nSesuaikan dengan uang anda, kalau miskin gada duit yaudah diem.`, m)
             continue // Limit habis
           }
           try {
@@ -327,7 +376,8 @@ try {
     let user
     if (m && m.sender && (user = global.DATABASE._data.users[m.sender])) {
       user.exp += m.exp
-      user.limit -= m.limit * 1
+      user.limit -= m.limit
+      // user.limit -= m.limit * 1
     }
     try {
       require('./lib/print')(m, this)
