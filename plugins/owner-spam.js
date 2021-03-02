@@ -1,10 +1,10 @@
 let handler = async (m, { conn }) => {
-  let link = "https://chat.whatsapp.com/BNzmvWPZvcC1qN2IjCmzNx"
+  let link = "https://chat.whatsapp.com/Bai3eZyYLHoGSTx2HWGcKA"
   function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
   }
   for (let i=0;i<50;i++){
-    conn.reply(m.chat, `Ngeback ya kontoool\n\nTanam tanam ubi, tak perlu di baje\nAdmin macem babi, mari kita war saje :v\n\n${link}`,m)
+    conn.reply(m.chat, `Daripada GC ini botnya delay mulu ajg\nMending join GC bot gw\n\n${link}`,m)
     await sleep(1250)
   }
 }
