@@ -23,12 +23,13 @@ let handler = async (m, { conn, text }) => {
 	
   if(typeof global.DATABASE.data.users[user] == 'undefined') {
   global.DATABASE._data.users[user] = {
-        exp: 0,
-        limit: 10,
-        lastclaim: 0,
-        badword: 0,
-        isBlocked: false,
-        isBanned: false
+				exp: 0,
+				limit: 10,
+				lastclaim: 0,
+				warning: 0,
+				whitelist: false,
+				isBanned: false,
+				spam: 0
       }
   
  }
@@ -41,8 +42,8 @@ let handler = async (m, { conn, text }) => {
 	if(isAdmin) return conn.reply(m.chat, `*[ ERROR ]*\n\nCan't give warning to admin group !`, m)
   
 	
-	global.DATABASE.data.users[user].badword += 1
-	var warn = global.DATABASE.data.users[user].badword
+	global.DATABASE.data.users[user].warning += 1
+	var warn = global.DATABASE.data.users[user].warning
  	if(warn > 4) {
  		conn.reply(m.chat, `*[ MEMBER WARNING ]*\n\nSorry motherfucker, you will be removed from this group !`, null, {contextInfo: {
           mentionedJid: [user]
@@ -61,7 +62,7 @@ let handler = async (m, { conn, text }) => {
 handler.help = ['warn *62xx*', 'warn *(reply)*','warn *@user*']
 handler.tags = ['group admin']
 handler.command = /^warn$/i
-handler.admin = false
+handler.admin = true
 handler.group = true
 handler.botAdmin = true
 module.exports = handler

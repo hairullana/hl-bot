@@ -223,8 +223,8 @@ try {
     return conn.reply(m.chat, `${head}\n\n*Grup 1* : ${grup1}\n*Grup 2* : ${grup2}\n*Grup 3* : ${grup3}`, m)
 	}
 	
-  var linkGC = 'chat.whatsapp.com/' + (await conn.groupInviteCode(m.chat))
   if(enable.nolink == true) {  
+    var linkGC = 'chat.whatsapp.com/' + (await conn.groupInviteCode(m.chat))
     if(m.isGroup && !isAdmin && isBotAdmin && !m.text.match(linkGC)) {
       if (m.text.match(/(chat.whatsapp.com)/gi)) {
         conn.reply(m.chat,`*[ LINK DETECTOR ]*\n\nSorry motherfucker, you will be removed from this group !`,m).then(() => {
