@@ -1,5 +1,4 @@
-# wabot-aq
-Simple WhatsApp Bot
+SIMPLE WHATSAPP BOT [HL GANS BOT]
 
 ### FOR TERMUX USER
 ```bash
@@ -9,8 +8,9 @@ Simple WhatsApp Bot
 > pkg install ffmpeg -y
 > pkg install imagemagick -y
 > git clone https://github.com/hairullana/whatsapp-bot
-> cd wabot-aq
+> cd whatsapp-bot
 > npm install
+> npm i fluent-ffmpeg
 ```
 ###### Run
 ```bash
@@ -26,10 +26,11 @@ Simple WhatsApp Bot
 * Download And Install ImageMagick [`Click Here`](https://imagemagick.org/script/download.php) (if nulis want work,  checklist columns 1,2,3,5,6) 
 ```bash
 > git clone https://github.com/hairullana/whatsapp-bot
-> cd wabot-aq
+> cd whatsapp-bot
 > npm install
+> npm i fluent-ffmpeg
 ```
 ###### Run
 ```bash
-> node index.js
+> node . [<session name>] (session name is optional)
 ```
