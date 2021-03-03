@@ -77,12 +77,12 @@ let handler = async (m, { conn, args, usedPrefix }) => {
             })
         })
     } else {
-        reply(`*[ ERROR ]*Kirim gambar dengan caption ${usedPrefix}sticker2 atau tag gambar yang sudah dikirim`)
+        conn.reply(m.chat,`*[ ERROR ]*\n\nGagal membuat sticker gif, mungkin videomu terlalu panjang`,m)
     }
 }
-handler.help = ['stickergif (caption|reply)','skgif (caption|reply)']
+handler.help = ['stickergif *(caption|reply)*','skgif *(caption|reply)*']
 handler.tags = ['sticker']
-handler.command = /^stickergif|stikergif|skgif$/i
+handler.command = /^stickergif|stikergif|gif$/i
 handler.owner = false
 handler.mods = false
 handler.premium = false

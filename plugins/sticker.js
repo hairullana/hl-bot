@@ -27,7 +27,7 @@ let handler  = async (m, { conn, args }) => {
     })
   }
 }
-handler.help = ['sticker *(reply)*', 'sticker *(caption)*', 'sticker *url*']
+handler.help = ['sticker *(reply|caption)*', 'sticker *url*']
 handler.tags = ['sticker']
 handler.command = /^stic?ker|sk$/i
 handler.owner = false
