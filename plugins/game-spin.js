@@ -15,18 +15,32 @@ let handler = async (m, { conn, args }) => {
 		conn.reply(m.chat, `*Kamu tidak punya uang untuk bermain permainan spin.*`, m)
 	} else if(args[0] < 10000) {
 		await conn.updatePresence(m.chat, Presence.composing) 
-		conn.reply(m.chat, `*Tidak bisa melakukan spin dengan nominal dibawah Rp. 10.000,-*`, m)
-	} else {
+		conn.reply(m.chat, `*Tidak bisa melakukan spin dengan nominal di bawah Rp. 10.000,-*`, m)
+	}else {
 		global.DATABASE._data.users[m.sender].exp -= args[0]
 		await conn.updatePresence(m.chat, Presence.composing) 
 		// conn.reply(m.chat, `*Spining! Please wait 10s . . .*`, m)
 		setTimeout(() => {
-			var reward = getRandom(1,2*args[0])
+			var maxReward = 3
+			if (money > 1000000000){
+				var reward = getRandom(1,0.25*args[0])
+			}else if (money > 500000000){
+				var reward = getRandom(1,0.5*args[0])
+			}else if (money > 150000000){
+				var reward = getRandom(1,1*args[0])
+			}else if (money > 50000000){
+				var reward = getRandom(1,1.5*args[0])
+			}else if (money > 25000000){
+				var reward = getRandom(1,2*args[0])
+			}else{
+				var reward = getRandom(1,maxReward*args[0])
+			}
+			
 			global.DATABASE._data.users[m.sender].exp += reward  
 			let last = global.DATABASE._data.users[m.sender].exp
 			let total = last
 			conn.updatePresence(m.chat, Presence.composing) 
-			conn.reply(m.chat, `*[ SPIN RESULT ]*\n\n	- *Rp. ${Number(args[0]).toLocaleString().replace(/,/g, '.')}*\n	+ *Rp. ${Number(reward).toLocaleString().replace(/,/g, '.')}*\n\n*Total : Rp. ${Number(total).toLocaleString().replace(/,/g, '.')},-*\n\n*NB* : “Bot memiliki spam detector, harap tidak spam atau anda akan di kick / banned”`, m)  
+			conn.reply(m.chat, `*[ SPIN RESULT ]*\n\n	- *Rp. ${Number(args[0]).toLocaleString().replace(/,/g, '.')}*\n	+ *Rp. ${Number(reward).toLocaleString().replace(/,/g, '.')}*\n\n*Total : Rp. ${Number(total).toLocaleString().replace(/,/g, '.')},-*\n\n*NB* : “Rentang hadiah adalah Rp. 1 sampai ${maxReward}x lipat modal dengan pengurangan 1 limit setiap kali penggunaan”`, m)  
     	}, 1000)
 	} 
 }
@@ -36,6 +50,7 @@ handler.command = /^(spin|judi)$/i
 handler.owner = false
 handler.group = false
 handler.limit = true
+
 handler.exp = 0
 module.exports = handler
 

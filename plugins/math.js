@@ -24,7 +24,7 @@ Contoh penggunaan: ${usedPrefix}math hard
   if (id in global.math) return conn.reply(m.chat, 'Soal yang lama aja belum dijawab, malah minta soal baru anak ajg', global.math[id][0])
   let math = genMath(mode)
   global.math[id] = [
-    await conn.reply(m.chat, `Berapa hasil dari *${math.str}*?\n\nTimeout: ${(math.time / 1000).toFixed(2)} detik\nHadiah : Rp. ${format(math.bonus)}`, m),
+    await conn.reply(m.chat, `Berapa hasil dari *${math.str}*?\n\nTimeout: ${(math.time / 1000).toFixed(2)} detik\nHadiah : + Rp. ${format(math.bonus)}\nJika Salah : - Rp ${format(math.bonus/2)}`, m),
     math, 4,
     setTimeout(() => {
       if (global.math[id]) conn.reply(m.chat, `Waktu habis cok !\nJawabannya adalah ${math.result}`, global.math[id][0])

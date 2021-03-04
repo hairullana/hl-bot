@@ -36,10 +36,5 @@ global.quotes = [
   "Beberapa orang akhirnya pergi bukan karena tidak cinta, terkadang mereka lelah karena terus dipaksa sempurna\n\n~ Boy Candra",
   "Today started just like yesterday and the day before that and the day before that and every day for the last month, a loop, my perfectly constructed loop.\n\n~ Elliot Alderson",
   "Jika saya mencoba yang terbaik dan gagal, setidaknya saya telah melakukan yang terbaik\n\n~ Steve Jobs",
-  "Kita tidak bisa menutup mulu semua orang, tapi kita bisa menutup telinga kita\n\n~ Gatau Siapa Ajg",
-  "Jangan rusak jalan cerita orang lain\n\n~ Unknow",
-  "Saya mau sedikit cerita tentang gimana saya mampu lewatin ini semua.\nSetiap harinya, saya selalu mencoba mengubah cara pandang saya tentang hal ini, 'ini hanya masalah waktu, ini hanya soal kebiasaan'.\nSaya selalu menanamkan kalimat itu di pikiran saya dan akhirnya saya berhasil melewati hari-hari patah itu dan menemukan ia yang setia menemani hari-hari setelahnya.\nKemudian saya percaya bahwa cinta yang baik tidak akan mengkhianati dirinya sendiri dan itu benar adanya\n\n~ Rhia Lestari",
-  "Dihormati dan ditakuti itu berbeda\n\n~ Bapakmu",
-  "Hari ini terasa buruk dan melelahkan, tapi tanpa kita sadari, kita berhasil melewatinya\n\n~ Mungkin HL Gans",
-  "Kita lebih sibuk menyakinkan orang lain bahwa kita bahagia ketimbang benar-benar merasakan bahagia itu sendiri.\n\n~ Francois Roche"
+  "Kita tidak bisa menutup mulu semua orang.\n\n~ Benjamin Franklin"
 ]
