@@ -11,6 +11,15 @@ let util = require('util')
 let WAConnection = simple.WAConnection(_WAConnection)
 
 
+const format = num => {
+  const n = String(num),
+        p = n.indexOf('.')
+  return n.replace(
+      /\d(?=(?:\d{3})+(?:\.|$))/g,
+      (m, i) => p < 0 || i < p ? `${m},` : m
+  )
+}
+
 global.owner = ['6283119526456'] // Put your number here
 global.mods = [] // Want some help?
 global.prems = [] // Premium user has unlimited limit
@@ -266,7 +275,7 @@ try {
     }
   }
    
-  if(m.isGroup){
+  if(m.isGroup && global.DATABASE.data.chats[m.chat].isBanned == false && global.DATABASE.data.users[m.sender].isBanned == false){
     if (m.text.match(/(mkasih|makasih|thanks|thx|mksih|mksi|makasi|mksh)/gi)) {
       conn.updatePresence(m.chat, Presence.composing) 
       conn.sendFile(m.chat, 'media/sama-sama.opus', 'tts.opus', null, m, true)
@@ -276,8 +285,7 @@ try {
     }else if (m.text == "menu" || m.text == "help"  || m.text ==  "?menu" || m.text ==  "#menu" || m.text == "+menu"  || m.text == ".help"  || m.text == "#help" || m.text ==  "+help" || m.text == "!help" || m.text == "!menu" || m.text == "/help" || m.text == "/menu" || m.text == "?help" || m.text == "*menu" || m.text == "*help" || m.text == "bot" || m.text == ".bot" || m.text == "*bot" || m.text == "!bot" || m.text == "?bot" || m.text == "#bot" || m.text == "Menu" || m.text == "Help" || m.text == "Bot" || m.text == "+bot") {
       conn.updatePresence(m.chat, Presence.composing) 
       conn.reply(m.chat, `Ketik .menu untuk melihat menu bot`, m)
-    }
-    else if (m.text.match(/(hairul|lana)/gi)) {
+    }else if (m.text.match(/(hairul|lana)/gi)) {
       conn.updatePresence(m.chat, Presence.composing)
       // conn.sendFile(m.chat, 'media/hl.opus', 'tts.opus', null, m, true)
       // conn.sendFile(m.chat, 'media/hl2.opus', 'tts.opus', null, m, true)
@@ -288,6 +296,8 @@ try {
       // conn.sendFile(m.chat, 'media/hl7.opus', 'tts.opus', null, m, true)
       conn.sendFile(m.chat, 'media/hl8.opus', 'tts.opus', null, m, true)
       // conn.sendFile(m.chat, 'media/hl-muah.opus', 'tts.opus', null, m, true)
+    }else if (m.text.match(/(wildan)/gi)){
+      conn.sendFile(m.chat, 'media/wildan-gay.opus', 'tts.opus', null, m, true)
     }
   }
     
@@ -412,8 +422,32 @@ try {
     let user
     if (m && m.sender && (user = global.DATABASE._data.users[m.sender])) {
       user.exp += m.exp
-      user.limit -= m.limit
+      var limitAsli
+      if (global.DATABASE._data.users[m.sender].limit > 100000000){
+        limitAsli = 10000000
+      }else if (global.DATABASE._data.users[m.sender].limit > 10000000){
+        limitAsli = 1000000
+      }else if (global.DATABASE._data.users[m.sender].limit > 1000000){
+        limitAsli = 100000
+      }else if (global.DATABASE._data.users[m.sender].limit > 100000){
+        limitAsli = 10000
+      }else if (global.DATABASE._data.users[m.sender].limit > 10000){
+        limitAsli = 1000
+      }else if (global.DATABASE._data.users[m.sender].limit > 10000){
+        limitAsli = 100
+      }else if (global.DATABASE._data.users[m.sender].limit > 1000){
+        limitAsli = 10
+      }else if (global.DATABASE._data.users[m.sender].limit > 500){
+        limitAsli = 5
+      }else {
+        limitAsli = 1
+      }
+      user.limit -= limitAsli
+      // user.limit -= m.limit
       // user.limit -= m.limit * 1
+      // conn.reply(m.chat,`@${m.sender.split('@')[0]} berhasil menggunakan ${format(limitAsli)}\n\nSisa limit : ${format(global.DATABASE._data.users[m.sender].limit)}`,{contextInfo: {
+        // mentionedJid: [m.sender]
+      // }})
     }
     try {
       require('./lib/print')(m, this)

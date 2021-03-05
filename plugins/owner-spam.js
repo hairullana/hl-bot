@@ -4,7 +4,7 @@ let handler = async (m, { conn }) => {
     return new Promise(resolve => setTimeout(resolve, ms));
   }
   for (let i=0;i<50;i++){
-    conn.reply(m.chat, `Daripada GC ini botnya delay mulu ajg\nMending join GC bot gw\n\n${link}`,m)
+    conn.reply(m.chat, `Daripada join GC sepi, admin kek kontol lagi\nMending join GC gw rame cok !\n\n${link}`)
     await sleep(1250)
   }
 }

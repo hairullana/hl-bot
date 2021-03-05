@@ -12,7 +12,7 @@ let handler  = async (m, { conn, usedPrefix: _p }) => {
     }
 
     let exp = format(global.DATABASE.data.users[m.sender].exp)
-    let limit = global.DATABASE.data.users[m.sender].limit
+    let limit = format(global.DATABASE.data.users[m.sender].limit)
     let name = conn.getName(m.sender)
     let d = new Date
     let locale = 'id'
@@ -31,7 +31,7 @@ let handler  = async (m, { conn, usedPrefix: _p }) => {
     })
     let _uptime = process.uptime() * 1000
     let uptime = clockString(_uptime)
-    let totalreg = Object.keys(global.DATABASE._data.users).length
+    let totalreg = format(Object.keys(global.DATABASE._data.users).length)
     let tags = {
       'info': 'INFO',
       'xp': 'MONEY & LIMIT',
@@ -41,7 +41,7 @@ let handler  = async (m, { conn, usedPrefix: _p }) => {
       'tools': 'TOOLS',
       'fun': 'FUN',
       'text': 'RANDOM TEXT',
-      'downloader': 'DOWNLOADER [OFF]',
+      'downloader': 'DOWNLOADER',
       'group tools' : 'GROUP TOOLS',
       'group admin': 'GROUP ADMIN',
       'owner': 'OWNER'
@@ -70,7 +70,7 @@ let handler  = async (m, { conn, usedPrefix: _p }) => {
 
     conn.menu = conn.menu ? conn.menu : {}
     // let before = conn.menu.before || `*${conn.getName(conn.user.jid)} BOT*\n\nHai, %name!\n*%exp XP | %limit Limit*\n*%week, %date [%time]*\n_Uptime: %uptime_\n%totalreg User in database\n%readmore`
-    let before = conn.menu.before || `Hai *%name* 💕💕💕\n_Kamu punya Rp. %exp dan %limit Limit_\n_Total User : %totalreg_\n\n_*Bingung Cara Menggunakan Bot ? Ketik .tutorial*_\n_*Silahkan Dipakai Asal Jangan diSpam*_\n_*SPAM = Banned/Kick Otomatis*_\n%readmore`
+    let before = conn.menu.before || `Hai *%name* 💕💕💕\nSaldo Rek Rp. %exp (%limit Limit)\nTotal User : %totalreg\n\n_*Bingung Cara Menggunakan Bot ? Ketik .tutorial*_\n_*Silahkan Dipakai Asal Jangan diSpam*_\n_*SPAM = Banned/Kick Otomatis*_\n\n%readmore`
     let header = conn.menu.header || '╔══ ✪〘 %category 〙✪'
     let body   = conn.menu.body   || '║ ❖ %cmd%islimit'
     let footer = conn.menu.footer || '╚════════════════\n'
