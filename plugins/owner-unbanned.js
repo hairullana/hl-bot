@@ -1,6 +1,6 @@
 let handler = async (m, { conn, text }) => {
 	if(isNaN(text)) {
-		var number = text.split`@`[1]
+		var number = text.split`@`[2]
 	} else if(!isNaN(text)) {
 		var number = text
 	}

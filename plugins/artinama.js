@@ -5,20 +5,20 @@ let handler  = async (m, { conn, args, usedPrefix, command }) => {
 	let text = args.join` `
 	await conn.updatePresence(m.chat, Presence.composing) 
 	conn.reply(m.chat, `*Sedang mencari data . . .*`, m)
-	fetch('http://api.arugaz.my.id/api/primbon/artinama?name=' + encodeURIComponent(text))
+	fetch('http://arugaz.my.id/api/primbon/artinama?name=' + encodeURIComponent(text))
 		.then(res => res.json())
 		.then(batch => {
 			if(batch.status !== 200) {
-				conn.reply(m.chat, `*Data tidak ditemukan!*`, m)   
+				conn.reply(m.chat, `*[ ERROR ]*\n\nData tidak ditemukan!`, m)   
 			} else {
 				conn.updatePresence(m.chat, Presence.composing) 
-				conn.reply(m.chat, `*Ini hasilnya ya bangsat*\n\n${batch.result.arti}\n\n${batch.result.desc}`, m)   
+				conn.reply(m.chat, `*[ ARTI NAMA ]*\n\n${batch.result.arti}\n\n${batch.result.desc}`, m)   
 		}
-	}) .catch(() => { conn.reply(m.chat, `_Error!_`, m) })
+	}) .catch(() => { conn.reply(m.chat, `*[ FITUR ERROR ]*\n\nMaaf fitur ${command} sedang tidak bisa digunakan.`, m) })
 }
-handler.help = ['artinama'].map(v => v + ' *query* (OFF)')
+handler.help = ['artinama'].map(v => v + ' *query*')
 handler.tags = ['fun','data']
-// handler.command = /^(artinama)$/i
+handler.command = /^(artinama)$/i
 handler.owner = false
 handler.mods = false
 handler.premium = false
