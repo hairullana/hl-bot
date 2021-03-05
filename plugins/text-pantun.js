@@ -10,7 +10,7 @@ let handler = async(m, { conn }) => {
   })
 }
 handler.help = ['pantun']
-handler.tags = ['random']
+handler.tags = ['text']
 handler.command = /^(pantun)$/i
 handler.owner = false
 handler.mods = false

@@ -15,7 +15,7 @@ let handler = async(m, { conn, text, usedPrefix }) => {
 
 }
 
-handler.help = ['ip', 'ipcheck'].map(v => v + ' <ip>')
+handler.help = ['ip', 'ipcheck'].map(v => v + ' *ip_addr*')
 handler.tags = ['tools']
 handler.command = /^(ip|ipcheck)$/i
 handler.owner = false

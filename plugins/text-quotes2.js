@@ -12,9 +12,9 @@ let handler = async(m, { conn }) => {
             conn.reply(m.chat, `*[ FITUR ERROR ]*\n\nMaaf fitur quotes2 sedang error !`, m)
         })
 }
-handler.help = ['katabijak']
+handler.help = ['quotes2']
 handler.tags = ['text']
-handler.command = /^(katabijak)$/i
+handler.command = /^(quotes2)$/i
 handler.owner = false
 handler.mods = false
 handler.premium = false

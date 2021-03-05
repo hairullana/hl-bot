@@ -31,5 +31,6 @@ handler.group = true
 handler.private = false
 handler.admin = true
 handler.botAdmin = true
+handler.limit = true
 handler.fail = null
 module.exports = handler

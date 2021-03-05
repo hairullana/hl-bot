@@ -22,8 +22,8 @@ handler.mods = false
 handler.premium = false
 handler.group = false
 handler.private = false
-handler.exp = 350
-handler.limit = false
+handler.exp = 4000
+handler.limit = true
 
 
 module.exports = handler
