@@ -7,8 +7,8 @@ SIMPLE WHATSAPP BOT [HL GANS BOT]
 > pkg install nodejs -y
 > pkg install ffmpeg -y
 > pkg install imagemagick -y
-> git clone https://github.com/hairullana/whatsapp-bot
-> cd whatsapp-bot
+> git clone https://github.com/hairullana/hl-bot
+> cd hl-bot
 > npm install
 > npm i fluent-ffmpeg
 ```
@@ -25,8 +25,8 @@ SIMPLE WHATSAPP BOT [HL GANS BOT]
 * Download And Install FFMPEG [`Click Here`](https://ffmpeg.org/download.html) (don't forget to path) 
 * Download And Install ImageMagick [`Click Here`](https://imagemagick.org/script/download.php) (if nulis want work,  checklist columns 1,2,3,5,6) 
 ```bash
-> git clone https://github.com/hairullana/whatsapp-bot
-> cd whatsapp-bot
+> git clone https://github.com/hairullana/hl-bot
+> cd hl-bot
 > npm install
 > npm i fluent-ffmpeg
 ```
