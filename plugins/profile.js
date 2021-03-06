@@ -45,14 +45,25 @@ let handler = async (m, { conn, text }) => {
 		if(typeof global.DATABASE.data.users[user] !== 'undefined'){
 			var money = global.DATABASE.data.users[user].exp
 			var limit = global.DATABASE.data.users[user].limit
+			var warn = global.DATABASE.data.users[user].warning
+			var chat = global.DATABASE.data.users[user].chat
 			if(global.DATABASE._data.users[user].isBanned == true) {
 				var banned = 'TerBANNED'
 			} else {
 				var banned = 'Aman'
 			}
+
+			if(global.DATABASE._data.users[user].whitelist == true) {
+				var whitelist = '✅'
+			} else {
+				var whitelist = '❌'
+			}
 		}else{
+			var warn = 0
+			var chat = 0
 			var money = 0
 			var limit = 0
+			var whitelist = '❌'
 			var banned = "Belum Terdaftar"
 		}
 		// let badword = global.DATABASE._data.users[user].warning
@@ -64,7 +75,7 @@ let handler = async (m, { conn, text }) => {
 			var name = isName
 		} else {
 			var name = '(Tanpa Nama)'
-		} conn.sendFile(m.chat, pp, 'profile.jpg', `*IDENTITAS MEMBER*\n\n○ *Nama : ${name}*\n○ *Tentang : ${about}*\n○ *Nomor : ${nomor}*\n○ *Uang : Rp. ${Number(money).toLocaleString().replace(/,/g, '.')},-*\n○ *Limit : ${format(limit)}*\n○ *Banned : ${banned}*\n\n▌│█║▌║▌║║▌║▌║█│▌█║`, m)
+		} conn.sendFile(m.chat, pp, 'profile.jpg', `*IDENTITAS MEMBER*\n\n○ *Nama : ${name}*\n○ *Tentang : ${about}*\n○ *Nomor : ${nomor}*\n○ *Uang : Rp. ${Number(money).toLocaleString().replace(/,/g, '.')},-*\n○ *Limit : ${format(limit)}*\n○ *Whitelist : ${whitelist}*\n○ *Warning : ${warn} / 5*\n○ *Konstribusi : ${chat}*\n○ *Banned : ${banned}*\n\n▌│█║▌║▌║║▌║▌║█│▌█║`, m)
 	}
 }
 handler.help = ['*62xx*','*@user*','*(reply)*'].map(v => 'profile ' + v)

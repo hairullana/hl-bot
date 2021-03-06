@@ -29,8 +29,11 @@ let handler = async (m, { conn }) => {
       clearTimeout(global.math[id][3])
       delete global.math[id]
     } else {
-      global.DATABASE._data.users[m.sender].exp -= math.bonus/2
-      conn.reply(m.chat, `*Jawaban Salah!*\nMasih ada ${global.math[id][2]} kesempatan\n\nUangmu berkurang *Rp. ${format(math.bonus/2)}*\nTotal uangmu *Rp. ${format(global.DATABASE._data.users[m.sender].exp)}*`, m)
+      global.DATABASE._data.users[m.sender].exp -= math.bonus/4
+      if (global.DATABASE._data.users[m.sender].exp < 0){
+        global.DATABASE._data.users[m.sender].exp = 0
+      }
+      conn.reply(m.chat, `*Jawaban Salah!*\nMasih ada ${global.math[id][2]} kesempatan\n\nUangmu berkurang *Rp. ${format(math.bonus/4)}*\nTotal uangmu *Rp. ${format(global.DATABASE._data.users[m.sender].exp)}*`, m)
     }
   }
  }

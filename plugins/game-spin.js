@@ -35,24 +35,64 @@ let handler = async (m, { conn, args }) => {
 		// conn.reply(m.chat, `*Spining! Please wait 10s . . .*`, m)
 		setTimeout(() => {
 			var maxReward = 5
-			if (money > 1000000000){
-				var reward = getRandom(1,0.25*args[0])
-			}else if (money > 500000000){
-				var reward = getRandom(1,0.5*args[0])
-			}else if (money > 100000000){
-				var reward = getRandom(1,1*args[0])
-			}else if (money > 50000000){
-				var reward = getRandom(1,1.25*args[0])
-			}else if (money > 25000000){
-				var reward = getRandom(1,1.5*args[0])
-			}else if (money > 10000000){
-				var reward = getRandom(1,2*args[0])
-			}else if (money > 2000000){
-				var reward = getRandom(1,3*args[0])
-			}else if (money > 500000){
-				var reward = getRandom(1,4*args[0])
-			}else{
-				var reward = getRandom(1,maxReward*args[0])
+			if (money > 1000000000){		// > 1 M
+				if (args[0] > 1000000000){
+					var reward = getRandom(1,0.25*args[0])
+				}else if (args[0] > 100000000){
+					var reward = getRandom(1,0.5*args[0])
+				}else if (args[0] > 10000000){
+					var reward = getRandom(1,0.75*args[0])
+				}else if (args[0] > 1000000){
+					var reward = getRandom(1,1*args[0])
+				}else if (args[0] > 100000){
+					var reward = getRandom(1,1.25*args[0])
+				}else {
+					var reward = getRandom(1,1.5*args[0])
+				}
+			}else if (money > 100000000){	// > 100 jt
+				if (args[0] > 100000000){
+					var reward = getRandom(1,0.5*args[0])
+				}else if (args[0] > 10000000){
+					var reward = getRandom(1,1*args[0])
+				}else if (args[0] > 1000000){
+					var reward = getRandom(1,25*args[0])
+				}else if (args[0] > 100000){
+					var reward = getRandom(1,1.5*args[0])
+				}else {
+					var reward = getRandom(1,2*args[0])
+				}
+			}else if (money > 20000000){	// > 20 jt
+				if (args[0] > 20000000){
+					var reward = getRandom(1,0.75*args[0])
+				}else if (args[0] > 10000000){
+					var reward = getRandom(1,1*args[0])
+				}else if (args[0] > 1000000){
+					var reward = getRandom(1,1.5*args[0])
+				}else if (args[0] > 100000){
+					var reward = getRandom(1,2*args[0])
+				}else {
+					var reward = getRandom(1,3*args[0])
+				}
+			}else if (money > 5000000){	// > 5 jt
+				if (args[0] > 5000000){
+					var reward = getRandom(1,1.5*args[0])
+				}else if (args[0] > 1000000){
+					var reward = getRandom(1,2*args[0])
+				}else if (args[0] > 100000) {
+					var reward = getRandom(1,3*args[0])
+				}else {
+					var reward = getRandom(1,4*args[0])
+				}
+			}else{		// < 5jt
+				if (args[0] > 1000000){
+					var reward = getRandom(1,2*args[0])
+				}else if (args[0] > 500000){
+					var reward = getRandom(1,3*args[0])
+				}else if (args[0] > 100000) {
+					var reward = getRandom(1,4*args[0])
+				}else {
+					var reward = getRandom(1,maxReward*args[0])
+				}
 			}
 			
 			global.DATABASE._data.users[m.sender].exp += reward  
@@ -61,7 +101,7 @@ let handler = async (m, { conn, args }) => {
 
 			conn.updatePresence(m.chat, Presence.composing) 
 
-			var limi
+			var limitAsli
 			if (global.DATABASE._data.users[m.sender].limit > 100000000){
         limitAsli = 10000000
       }else if (global.DATABASE._data.users[m.sender].limit > 10000000){
@@ -80,9 +120,11 @@ let handler = async (m, { conn, args }) => {
         limitAsli = 5
       }else {
         limitAsli = 1
-				return conn.reply(m.chat, `*[ SPIN RESULT ]*\n\n	- *Rp. ${Number(args[0]).toLocaleString().replace(/,/g, '.')}*\n	+ *Rp. ${Number(reward).toLocaleString().replace(/,/g, '.')}*\n\n*Total : Rp. ${Number(total).toLocaleString().replace(/,/g, '.')},-*\n\n*NB* : “Rentang hadiah adalah Rp. 1 sampai ${maxReward}x lipat modal dengan pengurangan 1 limit setiap kali penggunaan”`, m)  
+				// return conn.reply(m.chat, `*[ SPIN RESULT ]*\n\n	- *Rp. ${Number(args[0]).toLocaleString().replace(/,/g, '.')}*\n	+ *Rp. ${Number(reward).toLocaleString().replace(/,/g, '.')}*\n\n*Total : Rp. ${Number(total).toLocaleString().replace(/,/g, '.')},-*\n\n*NB* : “Rentang hadiah adalah Rp. 1 sampai ${maxReward}x lipat modal dengan pengurangan 1 limit setiap kali penggunaan”`, m)  
       }
-			conn.reply(m.chat, `*[ SPIN RESULT ]*\n\n	- *Rp. ${Number(args[0]).toLocaleString().replace(/,/g, '.')}*\n	+ *Rp. ${Number(reward).toLocaleString().replace(/,/g, '.')}*\n\n*Total : Rp. ${Number(total).toLocaleString().replace(/,/g, '.')},-*\n\n*NB* : “Rentang hadiah adalah Rp. 1 sampai ${maxReward}x lipat modal dengan pengurangan 1 limit setiap kali penggunaan”\n\n*Tapi khusus sultan seperti anda, pengurangan limit sebesar ${format(limitAsli)}*`, m)  
+			// conn.reply(m.chat, `*[ SPIN RESULT ]*\n\n	- *Rp. ${Number(args[0]).toLocaleString().replace(/,/g, '.')}*\n	+ *Rp. ${Number(reward).toLocaleString().replace(/,/g, '.')}*\n\n*Total : Rp. ${Number(total).toLocaleString().replace(/,/g, '.')},-*\n\n*NB* : “Rentang hadiah adalah Rp. 1 sampai ${maxReward}x lipat modal dengan pengurangan 1 limit setiap kali penggunaan”\n\n*Tapi khusus sultan seperti anda, pengurangan limit sebesar ${format(limitAsli)}*`, m)  
+
+			return conn.reply(m.chat, `*[ SPIN RESULT ]*\n\n	- *Rp. ${Number(args[0]).toLocaleString().replace(/,/g, '.')}*\n	+ *Rp. ${Number(reward).toLocaleString().replace(/,/g, '.')}*\n\n*Total : Rp. ${Number(total).toLocaleString().replace(/,/g, '.')},-*\n\n*NB* : “Rentang hadiah adalah Rp. 1 sampai ${maxReward}x lipat modal dengan pengurangan limit setiap kali penggunaan”`, m)  
     }, 1000)
 	} 
 }

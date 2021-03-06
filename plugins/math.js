@@ -24,7 +24,7 @@ Contoh penggunaan: ${usedPrefix}math hard
   if (id in global.math) return conn.reply(m.chat, 'Soal yang lama aja belum dijawab, malah minta soal baru anak ajg', global.math[id][0])
   let math = genMath(mode)
   global.math[id] = [
-    await conn.reply(m.chat, `Berapa hasil dari *${math.str}*?\n\nTimeout: ${(math.time / 1000).toFixed(2)} detik\nHadiah : + Rp. ${format(math.bonus)}\nJika Salah : - Rp ${format(math.bonus/2)}`, m),
+    await conn.reply(m.chat, `Berapa hasil dari *${math.str}*?\n\nTimeout : ${(math.time / 1000).toFixed(2)} detik\nHadiah : + Rp. ${format(math.bonus)}\nJika Salah : - Rp ${format(math.bonus/4)}`, m),
     math, 4,
     setTimeout(() => {
       if (global.math[id]) conn.reply(m.chat, `Waktu habis cok !\nJawabannya adalah ${math.result}`, global.math[id][0])
@@ -39,13 +39,13 @@ handler.command = /^math/i
 module.exports = handler
 
 let modes = {
-  noob: [-3, 3,-3, 3, '+-', 15000, 1000],
-  easy: [-10, 10, -10, 10, '*/+-', 20000, 2500],
-  medium: [-40, 40, -20, 20, '*/+-', 40000, 5000],
-  hard: [-100, 100, -70, 70, '*/+-', 60000, 10000],
-  extreme: [-999999, 999999, -999999, 999999, '*/', 99999, 25000],
-  impossible: [-999999999999999, 999999999999999, -999, 999, '/', 30000, 35000],
-  impossible2: [-99999999999, 99999999999, -99999999999, 999999999999, '*/', 30000, 50000]
+  noob: [-3, 3,-3, 3, '+-', 15000, 5000],
+  easy: [-10, 10, -10, 10, '*/+-', 20000, 10000],
+  medium: [-40, 40, -20, 20, '*/+-', 40000, 20000],
+  hard: [-100, 100, -70, 70, '*/+-', 60000, 40000],
+  extreme: [-999999, 999999, -999999, 999999, '*/', 99999, 60000],
+  impossible: [-999999999999999, 999999999999999, -999, 999, '/', 30000, 80000],
+  impossible2: [-99999999999, 99999999999, -99999999999, 999999999999, '*/', 30000, 100000]
 } 
 
 let operators = {

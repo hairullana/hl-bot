@@ -15,6 +15,7 @@ let handler = async (m, { conn, command, args }) => {
 try {
 	if(isNaN(args[0])) {
 		return conn.reply(m.chat, `*[ ERROR ]*\n\nJumlah limitnya pake angka blok !`, m)
+    var limit = 0
 	} else {
 		var user = m.quoted.sender
     var limit = args[0]

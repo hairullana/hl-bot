@@ -11,20 +11,18 @@ const format = num => {
 let handler = async (m, { conn, command, args }) => {
   var money = global.DATABASE._data.users[m.sender].exp
   // harga limit 
-  if (money <= 10000000){     // max 10jt
+  if (money <= 25000000){     // max 25jt
     var hargaLimit = 100000
-  }else if(money <= 50000000){    // max 50jt
-    var hargaLimit = 250000
   }else if(money <= 100000000){   // max 100jt
-    var hargaLimit = 500000
+    var hargaLimit = 200000
   }else if(money <= 1000000000){    // max 1m
-    var hargaLimit = 1000000
+    var hargaLimit = 400000
   }else if(money <= 100000000000){    // max 100m
-    var hargaLimit = 10000000
+    var hargaLimit = 600000
   }else if(money <= 1000000000000){   // max 1000m
-    var hargaLimit = 50000000
+    var hargaLimit = 800000
   }else {
-    var hargaLimit = 100000000
+    var hargaLimit = 1000000
   }
   let count = command.replace(/^buy/i, '')
   count = count ? /all/i.test(count) ? Math.floor(global.DATABASE._data.users[m.sender].exp / hargaLimit) : parseInt(count) : args[0] ? parseInt(args[0]) : 1

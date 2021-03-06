@@ -96,11 +96,13 @@ try {
         if (!isNumber(user.limit)) user.limit = 10
         if (!isNumber(user.lastclaim)) user.lastclaim = 0
         if (!isNumber(user.spam)) user.spam = 0
+        if (!isNumber(user.chat)) user.chat = 0
       } else global.DATABASE._data.users[m.sender] = {
         exp: 0,
         limit: 10,
         lastclaim: 0,
         warning: 0,
+        chat: 0,
         whitelist: false,
         isBanned: false,
         spam: 0
@@ -152,6 +154,10 @@ try {
   let isBotAdmin = bot.isAdmin || bot.isSuperAdmin || false  
 	let enable = global.DATABASE._data.chats[m.chat]
   let onGroup = global.DATABASE.data.groupMode
+
+
+  // partisipasi
+  global.DATABASE.data.users[m.sender].chat += 1
 
   // anti spam
   if(!m.fromMe && global.DATABASE.data.users[m.sender].whitelist == false) {
@@ -424,27 +430,25 @@ try {
       user.exp += m.exp
       var limitAsli
       if (global.DATABASE._data.users[m.sender].limit > 100000000){
-        limitAsli = 10000000
-      }else if (global.DATABASE._data.users[m.sender].limit > 10000000){
-        limitAsli = 1000000
-      }else if (global.DATABASE._data.users[m.sender].limit > 1000000){
-        limitAsli = 100000
-      }else if (global.DATABASE._data.users[m.sender].limit > 100000){
-        limitAsli = 10000
-      }else if (global.DATABASE._data.users[m.sender].limit > 10000){
-        limitAsli = 1000
-      }else if (global.DATABASE._data.users[m.sender].limit > 10000){
         limitAsli = 100
-      }else if (global.DATABASE._data.users[m.sender].limit > 1000){
+      }else if (global.DATABASE._data.users[m.sender].limit > 10000000){
+        limitAsli = 90
+      }else if (global.DATABASE._data.users[m.sender].limit > 1000000){
+        limitAsli = 80
+      }else if (global.DATABASE._data.users[m.sender].limit > 100000){
+        limitAsli = 30
+      }else if (global.DATABASE._data.users[m.sender].limit > 10000){
+        limitAsli = 20
+      }else if (global.DATABASE._data.users[m.sender].limit > 10000){
         limitAsli = 10
-      }else if (global.DATABASE._data.users[m.sender].limit > 500){
+      }else if (global.DATABASE._data.users[m.sender].limit > 1000){
         limitAsli = 5
       }else {
         limitAsli = 1
       }
-      user.limit -= limitAsli
+      // user.limit -= limitAsli
+      user.limit -= m.limit * limitAsli
       // user.limit -= m.limit
-      // user.limit -= m.limit * 1
       // conn.reply(m.chat,`@${m.sender.split('@')[0]} berhasil menggunakan ${format(limitAsli)}\n\nSisa limit : ${format(global.DATABASE._data.users[m.sender].limit)}`,{contextInfo: {
         // mentionedJid: [m.sender]
       // }})

@@ -28,6 +28,7 @@ let handler = async (m, { conn, text }) => {
 			limit: 10,
 			lastclaim: 0,
 			warning: 0,
+			chat: 0,
 			whitelist: false,
 			isBanned: false,
 			spam: 0
