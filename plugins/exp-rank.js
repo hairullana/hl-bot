@@ -27,7 +27,7 @@ let handler = async (m, { conn, args }) => {
 _Kamu punya *Rp. ${format(global.DATABASE.data.users[m.sender].exp)}* dan *${format(global.DATABASE.data.users[m.sender].limit)} Limit*_
 _Kamu peringkat *${usersExp.indexOf(m.sender) + 1}* dari *${usersExp.length}* orang_
   
-${sortedExp.slice(0, len).map(([user, data], i) => (i + 1) + '. @' + user.split`@`[0] + '\n    *Rp. ' + format(data.exp) + ' | ' + format(data.limit) + ' Limit*').join`\n`}
+${sortedExp.slice(0, len).map(([user, data], i) => (i + 1) + '. @' + user.split`@`[0] + '\n    *Rp. ' + format(data.exp) + '*').join`\n`}
     `.trim()
   
     conn.reply(m.chat, text, m, {

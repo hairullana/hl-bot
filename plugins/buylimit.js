@@ -14,15 +14,15 @@ let handler = async (m, { conn, command, args }) => {
   if (money <= 25000000){     // max 25jt
     var hargaLimit = 100000
   }else if(money <= 100000000){   // max 100jt
-    var hargaLimit = 200000
+    var hargaLimit = 500000
   }else if(money <= 1000000000){    // max 1m
-    var hargaLimit = 400000
-  }else if(money <= 100000000000){    // max 100m
-    var hargaLimit = 600000
-  }else if(money <= 1000000000000){   // max 1000m
-    var hargaLimit = 800000
-  }else {
     var hargaLimit = 1000000
+  }else if(money <= 100000000000){    // max 100m
+    var hargaLimit = 1500000
+  }else if(money <= 1000000000000){   // max 1000m
+    var hargaLimit = 2000000
+  }else {
+    var hargaLimit = 2500000
   }
   let count = command.replace(/^buy/i, '')
   count = count ? /all/i.test(count) ? Math.floor(global.DATABASE._data.users[m.sender].exp / hargaLimit) : parseInt(count) : args[0] ? parseInt(args[0]) : 1

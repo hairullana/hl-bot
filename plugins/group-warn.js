@@ -28,13 +28,15 @@ let handler = async (m, { conn, text }) => {
 			limit: 10,
 			lastclaim: 0,
 			warning: 0,
+			job: "x",
+			price: 0,
 			chat: 0,
 			whitelist: false,
 			isBanned: false,
 			spam: 0
 		}
 	}
-  
+
 	let groupMetadata = m.isGroup ? await conn.groupMetadata(m.chat) : {}
   let participants = m.isGroup ? groupMetadata.participants : []
 	let users = m.isGroup ? participants.find(u => u.jid == user) : {}

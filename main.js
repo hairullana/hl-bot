@@ -80,7 +80,7 @@ setInterval(async () => {
     conn.logger.info('Done saving database!')
     lastJSON = JSON.stringify(global.DATABASE.data)
   }
-}, 60 * 1000) // Save every 1 second
+}, 60 * 1000) // Save every 1 minutes
 conn.handler = async function (m) {
 
 try {
@@ -97,11 +97,14 @@ try {
         if (!isNumber(user.lastclaim)) user.lastclaim = 0
         if (!isNumber(user.spam)) user.spam = 0
         if (!isNumber(user.chat)) user.chat = 0
+        if (!isNumber(user.price)) user.price = 0
       } else global.DATABASE._data.users[m.sender] = {
         exp: 0,
         limit: 10,
         lastclaim: 0,
         warning: 0,
+        job: "x",
+        price: 0,
         chat: 0,
         whitelist: false,
         isBanned: false,
@@ -217,7 +220,7 @@ try {
   // ANTI-SPAM COMMAND
   if(m.text.match(/[' + . + ']/g)) { global.DATABASE.data.chats[m.chat].command += 1 }
   let cmd = global.DATABASE.data.chats[m.chat].command
-  if(cmd >= 1) setTimeout(() => { global.DATABASE.data.chats[m.chat].command = 0 }, 3000)
+  if(cmd >= 1) setTimeout(() => { global.DATABASE.data.chats[m.chat].command = 0 }, 1000)
   if(cmd <= 1) {
     if (!m.fromMe && opts['self']) return
   } else {
@@ -253,15 +256,15 @@ try {
     if(enable.warningGroup && m.isGroup && !isAdmin && isBotAdmin) {
       if (!m.fromMe && m.text.match(/(bitch|keparat|fuck|bastard|anjing|babi|pantek|bajingan|coli|colmek|anjim|pilat|pukimak|lonte|lont|dongo|biadab|biadap|ngocok|toket|anjas|tempek|tomlol|henceut|kanjut|oppai|tete|kanyut|itil|titit|tytyd|tolol|idiot|bangsat|bangsad|pucek|kontol|pantek|memek|puki|jembut|meki|jingan|bodoh|goblok|bokep|dajjal|silit|setan|sange|jancok|dancok|goblog|autis|bagong|peler|ngentot|ngentod|ngewe|pler|ngtd|kntl|ajg|ajig|asw|njing|njeng|kafir|xnxx|xvideos|redhub)/gi)) {
   	    conn.updatePresence(m.chat, Presence.composing) 
-  	    var cBad = global.DATABASE.data.users[m.sender].badword += 1
-  	    var badword = global.DATABASE.data.users[m.sender].badword
-  		  if(badword > 4) {
+  	    var cBad = global.DATABASE.data.users[m.sender].warning += 1
+  	    var warning = global.DATABASE.data.users[m.sender].warning
+  		  if(warning > 4) {
   			  conn.reply(m.chat, `*[ MEMBER WARNING ]*\n\nSorry motherfucker, you will be removed from this group !`, m).then(() => {
   			    conn.groupRemove(m.chat, [m.sender])
-  			    global.DATABASE.data.users[m.sender].badword = 0
+  			    global.DATABASE.data.users[m.sender].warning = 0
           })
   		  } else {
-  			  conn.reply(m.chat, `*[ MEMBER WARNING ]*\n\nYou get a warning : [ ${badword} / 5 ]\n\nDon't be toxic or I will removed you motherfucker !`, m)
+  			  conn.reply(m.chat, `*[ MEMBER WARNING ]*\n\nYou get a warning : [ ${warning} / 5 ]\n\nDon't be toxic or I will removed you motherfucker !`, m)
   		  }
   	  }
     }

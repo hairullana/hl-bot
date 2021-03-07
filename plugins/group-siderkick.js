@@ -43,7 +43,7 @@ let handler = async (m, { conn, text, participants }) => {
 	conn.reply(m.chat, `*Berhasil mengeluarkan ${total} sider.*`, m)
 }
 handler.help = ['kicksider']
-handler.tags = ['group']
+handler.tags = ['group admin']
 handler.command = /^(kicksider)$/i
 handler.owner = false
 handler.mods = false
