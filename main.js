@@ -448,18 +448,28 @@ try {
     if (m && m.sender && (user = global.DATABASE._data.users[m.sender])) {
       user.exp += m.exp
       var limitAsli
-      if (global.DATABASE._data.users[m.sender].limit > 100000000){
-        limitAsli = 10000000
+      if (global.DATABASE._data.users[m.sender].limit > 10000000000000){
+        limitAsli = 5000000000000
+      }else if (global.DATABASE._data.users[m.sender].limit > 1000000000000){
+        limitAsli = 500000000000
+      }else if (global.DATABASE._data.users[m.sender].limit > 100000000000){
+        limitAsli = 50000000000
+      }else if (global.DATABASE._data.users[m.sender].limit > 10000000000){
+        limitAsli = 5000000000
+      }else if (global.DATABASE._data.users[m.sender].limit > 1000000000){
+        limitAsli = 500000000
+      }else if (global.DATABASE._data.users[m.sender].limit > 100000000){
+        limitAsli = 50000000
       }else if (global.DATABASE._data.users[m.sender].limit > 10000000){
-        limitAsli = 1000000
+        limitAsli = 5000000
       }else if (global.DATABASE._data.users[m.sender].limit > 1000000){
-        limitAsli = 100000
+        limitAsli = 500000
       }else if (global.DATABASE._data.users[m.sender].limit > 100000){
-        limitAsli = 10000
+        limitAsli = 50000
       }else if (global.DATABASE._data.users[m.sender].limit > 10000){
-        limitAsli = 1000
+        limitAsli = 5000
       }else if (global.DATABASE._data.users[m.sender].limit > 1000){
-        limitAsli = 100
+        limitAsli = 500
       }else if (global.DATABASE._data.users[m.sender].limit > 500){
         limitAsli = 10
       }else if (global.DATABASE._data.users[m.sender].limit > 200){

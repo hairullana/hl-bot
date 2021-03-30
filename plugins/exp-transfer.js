@@ -19,7 +19,7 @@ let handler = async (m, { conn, command, args }) => {
   }
 
   money = parseInt(money)
-  var tax = Math.ceil((money/100) * 0.5)
+  var tax = Math.ceil((money/100) * 5)
   if (m.sender == m.quoted.sender){
     return conn.reply(m.chat,`*[ TRANSFER ERROR ]*\n\nTidak bisa transfer ke diri sendiri blok !`,m)
   }else if (money < 1){
@@ -27,7 +27,7 @@ let handler = async (m, { conn, command, args }) => {
   }else if (money < 10000){
     return conn.reply(m.chat,'*[ TRANSFER ERROR ]*\n\nDasar miskin !!!\nMinimal Rp. 10.000,- untuk transfer\nkalau ga punya duit gausah sok transfer miskin!',m)
   }else if (global.DATABASE._data.users[m.sender].exp-money-tax < 10000){
-    return conn.reply(m.chat,`*[ TRANSFER ERROR ]*\n\nDasar miskin !\nMinimal uangmu Rp. 10.000,- setelah ditransfer\n\nTF (PPN 0.5%) : *Rp. ${format(money+tax)}*\nSaldo Rek : *Rp. ${format(global.DATABASE._data.users[m.sender].exp)}*`,m)
+    return conn.reply(m.chat,`*[ TRANSFER ERROR ]*\n\nDasar miskin !\nMinimal uangmu Rp. 10.000,- setelah ditransfer\n\nTF (PPN 5%) : *Rp. ${format(money+tax)}*\nSaldo Rek : *Rp. ${format(global.DATABASE._data.users[m.sender].exp)}*`,m)
   }else {
     // return conn.reply(m.chat, user, m)
     global.DATABASE._data.users[m.sender].exp -= money
