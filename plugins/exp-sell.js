@@ -13,8 +13,8 @@ let handler = async (m, { conn, command, args }) => {
   // harga limit 
   if (isNaN(args[0])){
     return conn.reply(m.chat,'*[ SELL LIMIT ]*\n\nMasukkan jumlah limit dengan angka saja !',m)
-  }else if (args[0] > 1000 || args[0] < 1){
-    return conn.reply(m.chat,`*[ SELL LIMIT ]*\n\nKamu bisa menjual limit minimal 1 dan maksimal 1000 !`,m)
+  }else if (args[0] > 1000000000 || args[0] < 1){
+    return conn.reply(m.chat,`*[ SELL LIMIT ]*\n\nKamu bisa menjual limit minimal 1 dan maksimal 1.000.000.000 !`,m)
   }else if (args[0] > stok){
     return conn.reply(m.chat,`*[ SELL LIMIT ]*\n\nSadar diri bangsat, limit kamu cuma ${stok} !`,m)
   }else {

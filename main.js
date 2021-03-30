@@ -473,7 +473,7 @@ try {
       }else if (global.DATABASE._data.users[m.sender].limit > 500){
         limitAsli = 10
       }else if (global.DATABASE._data.users[m.sender].limit > 200){
-        limitAsli = 2
+        limitAsli = 5
       }else {
         limitAsli = 1
       }
