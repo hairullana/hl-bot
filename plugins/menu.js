@@ -1,6 +1,8 @@
 let handler  = async (m, { conn, usedPrefix: _p }) => {
   try {
 
+    let pp = './src/avatar_contact.png'
+	  pp = await conn.getProfilePicture(global.conn.user.jid)
     // format mata uang
     const format = num => {
       const n = String(num),
@@ -71,7 +73,7 @@ let handler  = async (m, { conn, usedPrefix: _p }) => {
 
     conn.menu = conn.menu ? conn.menu : {}
     // let before = conn.menu.before || `*${conn.getName(conn.user.jid)} BOT*\n\nHai, %name!\n*%exp XP | %limit Limit*\n*%week, %date [%time]*\n_Uptime: %uptime_\n%totalreg User in database\n%readmore`
-    let before = conn.menu.before || `Hai *%name* 💕💕💕\nSaldo Rek Rp. %exp (%limit Limit)\nTotal User : %totalreg\n\n_*Bingung Cara Menggunakan Bot ? Ketik .tutorial*_\n_*Silahkan Dipakai Asal Jangan diSpam*_\n_*SPAM = Banned/Kick Otomatis*_\n\n%readmore`
+    let before = conn.menu.before || `Hai *%name*\nSaldo Rek Rp. %exp (%limit Limit)\nTotal User : %totalreg\n\nBingung Dengan Bot ? Ketik *.tutorial*\nIngin undang bot ke GC ? Ketik *.owner*\nSPAM = Banned/Kick Otomatis\n\nInfo Bot: https://instagram.com/loadingtomastah\n\n%readmore`
     let header = conn.menu.header || '╔══ ✪〘 %category 〙✪'
     let body   = conn.menu.body   || '║ ❖ %cmd%islimit'
     let footer = conn.menu.footer || '╚════════════════\n'
@@ -94,7 +96,7 @@ let handler  = async (m, { conn, usedPrefix: _p }) => {
       readmore: readMore
     }
     text = text.replace(new RegExp(`%(${Object.keys(replace).join`|`})`, 'g'), (_, name) => replace[name])
-    conn.reply(m.chat, text.trim(), m)
+    conn.sendFile(m.chat,pp,'profile.jpg', text.trim(), m)
   } catch (e) {
     conn.reply(m.chat, 'Maaf, menu sedang error', m)
     throw e

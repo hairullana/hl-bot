@@ -1,0 +1,33 @@
+{
+  "users": {
+    "6282215215399@s.whatsapp.net": {
+      "exp": 50,
+      "limit": 10,
+      "lastclaim": 0,
+      "warning": 0,
+      "job": "x",
+      "price": 0,
+      "chat": 1,
+      "whitelist": false,
+      "isBanned": false,
+      "spam": 0
+    }
+  },
+  "groups": {},
+  "chats": {
+    "6287874951710-1611887003@g.us": {
+      "isBanned": false,
+      "welcome": false,
+      "left": false,
+      "warningGroup": false,
+      "nolink": false,
+      "novirtex": false,
+      "sWelcome": "",
+      "sBye": "",
+      "command": 0
+    }
+  },
+  "blocked": 0,
+  "banned": 0,
+  "groupMode": false
+}

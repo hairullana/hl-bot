@@ -9,7 +9,7 @@ let handler = async (m, { conn }) => {
 	
 		let welcome = global.DATABASE.data.chats[m.chat].welcome
 		let left = global.DATABASE.data.chats[m.chat].left
-		let filter = global.DATABASE.data.chats[m.chat].nobadword
+		let filter = global.DATABASE.data.chats[m.chat].warningGroup
 		let nolink = global.DATABASE.data.chats[m.chat].nolink
 		let novirtex = global.DATABASE.data.chats[m.chat].novirtex
     

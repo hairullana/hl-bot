@@ -22,25 +22,26 @@ let handler = async (m, { conn, args }) => {
     //yg isi ngetag
     //${sortedExp.slice(0, len).map(([user, data], i) => (i + 1) + '. @' + user.split`@`[0] + ': *' + data.exp + ' Exp*').join`\n`}
     
-    let text = `
-• *TOP ${len} RAKUS SAMA LIMIT💪😎🤙* •\n
+    var isi = `
+• *TOP ${len} LIMIT GLOBAL* •\n
 _Kamu punya *Rp. ${format(global.DATABASE.data.users[m.sender].exp)}* dan *${format(global.DATABASE.data.users[m.sender].limit)} Limit*_
 _Kamu peringkat *${usersLim.indexOf(m.sender) + 1}* dari *${usersLim.length}* orang_
   
-${sortedLim.slice(0, len).map(([user, data], i) => (i + 1) + '. @' + user.split`@`[0] + '\n    *' + format(data.limit) + ' Limit*').join`\n`}
+${sortedLim.slice(0, len).map(([user, data], i) => (i + 1) + '. ' + conn.getName(user) + '\n    wa.me/' + user.split('@')[0] + '\n    *' + format(data.limit) + ' Limit*').join`\n`}
     `.trim()
   
-    conn.reply(m.chat, text, m, {
-      contextInfo: {
-        mentionedJid: [...usersExp.slice(0, len)]
-      }
-    })
   }
+  conn.reply(m.chat, isi, m)
+  // conn.reply(m.chat, text, m, {
+  //   contextInfo: {
+  //     mentionedJid: [...usersExp.slice(0, len)]
+  //   }
+  // })
 
 }
-handler.help = ['ranklimit','ranklimit *jumlah*']
+handler.help = ['topglobal','topglobal *total*']
 handler.tags = ['xp']
-handler.command = /^(ranklimit)$/i
+handler.command = /^(topglobal)$/i
 handler.owner = false
 handler.mods = false
 handler.premium = false

@@ -30,7 +30,7 @@ try {
       }else if (limit < 1){
         return conn.reply(m.chat,`*[ ERROR ]*\n\nDasar miskin !\nGift limit kok minus, cuih !`,m)
       }else if (limit > minimal){
-        return conn.reply(m.chat,`*[ ERROR ]*\n\nDasar miskin !\nLimit cuma ${global.DATABASE._data.users[m.sender].limit} sok-sok an mau kasi gift\nLimit di atas 10 baru bisa kasi gift gblk!`)
+        return conn.reply(m.chat,`*[ ERROR ]*\n\nDasar miskin !\nKamu tidak bisa transfer ${global.DATABASE._data.users[m.sender].limit} limit\n\nMinimal limit kamu tersisa 10 setelah gift limit\nMax gift limit : ${minimal}`)
       }else {
         // return conn.reply(m.chat, user, m)
         global.DATABASE._data.users[user].limit += limit

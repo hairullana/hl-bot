@@ -28,6 +28,7 @@ let handler = async (m, { conn, text }) => {
 			limit: 10,
 			lastclaim: 0,
 			warning: 0,
+			command: 0,
 			job: "x",
 			price: 0,
 			chat: 0,
@@ -49,13 +50,13 @@ let handler = async (m, { conn, text }) => {
 	global.DATABASE.data.users[user].warning += 1
 	var warn = global.DATABASE.data.users[user].warning
  	if(warn > 4) {
- 		conn.reply(m.chat, `*[ MEMBER WARNING ]*\n\nSorry motherfucker, you will be removed from this group !`, null, {contextInfo: {
+ 		conn.reply(m.chat, `*[ MEMBER WARNING ]*\n\nKamu sudah mendapatkan peringatan 5x ! Kick ae lah ajg !`, null, {contextInfo: {
           mentionedJid: [user]
  	}}).then(() => {
  		conn.groupRemove(m.chat, [user])
  	})
  } else {
- 	conn.reply(m.chat, `*[ MEMBER WARNING ]*\n\n@${number} : [ ${warn} / 5 ]\n\nJika sampai mendapatkan warning sampai 5x, kamu akan di kick otomatis !`, null, {contextInfo: {
+ 	conn.reply(m.chat, `*[ MEMBER WARNING ]*\n\n@${number} : [ ${warn} / 5 ]\n\nJika sampai mendapatkan warning sampai 5x, kamu akan di kick otomatis !\nKetik *.delwarn* untuk menghapus warning dengan membayar limit`, null, {contextInfo: {
           mentionedJid: [user]
  	}})
 }

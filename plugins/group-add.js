@@ -24,13 +24,13 @@ try {
 handler.help = ['add *62xx*','add *(reply)*']
 handler.tags = ['group admin']
 handler.command = /^(add)$/i
-handler.owner = false
+handler.owner = true
 handler.mods = false
 handler.premium = false
 handler.group = true
 handler.private = false
-handler.admin = true
+handler.admin = false
 handler.botAdmin = true
-handler.limit = true
+handler.limit = false
 handler.fail = null
 module.exports = handler

@@ -7,7 +7,7 @@ let handler = async (m, { conn, args, participants }) => {
     // for (b in global.DATABASE.data.users){
       if (typeof global.DATABASE.data.users[member[i]] != "undefined"){
         kontol[member[i]] = {
-          exp: global.DATABASE.data.users[member[i]].exp
+          limit: global.DATABASE.data.users[member[i]].limit
         }
         // Object.assign(kontol, global.DATABASE.data.users[member[i]])
         // Object.assign(kontol, global.DATABASE.data.users[member[i]].exp)
@@ -20,7 +20,7 @@ let handler = async (m, { conn, args, participants }) => {
   // return conn.reply(m.chat,kontol)
   
   let sortedExp = Object.entries(kontol).sort((a, b) => b[1].exp - a[1].exp)
-  let sortedLim = Object.entries(global.DATABASE.data.users).sort((a, b) => b[1].limit - a[1].limit)
+  let sortedLim = Object.entries(kontol).sort((a, b) => b[1].limit - a[1].limit)
   let name = conn.getName(m.sender)
   let usersExp = sortedExp.map(v => v[0])
   let usersLim = sortedLim.map(v => v[0])
@@ -43,20 +43,20 @@ let handler = async (m, { conn, args, participants }) => {
     //${sortedExp.slice(0, len).map(([user, data], i) => (i + 1) + '. @' + user.split`@`[0] + ': *' + data.exp + ' Exp*').join`\n`}
     
     let text = `
-• *TOP ${len} TERKAYA* •\n
+• *TOP ${len} LIMIT* •\n
 _Kamu punya *Rp. ${format(global.DATABASE.data.users[m.sender].exp)}* dan *${format(global.DATABASE.data.users[m.sender].limit)} Limit*_
 _Kamu peringkat *${usersExp.indexOf(m.sender) + 1}* dari *${usersExp.length}* member grup ${conn.getName(m.chat)}_
   
-${sortedExp.slice(0, len).map(([user, data], i) => (i + 1) + '. '  + conn.getName(user) + '\n    wa.me/' + user.split('@')[0] + '\n    *Rp. ' + format(data.exp) + '*').join`\n`}
+${sortedLim.slice(0, len).map(([user, data], i) => (i + 1) + '. ' + conn.getName(user) + '\n    wa.me/' + user.split('@')[0] + '\n    *Rp. ' + format(data.limit) + '*').join`\n`}
     `.trim()
   
     conn.reply(m.chat, text, m)
   }
 
 }
-handler.help = ['rank','rank *total*']
+handler.help = ['toplokal','toplokal *total*','ranklimit','ranklimit *total*']
 handler.tags = ['xp']
-handler.command = /^(rank)$/i
+handler.command = /^(toplokal|ranklimit)$/i
 handler.owner = false
 handler.mods = false
 handler.premium = false

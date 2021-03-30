@@ -1,0 +1,149 @@
+{
+  "users": {
+    "6285268924976@s.whatsapp.net": {
+      "exp": 0,
+      "limit": 10,
+      "lastclaim": 0,
+      "warning": 0,
+      "command": 0,
+      "job": "x",
+      "price": 0,
+      "chat": 3,
+      "whitelist": false,
+      "isBanned": false,
+      "spam": 1
+    },
+    "6282179689435@s.whatsapp.net": {
+      "exp": 0,
+      "limit": 10,
+      "lastclaim": 0,
+      "warning": 0,
+      "command": 0,
+      "job": "x",
+      "price": 0,
+      "chat": 2,
+      "whitelist": false,
+      "isBanned": false,
+      "spam": 1
+    },
+    "62895622632791@s.whatsapp.net": {
+      "exp": 0,
+      "limit": 10,
+      "lastclaim": 0,
+      "warning": 0,
+      "command": 0,
+      "job": "x",
+      "price": 0,
+      "chat": 2,
+      "whitelist": false,
+      "isBanned": false,
+      "spam": 0
+    },
+    "6281912922988@s.whatsapp.net": {
+      "exp": 0,
+      "limit": 10,
+      "lastclaim": 0,
+      "warning": 0,
+      "command": 0,
+      "job": "x",
+      "price": 0,
+      "chat": 1,
+      "whitelist": false,
+      "isBanned": false,
+      "spam": 0
+    },
+    "62896945935804@s.whatsapp.net": {
+      "exp": 0,
+      "limit": 10,
+      "lastclaim": 0,
+      "warning": 0,
+      "command": 0,
+      "job": "x",
+      "price": 0,
+      "chat": 1,
+      "whitelist": false,
+      "isBanned": false,
+      "spam": 1
+    },
+    "62895385988655@s.whatsapp.net": {
+      "exp": 250,
+      "limit": 10,
+      "lastclaim": 0,
+      "warning": 0,
+      "command": 0,
+      "job": "x",
+      "price": 0,
+      "chat": 2,
+      "whitelist": false,
+      "isBanned": false,
+      "spam": 2
+    },
+    "6283119526456@s.whatsapp.net": {
+      "exp": 0,
+      "limit": 10,
+      "lastclaim": 0,
+      "warning": 0,
+      "command": 0,
+      "job": "x",
+      "price": 0,
+      "chat": 1,
+      "whitelist": false,
+      "isBanned": false,
+      "spam": 0
+    },
+    "6288233482455@s.whatsapp.net": {
+      "exp": 0,
+      "limit": 10,
+      "lastclaim": 0,
+      "warning": 0,
+      "command": 0,
+      "job": "x",
+      "price": 0,
+      "chat": 1,
+      "whitelist": false,
+      "isBanned": false,
+      "spam": 1
+    },
+    "6282146890092@s.whatsapp.net": {
+      "exp": 0,
+      "limit": 10,
+      "lastclaim": 0,
+      "warning": 0,
+      "command": 0,
+      "job": "x",
+      "price": 0,
+      "chat": 1,
+      "whitelist": false,
+      "isBanned": false,
+      "spam": 1
+    }
+  },
+  "groups": {},
+  "chats": {
+    "6285712062387-1602787292@g.us": {
+      "isBanned": false,
+      "welcome": false,
+      "left": false,
+      "warningGroup": false,
+      "nolink": false,
+      "novirtex": false,
+      "sWelcome": "",
+      "sBye": "",
+      "command": 0
+    },
+    "6281296968824-1607576878@g.us": {
+      "isBanned": false,
+      "welcome": false,
+      "left": false,
+      "warningGroup": false,
+      "nolink": false,
+      "novirtex": false,
+      "sWelcome": "",
+      "sBye": "",
+      "command": 0
+    }
+  },
+  "blocked": 0,
+  "banned": 0,
+  "groupMode": false
+}

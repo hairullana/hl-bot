@@ -7,7 +7,7 @@ let handler = async (m, { conn, args, participants }) => {
     // for (b in global.DATABASE.data.users){
       if (typeof global.DATABASE.data.users[member[i]] != "undefined"){
         kontol[member[i]] = {
-          exp: global.DATABASE.data.users[member[i]].exp
+          chat: global.DATABASE.data.users[member[i]].chat
         }
         // Object.assign(kontol, global.DATABASE.data.users[member[i]])
         // Object.assign(kontol, global.DATABASE.data.users[member[i]].exp)
@@ -19,7 +19,7 @@ let handler = async (m, { conn, args, participants }) => {
   // kontol = Object.entries(kontol)
   // return conn.reply(m.chat,kontol)
   
-  let sortedExp = Object.entries(kontol).sort((a, b) => b[1].exp - a[1].exp)
+  let sortedExp = Object.entries(kontol).sort((a, b) => b[1].chat - a[1].chat)
   let sortedLim = Object.entries(global.DATABASE.data.users).sort((a, b) => b[1].limit - a[1].limit)
   let name = conn.getName(m.sender)
   let usersExp = sortedExp.map(v => v[0])
@@ -43,20 +43,20 @@ let handler = async (m, { conn, args, participants }) => {
     //${sortedExp.slice(0, len).map(([user, data], i) => (i + 1) + '. @' + user.split`@`[0] + ': *' + data.exp + ' Exp*').join`\n`}
     
     let text = `
-• *TOP ${len} TERKAYA* •\n
+• *TOP ${len} KONSTRIBUSI* •\n
 _Kamu punya *Rp. ${format(global.DATABASE.data.users[m.sender].exp)}* dan *${format(global.DATABASE.data.users[m.sender].limit)} Limit*_
 _Kamu peringkat *${usersExp.indexOf(m.sender) + 1}* dari *${usersExp.length}* member grup ${conn.getName(m.chat)}_
   
-${sortedExp.slice(0, len).map(([user, data], i) => (i + 1) + '. '  + conn.getName(user) + '\n    wa.me/' + user.split('@')[0] + '\n    *Rp. ' + format(data.exp) + '*').join`\n`}
+${sortedExp.slice(0, len).map(([user, data], i) => (i + 1) + '. '  + conn.getName(user) + '\n    wa.me/' + user.split('@')[0] + '\n    *' + data.chat + ' Chat*').join`\n`}
     `.trim()
   
     conn.reply(m.chat, text, m)
   }
 
 }
-handler.help = ['rank','rank *total*']
+handler.help = ['kontribusi','kontribusi *total*']
 handler.tags = ['xp']
-handler.command = /^(rank)$/i
+handler.command = /^(kontribusi)$/i
 handler.owner = false
 handler.mods = false
 handler.premium = false

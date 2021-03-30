@@ -3,9 +3,9 @@ let handler  = async (m, { conn }) => {
 	pp = await conn.getProfilePicture(global.conn.user.jid)
   conn.sendFile(m.chat, pp, 'profile.jpg',`*Syarat dan Ketentuan BOT HL GANS*\n\n1. Jangan SPAM ! Auto banned / kick otomatis\n2. Jangan Telp/VC Bot\n3. Invite Bot ke grup GAK GRATIS\n4. Ada masalah hubungi owner (ketik .owner)\n5. Pokoknya klo owner terganggu/risih, lu di banned ajg`, m)
 }
-handler.help = ['snk','rules']
+handler.help = ['rules (aturan bot)']
 handler.tags = ['info']
-handler.command = /^(snk|rules)$/i
+handler.command = /^(rules)$/i
 handler.owner = false
 handler.mods = false
 handler.premium = false

@@ -30,7 +30,7 @@ let handler = async (m, { conn, args }) => {
   if (!args[0] || !args[1]){
     return conn.reply(m.chat,'*[ JOB ERROR ]*\n\nMasukkan nama profesinya dan harga jasa. Misal :\n.job lonte 100000\n\nPekerjaan yang tersedia : pijat, lonte, sepong',m)
   }else {
-    if (args[1] < 50000 || args[1] > 15000000){
+    if (parseInt(args[1]) < 50000 || parseInt(args[1]) > 15000000){
       return conn.reply(m.chat,'*[ JOB ERROR ]*\n\nHarga jasa minimal Rp. 50.000,- dan maksimal Rp. 15.000.000,-',m)
     }
     args[0] = args[0].toLowerCase()

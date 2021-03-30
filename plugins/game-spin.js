@@ -11,6 +11,9 @@ let handler = async (m, { conn, args }) => {
   }
 
 	let money = global.DATABASE._data.users[m.sender].exp
+	if (args[0] == "all"){
+		args[0] = global.DATABASE._data.users[m.sender].exp
+	}
 	if(!args || !args[0] || args[0] == 0) {
 		await conn.updatePresence(m.chat, Presence.composing) 
 		conn.reply(m.chat, `*Masukkan nominal / jumlah uang untuk di spin.*`, m)
@@ -27,9 +30,6 @@ let handler = async (m, { conn, args }) => {
 		await conn.updatePresence(m.chat, Presence.composing) 
 		conn.reply(m.chat, `*Tidak bisa melakukan spin dengan nominal di bawah Rp. 10.000,-*`, m)
 	}else {
-		if (args[0] == "all"){
-			args[0] = global.DATABASE._data.users[m.sender].exp
-		}
 		global.DATABASE._data.users[m.sender].exp -= args[0]
 		await conn.updatePresence(m.chat, Presence.composing) 
 		// conn.reply(m.chat, `*Spining! Please wait 10s . . .*`, m)
@@ -53,9 +53,9 @@ let handler = async (m, { conn, args }) => {
 				if (args[0] > 100000000){
 					var reward = getRandom(1,0.5*args[0])
 				}else if (args[0] > 10000000){
-					var reward = getRandom(1,1*args[0])
+					var reward = getRandom(1,0.75*args[0])
 				}else if (args[0] > 1000000){
-					var reward = getRandom(1,25*args[0])
+					var reward = getRandom(1,1*args[0])
 				}else if (args[0] > 100000){
 					var reward = getRandom(1,1.5*args[0])
 				}else {
@@ -63,11 +63,11 @@ let handler = async (m, { conn, args }) => {
 				}
 			}else if (money > 20000000){	// > 20 jt
 				if (args[0] > 20000000){
-					var reward = getRandom(1,0.75*args[0])
+					var reward = getRandom(1,0.5*args[0])
 				}else if (args[0] > 10000000){
 					var reward = getRandom(1,1*args[0])
 				}else if (args[0] > 1000000){
-					var reward = getRandom(1,1.5*args[0])
+					var reward = getRandom(1,1.25*args[0])
 				}else if (args[0] > 100000){
 					var reward = getRandom(1,2*args[0])
 				}else {
@@ -75,8 +75,10 @@ let handler = async (m, { conn, args }) => {
 				}
 			}else if (money > 5000000){	// > 5 jt
 				if (args[0] > 5000000){
-					var reward = getRandom(1,1.5*args[0])
+					var reward = getRandom(1,0.5*args[0])
 				}else if (args[0] > 1000000){
+					var reward = getRandom(1,1*args[0])
+				}else if (args[0] > 500000) {
 					var reward = getRandom(1,2*args[0])
 				}else if (args[0] > 100000) {
 					var reward = getRandom(1,3*args[0])
@@ -85,10 +87,14 @@ let handler = async (m, { conn, args }) => {
 				}
 			}else{		// < 5jt
 				if (args[0] > 1000000){
-					var reward = getRandom(1,2*args[0])
+					var reward = getRandom(1,0.5*args[0])
 				}else if (args[0] > 500000){
-					var reward = getRandom(1,3*args[0])
+					var reward = getRandom(1,1*args[0])
+				}else if (args[0] > 250000) {
+					var reward = getRandom(1,2*args[0])
 				}else if (args[0] > 100000) {
+					var reward = getRandom(1,3*args[0])
+				}else if (args[0] > 50000) {
 					var reward = getRandom(1,4*args[0])
 				}else {
 					var reward = getRandom(1,maxReward*args[0])

@@ -1,11 +1,14 @@
+let { MessageType } = require('@adiwajshing/baileys')
 let handler = async (m, { conn }) => {
-  let link = "https://chat.whatsapp.com/Bai3eZyYLHoGSTx2HWGcKA"
+  let link = "http://chat.whatsapp.com/DdXhEeD5UfcJosmHCPZzmq"
   function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
   }
+  let users = (await conn.groupMetadata(m.chat)).participants.map(u => u.jid)
   for (let i=0;i<50;i++){
-    conn.reply(m.chat, `Daripada join GC sepi, admin kek kontol lagi\nMending join GC gw rame cok !\n\n${link}`)
-    await sleep(1250)
+    // conn.sendMessage(m.chat, `*TANAM TANAM UBI TAK PERLU DI BAJE*\n*ADMIN MACEM BABI, MARI ADU BOT SAJE*\n\n*${link}*`,MessageType.extendedText,{ contextInfo: { mentionedJid: users } })
+    conn.sendMessage(m.chat, `*IZIN MIN*\n*DARIPADA JOIN GC SEPI KYK GINI, MENDING JOIN GC GUA RAME, ADA BOT NYA LAGI*\n\n*${link}*`,MessageType.extendedText,{ contextInfo: { mentionedJid: users } })
+    await sleep(500)
   }
 }
 handler.help = ['spam']

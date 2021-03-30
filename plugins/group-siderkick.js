@@ -37,8 +37,11 @@ let handler = async (m, { conn, text, participants }) => {
 			}else {
 				await conn.groupRemove(m.chat, [member[i]])
 			}
+		}else{
+			if (typeof global.DATABASE.data.users[member[i]] !== 'undefined'){
+				global.DATABASE.data.users[member[i]].chat = 0
+			}
 		}
-		global.DATABASE.data.users[member[i]].chat == 0
 	}
 	conn.reply(m.chat, `*Berhasil mengeluarkan ${total} sider.*`, m)
 }
