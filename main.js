@@ -331,6 +331,23 @@ try {
     //   conn.sendFile(m.chat, 'media/wildan-gay.opus', 'tts.opus', null, m, true)
     // }
   }
+
+
+  if (global.DATABASE.data.tebakGambar !== "undefined"){
+    waktuBaru = new Date()
+    if (waktuBaru - global.DATABASE.data.waktuTebakGambar < 30){
+      jawabanBenar = global.DATABASE.data.tebakGambar.toLowerCase()
+      jawaban = m.text.toLowerCase()
+      if (jawaban == jawabanBenar){
+        conn.reply(m.chat,'Jawaban Tebak Gambar Benar !\n\nHadiah : Rp. 50.000',m)
+        global.DATABASE.data.users[m.sender].exp += 50000
+        global.DATABASE.data.tebakGambar = "undefined"
+      }
+    }else {
+      conn.reply(m.chat,`Waktu tebak gambar habis ! Jawabannya adalah *${global.DATABASE.data.tebakGambar}*\n\nSilahkan ketik .tebakgambar untuk memulai game baru`)
+      global.DATABASE.data.tebakGambar = "undefined"
+    }
+  }
     
   	let usedPrefix
   	for (let name in global.plugins) {

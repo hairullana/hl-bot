@@ -1,20 +1,23 @@
 let { Presence } = require('@adiwajshing/baileys')
 let fetch = require('node-fetch')
 let handler  = async (m, { conn, args, usedPrefix, command }) => {
-	if (!args || !args[0]) return conn.reply(m.chat, `⺀ Format salah!\n\n*Contoh* : _${usedPrefix + command} tokyo ghoul_`, m)
-	let text = args.join` `
 	await conn.updatePresence(m.chat, Presence.composing) 
-	conn.reply(m.chat, `*Sedang mencari data . . .*`, m)
-	fetch('https://videfikri.com/api/primbon/artinama/?nama=' + encodeURIComponent(text))
+  anu = new Date()
+  if (anu - global.DATABASE.data.waktuTebakGambar < 30){
+    return conn.reply(m.chat,'Jawab dulu soal yang masih ada sat !',m)
+  }
+	fetch('https://videfikri.com/api/tebakgambar/')
 		.then(res => res.json())
 		.then(batch => {
 			conn.updatePresence(m.chat, Presence.composing) 
-			conn.reply(m.chat, `*[ ARTI NAMA ]*\n${batch.result.arti}${batch.result.desk}`, m)   
+			conn.sendFile(m.chat, batch.result.soal_gbr,'tebakgambar.jpg','Silahkan jawab sat !\n\nHadiah Rp. 50.000 jika benar\nWaktu 30 detik', m) 
+      global.DATABASE._data.tebakGambar = batch.result.jawaban
+      global.DATABASE.data.waktuTebakGambar = new Date()
 	}) .catch(() => { conn.reply(m.chat, `*[ FITUR ERROR ]*\n\nMaaf fitur ${command} sedang tidak bisa digunakan.`, m) })
 }
-handler.help = ['artinama'].map(v => v + ' *query*')
-handler.tags = ['fun','data']
-handler.command = /^(artinama)$/i
+handler.help = ['tebakgambar']
+handler.tags = ['game']
+handler.command = /^(tebakgambar)$/i
 handler.owner = false
 handler.mods = false
 handler.premium = false

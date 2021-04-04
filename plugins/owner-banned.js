@@ -26,7 +26,7 @@ try {
         global.DATABASE._data.users[user].isBanned = true
 				global.DATABASE._data.banned += 1
 				var banTotal = global.DATABASE._data.banned
-				conn.reply(m.chat, `*[ BANNED SUCCESS ]*\n\n*Sukses men-banned @${user.split('@')[0]} dan memberikan status user bangsat\n\n○ *Total Banned : ${banTotal}*`, m,{
+				conn.reply(m.chat, `*[ BANNED SUCCESS ]*\n\nSukses men-banned @${user.split('@')[0]} dan memberikan status user bangsat\n\n○ Total Banned : ${banTotal}`, m,{
 					contextInfo: {
 						mentionedJid: [user]
 					}
@@ -38,5 +38,6 @@ try {
 handler.help = ['*62xx*','*@user*','*(reply)*'].map(v => 'ban ' + v)
 handler.tags = ['owner']
 handler.command = /^ban$/i
-handler.owner = true
+// handler.owner = true
+handler.mods = true
 module.exports = handler

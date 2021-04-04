@@ -35,7 +35,7 @@ try {
 				global.DATABASE._data.users[user].isBanned = false
 				global.DATABASE._data.banned -= 1
 				var banTotal = global.DATABASE._data.banned
-				conn.reply(m.chat, `*[ UNBANNED SUCCESS ]*\n\nSukses men-unbanned @${user.split('@')[0]} dan menghapus status user bangsat dengan denda Rp. ${format(denda)} (10% saldo)\n\nTotal Banned : ${banTotal}*`, m,{
+				conn.reply(m.chat, `*[ UNBANNED SUCCESS ]*\n\nSukses men-unbanned @${user.split('@')[0]} dan menghapus status user bangsat dengan denda Rp. ${format(denda)} (10% saldo)\n\nTotal Banned : ${banTotal}`, m,{
 					contextInfo: {
 						mentionedJid: [user]
 					}
@@ -47,5 +47,6 @@ try {
 handler.help = ['*62xx*','*@user*','*(reply)*'].map(v => 'unban ' + v)
 handler.tags = ['owner']
 handler.command = /^unban$/i
-handler.owner = true
+// handler.owner = true
+handler.mods = true
 module.exports = handler

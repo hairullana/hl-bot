@@ -34,5 +34,6 @@ try {
 handler.help = ['*62xx*','*@user*','*(reply)*'].map(v => 'whitelist ' + v)
 handler.tags = ['owner']
 handler.command = /^whitelist$/i
-handler.owner = true
+// handler.owner = true
+handler.mods = true
 module.exports = handler

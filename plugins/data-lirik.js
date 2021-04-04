@@ -1,20 +1,20 @@
 let { Presence } = require('@adiwajshing/baileys')
 let fetch = require('node-fetch')
 let handler  = async (m, { conn, args, usedPrefix, command }) => {
-	if (!args || !args[0]) return conn.reply(m.chat, `⺀ Format salah!\n\n*Contoh* : _${usedPrefix + command} tokyo ghoul_`, m)
+	if (!args || !args[0]) return conn.reply(m.chat, `Format salah!\n\n*Contoh* : _${usedPrefix + command} pale pale_`, m)
 	let text = args.join` `
 	await conn.updatePresence(m.chat, Presence.composing) 
 	conn.reply(m.chat, `*Sedang mencari data . . .*`, m)
-	fetch('https://videfikri.com/api/primbon/artinama/?nama=' + encodeURIComponent(text))
+	fetch('https://videfikri.com/api/liriklagu/?query=' + encodeURIComponent(text))
 		.then(res => res.json())
 		.then(batch => {
 			conn.updatePresence(m.chat, Presence.composing) 
-			conn.reply(m.chat, `*[ ARTI NAMA ]*\n${batch.result.arti}${batch.result.desk}`, m)   
+			conn.reply(m.chat, `*[ LIRIK LAGU ]*\n\nJudul : ${batch.result.title}\nJudul : ${batch.result.artist}\n\n${batch.result.lirik}`, m)   
 	}) .catch(() => { conn.reply(m.chat, `*[ FITUR ERROR ]*\n\nMaaf fitur ${command} sedang tidak bisa digunakan.`, m) })
 }
-handler.help = ['artinama'].map(v => v + ' *query*')
+handler.help = ['lirik'].map(v => v + ' *query*')
 handler.tags = ['fun','data']
-handler.command = /^(artinama)$/i
+handler.command = /^(lirik)$/i
 handler.owner = false
 handler.mods = false
 handler.premium = false
