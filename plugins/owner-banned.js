@@ -5,8 +5,8 @@ let handler = async (m, { conn, text }) => {
 		var number = text
 	}
 	
-	if(!text && !m.quoted) return conn.reply(m.chat, `*Give a number or reply chat target.*`, m)
-	if(number.length > 15) return conn.reply(m.chat, `*Format is Invalid.*`, m)
+	if(!text && !m.quoted) return conn.reply(m.chat, `*[ BANNED FAILED ]*\n\n*Reply target atau sertakan nomor*`, m)
+	if(number.length > 15) return conn.reply(m.chat, `*[ BANNED FAILED ]*\n\n*Format nomor tidak valid*`, m)
 	
 try {
 	if(text) {
@@ -21,10 +21,16 @@ try {
 			if(global.DATABASE._data.users[user].isBanned == true){
 			  conn.reply(m.chat, `*Target is already isBanned.*`, m)
 			}else {
+				// denda = Math.ceil((global.DATABASE._data.users[user].exp/100) * 25)
+				// global.DATABASE._data.users[user].exp -= denda
         global.DATABASE._data.users[user].isBanned = true
 				global.DATABASE._data.banned += 1
 				var banTotal = global.DATABASE._data.banned
-				conn.reply(m.chat, `*MAMPUS DI BANNED !*\n\n○ *Total Banned : ${banTotal}*`, m)
+				conn.reply(m.chat, `*[ BANNED SUCCESS ]*\n\n*Sukses men-banned @${user.split('@')[0]} dan memberikan status user bangsat\n\n○ *Total Banned : ${banTotal}*`, m,{
+					contextInfo: {
+						mentionedJid: [user]
+					}
+				})
 			}
 	}	
 }

@@ -21,7 +21,7 @@ const format = num => {
 }
 
 global.owner = ['6283119526456','6282363173075'] // Put your number here
-global.mods = [] // Want some help?
+global.mods = ['6281257735703'] // Want some help?
 global.prems = [] // Premium user has unlimited limit
 global.APIs = { // API Prefix
   // name: 'https://website'
@@ -167,6 +167,10 @@ try {
     global.DATABASE.data.users[m.sender].chat += 1
   }
 
+  // anu
+  // let list = Object.entries(global.DATABASE.data.users)
+  // list.slice(0, list.length).map(([user, data], i) => (Number(data.exp -= Math.floor((data.exp/100)*50))))
+
   // anti spam
   if(!m.fromMe && global.DATABASE.data.users[m.sender].isBanned == false) {
 		global.DATABASE.data.users[m.sender].spam += 1
@@ -174,20 +178,22 @@ try {
 
 		if(spam >= 0) setTimeout(() => {
       global.DATABASE.data.users[m.sender].spam = 0
-    }, 10000)
+    }, 8000)
 
-    if(spam == 8) return conn.reply(m.chat, `*[ SPAM DETECTED ]*\n\nTolong @${m.sender.split('@')[0]} untuk tidak spam, atau anda akan di banned !`, null, {contextInfo: { mentionedJid: [m.sender] }})
+    if(spam == 5) return conn.reply(m.chat, `*[ SPAM DETECTED ]*\n\nTolong @${m.sender.split('@')[0]} untuk tidak spam, atau anda akan di banned !`, null, {contextInfo: { mentionedJid: [m.sender] }})
 
-    if (spam == 10){
+    if (spam == 8){
       if(m.isGroup && !isAdmin && isBotAdmin && global.DATABASE.data.users[m.sender].whitelist == false) {
         conn.updatePresence(m.chat, Presence.composing) 
-        return conn.reply(m.chat, `*[ OVER SPAM DETECTED ]*\n\nMaaf kamu di kick dari grup !`, m).then(() => {
+        return conn.reply(m.chat, `*[ OVER SPAM DETECTED ]*\n\nMaaf kamu dibanned dari bot dan dikick dari grup !`, m).then(() => {
           conn.groupRemove(m.chat, [m.sender])
           global.DATABASE.data.users[m.sender].spam = 0
           global.DATABASE.data.users[m.sender].isBanned = true
         })
       }else if((m.isGroup && isAdmin && isBotAdmin) || (m.isGroup && !isBotAdmin) || !m.isGroup || (global.DATABASE.data.users[m.sender].whitelist == true)) {
         conn.updatePresence(m.chat, Presence.composing) 
+        // denda = Math.ceil((global.DATABASE.data.users[m.sender].exp/100) * 25)
+				// global.DATABASE.data.users[m.sender].exp -= denda
         return conn.reply(m.chat, `*[ OVER SPAM DETECTED ]*\n\nMaaf kamu di banned dari bot !\nHubungi owner untuk unban, tapi harus sadar diri ya bangsat !`, m).then(() => {
           global.DATABASE.data.users[m.sender].spam = 0
           global.DATABASE.data.users[m.sender].isBanned = true
@@ -265,7 +271,7 @@ try {
      
   if(enable.warningGroup == true) {  
     if(enable.warningGroup && m.isGroup && !isAdmin && isBotAdmin) {
-      if (!m.fromMe && !whitelist && m.text.match(/(bitch|keparat|fuck|bastard|anjing|babi|pantek|bajingan|coli|colmek|hairul|pukimak|lonte|dongo|biadab|biadap|ngocok|toket|tempek|tomlol|henceut|kanjut|oppai|tetek|kanyut|itil|titit|tytyd|tolol|idiot|bangsat|bangsad|pucek|kontol|pantek|memek|puki|jembut|meki|jingan|bodoh|goblok|bokep|dajjal|silit|setan|sange|jancok|dancok|goblog|autis|bagong|peler|ngentot|ngentod|ngewe|pler|ngtd|kntl|ajg|njing|njeng|kafir|xnxx|xvideos|lana)/gi)) {
+      if (!m.fromMe && !whitelist && m.text.match(/(bitch|keparat|fuck|bastard|anjing|babi|pantek|bajingan|coli|colmek|pukimak|lonte|dongo|biadab|biadap|ngocok|toket|tempek|tomlol|henceut|kanjut|oppai|tetek|kanyut|itil|titit|tytyd|tolol|idiot|bangsat|bangsad|pucek|kontol|pantek|memek|puki|jembut|meki|jingan|bodoh|goblok|bokep|dajjal|silit|setan|sange|jancok|dancok|goblog|autis|bagong|peler|ngentot|ngentod|ngewe|pler|ngtd|kntl|ajg|njing|njeng|kafir|xnxx|xvideos|asu|crot)/gi)) {
   	    conn.updatePresence(m.chat, Presence.composing) 
   	    var cBad = global.DATABASE.data.users[m.sender].warning += 1
   	    var warning = global.DATABASE.data.users[m.sender].warning
@@ -277,7 +283,7 @@ try {
   			    global.DATABASE.data.users[m.sender].warning = 0
           })
   		  } else {
-  			  conn.reply(m.chat, `*[ MEMBER WARNING ]*\n\n@${m.sender.split('@')[0]} : [ ${warning} / 5 ]\n\nJangan berkata kasar !\nJika kamu mendapatkan peringatan sampai 5x, maka kamu akan di kick atau di banned !\nKetik *.delwarn* untuk menghapus warning dengan membayar limit`, m,{contextInfo: {
+  			  conn.reply(m.chat, `*[ MEMBER WARNING ]*\n\n@${m.sender.split('@')[0]} : [ ${warning} / 5 ]\n\nJangan berkata kasar !\nJika kamu mendapatkan peringatan sampai 5x, maka kamu akan di kick atau di banned !\n\nKetik *.delwarn* untuk menghapus warning dengan membayar limit`, m,{contextInfo: {
             mentionedJid: [m.sender]
           }})
   		  }
@@ -448,32 +454,34 @@ try {
     if (m && m.sender && (user = global.DATABASE._data.users[m.sender])) {
       user.exp += m.exp
       var limitAsli
-      if (global.DATABASE._data.users[m.sender].limit > 10000000000000){
-        limitAsli = 5000000000000
-      }else if (global.DATABASE._data.users[m.sender].limit > 1000000000000){
-        limitAsli = 500000000000
-      }else if (global.DATABASE._data.users[m.sender].limit > 100000000000){
-        limitAsli = 50000000000
-      }else if (global.DATABASE._data.users[m.sender].limit > 10000000000){
-        limitAsli = 5000000000
-      }else if (global.DATABASE._data.users[m.sender].limit > 1000000000){
-        limitAsli = 500000000
-      }else if (global.DATABASE._data.users[m.sender].limit > 100000000){
-        limitAsli = 50000000
-      }else if (global.DATABASE._data.users[m.sender].limit > 10000000){
-        limitAsli = 5000000
-      }else if (global.DATABASE._data.users[m.sender].limit > 1000000){
-        limitAsli = 500000
-      }else if (global.DATABASE._data.users[m.sender].limit > 100000){
-        limitAsli = 50000
-      }else if (global.DATABASE._data.users[m.sender].limit > 10000){
-        limitAsli = 5000
-      }else if (global.DATABASE._data.users[m.sender].limit > 1000){
-        limitAsli = 500
+      if (global.DATABASE._data.users[m.sender].limit > 11000000000000){
+        limitAsli = 10000000000000
+      }else if (global.DATABASE._data.users[m.sender].limit > 1100000000000){
+        limitAsli = 1000000000000
+      }else if (global.DATABASE._data.users[m.sender].limit > 110000000000){
+        limitAsli = 100000000000
+      }else if (global.DATABASE._data.users[m.sender].limit > 11000000000){
+        limitAsli = 10000000000
+      }else if (global.DATABASE._data.users[m.sender].limit > 1100000000){
+        limitAsli = 1000000000
+      }else if (global.DATABASE._data.users[m.sender].limit > 110000000){
+        limitAsli = 100000000
+      }else if (global.DATABASE._data.users[m.sender].limit > 11000000){
+        limitAsli = 10000000
+      }else if (global.DATABASE._data.users[m.sender].limit > 1100000){
+        limitAsli = 1000000
+      }else if (global.DATABASE._data.users[m.sender].limit > 110000){
+        limitAsli = 100000
+      }else if (global.DATABASE._data.users[m.sender].limit > 11000){
+        limitAsli = 10000
+      }else if (global.DATABASE._data.users[m.sender].limit > 1100){
+        limitAsli = 1000
       }else if (global.DATABASE._data.users[m.sender].limit > 500){
-        limitAsli = 10
+        limitAsli = 100
       }else if (global.DATABASE._data.users[m.sender].limit > 200){
-        limitAsli = 5
+        limitAsli = 10
+      }else if (global.DATABASE._data.users[m.sender].limit > 50){
+        limitAsli = 2
       }else {
         limitAsli = 1
       }

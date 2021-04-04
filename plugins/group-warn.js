@@ -56,7 +56,7 @@ let handler = async (m, { conn, text }) => {
  		conn.groupRemove(m.chat, [user])
  	})
  } else {
- 	conn.reply(m.chat, `*[ MEMBER WARNING ]*\n\n@${number} : [ ${warn} / 5 ]\n\nJika sampai mendapatkan warning sampai 5x, kamu akan di kick otomatis !\nKetik *.delwarn* untuk menghapus warning dengan membayar limit`, null, {contextInfo: {
+ 	conn.reply(m.chat, `*[ MEMBER WARNING ]*\n\n@${number} : [ ${warn} / 5 ]\n\nJika sampai mendapatkan warning sampai 5x, kamu akan di kick otomatis !\n\nKetik *.delwarn* untuk menghapus warning dengan membayar limit`, null, {contextInfo: {
           mentionedJid: [user]
  	}})
 }

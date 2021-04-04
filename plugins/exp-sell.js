@@ -24,7 +24,7 @@ let handler = async (m, { conn, command, args }) => {
   // kurangi limit
   global.DATABASE._data.users[m.sender].limit -= jualLimit
   // tambah duit
-  hasilJual = jualLimit*50000
+  hasilJual = jualLimit*90000
   global.DATABASE._data.users[m.sender].exp += hasilJual
   return conn.reply(m.chat,`*[ SELL LIMIT ]*\n\nBerhasil menjual *${jualLimit} Limit* seharga *Rp. ${format(hasilJual)}*.\n\nSaldo : Rp. ${format(global.DATABASE._data.users[m.sender].exp)}\nLimit : ${format(global.DATABASE._data.users[m.sender].limit)}`,m)
 }

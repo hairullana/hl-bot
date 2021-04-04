@@ -1,10 +1,75 @@
 {
   "users": {
     "6282215215399@s.whatsapp.net": {
-      "exp": 50,
+      "exp": 250,
       "limit": 10,
       "lastclaim": 0,
       "warning": 0,
+      "job": "x",
+      "price": 0,
+      "chat": 5,
+      "whitelist": false,
+      "isBanned": false,
+      "spam": 0
+    },
+    "6282363173075@s.whatsapp.net": {
+      "exp": 0,
+      "limit": 10,
+      "lastclaim": 0,
+      "warning": 0,
+      "command": 0,
+      "job": "x",
+      "price": 0,
+      "chat": 2,
+      "whitelist": false,
+      "isBanned": false,
+      "spam": 0
+    },
+    "6282276346771@s.whatsapp.net": {
+      "exp": 0,
+      "limit": 10,
+      "lastclaim": 0,
+      "warning": 0,
+      "command": 0,
+      "job": "x",
+      "price": 0,
+      "chat": 1,
+      "whitelist": false,
+      "isBanned": false,
+      "spam": 0
+    },
+    "6285640130825@s.whatsapp.net": {
+      "exp": 0,
+      "limit": 10,
+      "lastclaim": 0,
+      "warning": 0,
+      "command": 0,
+      "job": "x",
+      "price": 0,
+      "chat": 1,
+      "whitelist": false,
+      "isBanned": false,
+      "spam": 0
+    },
+    "62882003143852@s.whatsapp.net": {
+      "exp": 0,
+      "limit": 10,
+      "lastclaim": 0,
+      "warning": 0,
+      "command": 0,
+      "job": "x",
+      "price": 0,
+      "chat": 2,
+      "whitelist": false,
+      "isBanned": false,
+      "spam": 0
+    },
+    "6281257467628@s.whatsapp.net": {
+      "exp": 0,
+      "limit": 10,
+      "lastclaim": 0,
+      "warning": 0,
+      "command": 0,
       "job": "x",
       "price": 0,
       "chat": 1,
@@ -16,6 +81,28 @@
   "groups": {},
   "chats": {
     "6287874951710-1611887003@g.us": {
+      "isBanned": false,
+      "welcome": false,
+      "left": false,
+      "warningGroup": false,
+      "nolink": false,
+      "novirtex": false,
+      "sWelcome": "",
+      "sBye": "",
+      "command": 0
+    },
+    "6283119526456-1550555731@g.us": {
+      "isBanned": false,
+      "welcome": false,
+      "left": false,
+      "warningGroup": false,
+      "nolink": false,
+      "novirtex": false,
+      "sWelcome": "",
+      "sBye": "",
+      "command": 0
+    },
+    "6288705289436-1615180061@g.us": {
       "isBanned": false,
       "welcome": false,
       "left": false,
