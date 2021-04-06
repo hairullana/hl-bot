@@ -17,7 +17,7 @@ let handler = async (m, { conn, text, participants }) => {
 		}
 	}
 	if(total == 0) return conn.reply(m.chat, `*Digrup ini tidak terdapat sampah.*`, m) 
-	conn.reply(m.chat, `*${total}/${sum} anggota adalah sampah (join tapi ga pake bot)*\n\n_“Buat apa anda ada di grup ini bung kalau tidak pakai bot”_\n\n*LIST SAMPAH :*\n${sampah.map(v => '  ○ @' + v.replace(/@.+/, '')).join('\n')}`, m,{ contextInfo: { mentionedJid: sampah } })
+	conn.reply(m.chat, `*${total}/${sum} anggota adalah sampah (join tapi ga pake bot / ga pernah muncul dari awal join)*\n\n_“Buat apa anda ada di grup ini bung kalau tidak pakai bot”_\n\n*LIST SAMPAH :*\n${sampah.map(v => '  ○ @' + v.replace(/@.+/, '')).join('\n')}`, m,{ contextInfo: { mentionedJid: sampah } })
 }
 handler.help = ['sampah']
 handler.tags = ['group', 'group admin']
