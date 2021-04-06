@@ -14,8 +14,24 @@ let handler = async (m, { conn }) => {
 		let novirtex = global.DATABASE.data.chats[m.chat].novirtex
     
 	var name = conn.getName(m.chat)
-	
-	conn.sendFile(m.chat, pp, 'profile.jpg', `*[ ${ucword(name)} ]*\n\n  - Anti-Link : ${data(nolink)}\n  - Anti-Virtex : ${data(novirtex)}\n  - Anti-Badword : ${data(filter)}\n  - Welcome Msg : ${data(welcome)}\n  - Leave Msg : ${data(left)}`, m)
+	function msToDate(ms) {
+		temp = ms
+		days = Math.floor(ms / (24*60*60*1000));
+		daysms = ms % (24*60*60*1000);
+		hours = Math.floor((daysms)/(60*60*1000));
+		hoursms = ms % (60*60*1000);
+		minutes = Math.floor((hoursms)/(60*1000));
+		minutesms = ms % (60*1000);
+		sec = Math.floor((minutesms)/(1000));
+		if (temp < 0){
+			return "Forever"
+		}else {
+			return days+" Hari "+hours+" Jam "+ minutes + " Menit";
+		}
+		// +minutes+":"+sec;
+  }
+
+	conn.sendFile(m.chat, pp, 'profile.jpg', `*[ ${ucword(name)} ]*\n\n  - Expired : ${msToDate(global.DATABASE.data.chats[m.chat].expired - new Date())}\n  - Anti-Link : ${data(nolink)}\n  - Anti-Virtex : ${data(novirtex)}\n  - Anti-Badword : ${data(filter)}\n  - Welcome Msg : ${data(welcome)}\n  - Leave Msg : ${data(left)}`, m)
 	}
 }
 handler.help = ['groupinfo']

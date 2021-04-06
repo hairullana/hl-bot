@@ -125,14 +125,17 @@ try {
         if (!isNumber(chat.command)) user.command = 0
       } else global.DATABASE._data.chats[m.chat] = {
         isBanned: false,
+        expired: 0,
         welcome: false,
         left: false,
         warningGroup: false,
         nolink: false,
         novirtex: false,
+        nobadword: false,
         sWelcome: '',
         sBye: '',
-        command: 0
+        command: 0,
+        expired: 0
       }
       
       if (global.DATABASE._data.users[m.sender]) {	
@@ -165,6 +168,24 @@ try {
   // partisipasi
   if (global.DATABASE.data.users[m.sender].isBanned == false){
     global.DATABASE.data.users[m.sender].chat += 1
+  }
+
+  // Keluar GC Otomatis Sesuai Tanggal
+  var now = new Date() * 1
+  if (m.isGroup && global.DATABASE.data.chats[m.chat].expired != 0){
+    if (now >= global.DATABASE.data.chats[m.chat].expired){
+      conn.reply(m.chat,"*Maaf waktunya bot untuk meninggalkan grup :(*\n*Chat owner untuk invite bot lagi*").then(() =>{
+        conn.updatePresence(m.chat, Presence.composing) 
+        let name = 'Hairul Lana'
+        let number = '6283119526456'
+        conn.sendVcard(m.chat, name, number).then(() =>{
+          conn.groupLeave(m.chat).then(() =>{
+            global.DATABASE.data.chats[m.chat].expired = 0
+          })
+        })
+      })
+      
+    }
   }
 
   // anu
@@ -264,7 +285,7 @@ try {
 	}
 	
   if(enable.nolink == true && !whitelist) {  
-    var linkGC = 'chat.whatsapp.com/' + (await conn.groupInviteCode(m.chat))
+    var linkGC = 'chat.whatsapp.com/' + (conn.groupInviteCode(m.chat))
     if(m.isGroup && !isAdmin && isBotAdmin && !m.text.match(linkGC)) {
       if (m.text.match(/(chat.whatsapp.com)/gi)) {
         conn.groupRemove(m.chat, [m.sender],m)
