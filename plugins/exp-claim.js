@@ -17,9 +17,9 @@ let handler = async (m, { conn }) => {
   }
 
   if (new Date - global.DATABASE._data.users[m.sender].lastclaim > waktuClaim) {
-    if (global.DATABASE._data.users[m.sender].limit > 200){
+    if (global.DATABASE._data.users[m.sender].limit > 200 || global.DATABASE._data.users[m.sender].exp > 25000000){
       hadiah = 5
-    }else if (global.DATABASE._data.users[m.sender].limit > 100) {
+    }else if (global.DATABASE._data.users[m.sender].limit > 50 || global.DATABASE._data.users[m.sender].exp > 10000000) {
       hadiah = 10
     }else {
       hadiah = 20

@@ -194,7 +194,7 @@ try {
         conn.updatePresence(m.chat, Presence.composing) 
         // denda = Math.ceil((global.DATABASE.data.users[m.sender].exp/100) * 25)
 				// global.DATABASE.data.users[m.sender].exp -= denda
-        return conn.reply(m.chat, `*[ OVER SPAM DETECTED ]*\n\nMaaf kamu di banned dari bot !\nHubungi owner untuk unban, tapi harus sadar diri ya bangsat !`, m).then(() => {
+        return conn.reply(m.chat, `*[ OVER SPAM DETECTED ]*\n\nMaaf kamu di banned dari bot !\nHubungi owner ( *.owner* ) atau moderator ( *.mods* ) untuk unbanned, tapi harus sadar diri ya bangsat !`, m).then(() => {
           global.DATABASE.data.users[m.sender].spam = 0
           global.DATABASE.data.users[m.sender].isBanned = true
           global.DATABASE._data.banned += 1
@@ -240,7 +240,7 @@ try {
 
 	if(!m.fromMe && !m.isGroup && !owner && onGroup && commandNYA == '.') {
     var head = '*[ GROUP MODE ]*\n\nSilahkan masuk ke grup untuk menggunakan bot.'
-    var undang = "Undang bot ke GC ? Chat kontak owner di bawah !"
+    var undang = "Bot Join GC ? Chat owner *Hairul Lana*\nInfo Bot ? Chat owner *Hairul Lana* atau moderator *Loli Cantik*"
     var grup = []
     // gc utama
     grup[0] = 'https://chat.whatsapp.com/' + (await conn.groupInviteCode('6285892821182-1510584700@g.us'))
@@ -253,7 +253,13 @@ try {
         conn.updatePresence(m.chat, Presence.composing) 
         let name = 'Hairul Lana'
         let number = '6283119526456'
-        conn.sendVcard(m.chat, name, number)})
+        conn.sendVcard(m.chat, name, number).then(() =>{
+          conn.updatePresence(m.chat, Presence.composing) 
+          let name = 'Loli Cantik'
+          let number = '6281257735703'
+          conn.sendVcard(m.chat, name, number)
+        })
+      })
     } else return conn.reply(m.chat, head, m)
 	}
 	
@@ -271,7 +277,7 @@ try {
      
   if(enable.warningGroup == true) {  
     if(enable.warningGroup && m.isGroup && !isAdmin && isBotAdmin) {
-      if (!m.fromMe && !whitelist && m.text.match(/(bitch|keparat|fuck|bastard|anjing|babi|pantek|bajingan|coli|colmek|pukimak|lonte|dongo|biadab|biadap|ngocok|toket|tempek|tomlol|henceut|kanjut|oppai|tetek|kanyut|itil|titit|tytyd|tolol|idiot|bangsat|bangsad|pucek|kontol|pantek|memek|puki|jembut|meki|jingan|bodoh|goblok|bokep|dajjal|silit|setan|sange|jancok|dancok|goblog|autis|bagong|peler|ngentot|ngentod|ngewe|pler|ngtd|kntl|ajg|njing|njeng|kafir|xnxx|xvideos|asu|crot)/gi)) {
+      if (!m.fromMe && !whitelist && m.text.match(/(bitch|keparat|fuck|bastard|anjing|babi|pantek|bajingan|coli|colmek|pukimak|lonte|dongo|biadab|biadap|ngocok|toket|tempek|tomlol|henceut|kanjut|oppai|tetek|kanyut|itil|titit|tytyd|tolol|idiot|bangsat|bangsad|pucek|kontol|pantek|memek|puki|jembut|meki|jingan|bodoh|goblok|bokep|dajjal|silit|setan|sange|jancok|dancok|goblog|autis|bagong|peler|ngentot|ngentod|ngewe|pler|ngtd|kntl|ajg|njing|njeng|kafir|xnxx|xvideos|crot)/gi)) {
   	    conn.updatePresence(m.chat, Presence.composing) 
   	    var cBad = global.DATABASE.data.users[m.sender].warning += 1
   	    var warning = global.DATABASE.data.users[m.sender].warning
@@ -333,19 +339,19 @@ try {
   }
 
 
-  if (global.DATABASE.data.tebakGambar !== "undefined"){
+  if (global.DATABASE.data.tebakGambar != "undefined"){
     waktuBaru = new Date()
     if (waktuBaru - global.DATABASE.data.waktuTebakGambar < 30){
       jawabanBenar = global.DATABASE.data.tebakGambar.toLowerCase()
       jawaban = m.text.toLowerCase()
       if (jawaban == jawabanBenar){
-        conn.reply(m.chat,'Jawaban Tebak Gambar Benar !\n\nHadiah : Rp. 50.000',m)
         global.DATABASE.data.users[m.sender].exp += 50000
         global.DATABASE.data.tebakGambar = "undefined"
+        return conn.reply(m.chat,'Jawaban Tebak Gambar Benar !\n\nHadiah : Rp. 50.000',m)
       }
     }else {
-      conn.reply(m.chat,`Waktu tebak gambar habis ! Jawabannya adalah *${global.DATABASE.data.tebakGambar}*\n\nSilahkan ketik .tebakgambar untuk memulai game baru`)
       global.DATABASE.data.tebakGambar = "undefined"
+      return conn.reply(m.chat,`Waktu tebak gambar habis ! Jawabannya adalah *${global.DATABASE.data.tebakGambar}*\n\nSilahkan ketik .tebakgambar untuk memulai game baru`)
     }
   }
     
@@ -496,14 +502,20 @@ try {
       }else if (global.DATABASE._data.users[m.sender].limit > 500){
         limitAsli = 100
       }else if (global.DATABASE._data.users[m.sender].limit > 200){
-        limitAsli = 10
+        limitAsli = 50
       }else if (global.DATABASE._data.users[m.sender].limit > 50){
-        limitAsli = 2
-      }else {
+        limitAsli = 10
+      }else if (global.DATABASE._data.users[m.sender].limit > 5) {
+        limitAsli = 5
+      }else (
         limitAsli = 1
-      }
+      )
       // user.limit -= limitAsli
-      user.limit -= m.limit * limitAsli
+      if (user.limit > 50 || user.exp > 20000000){
+        user.limit -= m.limit * limitAsli
+      }else {
+        user.limit -= m.limit
+      }
       // user.limit -= m.limit
       // conn.reply(m.chat,`@${m.sender.split('@')[0]} berhasil menggunakan ${format(limitAsli)}\n\nSisa limit : ${format(global.DATABASE._data.users[m.sender].limit)}`,{contextInfo: {
         // mentionedJid: [m.sender]

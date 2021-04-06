@@ -1,13 +1,13 @@
 {
   "users": {
     "6282215215399@s.whatsapp.net": {
-      "exp": 250,
+      "exp": 400,
       "limit": 10,
       "lastclaim": 0,
       "warning": 0,
       "job": "x",
       "price": 0,
-      "chat": 5,
+      "chat": 9,
       "whitelist": false,
       "isBanned": false,
       "spam": 0
@@ -76,6 +76,32 @@
       "whitelist": false,
       "isBanned": false,
       "spam": 0
+    },
+    "6285641820581@s.whatsapp.net": {
+      "exp": 0,
+      "limit": 10,
+      "lastclaim": 0,
+      "warning": 0,
+      "command": 0,
+      "job": "x",
+      "price": 0,
+      "chat": 1,
+      "whitelist": false,
+      "isBanned": false,
+      "spam": 0
+    },
+    "6285830304097@s.whatsapp.net": {
+      "exp": 0,
+      "limit": 10,
+      "lastclaim": 0,
+      "warning": 0,
+      "command": 0,
+      "job": "x",
+      "price": 0,
+      "chat": 0,
+      "whitelist": false,
+      "isBanned": false,
+      "spam": 0
     }
   },
   "groups": {},
@@ -112,9 +138,21 @@
       "sWelcome": "",
       "sBye": "",
       "command": 0
+    },
+    "62895605346436-1611662507@g.us": {
+      "isBanned": false,
+      "welcome": false,
+      "left": false,
+      "warningGroup": false,
+      "nolink": false,
+      "novirtex": false,
+      "sWelcome": "",
+      "sBye": "",
+      "command": 0
     }
   },
   "blocked": 0,
   "banned": 0,
-  "groupMode": false
+  "groupMode": false,
+  "tebakGambar": "undefined"
 }

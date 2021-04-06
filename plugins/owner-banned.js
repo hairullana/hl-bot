@@ -19,14 +19,14 @@ try {
 } catch (e) {
 		} finally {
 			if(global.DATABASE._data.users[user].isBanned == true){
-			  conn.reply(m.chat, `*Target is already isBanned.*`, m)
+			  conn.reply(m.chat, `*Target sudah masuk ke dalam list banned*`, m)
 			}else {
 				// denda = Math.ceil((global.DATABASE._data.users[user].exp/100) * 25)
 				// global.DATABASE._data.users[user].exp -= denda
         global.DATABASE._data.users[user].isBanned = true
 				global.DATABASE._data.banned += 1
 				var banTotal = global.DATABASE._data.banned
-				conn.reply(m.chat, `*[ BANNED SUCCESS ]*\n\nSukses men-banned @${user.split('@')[0]} dan memberikan status user bangsat\n\n○ Total Banned : ${banTotal}`, m,{
+				conn.reply(m.chat, `*[ BANNED SUCCESS ]*\n\nSukses men-banned @${user.split('@')[0]} dan memberikan status user bangsat\nHubungi owner ( *.owner* ) atau moderator ( *.mods* ) untuk unbanned, tapi harus sadar diri ya bangsat !\n\n○ Total Banned : ${banTotal}`, m,{
 					contextInfo: {
 						mentionedJid: [user]
 					}
@@ -37,7 +37,7 @@ try {
 
 handler.help = ['*62xx*','*@user*','*(reply)*'].map(v => 'ban ' + v)
 handler.tags = ['owner']
-handler.command = /^ban$/i
+handler.command = /^ban|banned$/i
 // handler.owner = true
 handler.mods = true
 module.exports = handler

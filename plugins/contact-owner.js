@@ -1,13 +1,13 @@
 let { Presence } = require('@adiwajshing/baileys')
 let handler  = async (m, { conn }) => {
 	await conn.updatePresence(m.chat, Presence.composing) 
-	let name = 'Loli Cantik'
-	let number = '6281257735703'
+	let name = 'Hairul Lana'
+	let number = '6283119526456'
 	conn.sendVcard(m.chat, name, number, m)
 }
-handler.help = ['mods']
+handler.help = ['owner']
 handler.tags = ['info']
-handler.command = /^(mods|mod)$/i
+handler.command = /^(owner)$/i
 handler.owner = false
 handler.mods = false
 handler.premium = false
