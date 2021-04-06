@@ -1,13 +1,13 @@
 {
   "users": {
     "6283119526456@s.whatsapp.net": {
-      "exp": 43504111250,
+      "exp": 43504111800,
       "limit": 0,
       "lastclaim": 0,
       "warning": 0,
       "job": "x",
       "price": 0,
-      "chat": 84,
+      "chat": 92,
       "whitelist": false,
       "isBanned": false,
       "spam": 0,
@@ -11163,7 +11163,7 @@
       "warning": 1,
       "job": "x",
       "price": 0,
-      "chat": 378,
+      "chat": 403,
       "whitelist": false,
       "isBanned": false,
       "spam": 0
@@ -23617,7 +23617,7 @@
       "command": 0,
       "job": "pijat",
       "price": 1000000,
-      "chat": 2377,
+      "chat": 2397,
       "whitelist": true,
       "isBanned": false,
       "spam": 0
@@ -31150,17 +31150,17 @@
       "spam": 0
     },
     "62895343432722@s.whatsapp.net": {
-      "exp": 992142628077,
-      "limit": 351,
+      "exp": 992142614569,
+      "limit": 251,
       "lastclaim": 1617712069761,
       "warning": 0,
       "command": 0,
       "job": "x",
       "price": 0,
-      "chat": 637,
+      "chat": 645,
       "whitelist": false,
       "isBanned": false,
-      "spam": 1
+      "spam": 0
     },
     "6285894548675@s.whatsapp.net": {
       "exp": 0,

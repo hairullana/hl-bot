@@ -43,6 +43,7 @@ let handler  = async (m, { conn, usedPrefix: _p }) => {
       'data' : 'INFORMATION',
       'tools': 'TOOLS',
       'fun': 'FUN',
+      'tag': 'TAGS',
       'text': 'RANDOM TEXT',
       'downloader': 'DOWNLOADER',
       'group tools' : 'GROUP TOOLS',
