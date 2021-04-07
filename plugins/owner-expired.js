@@ -13,7 +13,7 @@ let handler = async (m, { conn, text }) => {
   conn.reply(m.chat,`*[ EXPIRED DATE ]*\n\nBerhasil menetapkan _expired day_ untuk *${conn.getName(m.chat)}* selama *${text} hari*.`) 
 
 }
-handler.help = ['expired']
+handler.help = ['expired *days*']
 handler.tags = ['owner']
 handler.command = /^(expired)$/i
 handler.owner = true

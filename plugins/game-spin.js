@@ -107,27 +107,6 @@ let handler = async (m, { conn, args }) => {
 
 			conn.updatePresence(m.chat, Presence.composing) 
 
-			var limitAsli
-			if (global.DATABASE._data.users[m.sender].limit > 100000000){
-        limitAsli = 10000000
-      }else if (global.DATABASE._data.users[m.sender].limit > 10000000){
-        limitAsli = 1000000
-      }else if (global.DATABASE._data.users[m.sender].limit > 1000000){
-        limitAsli = 100000
-      }else if (global.DATABASE._data.users[m.sender].limit > 100000){
-        limitAsli = 10000
-      }else if (global.DATABASE._data.users[m.sender].limit > 10000){
-        limitAsli = 1000
-      }else if (global.DATABASE._data.users[m.sender].limit > 10000){
-        limitAsli = 100
-      }else if (global.DATABASE._data.users[m.sender].limit > 1000){
-        limitAsli = 10
-      }else if (global.DATABASE._data.users[m.sender].limit > 500){
-        limitAsli = 5
-      }else {
-        limitAsli = 1
-				// return conn.reply(m.chat, `*[ SPIN RESULT ]*\n\n	- *Rp. ${Number(args[0]).toLocaleString().replace(/,/g, '.')}*\n	+ *Rp. ${Number(reward).toLocaleString().replace(/,/g, '.')}*\n\n*Total : Rp. ${Number(total).toLocaleString().replace(/,/g, '.')},-*\n\n*NB* : “Rentang hadiah adalah Rp. 1 sampai ${maxReward}x lipat modal dengan pengurangan 1 limit setiap kali penggunaan”`, m)  
-      }
 			// conn.reply(m.chat, `*[ SPIN RESULT ]*\n\n	- *Rp. ${Number(args[0]).toLocaleString().replace(/,/g, '.')}*\n	+ *Rp. ${Number(reward).toLocaleString().replace(/,/g, '.')}*\n\n*Total : Rp. ${Number(total).toLocaleString().replace(/,/g, '.')},-*\n\n*NB* : “Rentang hadiah adalah Rp. 1 sampai ${maxReward}x lipat modal dengan pengurangan 1 limit setiap kali penggunaan”\n\n*Tapi khusus sultan seperti anda, pengurangan limit sebesar ${format(limitAsli)}*`, m)  
 
 			return conn.reply(m.chat, `*[ SPIN RESULT ]*\n\n	- *Rp. ${Number(args[0]).toLocaleString().replace(/,/g, '.')}*\n	+ *Rp. ${Number(reward).toLocaleString().replace(/,/g, '.')}*\n\n*Total : Rp. ${Number(total).toLocaleString().replace(/,/g, '.')},-*\n\n*NB* : “Rentang hadiah adalah Rp. 1 sampai ${maxReward}x lipat modal dengan pengurangan limit setiap kali penggunaan”`, m)  

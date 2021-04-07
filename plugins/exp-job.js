@@ -28,10 +28,10 @@ let handler = async (m, { conn, args }) => {
   var ket = "\n\nKetik *.sewa @user* untuk menggunakan jasa"
 
   if (!args[0] || !args[1]){
-    return conn.reply(m.chat,'*[ JOB ERROR ]*\n\nMasukkan nama profesinya dan harga jasa. Misal :\n.job lonte 100000\n\nPekerjaan yang tersedia : pijat, lonte, sepong',m)
+    return conn.reply(m.chat,'*[ JOB ERROR ]*\n\nMasukkan nama profesinya dan harga jasa. Misal :\n.job maling 100000\n\nPekerjaan yang tersedia : pijat, lonte, sepong',m)
   }else {
-    if (parseInt(args[1]) < 50000 || parseInt(args[1]) > 15000000){
-      return conn.reply(m.chat,'*[ JOB ERROR ]*\n\nHarga jasa minimal Rp. 50.000,- dan maksimal Rp. 15.000.000,-',m)
+    if (parseInt(args[1]) < 100000 || parseInt(args[1]) > 100000000){
+      return conn.reply(m.chat,'*[ JOB ERROR ]*\n\nHarga jasa minimal Rp. 100.000,- dan maksimal Rp. 100.000.000,-',m)
     }
     args[0] = args[0].toLowerCase()
     if (args[0] === "lonte"){
@@ -50,6 +50,12 @@ let handler = async (m, { conn, args }) => {
       global.DATABASE.data.users[m.sender].job = args[0]
       global.DATABASE.data.users[m.sender].price = parseInt(args[1])
       conn.reply(m.chat,`*[ JASA TUKANG SEPONG ]*\n\n@${m.sender.split('@')[0]} menawarkan diri sebagai tukang sepong dengan biaya ${format(args[1])},-${ket}`,m, {contextInfo: {
+        mentionedJid: [m.sender]
+      }})
+    }else if (args[0] === "maling"){
+      global.DATABASE.data.users[m.sender].job = args[0]
+      global.DATABASE.data.users[m.sender].price = parseInt(args[1])
+      conn.reply(m.chat,`*[ JASA TUKANG MALING ]*\n\n@${m.sender.split('@')[0]} menawarkan diri sebagai tukang maling dengan biaya ${format(args[1])},-${ket}`,m, {contextInfo: {
         mentionedJid: [m.sender]
       }})
     }else {

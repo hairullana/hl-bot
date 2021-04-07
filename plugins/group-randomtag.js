@@ -18,5 +18,6 @@ handler.help = ['ngentod','jadian','babi','anjing','cantik','ganteng','cakep','b
 handler.tags = ['tag']
 handler.command = /^ngentod|jadian|babi|anjing|cantik|ganteng|cakep|banci|tolol|setan$/i
 handler.owner = false
+handler.limit = true
 handler.fail = null
 module.exports = handler

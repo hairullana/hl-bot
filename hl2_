@@ -1,13 +1,13 @@
 {
   "users": {
     "6283119526456@s.whatsapp.net": {
-      "exp": 43504111800,
-      "limit": 0,
+      "exp": 822200,
+      "limit": 58005,
       "lastclaim": 0,
       "warning": 0,
       "job": "x",
       "price": 0,
-      "chat": 92,
+      "chat": 141,
       "whitelist": false,
       "isBanned": false,
       "spam": 0,
@@ -326,13 +326,13 @@
       "spam": 0
     },
     "6285805831688@s.whatsapp.net": {
-      "exp": 317473655015930,
-      "limit": 29005,
+      "exp": 285726289494437,
+      "limit": 805,
       "lastclaim": 1617506694546,
       "warning": 0,
       "job": "x",
       "price": 0,
-      "chat": 6470,
+      "chat": 6583,
       "whitelist": true,
       "isBanned": false,
       "spam": 0
@@ -362,16 +362,16 @@
       "spam": 0
     },
     "6283195765751@s.whatsapp.net": {
-      "exp": 48250061411014,
-      "limit": 7064,
+      "exp": 48250061331014,
+      "limit": 5064,
       "lastclaim": 1617671673745,
       "warning": 0,
       "job": "x",
       "price": 0,
-      "chat": 1506,
+      "chat": 1511,
       "whitelist": true,
       "isBanned": false,
-      "spam": 0
+      "spam": 1
     },
     "6289635783673@s.whatsapp.net": {
       "exp": 500,
@@ -476,10 +476,10 @@
       "warning": 0,
       "job": "x",
       "price": 0,
-      "chat": 2616,
+      "chat": 2622,
       "whitelist": true,
       "isBanned": false,
-      "spam": 0
+      "spam": 1
     },
     "6282386197501@s.whatsapp.net": {
       "exp": 0,
@@ -506,13 +506,13 @@
       "spam": 0
     },
     "6281912009344@s.whatsapp.net": {
-      "exp": 1030147353725,
-      "limit": 95304,
+      "exp": 1030146963775,
+      "limit": 34304,
       "lastclaim": 1617678126079,
       "warning": 0,
       "job": "x",
       "price": 0,
-      "chat": 2228,
+      "chat": 2305,
       "whitelist": false,
       "isBanned": false,
       "spam": 0
@@ -560,9 +560,9 @@
       "warning": 0,
       "job": "pijat",
       "price": 15000000,
-      "chat": 1367,
+      "chat": 1401,
       "whitelist": true,
-      "isBanned": false,
+      "isBanned": true,
       "spam": 0
     },
     "6285713929849@s.whatsapp.net": {
@@ -1300,13 +1300,13 @@
       "spam": 0
     },
     "6283821484086@s.whatsapp.net": {
-      "exp": 998924051,
-      "limit": 25,
+      "exp": 998624051,
+      "limit": 20,
       "lastclaim": 1617518249861,
       "warning": 1,
       "job": "x",
       "price": 0,
-      "chat": 36,
+      "chat": 38,
       "whitelist": false,
       "isBanned": false,
       "spam": 0
@@ -1691,7 +1691,7 @@
       "warning": 0,
       "job": "x",
       "price": 0,
-      "chat": 82,
+      "chat": 90,
       "whitelist": false,
       "isBanned": false,
       "spam": 0
@@ -1739,7 +1739,7 @@
       "warning": 1,
       "job": "x",
       "price": 0,
-      "chat": 1465,
+      "chat": 1493,
       "whitelist": false,
       "isBanned": false,
       "spam": 0
@@ -2552,13 +2552,13 @@
       "money": null
     },
     "6285221100126@s.whatsapp.net": {
-      "exp": 23864584900,
+      "exp": 23859955000,
       "limit": 4,
       "lastclaim": 1614848411450,
       "warning": 0,
       "job": "x",
       "price": 0,
-      "chat": 1112,
+      "chat": 1190,
       "whitelist": false,
       "isBanned": false,
       "spam": 0
@@ -3423,7 +3423,7 @@
       "warning": 0,
       "job": "x",
       "price": 0,
-      "chat": 49,
+      "chat": 57,
       "whitelist": false,
       "isBanned": false,
       "spam": 0
@@ -5901,13 +5901,13 @@
       "spam": 0
     },
     "6281340843212@s.whatsapp.net": {
-      "exp": 27501916138329,
+      "exp": 24751724524496,
       "limit": 1414,
       "lastclaim": 1617717335680,
       "warning": 0,
       "job": "x",
       "price": 0,
-      "chat": 727,
+      "chat": 769,
       "whitelist": true,
       "isBanned": false,
       "spam": 0
@@ -6903,7 +6903,7 @@
       "warning": 0,
       "job": "x",
       "price": 0,
-      "chat": 381,
+      "chat": 385,
       "whitelist": true,
       "isBanned": false,
       "spam": 0
@@ -7173,16 +7173,16 @@
       "spam": 0
     },
     "6285758480771@s.whatsapp.net": {
-      "exp": 65453,
-      "limit": 191,
+      "exp": 165453,
+      "limit": 181,
       "lastclaim": 1617113979450,
       "warning": 0,
       "job": "x",
       "price": 0,
-      "chat": 2173,
+      "chat": 2180,
       "whitelist": true,
       "isBanned": false,
-      "spam": 0
+      "spam": 1
     },
     "6283895529229@s.whatsapp.net": {
       "exp": 1000000,
@@ -7294,7 +7294,7 @@
     },
     "62887435006257@s.whatsapp.net": {
       "exp": 50,
-      "limit": 10,
+      "limit": 6,
       "lastclaim": 0,
       "warning": 0,
       "job": "x",
@@ -7719,7 +7719,7 @@
       "warning": 4,
       "job": "x",
       "price": 0,
-      "chat": 118,
+      "chat": 119,
       "whitelist": false,
       "isBanned": false,
       "spam": 0
@@ -11157,13 +11157,13 @@
       "spam": 0
     },
     "6288287112310@s.whatsapp.net": {
-      "exp": 1942374,
-      "limit": 18,
+      "exp": 1047774,
+      "limit": 13,
       "lastclaim": 1617722866297,
       "warning": 1,
       "job": "x",
       "price": 0,
-      "chat": 403,
+      "chat": 416,
       "whitelist": false,
       "isBanned": false,
       "spam": 0
@@ -14505,13 +14505,13 @@
       "spam": 0
     },
     "62895338372227@s.whatsapp.net": {
-      "exp": 1024450,
+      "exp": 1024950,
       "limit": 4,
       "lastclaim": 0,
       "warning": 0,
       "job": "x",
       "price": 0,
-      "chat": 46,
+      "chat": 48,
       "whitelist": false,
       "isBanned": false,
       "spam": 0
@@ -14637,13 +14637,13 @@
       "spam": 0
     },
     "6281257735703@s.whatsapp.net": {
-      "exp": 4109657666444514,
+      "exp": 4109657666444564,
       "limit": 0,
       "lastclaim": 1617708135106,
       "warning": 0,
       "job": "x",
       "price": 0,
-      "chat": 9062,
+      "chat": 9150,
       "whitelist": true,
       "isBanned": false,
       "spam": 0
@@ -14871,7 +14871,7 @@
       "warning": 0,
       "job": "x",
       "price": 0,
-      "chat": 3022,
+      "chat": 3026,
       "whitelist": false,
       "isBanned": false,
       "spam": 0
@@ -17523,7 +17523,7 @@
       "warning": 0,
       "job": "x",
       "price": 0,
-      "chat": 30,
+      "chat": 31,
       "whitelist": false,
       "isBanned": false,
       "spam": 0
@@ -19377,13 +19377,13 @@
       "spam": 0
     },
     "6285778372823@s.whatsapp.net": {
-      "exp": 5000007700,
-      "limit": 1,
+      "exp": 5000007800,
+      "limit": 1000,
       "lastclaim": 1617159753382,
       "warning": 0,
       "job": "x",
       "price": 0,
-      "chat": 17,
+      "chat": 19,
       "whitelist": false,
       "isBanned": false,
       "spam": 0
@@ -20950,12 +20950,12 @@
     },
     "6282123657181@s.whatsapp.net": {
       "exp": 18643648180,
-      "limit": 200046,
-      "lastclaim": 1617380798980,
+      "limit": 200051,
+      "lastclaim": 1617782018864,
       "warning": 0,
       "job": "x",
       "price": 0,
-      "chat": 259,
+      "chat": 262,
       "whitelist": false,
       "isBanned": false,
       "spam": 0
@@ -21843,7 +21843,7 @@
       "warning": 0,
       "job": "x",
       "price": 0,
-      "chat": 1073,
+      "chat": 1076,
       "whitelist": false,
       "isBanned": false,
       "spam": 0
@@ -21933,13 +21933,13 @@
       "spam": 0
     },
     "6289514127412@s.whatsapp.net": {
-      "exp": 1033990793,
-      "limit": 450,
+      "exp": 1034150843,
+      "limit": 350,
       "lastclaim": 1617673305060,
       "warning": 0,
       "job": "pijat",
       "price": 15000000,
-      "chat": 200,
+      "chat": 269,
       "whitelist": false,
       "isBanned": false,
       "spam": 0
@@ -22419,7 +22419,7 @@
       "warning": 0,
       "job": "x",
       "price": 0,
-      "chat": 26,
+      "chat": 27,
       "whitelist": false,
       "isBanned": false,
       "spam": 0
@@ -23617,7 +23617,7 @@
       "command": 0,
       "job": "pijat",
       "price": 1000000,
-      "chat": 2397,
+      "chat": 2447,
       "whitelist": true,
       "isBanned": false,
       "spam": 0
@@ -25950,14 +25950,14 @@
       "spam": 0
     },
     "6282119042314@s.whatsapp.net": {
-      "exp": 10535152792,
+      "exp": 10535152892,
       "limit": 1300,
       "lastclaim": 1616238586354,
       "warning": 0,
       "command": 0,
       "job": "x",
       "price": 0,
-      "chat": 228,
+      "chat": 229,
       "whitelist": false,
       "isBanned": false,
       "spam": 0
@@ -26698,7 +26698,7 @@
       "command": 0,
       "job": "x",
       "price": 0,
-      "chat": 5211,
+      "chat": 5215,
       "whitelist": false,
       "isBanned": false,
       "spam": 0
@@ -28765,7 +28765,7 @@
       "command": 0,
       "job": "x",
       "price": 0,
-      "chat": 16,
+      "chat": 27,
       "whitelist": false,
       "isBanned": false,
       "spam": 0
@@ -29558,10 +29558,10 @@
       "command": 0,
       "job": "x",
       "price": 0,
-      "chat": 4110,
+      "chat": 4212,
       "whitelist": true,
       "isBanned": false,
-      "spam": 0
+      "spam": 1
     },
     "6281364019142@s.whatsapp.net": {
       "exp": 0,
@@ -31150,14 +31150,14 @@
       "spam": 0
     },
     "62895343432722@s.whatsapp.net": {
-      "exp": 992142614569,
-      "limit": 251,
+      "exp": 992142214669,
+      "limit": 201,
       "lastclaim": 1617712069761,
       "warning": 0,
       "command": 0,
       "job": "x",
       "price": 0,
-      "chat": 645,
+      "chat": 689,
       "whitelist": false,
       "isBanned": false,
       "spam": 0
@@ -33958,14 +33958,14 @@
       "spam": 0
     },
     "6281524633549@s.whatsapp.net": {
-      "exp": 2010677152959,
-      "limit": 11,
+      "exp": 2010676972959,
+      "limit": 0,
       "lastclaim": 1617715626558,
       "warning": 0,
       "command": 0,
       "job": "x",
       "price": 0,
-      "chat": 4476,
+      "chat": 4493,
       "whitelist": true,
       "isBanned": false,
       "spam": 0
@@ -35460,7 +35460,7 @@
       "command": 0,
       "job": "x",
       "price": 0,
-      "chat": 111,
+      "chat": 113,
       "whitelist": false,
       "isBanned": false,
       "spam": 0
@@ -36519,14 +36519,14 @@
       "spam": 0
     },
     "6287728391021@s.whatsapp.net": {
-      "exp": 1457462558,
-      "limit": 4985,
-      "lastclaim": 1617681751024,
+      "exp": 29298461,
+      "limit": 0,
+      "lastclaim": 1617783893515,
       "warning": 0,
       "command": 0,
       "job": "x",
       "price": 0,
-      "chat": 1230,
+      "chat": 1331,
       "whitelist": false,
       "isBanned": false,
       "spam": 0
@@ -38053,14 +38053,14 @@
       "spam": 0
     },
     "6281358215130@s.whatsapp.net": {
-      "exp": 781881,
-      "limit": 58622,
+      "exp": 782181,
+      "limit": 7622,
       "lastclaim": 1617582790200,
       "warning": 2,
       "command": 0,
       "job": "x",
       "price": 0,
-      "chat": 367,
+      "chat": 377,
       "whitelist": false,
       "isBanned": false,
       "spam": 0
@@ -41960,7 +41960,7 @@
       "command": 0,
       "job": "lonte",
       "price": 15000000,
-      "chat": 2311,
+      "chat": 2312,
       "whitelist": false,
       "isBanned": false,
       "spam": 0
@@ -44014,7 +44014,7 @@
       "command": 0,
       "job": "x",
       "price": 0,
-      "chat": 1243,
+      "chat": 1244,
       "whitelist": false,
       "isBanned": false,
       "spam": 0
@@ -53023,7 +53023,7 @@
       "command": 0,
       "job": "x",
       "price": 0,
-      "chat": 44,
+      "chat": 47,
       "whitelist": false,
       "isBanned": false,
       "spam": 0
@@ -59360,14 +59360,14 @@
       "spam": 0
     },
     "6285751072684@s.whatsapp.net": {
-      "exp": 404363799,
-      "limit": 450,
+      "exp": 307206771,
+      "limit": 250,
       "lastclaim": 1617732681221,
       "warning": 0,
       "command": 0,
       "job": "x",
       "price": 0,
-      "chat": 218,
+      "chat": 248,
       "whitelist": false,
       "isBanned": false,
       "spam": 0
@@ -59562,7 +59562,7 @@
       "command": 0,
       "job": "x",
       "price": 0,
-      "chat": 224,
+      "chat": 227,
       "whitelist": false,
       "isBanned": false,
       "spam": 0
@@ -59646,14 +59646,14 @@
       "spam": 0
     },
     "6281276795708@s.whatsapp.net": {
-      "exp": 6150,
-      "limit": 10,
+      "exp": 6200,
+      "limit": 9,
       "lastclaim": 1617607812427,
       "warning": 0,
       "command": 0,
       "job": "x",
       "price": 0,
-      "chat": 55,
+      "chat": 58,
       "whitelist": false,
       "isBanned": false,
       "spam": 0
@@ -63488,7 +63488,7 @@
       "command": 0,
       "job": "x",
       "price": 0,
-      "chat": 4,
+      "chat": 6,
       "whitelist": false,
       "isBanned": false,
       "spam": 0
@@ -74206,14 +74206,14 @@
       "spam": 0
     },
     "6285664938281@s.whatsapp.net": {
-      "exp": 14600,
-      "limit": 19,
+      "exp": 14800,
+      "limit": 15,
       "lastclaim": 1617701486690,
       "warning": 0,
       "command": 0,
       "job": "x",
       "price": 0,
-      "chat": 87,
+      "chat": 116,
       "whitelist": false,
       "isBanned": false,
       "spam": 0
@@ -76221,14 +76221,14 @@
       "spam": 0
     },
     "6285748867987@s.whatsapp.net": {
-      "exp": 500,
-      "limit": 10,
+      "exp": -79500,
+      "limit": 8,
       "lastclaim": 0,
       "warning": 0,
       "command": 0,
       "job": "x",
       "price": 0,
-      "chat": 8,
+      "chat": 17,
       "whitelist": false,
       "isBanned": false,
       "spam": 0
@@ -76466,7 +76466,7 @@
       "novirtex": true,
       "sWelcome": "*Selamat Datang @user di @subject*\n\n*Baca deskripsi grup biar kamu makin cakep. Mwah*",
       "sBye": "",
-      "command": 0
+      "command": 1
     },
     "6282245496356-1602153905@g.us": {
       "isBanned": false,
@@ -89800,10 +89800,49 @@
       "sWelcome": "",
       "sBye": "",
       "command": 0
+    },
+    "6281337380840@s.whatsapp.net": {
+      "isBanned": false,
+      "expired": 0,
+      "welcome": false,
+      "left": false,
+      "warningGroup": false,
+      "nolink": false,
+      "novirtex": false,
+      "nobadword": false,
+      "sWelcome": "",
+      "sBye": "",
+      "command": 0
+    },
+    "6283185344314@s.whatsapp.net": {
+      "isBanned": false,
+      "expired": 0,
+      "welcome": false,
+      "left": false,
+      "warningGroup": false,
+      "nolink": false,
+      "novirtex": false,
+      "nobadword": false,
+      "sWelcome": "",
+      "sBye": "",
+      "command": 0
+    },
+    "62895357853311@s.whatsapp.net": {
+      "isBanned": false,
+      "expired": 0,
+      "welcome": false,
+      "left": false,
+      "warningGroup": false,
+      "nolink": false,
+      "novirtex": false,
+      "nobadword": false,
+      "sWelcome": "",
+      "sBye": "",
+      "command": 0
     }
   },
   "blocked": 0,
-  "banned": 0,
+  "banned": 1,
   "groupMode": true,
   "tebakGambar": "undefined",
   "waktuTebakGambar": "2021-04-06T16:52:02.123Z"
