@@ -11,13 +11,15 @@ let handler  = async (m, { conn, args, usedPrefix, command }) => {
     .then(json => {
 			var yts = '*[ YOUTUBE SEARCH ]*\n\n'
 			var i
-			for(i = 0; i < 10; i++) {
-				yts += '*' + json.result[i].video.title + '*\n'
-				yts += '🗿 *Durasi* : ' + json.result[i].video.duration + '\n'
-				yts += '🗿 *Views* : ' + json.result[i].video.views + '\n'
-				yts += '🗿 *Uploaded* : ' + json.result[i].video.upload_date + '\n'
-				yts += '🗿 *Channel* : ' + json.result[i].uploader.username + '\n'
-				yts += '🗿 *Link* : ' + json.result[i].video.url + '\n\n'
+			for(i = 1; i < 10; i++) {
+				// if (json.result[i].channel.id < 0){
+					yts += '*' + json.result[i].video.title + '*\n'
+					yts += '🗿 *Durasi* : ' + json.result[i].video.duration + '\n'
+					yts += '🗿 *Views* : ' + json.result[i].video.views + '\n'
+					yts += '🗿 *Uploaded* : ' + json.result[i].video.upload_date + '\n'
+					yts += '🗿 *Channel* : ' + json.result[i].uploader.username + '\n'
+					yts += '🗿 *Link* : ' + json.result[i].video.url + '\n\n'
+				// }
 			}
 			conn.reply(m.chat, `${yts}`, m)	
 		}).catch(() => { conn.reply(m.chat, `*[ YOUTUBE SEARCH ]*\n\nFitur Youtube Search Sedang Error Teman !`, m) })

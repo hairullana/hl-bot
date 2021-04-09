@@ -17,7 +17,7 @@ let handler = async (m, { conn, args }) => {
 	x = 0
 	list.slice(0, list.length).map(([user, data], i) => (limit += data.limit))
 	list.slice(0, list.length).map(([user, data], i) => (exp += data.exp))
-	conn.reply(m.chat, `*[ HARTA USER ]*\n\nTotal Uang : Rp. ${format(exp)}\nTotal Limit : ${format(limit)}\n\nRata-Rata Uang : Rp. ${format(Math.floor(exp/list.length))}\nRata-Rata Limit : Rp. ${format(Math.floor(limit/list.length))}\n\nTotal User : ${format(list.length)}`, m)
+	conn.reply(m.chat, `*[ HARTA USER ]*\n\nTotal Uang : Rp. ${format(exp)}\nTotal Limit : ${format(limit)}\n\nRata-Rata Uang : Rp. ${format(Math.floor(exp/list.length))}\nRata-Rata Limit : ${format(Math.floor(limit/list.length))}\n\nTotal User : ${format(list.length)}`, m)
 }
 handler.help = ['total']
 handler.tags = ['exp']

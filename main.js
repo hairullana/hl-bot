@@ -209,6 +209,7 @@ try {
         return conn.reply(m.chat, `*[ OVER SPAM DETECTED ]*\n\nMaaf kamu dibanned dari bot dan dikick dari grup !`, m).then(() => {
           conn.groupRemove(m.chat, [m.sender])
           global.DATABASE.data.users[m.sender].spam = 0
+          global.DATABASE.data.banned += 1
           global.DATABASE.data.users[m.sender].isBanned = true
         })
       }else if((m.isGroup && isAdmin && isBotAdmin) || (m.isGroup && !isBotAdmin) || !m.isGroup || (global.DATABASE.data.users[m.sender].whitelist == true)) {
@@ -218,7 +219,7 @@ try {
         return conn.reply(m.chat, `*[ OVER SPAM DETECTED ]*\n\nMaaf kamu di banned dari bot !\nHubungi owner ( *.owner* ) atau moderator ( *.mods* ) untuk unbanned, tapi harus sadar diri ya bangsat !`, m).then(() => {
           global.DATABASE.data.users[m.sender].spam = 0
           global.DATABASE.data.users[m.sender].isBanned = true
-          global.DATABASE._data.banned += 1
+          global.DATABASE.data.banned += 1
         })
       }
     }
@@ -346,6 +347,7 @@ try {
     // else if (m.text.match(/(hairul|lana)/gi)) {
     //   conn.updatePresence(m.chat, Presence.composing)
     //   conn.sendFile(m.chat, 'media/hl.opus', 'tts.opus', null, m, true)
+      // conn.sendFile(m.chat, 'media/hl1.opus', 'tts.opus', null, m, true)
     //   conn.sendFile(m.chat, 'media/hl2.opus', 'tts.opus', null, m, true)
     //   conn.sendFile(m.chat, 'media/hl3.opus', 'tts.opus', null, m, true)
     //   conn.sendFile(m.chat, 'media/hl4.opus', 'tts.opus', null, m, true)
@@ -354,7 +356,8 @@ try {
     //   conn.sendFile(m.chat, 'media/hl7.opus', 'tts.opus', null, m, true)
     //   conn.sendFile(m.chat, 'media/hl8.opus', 'tts.opus', null, m, true)
     //   conn.sendFile(m.chat, 'media/hl-muah.opus', 'tts.opus', null, m, true)
-    // }else if (m.text.match(/(wildan)/gi)){
+    // }
+    // else if (m.text.match(/(wildan)/gi)){
     //   conn.sendFile(m.chat, 'media/wildan-gay.opus', 'tts.opus', null, m, true)
     // }
   }
@@ -520,19 +523,19 @@ try {
         limitAsli = 10000
       }else if (global.DATABASE._data.users[m.sender].limit > 1100){
         limitAsli = 1000
-      }else if (global.DATABASE._data.users[m.sender].limit > 500){
+      }else if (global.DATABASE._data.users[m.sender].limit > 110){
         limitAsli = 100
-      }else if (global.DATABASE._data.users[m.sender].limit > 200){
-        limitAsli = 50
-      }else if (global.DATABASE._data.users[m.sender].limit > 50){
+      }else if (global.DATABASE._data.users[m.sender].limit > 20){
         limitAsli = 10
       }else if (global.DATABASE._data.users[m.sender].limit > 5) {
         limitAsli = 5
+      }else if (global.DATABASE._data.users[m.sender].limit > 1) {
+        limitAsli = 2
       }else (
         limitAsli = 1
       )
       // user.limit -= limitAsli
-      if (user.limit > 50 || user.exp > 20000000){
+      if (user.limit > 20 || user.exp > 10000000){
         user.limit -= m.limit * limitAsli
       }else {
         user.limit -= m.limit
