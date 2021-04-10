@@ -19,7 +19,7 @@ let handler = async (m, { conn, args, isPrems, isOwner, usedPrefix, command }) =
 }
 handler.help = ['joox'].map(v => v + ' *title*')
 handler.tags = ['downloader']
-//handler.command = /^(joox)$/i
+handler.command = /^(joox)$/i
 handler.owner = false
 handler.mods = false
 handler.premium = false
@@ -29,5 +29,6 @@ handler.admin = false
 handler.botAdmin = false
 handler.fail = null
 handler.limit = true
+handler.premium = true
 handler.exp = 500
 module.exports = handler

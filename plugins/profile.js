@@ -6,6 +6,19 @@ let handler = async (m, { conn, text }) => {
 	}else if(!isNaN(text)) {
 		var number = text
 	}
+
+	function msToDate(ms) {
+		temp = ms
+		days = Math.floor(ms / (24*60*60*1000));
+		daysms = ms % (24*60*60*1000);
+		hours = Math.floor((daysms)/(60*60*1000));
+		hoursms = ms % (60*60*1000);
+		minutes = Math.floor((hoursms)/(60*1000));
+		minutesms = ms % (60*1000);
+		sec = Math.floor((minutesms)/(1000));
+		return days+" Hari "+hours+" Jam "+ minutes + " Menit";
+		// +minutes+":"+sec;
+  }
 	
 	// if(!text && !m.quoted) return conn.reply(m.chat, `*Penggunaan yang benar*\n\n.profile @user\n.profile -> reply chat`, m)
 	if(number.length > 15 || (number.length < 9 && number.length > 0)) return conn.reply(m.chat, `*Masukin nomor yg bener gblk !*`, m)
@@ -58,12 +71,20 @@ let handler = async (m, { conn, text }) => {
 			} else {
 				var whitelist = '❌'
 			}
+
+			now = new Date() * 1
+			if(global.DATABASE._data.users[user].premium == true) {
+				var premium = '✅ (' + msToDate(global.DATABASE._data.users[user].premiumDate - now) + ")"
+			} else {
+				var premium = '❌'
+			}
 		}else{
 			var warn = 0
 			var chat = 0
 			var money = 0
 			var limit = 0
 			var whitelist = '❌'
+			var premium = '❌'
 			var banned = "Belum Terdaftar"
 		}
 		// let badword = global.DATABASE._data.users[user].warning
@@ -75,7 +96,7 @@ let handler = async (m, { conn, text }) => {
 			var name = isName
 		} else {
 			var name = '(Tanpa Nama)'
-		} conn.sendFile(m.chat, pp, 'profile.jpg', `*IDENTITAS MEMBER*\n\n○ *Nama : ${name}*\n○ *Tentang : ${about}*\n○ *Nomor : ${nomor}*\n○ *Uang : Rp. ${Number(money).toLocaleString().replace(/,/g, '.')},-*\n○ *Limit : ${format(limit)}*\n○ *Whitelist : ${whitelist}*\n○ *Warning : ${warn} / 5*\n○ *Konstribusi : ${chat}*\n○ *Banned : ${banned}*\n\n▌│█║▌║▌║║▌║▌║█│▌█║`, m)
+		} conn.sendFile(m.chat, pp, 'profile.jpg', `*IDENTITAS MEMBER*\n\n○ *Nama : ${name}*\n○ *Tentang : ${about}*\n○ *Nomor : ${nomor}*\n○ *Uang : Rp. ${Number(money).toLocaleString().replace(/,/g, '.')},-*\n○ *Limit : ${format(limit)}*\n○ *Whitelist : ${whitelist}*\n○ *Premium : ${premium}*\n○ *Warning : ${warn} / 5*\n○ *Konstribusi : ${chat}*\n○ *Banned : ${banned}*\n\n▌│█║▌║▌║║▌║▌║█│▌█║`, m)
 	}
 }
 handler.help = ['*62xx*','*@user*','*(reply)*'].map(v => 'profile ' + v)

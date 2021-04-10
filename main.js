@@ -39,7 +39,7 @@ global.timestamp = {
 const PORT = process.env.PORT || 3000
 let opts = yargs(process.argv.slice(2)).exitProcess(false).parse()
 global.opts = Object.freeze({...opts})
-global.prefix = new RegExp('^[' + (opts['prefix'] || '!') + ']')
+global.prefix = new RegExp('^[' + (opts['prefix'] || '.') + ']')
 
 // set db awal
 global.DATABASE = new (require('./lib/database'))(opts._[0] ? opts._[0] + '_' : '' + 'database.json', null, 2)
@@ -98,11 +98,14 @@ try {
         if (!isNumber(user.spam)) user.spam = 0
         if (!isNumber(user.chat)) user.chat = 0
         if (!isNumber(user.price)) user.price = 0
+        if (!isNumber(user.premiumDate)) user.premiumDate = 0
       } else global.DATABASE._data.users[m.sender] = {
         exp: 0,
         limit: 10,
         lastclaim: 0,
         warning: 0,
+        premium: false,
+        premiumDate: 0,
         command: 0,
         job: "x",
         price: 0,
@@ -188,6 +191,19 @@ try {
     }
   }
 
+  if (global.DATABASE.data.users[m.sender].premium == true){
+    if (now >= global.DATABASE.data.users[m.sender].premiumDate){
+      conn.reply(m.chat,"*Maaf waktu untuk status premium anda telah berakhir :(*\n*Chat owner untuk invite bot lagi*",m).then(() =>{
+        global.DATABASE.data.users[m.sender].premium = false
+        conn.updatePresence(m.chat, Presence.composing) 
+        let name = 'Hairul Lana'
+        let number = '6283119526456'
+        conn.sendVcard(m.chat, name, number)
+      })
+      
+    }
+  }
+
   // anu
   // let list = Object.entries(global.DATABASE.data.users)
   // list.slice(0, list.length).map(([user, data], i) => (Number(data.exp -= Math.floor((data.exp/100)*50))))
@@ -260,9 +276,9 @@ try {
     return Math.floor(Math.random()*(max-min+1)) + min
   }
 
-	if(!m.fromMe && !m.isGroup && !owner && onGroup && commandNYA == '.') {
+	if(!m.fromMe && !m.isGroup && !owner && onGroup && commandNYA == '.' && global.DATABASE.data.users[m.sender].premium == false) {
     var head = '*[ GROUP MODE ]*\n\nSilahkan masuk ke grup untuk menggunakan bot.'
-    var undang = "Bot Join GC ? Chat owner *Hairul Lana*\nInfo Bot ? Chat owner *Hairul Lana* atau moderator *Loli Cantik*"
+    var undang = "Bot Join GC ? Daftar User Premium ? Chat owner *Hairul Lana*"
     var ig = "Info Bot : instagram.com/loadingtomastah"
     var grup = []
     // gc utama
@@ -276,12 +292,7 @@ try {
         conn.updatePresence(m.chat, Presence.composing) 
         let name = 'Hairul Lana'
         let number = '6283119526456'
-        conn.sendVcard(m.chat, name, number).then(() =>{
-          conn.updatePresence(m.chat, Presence.composing) 
-          let name = 'Loli Cantik'
-          let number = '6281257735703'
-          conn.sendVcard(m.chat, name, number)
-        })
+        conn.sendVcard(m.chat, name, number)
       })
     } else return conn.reply(m.chat, head + "\n\n" + undang, m)
 	}
@@ -536,7 +547,9 @@ try {
         limitAsli = 1
       )
       // user.limit -= limitAsli
-      if (user.limit > 20 || user.exp > 10000000){
+      if (user.premium == true){
+        user.limit = user.limit
+      }else if (user.limit > 20 || user.exp > 10000000){
         user.limit -= m.limit * limitAsli
       }else {
         user.limit -= m.limit

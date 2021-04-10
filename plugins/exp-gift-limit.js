@@ -47,4 +47,5 @@ handler.help = ['gift','giftlimit'].map(v => v + " *total*")
 handler.tags = ['xp']
 handler.command = /^gift|giftlimit$/i
 handler.owner = false
+handler.premium = true
 module.exports = handler
