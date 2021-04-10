@@ -24,9 +24,9 @@ try {
 			conn.reply(m.chat, `*Target has promoted.*`, m)
 	}	
 }
-handler.help = ['*62xx*','*@user*','*(reply)*'].map(v => 'promote ' + v)
+handler.help = ['*62xx*','*@user*','*(reply)*'].map(v => 'admin ' + v)
 handler.tags = ['group admin']
-handler.command = /^(promote)$/i
+handler.command = /^(admin)$/i
 handler.owner = false
 handler.mods = false
 handler.premium = false

@@ -7,7 +7,8 @@ let handler = async (m, { conn, participants }) => {
 handler.help = ['off']
 handler.tags = ['owner']
 handler.command = /^off$/i
-handler.owner = true
+handler.admin = true
 handler.group = false
+handler.botAdmin = true
 
 module.exports = handler

@@ -39,7 +39,7 @@ global.timestamp = {
 const PORT = process.env.PORT || 3000
 let opts = yargs(process.argv.slice(2)).exitProcess(false).parse()
 global.opts = Object.freeze({...opts})
-global.prefix = new RegExp('^[' + (opts['prefix'] || '.') + ']')
+global.prefix = new RegExp('^[' + (opts['prefix'] || '!') + ']')
 
 // set db awal
 global.DATABASE = new (require('./lib/database'))(opts._[0] ? opts._[0] + '_' : '' + 'database.json', null, 2)
@@ -263,6 +263,7 @@ try {
 	if(!m.fromMe && !m.isGroup && !owner && onGroup && commandNYA == '.') {
     var head = '*[ GROUP MODE ]*\n\nSilahkan masuk ke grup untuk menggunakan bot.'
     var undang = "Bot Join GC ? Chat owner *Hairul Lana*\nInfo Bot ? Chat owner *Hairul Lana* atau moderator *Loli Cantik*"
+    var ig = "Info Bot : instagram.com/loadingtomastah"
     var grup = []
     // gc utama
     grup[0] = 'https://chat.whatsapp.com/' + (await conn.groupInviteCode('6285892821182-1510584700@g.us'))
@@ -271,7 +272,7 @@ try {
     acak = getRandom(0,2)
     if (new Date - global.DATABASE.data.users[m.sender].lastclaim > 86400000) {
       global.DATABASE.data.users[m.sender].lastclaim = new Date * 1
-      return conn.reply(m.chat, `${head}\n\n${grup[acak]}\n\n${undang}`, m).then(() =>{
+      return conn.reply(m.chat, `${head}\n\n${grup[acak]}\n\n${ig}\n\n${undang}`, m).then(() =>{
         conn.updatePresence(m.chat, Presence.composing) 
         let name = 'Hairul Lana'
         let number = '6283119526456'
@@ -282,7 +283,7 @@ try {
           conn.sendVcard(m.chat, name, number)
         })
       })
-    } else return conn.reply(m.chat, head, m)
+    } else return conn.reply(m.chat, head + "\n\n" + undang, m)
 	}
 	
   if(enable.nolink == true && !whitelist) {  
