@@ -1,5 +1,5 @@
 let handler = async (m, { conn, args }) => {
-  conn.reply(m.chat, 'Nih linknya, tapi bukan link bokep !\n\nhttps://chat.whatsapp.com/' + (await conn.groupInviteCode(m.chat)), m)
+  conn.reply(m.chat, '*[ LINK GROUP ]*\n\nhttps://chat.whatsapp.com/' + (await conn.groupInviteCode(m.chat)), m)
 }
 handler.help = ['linkgroup','link']
 handler.tags = ['group tools']

@@ -30,7 +30,7 @@ global.APIs = { // API Prefix
 }
 global.APIKeys = { // APIKey Here
   // 'https://website': 'apikey'
-  'https://api.xteam.xyz': 'test'
+  'https://api.xteam.xyz': '01ce7f0db36607bf'
 }
 global.API = (name, path = '/', query = {}, apikeyqueryname) => (name in global.APIs ? global.APIs[name] : name) + path + (query || apikeyqueryname ? '?' + new URLSearchParams(Object.entries({...query, ...(apikeyqueryname ? { [apikeyqueryname]: global.APIKeys[name in global.APIs ? global.APIs[name] : name]} : {})})) : '')
 global.timestamp = {
@@ -165,6 +165,7 @@ try {
 	let enable = global.DATABASE._data.chats[m.chat]
   let onGroup = global.DATABASE.data.groupMode
   let whitelist = global.DATABASE._data.users[m.sender].whitelist
+  let premium = global.DATABASE._data.users[m.sender].premium
 
 
   await conn.chatRead(m.chat)
@@ -277,7 +278,7 @@ try {
   }
 
 	if(!m.fromMe && !m.isGroup && !owner && onGroup && commandNYA == '.' && global.DATABASE.data.users[m.sender].premium == false) {
-    var head = '*[ GROUP MODE ]*\n\nSilahkan masuk ke grup untuk menggunakan bot.'
+    var head = '*[ GROUP MODE ]*\n\nSilahkan masuk ke grup untuk menggunakan bot atau daftar premium untuk menggunakan bot di personal chat.'
     var undang = "Bot Join GC ? Daftar User Premium ? Chat owner *Hairul Lana*"
     var ig = "Info Bot : instagram.com/loadingtomastah"
     var grup = []
@@ -419,7 +420,8 @@ try {
 
         if (!isAccept) continue
         let isMods = isOwner || global.mods.map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').includes(m.sender)
-        let isPrems = isROwner || global.prems.map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').includes(m.sender)
+        // let isPrems = isROwner || global.prems.map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').includes(m.sender)
+        let isPrems = global.DATABASE._data.users[m.sender].premium
         let groupMetadata = m.isGroup ? await this.groupMetadata(m.chat) : {}
         let participants = m.isGroup ? groupMetadata.participants : []
         let user = m.isGroup ? participants.find(u => u.jid == m.sender) : {} // User Data
@@ -636,7 +638,7 @@ global.dfail = (type, m, conn) => {
     rowner: '*[ ERROR COMMAND ]*\n\nHanya owner yang dapat menggunakan perintah ini !',
     owner : '*[ ERROR COMMAND ]*\n\nHanya owner yang dapat menggunakan perintah ini !',
 		mods : '*[ ERROR COMMAND ]*\n\nHanya owner yang dapat menggunakan perintah ini !',
-		premium : '*[ ERROR COMMAND ]*\n\nFitur ini khusus untuk user premium !',
+		premium : '*[ ERROR COMMAND ]*\n\nFitur ini khusus untuk user premium !\nHubungi owner ( *.owner* ) untuk upgrade premium',
 		group : '*[ ERROR COMMAND ]*\n\nPerintah ini hanya dapat digunakan didalam grup !',
 		private : '*[ ERROR COMMAND ]*\n\nPerintah ini hanya dapat digunakan di privat chat !',
 		admin : '*[ ERROR COMMAND ]*\n\nFitur ini khusus untuk admin grup !',

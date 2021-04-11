@@ -20,7 +20,7 @@ let handler = async (m, { conn }) => {
 }
 handler.help = ['grouplist']
 handler.tags = ['group tools']
-handler.command = /^(group(s|list))$/i
+handler.command = /^(grouplist|listgroup)$/i
 handler.owner = false
 handler.mods = false
 handler.premium = false

@@ -5,7 +5,7 @@ let handler = async (m, { conn, participants }) => {
   // } else m.reply('Ada nomor host disini...')
 }
 handler.help = ['off']
-handler.tags = ['owner']
+handler.tags = ['group']
 handler.command = /^off$/i
 handler.admin = true
 handler.group = false

@@ -5,12 +5,12 @@ let handler = async (m, { conn }) => {
 	conn.reply(m.chat, `BOT Berhasil *DI AKTIFKAN* Di Grup Ini !`, m)
 }
 handler.help = ['on']
-handler.tags = ['owner']
+handler.tags = ['group']
 handler.command = /^on$/i
 handler.exp = 0
-// handler.group = true
+handler.group = true
 handler.private = false
 handler.admin = true
-handler.owner = true
-handler.botAdmin = true
+// handler.owner = true
+// handler.botAdmin = true
 module.exports = handler
