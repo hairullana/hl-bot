@@ -23,9 +23,9 @@ let handler = async (m, { conn, args, usedPrefix }) => {
         }
     }
 }
-// handler.help = ['tafsir nama-surah ayat id/en']
-handler.tags = ['quran']
-// handler.command = /^tafsir$/i
+handler.help = ['tafsir nama-surah ayat id/en']
+handler.tags = ['islam']
+handler.command = /^tafsir$/i
 handler.owner = false
 handler.mods = false
 handler.premium = false

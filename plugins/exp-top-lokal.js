@@ -47,7 +47,7 @@ let handler = async (m, { conn, args, participants }) => {
 _Kamu punya *Rp. ${format(global.DATABASE.data.users[m.sender].exp)}* dan *${format(global.DATABASE.data.users[m.sender].limit)} Limit*_
 _Kamu peringkat *${usersExp.indexOf(m.sender) + 1}* dari *${usersExp.length}* member grup ${conn.getName(m.chat)}_
   
-${sortedLim.slice(0, len).map(([user, data], i) => (i + 1) + '. ' + conn.getName(user) + '\n    wa.me/' + user.split('@')[0] + '\n    *Rp. ' + format(data.limit) + '*').join`\n`}
+${sortedLim.slice(0, len).map(([user, data], i) => (i + 1) + '. ' + conn.getName(user) + '\n    wa.me/' + user.split('@')[0] + '\n    *' + format(data.limit) + ' Limit*').join`\n`}
     `.trim()
   
     conn.reply(m.chat, text, m)

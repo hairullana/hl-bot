@@ -10,7 +10,7 @@ let handler = async (m, { conn, args }) => {
   }
   conn.reply(m.chat,'*Tunggu sebenar . . .*',m)
   let json = await res.json()
-  if (!json.result) return conn.reply(m.chat,'*[ IG DOWNLOADER ]*\n\nMaaf fitur sedang error',m)
+  if (!json.result) return conn.reply(m.chat,json,m)
   let { name, username, likes, caption, data } = json.result
   let text = `
 Username: ${name} (@${username})
