@@ -20,7 +20,7 @@ const format = num => {
   )
 }
 
-global.owner = ['6283119526456','6282363173075'] // Put your number here
+global.owner = ['6283119526456','6282215215399'] // Put your number here
 global.mods = ['6281257735703'] // Want some help?
 global.prems = [] // Premium user has unlimited limit
 global.APIs = { // API Prefix
@@ -194,7 +194,7 @@ try {
 
   if (global.DATABASE.data.users[m.sender].premium == true){
     if (now >= global.DATABASE.data.users[m.sender].premiumDate){
-      conn.reply(m.chat,"*Maaf waktu untuk status premium anda telah berakhir :(*\n*Chat owner untuk invite bot lagi*",m).then(() =>{
+      conn.reply(m.chat,"*Maaf waktu untuk status premium anda telah berakhir :(*\n*Chat owner untuk upgrade premium lagi*",m).then(() =>{
         global.DATABASE.data.users[m.sender].premium = false
         conn.updatePresence(m.chat, Presence.composing) 
         let name = 'Hairul Lana'
