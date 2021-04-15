@@ -127,7 +127,7 @@ try {
         if (!'sBye' in chat) chat.sBye = ''
         if (!isNumber(chat.command)) user.command = 0
       } else global.DATABASE._data.chats[m.chat] = {
-        isBanned: false,
+        isBanned: true,
         expired: 0,
         welcome: false,
         left: false,
@@ -295,7 +295,14 @@ try {
         let number = '6283119526456'
         conn.sendVcard(m.chat, name, number)
       })
-    } else return conn.reply(m.chat, head + "\n\n" + undang, m)
+    } else {
+      return conn.reply(m.chat, head + "\n\n" + undang, m).then(() =>{
+      conn.updatePresence(m.chat, Presence.composing) 
+      let name = 'Hairul Lana'
+      let number = '6283119526456'
+      conn.sendVcard(m.chat, name, number)
+      })
+    }
 	}
 	
   if(enable.nolink == true && !whitelist) {  
