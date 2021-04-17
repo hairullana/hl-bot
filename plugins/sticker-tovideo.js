@@ -17,6 +17,7 @@ let handler = async (m, { conn, args, usedPrefix }) => {
 
     const filename = getRandom()
     const savedFilename = await conn.downloadAndSaveMediaMessage(mediaData, `./tmp/${filename}`)
+    conn.reply(m.chat,'*Tunggu sebentar . . .*',m)
 
     if (isQuotedSticker) {
         await webp2mp4File(savedFilename)

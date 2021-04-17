@@ -3,6 +3,7 @@ let yts = require('yt-search')
 const { servers, yta, ytv } = require('../lib/y2mate')
 let handler = async (m, { conn, command, text, isPrems, isOwner }) => {
   if (!text) throw `*[ SEARCH ERROR ]*\n\nMasukkan command yang benar, misal :\n*.${command} pale pale*`
+  conn.reply(m.chat,'*Tunggu sebentar . . .*',m)
   let results = await yts(text)
   let vid = results.all.find(video => video.seconds < 1200) // max 20mnt
   if (!vid) throw '*[ SEARCH ERROR ]*\n\nVideo / Audio Tidak ditemukan'

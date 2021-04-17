@@ -153,7 +153,7 @@ try {
     }
     if (!m.fromMe && opts['self']) return
     if (!m.text) return
-    if (m.isBaileys) return
+    // if (m.isBaileys) return
     m.exp += 0
     
   let groupMetadata = m.isGroup ? await this.groupMetadata(m.chat) : {}
@@ -558,7 +558,7 @@ try {
       // user.limit -= limitAsli
       if (user.premium == true){
         user.limit = user.limit
-      }else if (user.limit > 20 || user.exp > 10000000){
+      }else if (user.limit > 20 || user.exp > 100000000){
         user.limit -= m.limit * limitAsli
       }else {
         user.limit -= m.limit

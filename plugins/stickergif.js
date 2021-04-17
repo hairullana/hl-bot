@@ -8,6 +8,7 @@ let handler = async (m, { conn, args, usedPrefix }) => {
     const isMedia = (type === 'imageMessage' || type === 'videoMessage')
     const isQuotedImage = type === 'extendedTextMessage' && content.includes('imageMessage')
     const isQuotedVideo = type === 'extendedTextMessage' && content.includes('videoMessage')
+    conn.reply(m.chat,'*Tunggu sebentar . . .*',m)
     if ((isMedia && !m.message.videoMessage || isQuotedImage) && args.length == 0) {
         const encmedia = isQuotedImage ? JSON.parse(JSON.stringify(m).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo : m
         const media = await conn.downloadAndSaveMediaMessage(encmedia)
