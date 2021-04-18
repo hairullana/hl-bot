@@ -131,7 +131,7 @@ try {
         if (!'sBye' in chat) chat.sBye = ''
         if (!isNumber(chat.command)) user.command = 0
       } else global.DATABASE._data.chats[m.chat] = {
-        isBanned: true,
+        isBanned: false,
         expired: 0,
         welcome: false,
         left: false,
@@ -340,7 +340,7 @@ try {
     if (global.DATABASE.data.users[bebeb].pasangan !== ""){
       var ayang = global.DATABASE.data.users[bebeb].pasangan
       
-      if (global.DATABASE.data.users[bebeb].pasangan == ayang && global.DATABASE.data.users[ayang].pasangan == bebeb && (m.sender != global.DATABASE.data.users[bebeb] || m.sender != global.DATABASE.data.users[ayang])){
+      if (global.DATABASE.data.users[bebeb].pasangan == ayang && global.DATABASE.data.users[ayang].pasangan == bebeb && (m.sender != bebeb || m.sender != global.DATABASE.data.users[bebeb].pasangan)){
         conn.reply(m.chat, `*Hey njing ngapain ngetag ngetag bebebnya si @${ayang.split('@')[0]} 😠😠😠*`, m,{contextInfo: {
           mentionedJid: [ayang]
         }})

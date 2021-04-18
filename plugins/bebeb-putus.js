@@ -1,13 +1,21 @@
-let handler = async (m, { conn, text }) => {
-  var temp = global.DATABASE.data.users[m.sender].pasangan
-  global.DATABASE.data.users[m.sender].pasangan = ""
-  if(global.DATABASE.data.users[m.sender].pasangan == "") {
-    conn.reply(m.chat,`*Sadar diri bangsat, anda tidak berpacaran dengan siapa siapa.*`,m)
-  }else if (global.DATABASE.data.users[temp].pasangan == m.sender){
-    global.DATABASE.data.users[temp].pasangan = ""
-    conn.reply(m.chat,`*Berhasil putus hubungan dengan @${temp.split('@')[0]}\n\nMasih banyak manusia lain njing, jadi jangan bundir dulu !*`,m,{contextInfo: {
-      mentionedJid: [temp]
+let handler = async (m, { conn }) => {
+  ayg = global.DATABASE.data.users[m.sender]
+
+  if(ayg.pasangan == ""){
+    return conn.reply(m.chat,`*Sadar diri bangsat, anda tidak berpacaran dengan siapa siapa.*`,m)
+  }
+  
+  beb = global.DATABASE.data.users[global.DATABASE.data.users[m.sender].pasangan]
+  // return conn.reply(m.chat,ayg.pasangan + ' ' + beb + '\n\n' + beb.pasangan + ' ' + ayg,m)
+
+  if (m.sender == beb.pasangan){
+    conn.reply(m.chat,`*Berhasil putus hubungan dengan @${global.DATABASE.data.users[m.sender].pasangan.split('@')[0]}*\n\n*Masih banyak manusia lain njing, jadi jangan bundir dulu !*`,m,{contextInfo: {
+      mentionedJid: [global.DATABASE.data.users[m.sender].pasangan]
     }})
+    ayg.pasangan = ""
+    beb.pasangan = ""
+  }else {
+    conn.reply(m.chat,`*Sadar diri bangsat, anda tidak berpacaran dengan siapa siapa.*`,m)
   }
 }
 handler.help = ['putus']

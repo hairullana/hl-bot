@@ -8,7 +8,7 @@ handler.help = ['off']
 handler.tags = ['group']
 handler.command = /^off$/i
 handler.owner = true
-handler.group = false
+// handler.group = false
 // handler.botAdmin = true
 
 module.exports = handler
