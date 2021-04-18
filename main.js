@@ -99,11 +99,15 @@ try {
         if (!isNumber(user.chat)) user.chat = 0
         if (!isNumber(user.price)) user.price = 0
         if (!isNumber(user.premiumDate)) user.premiumDate = 0
+        if (!isNumber(user.afk)) user.afk = -1
       } else global.DATABASE._data.users[m.sender] = {
         exp: 0,
         limit: 10,
         lastclaim: 0,
         warning: 0,
+        afk: -1,
+        afkReason: '',
+        pasangan: '',
         premium: false,
         premiumDate: 0,
         command: 0,
@@ -166,6 +170,7 @@ try {
   let onGroup = global.DATABASE.data.groupMode
   let whitelist = global.DATABASE._data.users[m.sender].whitelist
   let premium = global.DATABASE._data.users[m.sender].premium
+  let pasangan = global.DATABASE._data.users[m.sender].pasangan
 
 
   await conn.chatRead(m.chat)
@@ -181,7 +186,7 @@ try {
       conn.reply(m.chat,"*Maaf waktunya bot untuk meninggalkan grup :(*\n*Chat owner untuk invite bot lagi*").then(() =>{
         conn.updatePresence(m.chat, Presence.composing) 
         let name = 'Hairul Lana'
-        let number = '6283119526456'
+        let number = global.owner[1]
         conn.sendVcard(m.chat, name, number).then(() =>{
           conn.groupLeave(m.chat).then(() =>{
             global.DATABASE.data.chats[m.chat].expired = 0
@@ -198,7 +203,7 @@ try {
         global.DATABASE.data.users[m.sender].premium = false
         conn.updatePresence(m.chat, Presence.composing) 
         let name = 'Hairul Lana'
-        let number = '6283119526456'
+        let number = global.owner[1]
         conn.sendVcard(m.chat, name, number)
       })
       
@@ -277,6 +282,8 @@ try {
     return Math.floor(Math.random()*(max-min+1)) + min
   }
 
+  
+
 	if(!m.fromMe && !m.isGroup && !owner && onGroup && commandNYA == '.' && global.DATABASE.data.users[m.sender].premium == false) {
     var head = '*[ GROUP MODE ]*\n\nSilahkan masuk ke grup untuk menggunakan bot atau daftar premium untuk menggunakan bot di personal chat.'
     var undang = "Bot Join GC ? Daftar User Premium ? Chat owner *Hairul Lana*"
@@ -291,14 +298,14 @@ try {
       return conn.reply(m.chat, `${head}\n\n${grup[acak]}\n\n${ig}\n\n${undang}`, m).then(() =>{
         conn.updatePresence(m.chat, Presence.composing) 
         let name = 'Hairul Lana'
-        let number = '6283119526456'
+        let number = global.owner[1]
         conn.sendVcard(m.chat, name, number)
       })
     } else {
       return conn.reply(m.chat, head + "\n\n" + undang, m).then(() =>{
       conn.updatePresence(m.chat, Presence.composing) 
       let name = 'Hairul Lana'
-      let number = '6283119526456'
+      let number = global.owner[1]
       conn.sendVcard(m.chat, name, number)
       })
     }
@@ -312,6 +319,31 @@ try {
         // conn.reply(m.chat,`*[ LINK DETECTOR ]*\n\nSorry motherfucker, you will be removed from this group !`,m).then(() => {
         // conn.groupRemove(m.chat, [m.sender],m)
         // })
+      }
+    }
+  }
+
+  if (m.text.match(/(@62)/gi) && !m.fromMe){
+    var xxx = m.text.split(' ')
+    var jancok
+    for (i=0;i<xxx.length;i++){
+      if (xxx[i].match(/(@62)/gi)){
+        jancok = xxx[i]
+        // conn.reply(m.chat, jancok, m)
+        jancok = jancok.replace(/@/g, '')
+        // conn.reply(m.chat, jancok, m)
+        i = xxx.length
+      }
+    }
+    // return conn.reply(m.chat, jancok, m)
+    var bebeb = jancok + "@s.whatsapp.net"
+    if (global.DATABASE.data.users[bebeb].pasangan !== ""){
+      var ayang = global.DATABASE.data.users[bebeb].pasangan
+      
+      if (global.DATABASE.data.users[bebeb].pasangan == ayang && global.DATABASE.data.users[ayang].pasangan == bebeb && (m.sender != global.DATABASE.data.users[bebeb] || m.sender != global.DATABASE.data.users[ayang])){
+        conn.reply(m.chat, `*Hey njing ngapain ngetag ngetag bebebnya si @${ayang.split('@')[0]} 😠😠😠*`, m,{contextInfo: {
+          mentionedJid: [ayang]
+        }})
       }
     }
   }

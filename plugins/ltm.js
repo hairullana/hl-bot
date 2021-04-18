@@ -17,5 +17,5 @@ let handler = async (m, { conn, text }) => {
 handler.help = ['ltm']
 handler.tags = ['info']
 handler.command = /^ltm$/i
-handler.admin = true
+handler.owner = true
 module.exports = handler

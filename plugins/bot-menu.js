@@ -39,6 +39,7 @@ let handler  = async (m, { conn, usedPrefix: _p }) => {
       'xp': 'MONEY & LIMIT',
       'premium': 'PREMIUM',
       'game': 'GAME',
+      'gabut': 'GABUT',
       'sticker': 'STICKER',
       'images' : 'IMAGES',
       'data' : 'SEARCHING',
@@ -77,7 +78,7 @@ let handler  = async (m, { conn, usedPrefix: _p }) => {
 
     conn.menu = conn.menu ? conn.menu : {}
     // let before = conn.menu.before || `*${conn.getName(conn.user.jid)} BOT*\n\nHai, %name!\n*%exp XP | %limit Limit*\n*%week, %date [%time]*\n_Uptime: %uptime_\n%totalreg User in database\n%readmore`
-    let before = conn.menu.before || `Hai *%name*\nSaldo Rek Rp. %exp (%limit Limit)\nTotal User : %totalreg\n\nBingung dengan bot ? Ketik *.tutorial*\nUpgrade premium ? Ketik *.infopremium*\nIngin undang bot ke GC ? Ketik *.owner*\nSPAM = Banned/Kick Otomatis\n\nInfo Bot: https://instagram.com/loadingtomastah\n\n%readmore`
+    let before = conn.menu.before || `Hai *%name*\nSaldo Rek Rp. %exp (%limit Limit)\nTotal User : %totalreg\n\nBingung dengan bot ? Ketik *.tutorial*\nUpgrade premium ? Ketik *.infopremium*\nIngin undang bot ke GC ? Ketik *.owner*\nSPAM = Banned/Kick Otomatis\n\nInfo Bot:\nhttps://instagram.com/loadingtomastah\nhttps://t.me/loadingtomastah\n\n%readmore`
     let header = conn.menu.header || '╔═ ✪〘 %category 〙✪'
     let body   = conn.menu.body   || '║ ❖ %cmd%islimit'
     let footer = conn.menu.footer || '╚════════════════\n'
