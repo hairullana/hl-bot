@@ -3,10 +3,11 @@ let handler = async (m, { conn, text, participants }) => {
 	await conn.updatePresence(m.chat, Presence.composing) 
 	let member = participants.map(u => u.jid)
 	if(!text) {
-		var sum = member.length
+		var pesan = "Harap aktif di grup karena akan ada pembersihan member setiap saat"
 	} else {
-		var sum = text
+		var pesan = text
 	}
+	sum = member.length
 	var total = 0
 	var sider = []
 	for(let i = 0; i < sum; i++) {
@@ -24,7 +25,7 @@ let handler = async (m, { conn, text, participants }) => {
 		}
 	}
 	if(total == 0) return conn.reply(m.chat, `*Digrup ini tidak terdapat sider.*`, m)
-	conn.reply(m.chat, `*${total}/${sum} anggota adalah sider (penyimak profesional)*\n\n_“Harap aktif di grup karena akan ada pembersihan member setiap saat”_\n\n*LIST SIDER :*\n${sider.map(v => '  ○ @' + v.replace(/@.+/, '')).join('\n')}`, m,{ contextInfo: { mentionedJid: sider } })
+	conn.reply(m.chat, `*${total}/${sum} anggota adalah sider (penyimak profesional)*\n\n_“${pesan}”_\n\n*LIST SIDER :*\n${sider.map(v => '  ○ @' + v.replace(/@.+/, '')).join('\n')}`, m,{ contextInfo: { mentionedJid: sider } })
 }
 handler.help = ['sider']
 handler.tags = ['group', 'group admin']
@@ -34,7 +35,7 @@ handler.mods = false
 handler.premium = false
 handler.group = true
 handler.private = false
-handler.admin = true
+// handler.admin = true
 handler.botAdmin = true
 handler.fail = null
 module.exports = handler

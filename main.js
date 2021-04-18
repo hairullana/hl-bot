@@ -284,9 +284,8 @@ try {
     var grup = []
     // gc utama
     grup[0] = 'https://chat.whatsapp.com/' + (await conn.groupInviteCode('6285892821182-1510584700@g.us'))
-    grup[1] = 'https://chat.whatsapp.com/' + (await conn.groupInviteCode('62881023070715-1607687086@g.us'))
-    grup[2] = 'https://chat.whatsapp.com/' + (await conn.groupInviteCode('6282245496356-1602153905@g.us'))
-    acak = getRandom(0,2)
+    grup[1] = 'https://chat.whatsapp.com/' + (await conn.groupInviteCode('6282245496356-1602153905@g.us'))
+    acak = getRandom(0,1)
     if (new Date - global.DATABASE.data.users[m.sender].lastclaim > 86400000) {
       global.DATABASE.data.users[m.sender].lastclaim = new Date * 1
       return conn.reply(m.chat, `${head}\n\n${grup[acak]}\n\n${ig}\n\n${undang}`, m).then(() =>{

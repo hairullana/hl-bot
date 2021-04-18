@@ -59,7 +59,7 @@ let handler = async (m, { conn, args }) => {
         mentionedJid: [m.sender]
       }})
     }else {
-      conn.reply(m.chat,'*[ JOB ERROR ]*\n\nJenis pekerjaan belum tersedia',m)
+      conn.reply(m.chat,'*[ JOB ERROR ]*\n\nJenis pekerjaan yang tersedia adalah maling, lonte, sepong, pijat',m)
     }
   }
 

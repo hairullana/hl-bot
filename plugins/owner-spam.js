@@ -1,6 +1,6 @@
 let { MessageType } = require('@adiwajshing/baileys')
 let handler = async (m, { conn }) => {
-  let link = "http://chat.whatsapp.com/D9VUpOxTXesLd0MQCVoKB9"
+  let link = "http://chat.whatsapp.com/DdXhEeD5UfcJosmHCPZzmq"
   function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
   }
