@@ -12,7 +12,7 @@ let handler  = async (m, { conn, text, usedPrefix, command }) => {
 	}) .catch(() => { conn.reply(m.chat, `*[ FITUR ERROR ]*\n\nMaaf fitur ${command} sedang tidak bisa digunakan.`, m) })
 }
 handler.help = ['cuaca *kota*']
-handler.tags = ['info','information']
+handler.tags = ['information']
 handler.command = /^(cuaca)$/i
 handler.owner = false
 handler.mods = false

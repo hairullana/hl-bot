@@ -323,7 +323,7 @@ try {
     }
   }
 
-  if (m.text.match(/(@62)/gi) && !m.fromMe){
+  if (m.text.match(/(@62)/gi) && !m.fromMe && m.text.slice(0, 1) != myprefix){
     var xxx = m.text.split(' ')
     var jancok
     for (i=0;i<xxx.length;i++){
@@ -340,8 +340,11 @@ try {
     if (global.DATABASE.data.users[bebeb].pasangan !== ""){
       var ayang = global.DATABASE.data.users[bebeb].pasangan
       
-      if (global.DATABASE.data.users[bebeb].pasangan == ayang && global.DATABASE.data.users[ayang].pasangan == bebeb && (m.sender != bebeb || m.sender != global.DATABASE.data.users[bebeb].pasangan)){
-        conn.reply(m.chat, `*Hey njing ngapain ngetag ngetag bebebnya si @${ayang.split('@')[0]} 😠😠😠*`, m,{contextInfo: {
+      if (global.DATABASE.data.users[bebeb].pasangan == ayang && global.DATABASE.data.users[ayang].pasangan == bebeb && (m.sender != bebeb || m.sender != ayang)){
+        var denda = 1
+        var nominalDenda = (global.DATABASE.data.users[m.sender].exp/100)*denda
+        global.DATABASE.data.users[m.sender].exp -= nominalDenda
+        conn.reply(m.chat, `*Hey njing ngapain ngetag ngetag bebebnya si @${ayang.split('@')[0]} 😠😠😠 gatelan amat !!!*\n\n*Denda Rp. ${format(nominalDenda)} (1%)*`, m,{contextInfo: {
           mentionedJid: [ayang]
         }})
       }

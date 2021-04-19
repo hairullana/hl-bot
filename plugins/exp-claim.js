@@ -17,13 +17,14 @@ let handler = async (m, { conn }) => {
   }
 
   if (new Date - global.DATABASE._data.users[m.sender].lastclaim > waktuClaim) {
-    if (global.DATABASE._data.users[m.sender].limit > 200 || global.DATABASE._data.users[m.sender].exp > 25000000){
-      hadiah = 5
-    }else if (global.DATABASE._data.users[m.sender].limit > 50 || global.DATABASE._data.users[m.sender].exp > 10000000) {
-      hadiah = 10
-    }else {
-      hadiah = 20
-    }
+    // if (global.DATABASE._data.users[m.sender].limit > 200 || global.DATABASE._data.users[m.sender].exp > 25000000){
+    //   hadiah = 5
+    // }else if (global.DATABASE._data.users[m.sender].limit > 50 || global.DATABASE._data.users[m.sender].exp > 10000000) {
+    //   hadiah = 10
+    // }else {
+    //   hadiah = 20
+    // }
+    hadiah = 30
     conn.reply(m.chat, `*[ LIMIT CLAIM ]*\n\nSelamat bangsat dapet bonus *${hadiah} Limit*\nSilahkan claim lagi besok`, m)  
     global.DATABASE._data.users[m.sender].limit += hadiah
     
