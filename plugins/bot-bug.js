@@ -8,9 +8,9 @@ let handler  = async (m, { conn, text}) => {
     conn.reply(m.chat,`*Laporan bug / error  berhasil di kirim*\n\n*Fitur ini untuk melaporkan jika bot ada error*\n*Tahukah kamu fakta mengejutkan bahwa laporan palsu / main-main dapat membuatmu terBANNED*`,m)
   }
 }
-handler.help = ['bug *text*']
+handler.help = ['bug *text*','error *text*']
 handler.tags = ['info']
-handler.command = /^(bug)$/i
+handler.command = /^(bug|error)$/i
 handler.owner = false
 handler.mods = false
 handler.premium = false

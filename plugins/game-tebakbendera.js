@@ -1,8 +1,8 @@
 let fetch = require('node-fetch')
 const { MessageType } = require('@adiwajshing/baileys')
 
-let timeout = 120000
-let poin = 250000
+let timeout = 250000
+let poin = 500
 let handler = async (m, { conn, usedPrefix }) => {
     conn.tebakbendera = conn.tebakbendera ? conn.tebakbendera : {}
     let id = m.chat
@@ -15,7 +15,7 @@ let handler = async (m, { conn, usedPrefix }) => {
     let json = await res.json()
     // if (!json.status) throw json
     let caption = `
-*[ TEBAK BENDERA ]*
+TEBAK BENDERA
 
 ${json.bendera}
 

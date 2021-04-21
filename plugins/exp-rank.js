@@ -24,7 +24,7 @@ let handler = async (m, { conn, args, participants }) => {
   let name = conn.getName(m.sender)
   let usersExp = sortedExp.map(v => v[0])
   let usersLim = sortedLim.map(v => v[0])
-  let len = args[0] && rgs[0].length > 0 ? Math.min(1000, Math.max(parseInt(args[0]), 5)) : Math.min(10, sortedExp.length)
+  let len = args[0] && args[0].length > 0 ? Math.min(1000, Math.max(parseInt(args[0]), 5)) : Math.min(10, sortedExp.length)
 
   if (args[0] > 25) {
     conn.reply(m.chat, `Masukkan max 25 ya bgst, ntar ngelag kntl !`, m)

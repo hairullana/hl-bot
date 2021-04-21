@@ -16,7 +16,7 @@ let handler = async (m, { conn }) => {
 		// +minutes+":"+sec;
   }
   let txt = conn.chats.array.filter(v => v.jid.endsWith('g.us')).map(v =>`${conn.getName(v.jid)}\n${msToDate(global.DATABASE.data.chats[v.jid].expired - new Date())} [${v.read_only ? 'Left' : 'Joined'}]`).join`\n\n`
-  conn.reply(m.chat, '*[ GROUP LIST ]*\n\n' + txt, m)
+  conn.reply(m.chat,txt, m)
 }
 handler.help = ['grouplist']
 handler.tags = ['group tools']

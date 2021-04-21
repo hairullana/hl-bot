@@ -30,7 +30,8 @@ global.APIs = { // API Prefix
 }
 global.APIKeys = { // APIKey Here
   // 'https://website': 'apikey'
-  'https://api.xteam.xyz': '01ce7f0db36607bf'
+  'https://videfikri.com': '',
+  'https://api.xteam.xyz': 'hairullana'
 }
 global.API = (name, path = '/', query = {}, apikeyqueryname) => (name in global.APIs ? global.APIs[name] : name) + path + (query || apikeyqueryname ? '?' + new URLSearchParams(Object.entries({...query, ...(apikeyqueryname ? { [apikeyqueryname]: global.APIKeys[name in global.APIs ? global.APIs[name] : name]} : {})})) : '')
 global.timestamp = {
@@ -337,16 +338,18 @@ try {
     }
     // return conn.reply(m.chat, jancok, m)
     var bebeb = jancok + "@s.whatsapp.net"
-    if (global.DATABASE.data.users[bebeb].pasangan !== ""){
+    if (!m.fromMe && global.DATABASE.data.users[bebeb].pasangan !== ""){
       var ayang = global.DATABASE.data.users[bebeb].pasangan
       
-      if (global.DATABASE.data.users[bebeb].pasangan == ayang && global.DATABASE.data.users[ayang].pasangan == bebeb && (m.sender != bebeb || m.sender != ayang)){
-        var denda = 1
-        var nominalDenda = (global.DATABASE.data.users[m.sender].exp/100)*denda
-        global.DATABASE.data.users[m.sender].exp -= nominalDenda
-        conn.reply(m.chat, `*Hey njing ngapain ngetag ngetag bebebnya si @${ayang.split('@')[0]} 😠😠😠 gatelan amat !!!*\n\n*Denda Rp. ${format(nominalDenda)} (1%)*`, m,{contextInfo: {
-          mentionedJid: [ayang]
-        }})
+      if (global.DATABASE.data.users[bebeb].pasangan == ayang && global.DATABASE.data.users[ayang].pasangan == bebeb && m.sender != bebeb){
+        if (m.sender != ayang){
+          var denda = 0.1
+          var nominalDenda = Math.ceil((global.DATABASE.data.users[m.sender].exp/100)*denda)
+          global.DATABASE.data.users[m.sender].exp -= nominalDenda
+          conn.reply(m.chat, `*Hey njing ngapain ngetag ngetag bebebnya si @${ayang.split('@')[0]} 😠😠😠 gatelan amat !!!*\n\n*Denda Rp. ${format(nominalDenda)} (${denda}%)*`, m,{contextInfo: {
+            mentionedJid: [ayang]
+          }})
+        }
       }
     }
   }
@@ -387,7 +390,7 @@ try {
     }
   }
    
-  if(m.isGroup && global.DATABASE.data.chats[m.chat].isBanned == false && global.DATABASE.data.users[m.sender].isBanned == false){
+  if(!m.fromMe  &&global.DATABASE.data.chats[m.chat].isBanned == false && global.DATABASE.data.users[m.sender].isBanned == false){
     if (m.text.match(/(mkasih|makasih|thanks|thx|mksih|mksi|makasi|mksh)/gi)) {
       conn.updatePresence(m.chat, Presence.composing) 
       conn.sendFile(m.chat, 'media/sama-sama.opus', 'tts.opus', null, m, true)
@@ -592,7 +595,7 @@ try {
       // user.limit -= limitAsli
       if (user.premium == true){
         user.limit = user.limit
-      }else if (user.limit > 20 || user.exp > 100000000){
+      }else if (user.limit > 50 || user.exp > 100000000){
         user.limit -= m.limit * limitAsli
       }else {
         user.limit -= m.limit

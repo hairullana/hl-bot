@@ -3,7 +3,7 @@ let fetch = require('node-fetch')
 let handler  = async (m, { conn, text, usedPrefix, command }) => {
 	await conn.updatePresence(m.chat, Presence.composing)
   if (!text) return conn.reply(m.chat,`*[ JADWAL SHOLAT ERROR ]*\n\nSilahkan masukkan nama kota\nContoh : ${usedPrefix}${command} denpasar`)
-	fetch('https://api.xteam.xyz/jadwalsholat?kota=' + text + '&APIKEY=01ce7f0db36607bf')
+	fetch('https://api.xteam.xyz/jadwalsholat?kota=' + text + '&APIKEY=hairullana')
 		.then(res => res.json())
 		.then(batch => {
 			conn.updatePresence(m.chat, Presence.composing) 
