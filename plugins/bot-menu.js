@@ -41,6 +41,8 @@ let handler  = async (m, { conn, usedPrefix: _p }) => {
       'game': 'GAME',
       'gabut': 'GABUT',
       'sticker': 'STICKER',
+      'creator': 'CREATOR',
+      'logo': 'LOGO',
       'images' : 'IMAGES',
       'data' : 'SEARCHING',
       'tools': 'TOOLS',

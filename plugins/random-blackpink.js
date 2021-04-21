@@ -11,9 +11,9 @@ let handler = async(m, { conn, args, usedPrefix, command }) => {
 
 }
 
-handler.help = ['blackpink']
+handler.help = ['blackpinkrandom']
 handler.tags = ['images']
-handler.command = /^(blackpink)$/i
+handler.command = /^(blackpinkrandom)$/i
 handler.owner = false
 handler.mods = false
 handler.premium = false
