@@ -78,7 +78,7 @@ let handler = async (m, { conn, args, usedPrefix }) => {
             })
         })
     } else {
-        conn.reply(m.chat,`*[ ERROR ]*\n\nGagal membuat sticker gif, mungkin videomu terlalu panjang`,m)
+        conn.reply(m.chat,`*[ ERROR ]*\n\nGagal membuat sticker gif, mungkin videomu terlalu panjang (maks 10 detik)`,m)
     }
 }
 handler.help = ['stickergif *(caption|reply)*','sgif *(caption|reply)*']

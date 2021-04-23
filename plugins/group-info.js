@@ -12,6 +12,7 @@ let handler = async (m, { conn }) => {
 		let filter = global.DATABASE.data.chats[m.chat].warningGroup
 		let nolink = global.DATABASE.data.chats[m.chat].nolink
 		let novirtex = global.DATABASE.data.chats[m.chat].novirtex
+		let adminMode = global.DATABASE.data.chats[m.chat].adminMode
     
 	var name = conn.getName(m.chat)
 	function msToDate(ms) {
@@ -31,15 +32,14 @@ let handler = async (m, { conn }) => {
 		// +minutes+":"+sec;
   }
 
-	conn.sendFile(m.chat, pp, 'profile.jpg', `*[ ${ucword(name)} ]*\n\n  - Expired : ${msToDate(global.DATABASE.data.chats[m.chat].expired - new Date())}\n  - Anti-Link : ${data(nolink)}\n  - Anti-Virtex : ${data(novirtex)}\n  - Anti-Badword : ${data(filter)}\n  - Welcome Msg : ${data(welcome)}\n  - Leave Msg : ${data(left)}`, m)
+	conn.sendFile(m.chat, pp, 'profile.jpg', `*[ ${ucword(name)} ]*\n\n  - Expired : ${msToDate(global.DATABASE.data.chats[m.chat].expired - new Date())}\n  - Admin Mode : ${data(adminMode)}\n  - Anti-Link : ${data(nolink)}\n  - Anti-Virtex : ${data(novirtex)}\n  - Anti-Badword : ${data(filter)}\n  - Welcome Msg : ${data(welcome)}\n  - Leave Msg : ${data(left)}`, m)
 	}
 }
 handler.help = ['groupinfo']
 handler.tags = ['group admin','group tools']
 handler.command = /^(groupinfo)$/i
-handler.exp = 0
+handler.exp = 1000
 handler.group = true
-handler.limit = false
 module.exports = handler
 
 function ucword(str) {

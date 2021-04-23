@@ -2,11 +2,11 @@ let { Presence } = require('@adiwajshing/baileys')
 let handler  = async (m, { conn, text }) => {
 	await conn.updatePresence(m.chat, Presence.composing) 
 
-	let name = 'Hairul Lana'
-
 	if (text == "ori"){
+		var name = 'Hairul Lana'
 		var number = '6283119526456'
 	}else {
+		var name = 'BUTTERCUP'
 		var number = '6282215215399'
 	}
 	conn.sendVcard(m.chat, name, number, m)

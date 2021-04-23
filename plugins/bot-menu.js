@@ -3,15 +3,7 @@ let handler  = async (m, { conn, usedPrefix: _p }) => {
 
     let pp = './src/avatar_contact.png'
 	  pp = await conn.getProfilePicture(global.conn.user.jid)
-    // format mata uang
-    const format = num => {
-      const n = String(num),
-            p = n.indexOf('.')
-      return n.replace(
-          /\d(?=(?:\d{3})+(?:\.|$))/g,
-          (m, i) => p < 0 || i < p ? `${m},` : m
-      )
-    }
+    
 
     let exp = format(global.DATABASE.data.users[m.sender].exp)
     let limit = format(global.DATABASE.data.users[m.sender].limit)
@@ -141,4 +133,14 @@ function clockString(ms) {
   let s = Math.floor(ms / 1000) % 60
   console.log({ms,h,m,s})
   return [h, m, s].map(v => v.toString().padStart(2, 0) ).join(':')
+}
+
+// format mata uang
+const format = num => {
+  const n = String(num),
+        p = n.indexOf('.')
+  return n.replace(
+      /\d(?=(?:\d{3})+(?:\.|$))/g,
+      (m, i) => p < 0 || i < p ? `${m},` : m
+  )
 }
