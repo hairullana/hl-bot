@@ -6,7 +6,7 @@ let handler  = async (m, { conn, text }) => {
 		var name = 'Hairul Lana'
 		var number = '6283119526456'
 	}else {
-		var name = 'BUTTERCUP'
+		var name = 'Bang HL'
 		var number = '6282215215399'
 	}
 	conn.sendVcard(m.chat, name, number, m)

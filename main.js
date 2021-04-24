@@ -17,7 +17,9 @@ let chalk = require('chalk')
 let fs = require('fs')
 let path = require('path')
 let util = require('util')
-let { performance } = require('perf_hooks')
+let {
+  performance
+} = require('perf_hooks')
 let WAConnection = simple.WAConnection(_WAConnection)
 
 
@@ -34,8 +36,13 @@ function clockString(ms) {
   let h = Math.floor(ms / 3600000)
   let m = Math.floor(ms / 60000) % 60
   let s = Math.floor(ms / 1000) % 60
-  console.log({ms,h,m,s})
-  return [h, m, s].map(v => v.toString().padStart(2, 0) ).join(':')
+  console.log({
+    ms,
+    h,
+    m,
+    s
+  })
+  return [h, m, s].map(v => v.toString().padStart(2, 0)).join(':')
 }
 
 global.owner = ['6283119526456', '6282215215399'] // Put your number here
@@ -220,7 +227,7 @@ conn.handler = async function (m) {
       if (now >= global.DATABASE.data.chats[m.chat].expired) {
         conn.reply(m.chat, "*Maaf waktunya bot untuk meninggalkan grup :(*\n*Chat owner untuk invite bot lagi*").then(() => {
           conn.updatePresence(m.chat, Presence.composing)
-          let name = 'BUTTERCUP'
+          let name = 'Bang HL'
           let number = global.owner[1]
           conn.sendVcard(m.chat, name, number).then(() => {
             conn.groupLeave(m.chat).then(() => {
@@ -237,7 +244,7 @@ conn.handler = async function (m) {
         conn.reply(m.chat, "*Maaf waktu untuk status premium anda telah berakhir :(*\n*Chat owner untuk upgrade premium lagi*", m).then(() => {
           global.DATABASE.data.users[m.sender].premium = false
           conn.updatePresence(m.chat, Presence.composing)
-          let name = 'BUTTERCUP'
+          let name = 'Bang HL'
           let number = global.owner[1]
           conn.sendVcard(m.chat, name, number)
         })
@@ -300,25 +307,25 @@ conn.handler = async function (m) {
 
     var myprefix = "."
 
-    if (m.text == "."){
+    if (m.text == ".") {
       let old = performance.now()
       let neww = performance.now()
 
       var groupTotal = 0
-      conn.chats.array.filter(v => v.jid.endsWith('g.us')).map(v => groupTotal+=1)
+      conn.chats.array.filter(v => v.jid.endsWith('us')).map(v => groupTotal += 1)
 
       var chatTotal = 0
-      conn.chats.array.filter(v => v.jid.endsWith('g.us')).map(v => chatTotal+=1)
+      conn.chats.array.filter(v => v.jid.endsWith('net')).map(v => chatTotal += 1)
 
-      if (global.DATABASE.data.selfMode){
+      if (global.DATABASE.data.selfMode) {
         var selfModeText = "Aktif"
-      }else {
+      } else {
         var selfModeText = "Tidak Aktif"
       }
 
-      if (global.DATABASE.data.groupMode){
+      if (global.DATABASE.data.groupMode) {
         var groupModeText = "Aktif"
-      }else {
+      } else {
         var groupModeText = "Tidak Aktif"
       }
 
@@ -326,10 +333,10 @@ conn.handler = async function (m) {
 
       let totalUser = format(Object.keys(global.DATABASE._data.users).length)
 
-      conn.reply(m.chat,`*Speed :* ${(neww-old)} ms\n\n*Self Mode :* ${selfModeText}\n*Group Mode :* ${groupModeText}\n*Group :* ${groupTotal} grup\n*Chat :* ${chatTotal} chat\n*User :* ${totalUser} user\n*Banned :* ${global.DATABASE.data.banned} user\n*Uptime :* ${uptime}`,m)
+      conn.reply(m.chat, `*Speed :* ${(neww-old)} ms\n\n*Self Mode :* ${selfModeText}\n*Group Mode :* ${groupModeText}\n*Group :* ${groupTotal} grup\n*Chat :* ${chatTotal} chat\n*User :* ${totalUser} user\n*Banned :* ${global.DATABASE.data.banned} user\n*Uptime :* ${uptime}`, m)
       // conn.reply(m.chat,`*[ BOT STATUS ]*\n\n*Status* : Best Performance\n*Ping :* ${(neww-old)} ms\n\n*Device :* ASUS ROG STRIX GL503\n*Processor :* Intel® Core™ i7-8750H 4.2 GHz\n*Memory :* 11.43GB / 32GB\n*Hard Drive :* 2TB SSD\n*Graphic :* NVIDIA® GeForce® GTX1050Ti 4GB GDDR5 VRAM`,m)
     }
-    
+
     // ANTI-SPAM COMMAND
     if (m.text.slice(0, 1) == myprefix) {
       global.DATABASE.data.chats[m.chat].command += 1
@@ -429,10 +436,7 @@ conn.handler = async function (m) {
     }
 
     if (!m.fromMe && !selfMode && global.DATABASE.data.chats[m.chat].isBanned == false && global.DATABASE.data.users[m.sender].isBanned == false) {
-      if (m.text.match(/(mkasih|makasih|thanks|thx|mksih|mksi|makasi|mksh)/gi)) {
-        conn.updatePresence(m.chat, Presence.composing)
-        conn.sendFile(m.chat, 'media/sama-sama.opus', 'tts.opus', null, m, true)
-      } else if (m.text.match(/(asalam|assalam)/gi)) {
+      if (m.text.match(/(asalam|assalam)/gi)) {
         conn.updatePresence(m.chat, Presence.composing)
         conn.sendFile(m.chat, 'media/waalaikumussalam.opus', 'tts.opus', null, m, true)
       } else if (m.text == "menu" || m.text == "help" || m.text == "?menu" || m.text == "#menu" || m.text == "+menu" || m.text == ".help" || m.text == "#help" || m.text == "+help" || m.text == "!help" || m.text == "!menu" || m.text == "/help" || m.text == "/menu" || m.text == "?help" || m.text == "*menu" || m.text == "*help" || m.text == "bot" || m.text == ".bot" || m.text == "*bot" || m.text == "!bot" || m.text == "?bot" || m.text == "#bot" || m.text == "Menu" || m.text == "Help" || m.text == "Bot" || m.text == "+bot") {
@@ -467,9 +471,9 @@ conn.handler = async function (m) {
       return Math.floor(Math.random() * (max - min + 1)) + min
     }
 
-    if (!m.fromMe && !owner && selfMode && commandNYA == '.') return conn.reply(m.chat,`*[ SELF MODE ]*\n\nHanya owner yang dapat menggunaan bot`,m)
+    if (!m.fromMe && !owner && selfMode && commandNYA == '.') return conn.reply(m.chat, `*[ SELF MODE ]*\n\nHanya owner yang dapat menggunaan bot`, m)
 
-    if (!m.fromMe && !owner && adminMode && m.isGroup && !isAdmin && commandNYA == '.') return conn.reply(m.chat,`*[ ADMIN MODE ]*\n\nHanya admin grup yang dapat menggunaan bot`,m)
+    if (!m.fromMe && !owner && adminMode && m.isGroup && !isAdmin && commandNYA == '.') return conn.reply(m.chat, `*[ ADMIN MODE ]*\n\nHanya admin grup yang dapat menggunaan bot`, m)
 
     if (!m.fromMe && !owner && !m.isGroup && !owner && groupMode && commandNYA == '.' && global.DATABASE.data.users[m.sender].premium == false) {
       var head = '*[ GROUP MODE ]*\n\nSilahkan masuk ke grup untuk menggunakan bot atau daftar premium untuk menggunakan bot di personal chat.'
@@ -484,14 +488,14 @@ conn.handler = async function (m) {
         global.DATABASE.data.users[m.sender].lastclaim = new Date * 1
         return conn.reply(m.chat, `${head}\n\n${grup[acak]}\n\n${ig}\n\n${undang}`, m).then(() => {
           conn.updatePresence(m.chat, Presence.composing)
-          let name = 'BUTTERCUP'
+          let name = 'Bang HL'
           let number = global.owner[1]
           conn.sendVcard(m.chat, name, number)
         })
       } else {
         return conn.reply(m.chat, head + "\n\n" + undang, m).then(() => {
           conn.updatePresence(m.chat, Presence.composing)
-          let name = 'BUTTERCUP'
+          let name = 'Bang HL'
           let number = global.owner[1]
           conn.sendVcard(m.chat, name, number)
         })
