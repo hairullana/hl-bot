@@ -3,7 +3,7 @@ let googleIt = require('google-it')
 let handler = async (m, { conn, command, args }) => {
   let full = /f$/i.test(command)
   let text = args.join` `
-  if (!text) return conn.reply(m.chat, `*[ GOOGLE SEARCH ]*\n\nMasukkan query atau keyword\nContoh : ${command} hairul lana`, m)
+  if (!text) return conn.reply(m.chat, 'Tidak ada teks untuk di cari', m)
   let url = 'https://google.com/search?q=' + encodeURIComponent(text)
   let search = await googleIt({ query: text })
   let msg = search.map(({ title, link, snippet}) => {
@@ -12,9 +12,9 @@ let handler = async (m, { conn, command, args }) => {
   let ss = await (await fetch(global.API('nrtm', '/api/ssweb', { delay: 1000, url, full }))).buffer()
   conn.sendFile(m.chat, ss, 'screenshot.png', url + '\n\n' + msg, m)
 }
-handler.help = ['google'].map(v => v + ' *query*')
-handler.tags = ['data']
-handler.command = /^google$/i
+handler.help = ['google', 'googlef'].map(v => v + ' <pencarian>')
+handler.tags = ['internet']
+handler.command = /^googlef?$/i
 handler.owner = false
 handler.mods = false
 handler.premium = false

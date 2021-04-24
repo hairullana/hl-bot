@@ -1,4 +1,5 @@
 let handler = async (m, { conn, text }) => {
+	return conn.reply(m.chat,"*Fitur dinonaktifkan karena membuat bot terbanned.*\n*Silahkan add manual asu !*",m)
 	if(isNaN(text)) {
 		var number = text.split`@`[1]
 	} else if(!isNaN(text)) {
@@ -24,7 +25,6 @@ try {
 handler.help = ['add *62xx*','add *(reply)*']
 handler.tags = ['group admin']
 handler.command = /^(add)$/i
-handler.owner = true
 handler.mods = false
 handler.premium = false
 handler.group = true

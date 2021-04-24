@@ -32,7 +32,7 @@ let handler = async (m, { conn }) => {
 		// +minutes+":"+sec;
   }
 
-	conn.sendFile(m.chat, pp, 'profile.jpg', `*[ ${ucword(name)} ]*\n\n  - Expired : ${msToDate(global.DATABASE.data.chats[m.chat].expired - new Date())}\n  - Admin Mode : ${data(adminMode)}\n  - Anti-Link : ${data(nolink)}\n  - Anti-Virtex : ${data(novirtex)}\n  - Anti-Badword : ${data(filter)}\n  - Welcome Msg : ${data(welcome)}\n  - Leave Msg : ${data(left)}`, m)
+	conn.sendFile(m.chat, pp, 'profile.jpg', `*${ucword(name)}*\n\n*Expired* : ${msToDate(global.DATABASE.data.chats[m.chat].expired - new Date())}\n\n*${data(adminMode)} Admin Mode*\n*${data(nolink)} Anti Link*\n*${data(novirtex)} Anti Virtex*\n*${data(filter)} Anti Badword*\n*${data(welcome)} Welcome Message*\n*${data(left)} Leave Message*`, m)
 	}
 }
 handler.help = ['groupinfo']
@@ -50,8 +50,8 @@ function ucword(str) {
 
 function data(str){
 	if (ucword(str) == "False"){
-		return "Tidak Aktif"
+		return "❎"
 	}else {
-		return "Aktif"
+		return "✅"
 	}
 }

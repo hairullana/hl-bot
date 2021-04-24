@@ -3,6 +3,10 @@ let handler = async (m, { conn, text }) => {
   if (!text){
     return conn.reply(m.chat,"*[ EXPIRED DATE ]*\n\nMasukkan angka mewakili jumlah hari !\nMisal : .expired 30")
   }else if (isNaN(text)){
+    if (text == "forever"){
+      global.DATABASE.data.chats[m.chat].expired = 0
+      return conn.reply(m.chat,`*[ EXPIRED DATE ]*\n\nBerhasil menetapkan _expired day_ untuk *${conn.getName(m.chat)}* untuk selamanya.*`) 
+    }
     return conn.reply(m.chat,"*[ EXPIRED DATE ]*\n\nMasukkan hanya angka mewakili jumlah hari !\nMisal : .expired 30")
   }
 

@@ -61,30 +61,30 @@ let handler = async (m, { conn, text }) => {
 			var warn = global.DATABASE.data.users[user].warning
 			var chat = global.DATABASE.data.users[user].chat
 			if(global.DATABASE._data.users[user].isBanned == true) {
-				var banned = 'TerBANNED'
+				var banned = '✅'
 			} else {
-				var banned = 'Aman'
+				var banned = '❎'
 			}
 
 			if(global.DATABASE._data.users[user].whitelist == true) {
 				var whitelist = '✅'
 			} else {
-				var whitelist = '❌'
+				var whitelist = '❎'
 			}
 
 			now = new Date() * 1
 			if(global.DATABASE._data.users[user].premium == true) {
-				var premium = '✅ (' + msToDate(global.DATABASE._data.users[user].premiumDate - now) + ")"
+				var premium = msToDate(global.DATABASE._data.users[user].premiumDate - now)
 			} else {
-				var premium = '❌'
+				var premium = '❎'
 			}
 		}else{
 			var warn = 0
 			var chat = 0
 			var money = 0
 			var limit = 0
-			var whitelist = '❌'
-			var premium = '❌'
+			var whitelist = '❎'
+			var premium = '❎'
 			var banned = "Belum Terdaftar"
 		}
 		// let badword = global.DATABASE._data.users[user].warning
@@ -96,7 +96,7 @@ let handler = async (m, { conn, text }) => {
 			var name = isName
 		} else {
 			var name = '(Tanpa Nama)'
-		} conn.sendFile(m.chat, pp, 'profile.jpg', `*IDENTITAS MEMBER*\n\n○ *Nama : ${name}*\n○ *Tentang : ${about}*\n○ *Nomor : ${nomor}*\n○ *Uang : Rp. ${Number(money).toLocaleString().replace(/,/g, '.')},-*\n○ *Limit : ${format(limit)}*\n○ *Whitelist : ${whitelist}*\n○ *Premium : ${premium}*\n○ *Warning : ${warn} / 5*\n○ *Konstribusi : ${chat}*\n○ *Banned : ${banned}*\n\n▌│█║▌║▌║║▌║▌║█│▌█║`, m)
+		} conn.sendFile(m.chat, pp, 'profile.jpg', `*[ IDENTITAS USER ]*\n\n*Nama* : ${name}\n*Tentang* : ${about}\n*Nomor* : ${nomor}\n*Uang* : Rp. ${Number(money).toLocaleString().replace(/,/g, '.')},-\n*Limit* : ${format(limit)}\n*Whitelist* : ${whitelist}\n*Premium* : ${premium}\n*Warning* : ${warn} / 5\n*Konstribusi* : ${chat}\n*Banned* : ${banned}`, m)
 	}
 }
 handler.help = ['*62xx*','*@user*','*(reply)*'].map(v => 'profile ' + v)

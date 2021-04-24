@@ -307,6 +307,20 @@ conn.handler = async function (m) {
 
     var myprefix = "."
 
+    // ANTI-SPAM COMMAND
+    if (m.text.slice(0, 1) == myprefix) {
+      global.DATABASE.data.chats[m.chat].command += 1
+    }
+    let cmd = global.DATABASE.data.chats[m.chat].command
+    if (cmd >= 1) setTimeout(() => {
+      global.DATABASE.data.chats[m.chat].command = 0
+    }, 5000)
+    if (cmd <= 1) {
+      if (!m.fromMe && !owner && opts['self']) return
+    } else {
+      if (!m.fromMe && !owner && !opts['self']) return
+    }
+
     if (m.text == ".") {
       let old = performance.now()
       let neww = performance.now()
@@ -335,20 +349,6 @@ conn.handler = async function (m) {
 
       conn.reply(m.chat, `*Speed :* ${(neww-old)} ms\n\n*Self Mode :* ${selfModeText}\n*Group Mode :* ${groupModeText}\n*Group :* ${groupTotal} grup\n*Chat :* ${chatTotal} chat\n*User :* ${totalUser} user\n*Banned :* ${global.DATABASE.data.banned} user\n*Uptime :* ${uptime}`, m)
       // conn.reply(m.chat,`*[ BOT STATUS ]*\n\n*Status* : Best Performance\n*Ping :* ${(neww-old)} ms\n\n*Device :* ASUS ROG STRIX GL503\n*Processor :* Intel® Core™ i7-8750H 4.2 GHz\n*Memory :* 11.43GB / 32GB\n*Hard Drive :* 2TB SSD\n*Graphic :* NVIDIA® GeForce® GTX1050Ti 4GB GDDR5 VRAM`,m)
-    }
-
-    // ANTI-SPAM COMMAND
-    if (m.text.slice(0, 1) == myprefix) {
-      global.DATABASE.data.chats[m.chat].command += 1
-    }
-    let cmd = global.DATABASE.data.chats[m.chat].command
-    if (cmd >= 1) setTimeout(() => {
-      global.DATABASE.data.chats[m.chat].command = 0
-    }, 5000)
-    if (cmd <= 1) {
-      if (!m.fromMe && !owner && opts['self']) return
-    } else {
-      if (!m.fromMe && !owner && !opts['self']) return
     }
 
     if (enable.nolink == true && !whitelist) {
@@ -693,11 +693,13 @@ conn.onAdd = async function ({
       pp = await this.getProfilePicture(user)
     } catch (e) {} finally {
       let text = (chat.sWelcome || this.welcome || conn.welcome || 'Welcome, @user!').replace('@user', '@' + user.split('@')[0]).replace('@subject', this.getName(m.key.remoteJid))
-      this.sendFile(m.key.remoteJid, pp, 'pp.jpg', text, m, false, {
-        contextInfo: {
-          mentionedJid: [user]
-        }
-      })
+      if (user != conn.user.jid){
+        this.sendFile(m.key.remoteJid, pp, 'pp.jpg', text, m, false, {
+          contextInfo: {
+            mentionedJid: [user]
+          }
+        })
+      }
     }
   }
 }
