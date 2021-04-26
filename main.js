@@ -4,7 +4,8 @@ let {
   Presence,
   MessageType,
   MessageOptions,
-  Mimetype
+  Mimetype,
+  GroupSettingChange
 } = require('@adiwajshing/baileys')
 let {
   generate
@@ -257,13 +258,13 @@ conn.handler = async function (m) {
     // list.slice(0, list.length).map(([user, data], i) => (Number(data.exp -= Math.floor((data.exp/100)*50))))
 
     // anti spam
-    if (!m.fromMe && !owner && global.DATABASE.data.users[m.sender].isBanned == false) {
+    if (!m.fromMe && !owner) {
       global.DATABASE.data.users[m.sender].spam += 1
       var spam = global.DATABASE.data.users[m.sender].spam
 
       if (spam >= 0) setTimeout(() => {
         global.DATABASE.data.users[m.sender].spam = 0
-      }, 8000)
+      }, 7000)
 
       if (spam == 5) return conn.reply(m.chat, `*[ SPAM DETECTED ]*\n\nTolong @${m.sender.split('@')[0]} untuk tidak spam, atau anda akan di banned !`, null, {
         contextInfo: {
@@ -271,19 +272,24 @@ conn.handler = async function (m) {
         }
       })
 
-      if (spam == 8) {
-        if (m.isGroup && !isAdmin && isBotAdmin && global.DATABASE.data.users[m.sender].whitelist == false) {
+      if (spam == 7) {
+        if (m.isGroup && isBotAdmin) {
           conn.updatePresence(m.chat, Presence.composing)
-          return conn.reply(m.chat, `*[ OVER SPAM DETECTED ]*\n\nMaaf kamu dibanned dari bot dan dikick dari grup !`, m).then(() => {
-            conn.groupRemove(m.chat, [m.sender])
+          return conn.reply(m.chat, `*[ OVER SPAM DETECTED ]*\n\nKamu dibanned dari bot sat bangsat !\nBot akan menutup grup untuk menghindari spam`, m).then(() => {
+            if (isAdmin && m.isGroup){
+              conn.groupSettingChange(m.chat, GroupSettingChange.messageSend, true).then(() => {
+                conn.groupDemoteAdmin(m.chat, [m.sender])
+              })
+            }else if (m.isGroup){
+              conn.groupSettingChange(m.chat, GroupSettingChange.messageSend, true)
+            }
             global.DATABASE.data.users[m.sender].spam = 0
             global.DATABASE.data.banned += 1
             global.DATABASE.data.users[m.sender].isBanned = true
+            conn.reply(m.chat, `*Anda mau dikick ?*`, m)
           })
-        } else if ((m.isGroup && isAdmin && isBotAdmin) || (m.isGroup && !isBotAdmin) || !m.isGroup || (global.DATABASE.data.users[m.sender].whitelist == true)) {
+        } else {
           conn.updatePresence(m.chat, Presence.composing)
-          // denda = Math.ceil((global.DATABASE.data.users[m.sender].exp/100) * 25)
-          // global.DATABASE.data.users[m.sender].exp -= denda
           return conn.reply(m.chat, `*[ OVER SPAM DETECTED ]*\n\nMaaf kamu di banned dari bot !\nHubungi owner ( *.owner* ) atau moderator ( *.mods* ) untuk unbanned, tapi harus sadar diri ya bangsat !`, m).then(() => {
             global.DATABASE.data.users[m.sender].spam = 0
             global.DATABASE.data.users[m.sender].isBanned = true

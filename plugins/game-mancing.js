@@ -75,10 +75,10 @@ let handler = async (m, { conn, args }) => {
     if (hargaIkan > 0){
       return conn.reply(m.chat, `*[ MANCING MANIA ]*\n\nTangkapan : ${tampilanIkan}\nSelamat anda berhasil menangkap *${jumlahIkan} ekor ${namaIkan}* dengan penjualan *Rp. ${format(hargaIkan*jumlahIkan)}*`, m)
     }else {
-      return conn.reply(m.chat, `*[ MANCING MANIA ]*\n\nTangkapan : ${tampilanIkan}\nMampus anda berhasil menangkap *${jumlahIkan} ekor ${namaIkan}* (hewan dilindungi)\n\nDenda *Rp. ${format(hargaIkan*jumlahIkan)}*`, m)
-      if (global.DATABASE._data.users[m.sender].exp < 0){
+      if (global.DATABASE._data.users[m.sender].exp <= 0){
         global.DATABASE._data.users[m.sender].exp = 0
       }
+      return conn.reply(m.chat, `*[ MANCING MANIA ]*\n\nTangkapan : ${tampilanIkan}\nMampus anda berhasil menangkap *${jumlahIkan} ekor ${namaIkan}* (hewan dilindungi)\n\nDenda *Rp. ${format(hargaIkan*jumlahIkan)}*`, m)
     }
   }, 1000)
 }

@@ -12,9 +12,9 @@ let handler  = async (m, { conn }) => {
   acak = getRandom(0,1)
   conn.sendFile(m.chat, pp, 'profile.jpg',`*_LTM BOT・チャットボット_*\n\nInfo seputaran bot akan di infokan melalui grup ini\n\n${group[acak]}`, m)
 }
-handler.help = ['groupofc','groupofficial']
+handler.help = ['ltm (Group Official)','ltmbot (Group Official)']
 handler.tags = ['info']
-handler.command = /^(groupofc|groupofficial)$/i
+handler.command = /^(ltmbot|ltm)$/i
 handler.owner = false
 handler.mods = false
 handler.premium = false
