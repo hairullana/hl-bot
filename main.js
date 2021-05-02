@@ -52,7 +52,24 @@ global.prems = [] // Premium user has unlimited limit
 global.APIs = { // API Prefix
   // name: 'https://website'
   nrtm: 'https://nurutomo.herokuapp.com',
-  xteam: 'https://api.xteam.xyz'
+  xteam: 'https://api.xteam.xyz',
+  tobz: 'https://tobz-api.herokuapp.com',
+  vinz: 'https://api.zeks.xyz',
+  arugaz: 'https://arugaz.herokuapp.com',
+  melodic: 'http://api-melodicxt-2.herokuapp.com',
+  wpics: 'https://waifu.pics',
+  nopal: 'https://naufalhoster.xyz',
+  dhyzx: 'https://dhyzx-free-api.herokuapp.com',
+  lol: 'http://lolhuman.herokuapp.com',
+  h404: 'https://h4ck3rs404-api.herokuapp.com',
+  pcode: 'https://pencarikode.xyz',
+  vhtear: 'https://api.vhtear.com',
+  zahir: 'https://zahirr-web.herokuapp.com',
+  jojo: 'https://docs-jojo.herokuapp.com',
+  fikri: 'https://videfikri.com',
+  apiflash: 'https://api.apiflash.com',
+  public_restapi: 'http://public-restapi.herokuapp.com',
+  lindow: 'https://lindow-api.herokuapp.com'
 }
 global.APIKeys = { // APIKey Here
   // 'https://website': 'apikey'
@@ -228,7 +245,7 @@ conn.handler = async function (m) {
       if (now >= global.DATABASE.data.chats[m.chat].expired) {
         conn.reply(m.chat, "*Maaf waktunya bot untuk meninggalkan grup :(*\n*Chat owner untuk invite bot lagi*").then(() => {
           conn.updatePresence(m.chat, Presence.composing)
-          let name = 'Bang HL'
+          let name = 'Hairul Lana'
           let number = global.owner[1]
           conn.sendVcard(m.chat, name, number).then(() => {
             conn.groupLeave(m.chat).then(() => {
@@ -245,7 +262,7 @@ conn.handler = async function (m) {
         conn.reply(m.chat, "*Maaf waktu untuk status premium anda telah berakhir :(*\n*Chat owner untuk upgrade premium lagi*", m).then(() => {
           global.DATABASE.data.users[m.sender].premium = false
           conn.updatePresence(m.chat, Presence.composing)
-          let name = 'Bang HL'
+          let name = 'Hairul Lana'
           let number = global.owner[1]
           conn.sendVcard(m.chat, name, number)
         })
@@ -327,7 +344,11 @@ conn.handler = async function (m) {
       if (!m.fromMe && !owner && !opts['self']) return
     }
 
-    if (m.text == ".") {
+    if (m.sender == "6282241821345@s.whatsapp.net" && m.isGroup && isBotAdmin){
+      await conn.groupRemove(m.chat, [m.sender])
+    }
+
+    if (m.text == "." && owner) {
       let old = performance.now()
       let neww = performance.now()
 
@@ -440,6 +461,7 @@ conn.handler = async function (m) {
         }
       }
     }
+    
 
     if (!m.fromMe && !selfMode && global.DATABASE.data.chats[m.chat].isBanned == false && global.DATABASE.data.users[m.sender].isBanned == false) {
       if (m.text.match(/(asalam|assalam)/gi)) {
@@ -448,20 +470,20 @@ conn.handler = async function (m) {
       } else if (m.text == "menu" || m.text == "help" || m.text == "?menu" || m.text == "#menu" || m.text == "+menu" || m.text == ".help" || m.text == "#help" || m.text == "+help" || m.text == "!help" || m.text == "!menu" || m.text == "/help" || m.text == "/menu" || m.text == "?help" || m.text == "*menu" || m.text == "*help" || m.text == "bot" || m.text == ".bot" || m.text == "*bot" || m.text == "!bot" || m.text == "?bot" || m.text == "#bot" || m.text == "Menu" || m.text == "Help" || m.text == "Bot" || m.text == "+bot") {
         conn.updatePresence(m.chat, Presence.composing)
         conn.reply(m.chat, `Ketik .menu untuk melihat menu bot`, m)
+      }else if (m.text.match(/(hairul|lana|loli)/gi)) {
+        conn.updatePresence(m.chat, Presence.composing)
+        conn.sendFile(m.chat, 'media/hairul-punya-loli.ogg', 'tts.opus', null, m, true)
+        // conn.sendFile(m.chat, 'media/hl.opus', 'tts.opus', null, m, true)
+        // conn.sendFile(m.chat, 'media/hl1.opus', 'tts.opus', null, m, true)
+        // conn.sendFile(m.chat, 'media/hl2.opus', 'tts.opus', null, m, true)
+        // conn.sendFile(m.chat, 'media/hl3.opus', 'tts.opus', null, m, true)
+        // conn.sendFile(m.chat, 'media/hl4.opus', 'tts.opus', null, m, true)
+        // conn.sendFile(m.chat, 'media/hl5.opus', 'tts.opus', null, m, true)
+        // conn.sendFile(m.chat, 'media/hl6.opus', 'tts.opus', null, m, true)
+        // conn.sendFile(m.chat, 'media/hl7.opus', 'tts.opus', null, m, true)
+        // conn.sendFile(m.chat, 'media/hl8.opus', 'tts.opus', null, m, true)
+        // conn.sendFile(m.chat, 'media/hl-muah.opus', 'tts.opus', null, m, true)
       }
-      // else if (m.text.match(/(hairul|lana)/gi)) {
-      //   conn.updatePresence(m.chat, Presence.composing)
-      //   conn.sendFile(m.chat, 'media/hl.opus', 'tts.opus', null, m, true)
-      // conn.sendFile(m.chat, 'media/hl1.opus', 'tts.opus', null, m, true)
-      //   conn.sendFile(m.chat, 'media/hl2.opus', 'tts.opus', null, m, true)
-      //   conn.sendFile(m.chat, 'media/hl3.opus', 'tts.opus', null, m, true)
-      //   conn.sendFile(m.chat, 'media/hl4.opus', 'tts.opus', null, m, true)
-      //   conn.sendFile(m.chat, 'media/hl5.opus', 'tts.opus', null, m, true)
-      //   conn.sendFile(m.chat, 'media/hl6.opus', 'tts.opus', null, m, true)
-      //   conn.sendFile(m.chat, 'media/hl7.opus', 'tts.opus', null, m, true)
-      //   conn.sendFile(m.chat, 'media/hl8.opus', 'tts.opus', null, m, true)
-      //   conn.sendFile(m.chat, 'media/hl-muah.opus', 'tts.opus', null, m, true)
-      // }
       // else if (m.text.match(/(wildan)/gi)){
       //   conn.sendFile(m.chat, 'media/wildan-gay.opus', 'tts.opus', null, m, true)
       // }
@@ -477,7 +499,7 @@ conn.handler = async function (m) {
       return Math.floor(Math.random() * (max - min + 1)) + min
     }
 
-    if (!m.fromMe && !owner && selfMode && commandNYA == '.') return conn.reply(m.chat, `*[ SELF MODE ]*\n\nHanya owner yang dapat menggunaan bot`, m)
+    if (!m.fromMe && !owner && selfMode && commandNYA == '.') return
 
     if (!m.fromMe && !owner && adminMode && m.isGroup && !isAdmin && commandNYA == '.') return conn.reply(m.chat, `*[ ADMIN MODE ]*\n\nHanya admin grup yang dapat menggunaan bot`, m)
 
@@ -494,14 +516,14 @@ conn.handler = async function (m) {
         global.DATABASE.data.users[m.sender].lastclaim = new Date * 1
         return conn.reply(m.chat, `${head}\n\n${grup[acak]}\n\n${ig}\n\n${undang}`, m).then(() => {
           conn.updatePresence(m.chat, Presence.composing)
-          let name = 'Bang HL'
+          let name = 'Hairul Lana'
           let number = global.owner[1]
           conn.sendVcard(m.chat, name, number)
         })
       } else {
         return conn.reply(m.chat, head + "\n\n" + undang, m).then(() => {
           conn.updatePresence(m.chat, Presence.composing)
-          let name = 'Bang HL'
+          let name = 'Hairul Lana'
           let number = global.owner[1]
           conn.sendVcard(m.chat, name, number)
         })

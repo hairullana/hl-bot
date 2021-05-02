@@ -68,11 +68,11 @@ let handler  = async (m, { conn, usedPrefix: _p }) => {
           if (menu.help) groups[tag].push(menu)
     }
 
-
+    var update = "\n\n*UPDATE FITUR*\n- Anti Penjajah (.antipenjajah)\n- Member Spam ? Auto Close GC\n- Fitur Jadian\n- Menu Image Creator\n- Menu Logo\n- Admin Mode"
 
     conn.menu = conn.menu ? conn.menu : {}
     // let before = conn.menu.before || `*${conn.getName(conn.user.jid)} BOT*\n\nHai, %name!\n*%exp XP | %limit Limit*\n*%week, %date [%time]*\n_Uptime: %uptime_\n%totalreg User in database\n%readmore`
-    let before = conn.menu.before || `Hai *%name*\nSaldo Rek Rp. %exp (%limit Limit)\nTotal User : %totalreg\n\nBingung dengan bot ? Ketik *.tutorial*\nUpgrade premium ? Ketik *.infopremium*\nIngin undang bot ke GC ? Ketik *.owner*\nSPAM = Banned/Kick Otomatis\n\n*UPDATE FITUR*\n- Member Spam ? Auto Close GC\n- Fitur Jadian\n- Menu Image Creator\n- Menu Logo\n- Admin Mode\n\nInfo Bot:\nIG: https://instagram.com/loadingtomastah\nTele: https://t.me/loadingtomastah\n\n%readmore`
+    let before = conn.menu.before || `Hai *%name*\nSaldo Rek Rp. %exp (%limit Limit)\nTotal User : %totalreg\n\nBingung dengan bot ? Ketik *.tutorial*\nUpgrade premium ? Ketik *.infopremium*\nIngin undang bot ke GC ? Ketik *.owner*\nSPAM = Banned/Kick Otomatis${update}\n\nInfo Bot:\nIG: https://instagram.com/loadingtomastah\nTele: https://t.me/loadingtomastah\n\n%readmore`
     let header = conn.menu.header || '╔═ ✪〘 %category 〙✪'
     let body   = conn.menu.body   || '║ ❖ %cmd%islimit'
     let footer = conn.menu.footer || '╚════════════════\n'
