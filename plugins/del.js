@@ -7,7 +7,7 @@ let handler  = async (m, { conn }) => {
 		conn.deleteMessage(m.chat, {id: m.quoted.id, remoteJid: m.chat, fromMe: true})
 	} 
 }
-handler.help = ['del *(reply)* (prem)', 'delete *(reply)* (prem)']
+handler.help = ['del *(reply)*', 'delete *(reply)*']
 handler.tags = ['group admin','premium']
 handler.command = /^(del|delete)$/i
 handler.owner = false

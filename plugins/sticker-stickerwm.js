@@ -18,7 +18,7 @@ let handler = async (m, { conn, args, text, usedPrefix }) => {
         else throw `*[ ERROR ]*\n\nFormat salah ! Silahkan kirim atau reply gambar atau stiker dengan caption ${usedPrefix}stikerwm author|name`
     }
 }
-handler.help = ['stikerwm *author*|*name* (prem)']
+handler.help = ['stikerwm *author*|*name*']
 handler.tags = ['sticker', 'premium']
 handler.command = /^s(tic?ker)?wm$/i
 handler.premium = true

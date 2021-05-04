@@ -27,26 +27,7 @@ let handler  = async (m, { conn, usedPrefix: _p }) => {
     let uptime = clockString(_uptime)
     let totalreg = format(Object.keys(global.DATABASE._data.users).length)
     let tags = {
-      'info': 'INFO BOT',
-      'xp': 'MONEY & LIMIT',
-      'premium': 'PREMIUM',
-      'game': 'GAME',
-      'gabut': 'JADIAN',
-      'sticker': 'STICKER',
-      'creator': 'CREATOR',
-      'logo': 'LOGO',
-      'images' : 'IMAGES',
-      'data' : 'SEARCHING',
-      'tools': 'TOOLS',
-      'information': 'INFORMATION',
-      'fun': 'FUN',
-      'tag': 'TAGS',
-      'islam': 'ISLAM',
-      'text': 'RANDOM TEXT',
-      'downloader': 'DOWNLOADER',
-      'group tools' : 'GROUP TOOLS',
-      'group admin': 'GROUP ADMIN',
-      'owner': 'OWNER'
+      'premium': 'PREMIUM'
     }
     for (let plugin of Object.values(global.plugins))
       if (plugin && 'tags' in plugin)
@@ -68,11 +49,15 @@ let handler  = async (m, { conn, usedPrefix: _p }) => {
           if (menu.help) groups[tag].push(menu)
     }
 
-    var update = "\n\n*UPDATE FITUR*\n- Tidak Aktif 1 Minggu ? Hapus Data\n- Anti Penjajah (.antipenjajah)\n- Member Spam ? Auto Close GC\n- Fitur Jadian\n- Menu Image Creator\n- Menu Logo\n- Admin Mode (.adminmode on/off)"
+    let users = global.DATABASE.data.users
+    var premium = 0
+    for (let jid in users){
+      if (users[jid].premium) premium += 1
+    }
 
     conn.menu = conn.menu ? conn.menu : {}
     // let before = conn.menu.before || `*${conn.getName(conn.user.jid)} BOT*\n\nHai, %name!\n*%exp XP | %limit Limit*\n*%week, %date [%time]*\n_Uptime: %uptime_\n%totalreg User in database\n%readmore`
-    let before = conn.menu.before || `Hai *%name*\nSaldo Rek Rp. %exp (%limit Limit)\nTotal User : %totalreg\n\n❏ Bingung dengan bot ? Ketik *.tutorial*\n❏ Upgrade premium ? Ketik *.infopremium*\n❏ Ingin undang bot ke GC ? Ketik *.join*\n❏ Req Fitur ? Fitur Error ? Unbanned ? Kesepian ? Hubungi *.owner*\n❏ Gak Aktif 1 Minggu ? Hapus Data Otomatis\n❏ SPAM ? Banned Otomatis${update}\n\nInfo Bot:\nIG: https://instagram.com/loadingtomastah\nTele: https://t.me/loadingtomastah\n\n%readmore`
+    let before = conn.menu.before || `❏ Upgrade Premium ? Ketik *.infopremium*\n❏ Total Premium : ${premium} user\n`
     let header = conn.menu.header || '╔═ ✪〘 %category 〙✪'
     let body   = conn.menu.body   || '║ ❖ %cmd%islimit'
     let footer = conn.menu.footer || '╚════════════════\n'
@@ -101,15 +86,15 @@ let handler  = async (m, { conn, usedPrefix: _p }) => {
       readmore: readMore
     }
     text = text.replace(new RegExp(`%(${Object.keys(replace).join`|`})`, 'g'), (_, name) => replace[name])
-    conn.sendFile(m.chat,pp,'profile.jpg', text.trim(), m)
+    conn.reply(m.chat, text.trim(), m)
   } catch (e) {
     conn.reply(m.chat, 'Maaf, menu sedang error', m)
     throw e
   }
 }
-handler.help = ['menu']
+handler.help = ['menupremium']
 handler.tags = ['info']
-handler.command = /^(menu)$/i
+handler.command = /^(menupremium)$/i
 handler.owner = false
 handler.mods = false
 handler.premium = false

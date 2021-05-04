@@ -40,14 +40,7 @@ let handler = async (m, { conn, text }) => {
 	let users = m.isGroup ? participants.find(u => u.jid == user) : {}
 	let number = user.split('@')[0]
   
-	global.DATABASE.data.users[user].exp = 0
-	global.DATABASE.data.users[user].limit = 0
-	global.DATABASE.data.users[user].lastclaim = 0
-	global.DATABASE.data.users[user].warning = 0
-	global.DATABASE.data.users[user].chat = 0
-	global.DATABASE.data.users[user].whitelist = false
-	global.DATABASE.data.users[user].isBanned = false
-	global.DATABASE.data.users[user].spam = 0
+	delete global.DATABASE.data.users[user]
  	
  	conn.reply(m.chat, `*[ RESET DATA BERHASIL ]*\n\nBerhasil me-reset data @${number}`, null, {contextInfo: {
     mentionedJid: [user]

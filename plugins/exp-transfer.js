@@ -33,7 +33,7 @@ let handler = async (m, { conn, command, args }) => {
     global.DATABASE._data.users[m.sender].exp -= money
     global.DATABASE._data.users[m.quoted.sender].exp += money
     global.DATABASE._data.users[m.sender].exp -= tax
-    // global.DATABASE._data.users["6283119526456@s.whatsapp.net"].exp += tax
+    global.DATABASE._data.users[global.owner[1] + "@s.whatsapp.net"].exp += tax
     // return conn.reply(m.chat, 'berhasil kontol', m)
     conn.reply(m.chat, `*[ TRANSFER SUCCESS ]*\n\nTransfer *Rp. ${format(money)}* kepada @${m.quoted.sender.split('@')[0]}\nPPN *Rp. ${format(tax)}* (1%)\n\n@${m.quoted.sender.split('@')[0]} : Rp. ${format(global.DATABASE._data.users[m.quoted.sender].exp)}\n@${m.sender.split('@')[0]} : Rp. ${format(global.DATABASE._data.users[m.sender].exp)}`, m, {contextInfo: {
       mentionedJid: [m.quoted.sender,m.sender]

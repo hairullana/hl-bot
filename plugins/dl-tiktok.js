@@ -13,7 +13,7 @@ let handler = async (m, { conn, args }) => {
 //     thumbnail
 //   })
 }
-handler.help = ['tiktok'].map(v => v + ' *url* (prem)')
+handler.help = ['tiktok'].map(v => v + ' *url*')
 handler.tags = ['downloader','premium']
 handler.command = /^(tiktok(dl)?)$/i
 handler.premium = true

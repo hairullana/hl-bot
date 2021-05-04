@@ -19,6 +19,22 @@ let handler = async (m, { conn, text }) => {
 		return days+" Hari "+hours+" Jam "+ minutes + " Menit";
 		// +minutes+":"+sec;
   }
+	function msToDate2(ms) {
+		temp = ms
+		days = Math.floor(ms / (24*60*60*1000));
+		daysms = ms % (24*60*60*1000);
+		hours = Math.floor((daysms)/(60*60*1000));
+		hoursms = ms % (60*60*1000);
+		minutes = Math.floor((hoursms)/(60*1000));
+		minutesms = ms % (60*1000);
+		sec = Math.floor((minutesms)/(1000));
+		if (days == 0 && hours == 0 && minutes == 0){
+			return "Baru Saja"
+		}else {
+			return days+" Hari "+hours+" Jam " + minutes + " Menit";
+		}
+		// +minutes+":"+sec;
+  }
 	
 	// if(!text && !m.quoted) return conn.reply(m.chat, `*Penggunaan yang benar*\n\n.profile @user\n.profile -> reply chat`, m)
 	if(number.length > 15 || (number.length < 9 && number.length > 0)) return conn.reply(m.chat, `*Masukin nomor yg bener gblk !*`, m)
@@ -78,6 +94,9 @@ let handler = async (m, { conn, text }) => {
 			} else {
 				var premium = '❎'
 			}
+
+			var lastseen = msToDate2(now - global.DATABASE._data.users[user].lastseen)
+			
 		}else{
 			var warn = 0
 			var chat = 0
@@ -96,7 +115,7 @@ let handler = async (m, { conn, text }) => {
 			var name = isName
 		} else {
 			var name = '(Tanpa Nama)'
-		} conn.sendFile(m.chat, pp, 'profile.jpg', `*[ IDENTITAS USER ]*\n\n*Nama* : ${name}\n*Tentang* : ${about}\n*Nomor* : ${nomor}\n*Uang* : Rp. ${Number(money).toLocaleString().replace(/,/g, '.')},-\n*Limit* : ${format(limit)}\n*Whitelist* : ${whitelist}\n*Premium* : ${premium}\n*Warning* : ${warn} / 5\n*Konstribusi* : ${chat}\n*Banned* : ${banned}`, m)
+		} conn.sendFile(m.chat, pp, 'profile.jpg', `*[ IDENTITAS USER ]*\n\n*Nama* : ${name}\n*Tentang* : ${about}\n*Nomor* : ${nomor}\n*Uang* : Rp. ${Number(money).toLocaleString().replace(/,/g, '.')},-\n*Limit* : ${format(limit)}\n*Whitelist* : ${whitelist}\n*Premium* : ${premium}\n*Warning* : ${warn} / 5\n*Konstribusi* : ${chat}\n*Banned* : ${banned}\n*Last Seen* : ${lastseen}`, m)
 	}
 }
 handler.help = ['*62xx*','*@user*','*(reply)*'].map(v => 'profile ' + v)

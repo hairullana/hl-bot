@@ -148,6 +148,7 @@ conn.handler = async function (m) {
       const isNumber = x => typeof x === 'number' && !isNaN(x)
       let user
       if (user = global.DATABASE._data.users[m.sender]) {
+        if (!isNumber(user.lastseen)) user.lastseen = 0
         if (!isNumber(user.exp)) user.exp = 0
         if (!isNumber(user.limit)) user.limit = 10
         if (!isNumber(user.lastclaim)) user.lastclaim = 0
@@ -157,6 +158,7 @@ conn.handler = async function (m) {
         if (!isNumber(user.premiumDate)) user.premiumDate = 0
         if (!isNumber(user.afk)) user.afk = -1
       } else global.DATABASE._data.users[m.sender] = {
+        lastseen: 0,
         exp: 0,
         limit: 10,
         lastclaim: 0,
@@ -185,8 +187,8 @@ conn.handler = async function (m) {
         if (!'novirtex' in chat) chat.novirtex = false
         if (!'sWelcome' in chat) chat.sWelcome = ''
         if (!'sBye' in chat) chat.sBye = ''
-        if (!isNumber(chat.command)) user.command = 0
       } else global.DATABASE._data.chats[m.chat] = {
+        lastseen: 0,
         adminMode: false,
         isBanned: false,
         expired: 0,
@@ -235,8 +237,10 @@ conn.handler = async function (m) {
 
     await conn.chatRead(m.chat)
     // partisipasi
+    global.DATABASE.data.chats[m.chat].lastseen = new Date() * 1
     if (global.DATABASE.data.users[m.sender].isBanned == false) {
       global.DATABASE.data.users[m.sender].chat += 1
+      global.DATABASE.data.users[m.sender].lastseen = new Date() * 1
     }
 
     // Keluar GC Otomatis Sesuai Tanggal
@@ -245,7 +249,7 @@ conn.handler = async function (m) {
       if (now >= global.DATABASE.data.chats[m.chat].expired) {
         conn.reply(m.chat, "*Maaf waktunya bot untuk meninggalkan grup :(*\n*Chat owner untuk invite bot lagi*").then(() => {
           conn.updatePresence(m.chat, Presence.composing)
-          let name = 'Hairul Lana'
+          let name = 'Bang HL'
           let number = global.owner[1]
           conn.sendVcard(m.chat, name, number).then(() => {
             conn.groupLeave(m.chat).then(() => {
@@ -262,7 +266,7 @@ conn.handler = async function (m) {
         conn.reply(m.chat, "*Maaf waktu untuk status premium anda telah berakhir :(*\n*Chat owner untuk upgrade premium lagi*", m).then(() => {
           global.DATABASE.data.users[m.sender].premium = false
           conn.updatePresence(m.chat, Presence.composing)
-          let name = 'Hairul Lana'
+          let name = 'Bang HL'
           let number = global.owner[1]
           conn.sendVcard(m.chat, name, number)
         })
@@ -374,7 +378,22 @@ conn.handler = async function (m) {
 
       let totalUser = format(Object.keys(global.DATABASE._data.users).length)
 
-      conn.reply(m.chat, `*Speed :* ${(neww-old)} ms\n\n*Self Mode :* ${selfModeText}\n*Group Mode :* ${groupModeText}\n*Group :* ${groupTotal} grup\n*Chat :* ${chatTotal} chat\n*User :* ${totalUser} user\n*Banned :* ${global.DATABASE.data.banned} user\n*Uptime :* ${uptime}`, m)
+      let users = global.DATABASE.data.users
+      let anu = 86400000 * 7
+      let now = new Date() * 1
+      var userBangsat = 0
+      var userPremium = 0
+      var userWhitelist = 0
+
+      for (let jid in users){
+        if (now - users[jid].lastseen > anu && !users[jid].whitelist) userBangsat += 1
+        if (users[jid].premium) userPremium += 1
+        if (users[jid].whitelist) userWhitelist += 1
+      }
+
+      let userAktif = format(Object.keys(global.DATABASE._data.users).length-userBangsat)
+
+      conn.reply(m.chat, `*Speed :* ${(neww-old)} s\n\n*Self Mode :* ${selfModeText}\n*Group Mode :* ${groupModeText}\n*Group :* ${groupTotal} grup\n*Chat :* ${chatTotal} chat\n*Total User :* ${totalUser} user\n*User Aktif :* ${userAktif} user\n*Premium :* ${userPremium} user\n*Whitelist :* ${userWhitelist} user\n*Banned :* ${global.DATABASE.data.banned} user\n*Uptime :* ${uptime}`, m)
       // conn.reply(m.chat,`*[ BOT STATUS ]*\n\n*Status* : Best Performance\n*Ping :* ${(neww-old)} ms\n\n*Device :* ASUS ROG STRIX GL503\n*Processor :* Intel® Core™ i7-8750H 4.2 GHz\n*Memory :* 11.43GB / 32GB\n*Hard Drive :* 2TB SSD\n*Graphic :* NVIDIA® GeForce® GTX1050Ti 4GB GDDR5 VRAM`,m)
     }
 
@@ -470,20 +489,21 @@ conn.handler = async function (m) {
       } else if (m.text == "menu" || m.text == "help" || m.text == "?menu" || m.text == "#menu" || m.text == "+menu" || m.text == ".help" || m.text == "#help" || m.text == "+help" || m.text == "!help" || m.text == "!menu" || m.text == "/help" || m.text == "/menu" || m.text == "?help" || m.text == "*menu" || m.text == "*help" || m.text == "bot" || m.text == ".bot" || m.text == "*bot" || m.text == "!bot" || m.text == "?bot" || m.text == "#bot" || m.text == "Menu" || m.text == "Help" || m.text == "Bot" || m.text == "+bot") {
         conn.updatePresence(m.chat, Presence.composing)
         conn.reply(m.chat, `Ketik .menu untuk melihat menu bot`, m)
-      }else if (m.text.match(/(hairul|lana|loli)/gi)) {
-        conn.updatePresence(m.chat, Presence.composing)
-        conn.sendFile(m.chat, 'media/hairul-punya-loli.ogg', 'tts.opus', null, m, true)
-        // conn.sendFile(m.chat, 'media/hl.opus', 'tts.opus', null, m, true)
-        // conn.sendFile(m.chat, 'media/hl1.opus', 'tts.opus', null, m, true)
-        // conn.sendFile(m.chat, 'media/hl2.opus', 'tts.opus', null, m, true)
-        // conn.sendFile(m.chat, 'media/hl3.opus', 'tts.opus', null, m, true)
-        // conn.sendFile(m.chat, 'media/hl4.opus', 'tts.opus', null, m, true)
-        // conn.sendFile(m.chat, 'media/hl5.opus', 'tts.opus', null, m, true)
-        // conn.sendFile(m.chat, 'media/hl6.opus', 'tts.opus', null, m, true)
-        // conn.sendFile(m.chat, 'media/hl7.opus', 'tts.opus', null, m, true)
-        // conn.sendFile(m.chat, 'media/hl8.opus', 'tts.opus', null, m, true)
-        // conn.sendFile(m.chat, 'media/hl-muah.opus', 'tts.opus', null, m, true)
       }
+      // else if (m.text.match(/(hairul|lana|loli)/gi)) {
+      //   conn.updatePresence(m.chat, Presence.composing)
+      //   conn.sendFile(m.chat, 'media/hairul-punya-loli.ogg', 'tts.opus', null, m, true)
+      //   // conn.sendFile(m.chat, 'media/hl.opus', 'tts.opus', null, m, true)
+      //   // conn.sendFile(m.chat, 'media/hl1.opus', 'tts.opus', null, m, true)
+      //   // conn.sendFile(m.chat, 'media/hl2.opus', 'tts.opus', null, m, true)
+      //   // conn.sendFile(m.chat, 'media/hl3.opus', 'tts.opus', null, m, true)
+      //   // conn.sendFile(m.chat, 'media/hl4.opus', 'tts.opus', null, m, true)
+      //   // conn.sendFile(m.chat, 'media/hl5.opus', 'tts.opus', null, m, true)
+      //   // conn.sendFile(m.chat, 'media/hl6.opus', 'tts.opus', null, m, true)
+      //   // conn.sendFile(m.chat, 'media/hl7.opus', 'tts.opus', null, m, true)
+      //   // conn.sendFile(m.chat, 'media/hl8.opus', 'tts.opus', null, m, true)
+      //   // conn.sendFile(m.chat, 'media/hl-muah.opus', 'tts.opus', null, m, true)
+      // }
       // else if (m.text.match(/(wildan)/gi)){
       //   conn.sendFile(m.chat, 'media/wildan-gay.opus', 'tts.opus', null, m, true)
       // }
@@ -516,14 +536,14 @@ conn.handler = async function (m) {
         global.DATABASE.data.users[m.sender].lastclaim = new Date * 1
         return conn.reply(m.chat, `${head}\n\n${grup[acak]}\n\n${ig}\n\n${undang}`, m).then(() => {
           conn.updatePresence(m.chat, Presence.composing)
-          let name = 'Hairul Lana'
+          let name = 'Bang HL'
           let number = global.owner[1]
           conn.sendVcard(m.chat, name, number)
         })
       } else {
         return conn.reply(m.chat, head + "\n\n" + undang, m).then(() => {
           conn.updatePresence(m.chat, Presence.composing)
-          let name = 'Hairul Lana'
+          let name = 'Bang HL'
           let number = global.owner[1]
           conn.sendVcard(m.chat, name, number)
         })
@@ -688,7 +708,7 @@ conn.handler = async function (m) {
       )
       // user.limit -= limitAsli
       if (user.premium == true) {
-        user.limit = user.limit
+        user.limit -= 1
       } else if (user.limit > 30 || user.exp > 100000000) {
         user.limit -= m.limit * limitAsli
       } else {
