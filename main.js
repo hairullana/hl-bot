@@ -397,6 +397,13 @@ conn.handler = async function (m) {
       // conn.reply(m.chat,`*[ BOT STATUS ]*\n\n*Status* : Best Performance\n*Ping :* ${(neww-old)} ms\n\n*Device :* ASUS ROG STRIX GL503\n*Processor :* Intel® Core™ i7-8750H 4.2 GHz\n*Memory :* 11.43GB / 32GB\n*Hard Drive :* 2TB SSD\n*Graphic :* NVIDIA® GeForce® GTX1050Ti 4GB GDDR5 VRAM`,m)
     }
 
+    if ((m.text == "hi" || m.text == "Hi") && (owner || m.fromMe)){
+      ran = "media/desah-bangsat.mp3"
+      buffer = fs.readFileSync(ran)
+      const option = { quoted: m, mimetype: 'audio/mp4', ptt:true }
+      conn.voice(m.chat, buffer, option)
+    }
+
     if (enable.nolink == true && !whitelist) {
       var linkGC = 'chat.whatsapp.com/' + (conn.groupInviteCode(m.chat))
       if (m.isGroup && !isAdmin && isBotAdmin && !m.text.match(linkGC)) {
