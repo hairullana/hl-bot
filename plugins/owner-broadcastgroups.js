@@ -1,8 +1,12 @@
 let handler  = async (m, { conn, text }) => {
   let chats = conn.chats.array.filter(v => v.jid.endsWith('g.us') && !v.read_only && v.message).map(v => v.jid)
-  for (let id of chats) conn.sendMessage(id, text + (/broadcast/im.test(text) ? '' : ('\n' + readMore + '\n[ _*BROADCAST*_ ]')), m.mtype, m.msg.contextInfo ? {
-    contextInfo: m.msg.contextInfo
-  } : {})
+  const delay = time => new Promise(res=>setTimeout(res,time));
+  for (let id of chats){
+    conn.sendMessage(id, text + (/broadcast/im.test(text) ? '' : ('\n' + readMore + '\n[ _*BROADCAST*_ ]')), m.mtype, m.msg.contextInfo ? {
+      contextInfo: m.msg.contextInfo
+    } : {})
+    await delay(2500)
+  }
   conn.reply(m.chat, `_Mengirim pesan broadcast ke ${chats.length} grup_`, m)
 }
 handler.help = ['bcgc'].map(v => v + ' *text*')

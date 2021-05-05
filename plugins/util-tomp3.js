@@ -20,11 +20,11 @@ let handler = async (m, { conn }) => {
 		fs.unlinkSync(ran)
 	})
 }
-handler.help = ['']
-handler.tags = ['']
-handler.command = /^(extract|tomp3)$/i
+handler.help = ['tomp3']
+handler.tags = ['tools']
+handler.command = /^(tomp3)$/i
 handler.owner = false
-handler.exp = 0
+handler.exp = 5000
 handler.limit = true
 handler.fail = null
 module.exports = handler

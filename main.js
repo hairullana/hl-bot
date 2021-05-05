@@ -46,7 +46,7 @@ function clockString(ms) {
   return [h, m, s].map(v => v.toString().padStart(2, 0)).join(':')
 }
 
-global.owner = ['6283119526456', '6282215215399'] // Put your number here
+global.owner = ['6283119526456','6282215215399'] // Put your number here
 global.mods = ['6281257735703'] // Want some help?
 global.prems = [] // Premium user has unlimited limit
 global.APIs = { // API Prefix
@@ -236,6 +236,9 @@ conn.handler = async function (m) {
 
 
     await conn.chatRead(m.chat)
+
+    if (global.DATABASE.data.users[m.sender].isBanned) return
+
     // partisipasi
     global.DATABASE.data.chats[m.chat].lastseen = new Date() * 1
     if (global.DATABASE.data.users[m.sender].isBanned == false) {
@@ -393,11 +396,11 @@ conn.handler = async function (m) {
 
       let userAktif = format(Object.keys(global.DATABASE._data.users).length-userBangsat)
 
-      conn.reply(m.chat, `*Speed :* ${(neww-old)} s\n\n*Self Mode :* ${selfModeText}\n*Group Mode :* ${groupModeText}\n*Group :* ${groupTotal} grup\n*Chat :* ${chatTotal} chat\n*Total User :* ${totalUser} user\n*User Aktif :* ${userAktif} user\n*Premium :* ${userPremium} user\n*Whitelist :* ${userWhitelist} user\n*Banned :* ${global.DATABASE.data.banned} user\n*Uptime :* ${uptime}`, m)
+      conn.reply(m.chat, `*Speed :* ${(neww-old)}\n\n*Self Mode :* ${selfModeText}\n*Group Mode :* ${groupModeText}\n*Group :* ${groupTotal} grup\n*Chat :* ${chatTotal} chat\n*Total User :* ${totalUser} user\n*User Aktif :* ${userAktif} user\n*Premium :* ${userPremium} user\n*Whitelist :* ${userWhitelist} user\n*Banned :* ${global.DATABASE.data.banned} user\n*Uptime :* ${uptime}`, m)
       // conn.reply(m.chat,`*[ BOT STATUS ]*\n\n*Status* : Best Performance\n*Ping :* ${(neww-old)} ms\n\n*Device :* ASUS ROG STRIX GL503\n*Processor :* Intel® Core™ i7-8750H 4.2 GHz\n*Memory :* 11.43GB / 32GB\n*Hard Drive :* 2TB SSD\n*Graphic :* NVIDIA® GeForce® GTX1050Ti 4GB GDDR5 VRAM`,m)
     }
 
-    if ((m.text == "hi" || m.text == "Hi") && (owner || m.fromMe)){
+    if ((m.text == "y" || m.text == "Y") && (owner || m.fromMe)){
       ran = "media/desah-bangsat.mp3"
       buffer = fs.readFileSync(ran)
       const option = { quoted: m, mimetype: 'audio/mp4', ptt:true }
@@ -528,7 +531,7 @@ conn.handler = async function (m) {
 
     if (!m.fromMe && !owner && selfMode && commandNYA == '.') return
 
-    if (!m.fromMe && !owner && adminMode && m.isGroup && !isAdmin && commandNYA == '.') return conn.reply(m.chat, `*[ ADMIN MODE ]*\n\nHanya admin grup yang dapat menggunaan bot`, m)
+    if (!m.fromMe && !owner && adminMode && m.isGroup && !isAdmin && commandNYA == '.') return
 
     if (!m.fromMe && !owner && !m.isGroup && !owner && groupMode && commandNYA == '.' && global.DATABASE.data.users[m.sender].premium == false) {
       var head = '*[ GROUP MODE ]*\n\nSilahkan masuk ke grup untuk menggunakan bot atau daftar premium untuk menggunakan bot di personal chat.'
@@ -641,7 +644,7 @@ conn.handler = async function (m) {
         m.isCommand = true
         let xp = 'exp' in plugin ? parseInt(plugin.exp) : 50 // XP Earning per command
         m.exp += xp
-        if (!isPrems && global.DATABASE._data.users[m.sender].limit < m.limit + 1 && plugin.limit) {
+        if (!isPrems && global.DATABASE._data.users[m.sender].limit < 1 && plugin.limit && !owner && !m.fromMe) {
           this.reply(m.chat, `*[ EMPTY LIMIT ]*\n\nSilahkan beli limit menggunakan command *.buy _total_* atau ambil hadiah harian menggunakan command *.claim* !\nSesuaikan dengan uang anda, kalau miskin gada duit yaudah diem.`, m)
           continue // Limit habis
         }
@@ -669,7 +672,7 @@ conn.handler = async function (m) {
           console.log(e)
           m.reply(util.format(e))
         } finally {
-          // if (m.limit) m.reply(+ m.limit + ' Limit terpakai')
+          if (m.limit) m.reply('*Limit terpakai.*')
         }
         break
       }
@@ -704,7 +707,7 @@ conn.handler = async function (m) {
         limitAsli = 1000
       } else if (global.DATABASE._data.users[m.sender].limit > 110) {
         limitAsli = 100
-      } else if (global.DATABASE._data.users[m.sender].limit > 20) {
+      } else if (global.DATABASE._data.users[m.sender].limit > 50) {
         limitAsli = 10
       } else if (global.DATABASE._data.users[m.sender].limit > 5) {
         limitAsli = 5
@@ -715,11 +718,11 @@ conn.handler = async function (m) {
       )
       // user.limit -= limitAsli
       if (user.premium == true) {
-        user.limit -= 1
-      } else if (user.limit > 30 || user.exp > 100000000) {
+        user.limit -= m.limit * 1
+      } else if (user.limit > 30) {
         user.limit -= m.limit * limitAsli
       } else {
-        user.limit -= m.limit
+        user.limit -= m.limit * 1
       }
       // user.limit -= m.limit
       // conn.reply(m.chat,`@${m.sender.split('@')[0]} berhasil menggunakan ${format(limitAsli)}\n\nSisa limit : ${format(global.DATABASE._data.users[m.sender].limit)}`,{contextInfo: {

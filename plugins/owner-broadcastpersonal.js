@@ -1,8 +1,12 @@
 let handler  = async (m, { conn, text }) => {
   let groups = conn.chats.array.filter(v => v.jid.endsWith('s.whatsapp.net') && !v.read_only && v.message).map(v => v.jid)
-  for (let id of groups) conn.sendMessage(id, text + (/broadcast/im.test(text) ? '' : ('\n' + readMore + '\n[ _*BROADCAST*_ ]')), m.mtype, m.msg.contextInfo ? {
-    contextInfo: m.msg.contextInfo
-  } : {})
+  const delay = time => new Promise(res=>setTimeout(res,time)); 
+  for (let id of groups){
+    conn.sendMessage(id, text + (/broadcast/im.test(text) ? '' : ('\n' + readMore + '\n[ _*BROADCAST*_ ]')), m.mtype, m.msg.contextInfo ? {
+      contextInfo: m.msg.contextInfo
+    } : {})
+    await delay(2500)
+  }
   conn.reply(m.chat, `_Mengirim pesan broadcast ke ${groups.length} chat_`, m)
 }
 handler.help = ['bcpc'].map(v => v + ' *text*')

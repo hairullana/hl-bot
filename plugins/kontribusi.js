@@ -44,8 +44,8 @@ let handler = async (m, { conn, args, participants }) => {
     
     let text = `
 • *TOP ${len} KONSTRIBUSI* •\n
-_Kamu punya *Rp. ${format(global.DATABASE.data.users[m.sender].exp)}* dan *${format(global.DATABASE.data.users[m.sender].limit)} Limit*_
-_Kamu peringkat *${usersExp.indexOf(m.sender) + 1}* dari *${usersExp.length}* member grup ${conn.getName(m.chat)}_
+Kontribusi adalah total keaktifan kamu di grup *${conn.getName(m.chat)}*
+Untuk kontribusi dengan nilai 0 akan dianggap sider
   
 ${sortedExp.slice(0, len).map(([user, data], i) => (i + 1) + '. '  + conn.getName(user) + '\n    wa.me/' + user.split('@')[0] + '\n    *' + data.chat + ' Chat*').join`\n`}
     `.trim()
