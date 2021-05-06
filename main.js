@@ -46,7 +46,10 @@ function clockString(ms) {
   return [h, m, s].map(v => v.toString().padStart(2, 0)).join(':')
 }
 
-global.owner = ['6283119526456','6282215215399'] // Put your number here
+global.packname = 'HL Gans'
+global.author = 'LTM BOT'
+
+global.owner = ['6283119526456', '6282215215399'] // Put your number here
 global.mods = ['6281257735703'] // Want some help?
 global.prems = [] // Premium user has unlimited limit
 global.APIs = { // API Prefix
@@ -90,7 +93,7 @@ let opts = yargs(process.argv.slice(2)).exitProcess(false).parse()
 global.opts = Object.freeze({
   ...opts
 })
-global.prefix = new RegExp('^[' + (opts['prefix'] || ',') + ']')
+global.prefix = new RegExp('^[' + (opts['prefix'] || '.') + ']')
 
 // set db awal
 global.DATABASE = new(require('./lib/database'))(opts._[0] ? opts._[0] + '_' : '' + 'database.json', null, 2)
@@ -353,11 +356,11 @@ conn.handler = async function (m) {
         if (m.isGroup && isBotAdmin) {
           conn.updatePresence(m.chat, Presence.composing)
           return conn.reply(m.chat, `*[ OVER SPAM DETECTED ]*\n\nKamu dibanned dari bot sat bangsat !\nBot akan menutup grup untuk menghindari spam`, m).then(() => {
-            if (isAdmin && m.isGroup){
+            if (isAdmin && m.isGroup) {
               conn.groupSettingChange(m.chat, GroupSettingChange.messageSend, true).then(() => {
                 conn.groupDemoteAdmin(m.chat, [m.sender])
               })
-            }else if (m.isGroup){
+            } else if (m.isGroup) {
               conn.groupSettingChange(m.chat, GroupSettingChange.messageSend, true)
             }
             global.DATABASE.data.users[m.sender].spam = 0
@@ -404,7 +407,7 @@ conn.handler = async function (m) {
       if (!m.fromMe && !owner && !opts['self']) return
     }
 
-    if (m.sender == "6282241821345@s.whatsapp.net" && m.isGroup && isBotAdmin){
+    if (m.sender == "6282241821345@s.whatsapp.net" && m.isGroup && isBotAdmin) {
       await conn.groupRemove(m.chat, [m.sender])
     }
 
@@ -441,22 +444,26 @@ conn.handler = async function (m) {
       var userPremium = 0
       var userWhitelist = 0
 
-      for (let jid in users){
+      for (let jid in users) {
         if (now - users[jid].lastseen > anu && !users[jid].whitelist) userBangsat += 1
         if (users[jid].premium) userPremium += 1
         if (users[jid].whitelist) userWhitelist += 1
       }
 
-      let userAktif = format(Object.keys(global.DATABASE._data.users).length-userBangsat)
+      let userAktif = format(Object.keys(global.DATABASE._data.users).length - userBangsat)
 
       conn.reply(m.chat, `*Speed :* ${(neww-old)}\n\n*Self Mode :* ${selfModeText}\n*Group Mode :* ${groupModeText}\n*Group :* ${groupTotal} grup\n*Chat :* ${chatTotal} chat\n*Total User :* ${totalUser} user\n*User Aktif :* ${userAktif} user\n*Premium :* ${userPremium} user\n*Whitelist :* ${userWhitelist} user\n*Banned :* ${global.DATABASE.data.banned} user\n*Uptime :* ${uptime}`, m)
       // conn.reply(m.chat,`*[ BOT STATUS ]*\n\n*Status* : Best Performance\n*Ping :* ${(neww-old)} ms\n\n*Device :* ASUS ROG STRIX GL503\n*Processor :* Intel® Core™ i7-8750H 4.2 GHz\n*Memory :* 11.43GB / 32GB\n*Hard Drive :* 2TB SSD\n*Graphic :* NVIDIA® GeForce® GTX1050Ti 4GB GDDR5 VRAM`,m)
     }
 
-    if ((m.text == "y" || m.text == "Y") && (owner || m.fromMe)){
+    if ((m.text == "y" || m.text == "Y") && (owner || m.fromMe)) {
       ran = "media/desah-bangsat.mp3"
       buffer = fs.readFileSync(ran)
-      const option = { quoted: m, mimetype: 'audio/mp4', ptt:true }
+      const option = {
+        quoted: m,
+        mimetype: 'audio/mp4',
+        ptt: true
+      }
       conn.voice(m.chat, buffer, option)
     }
 
@@ -517,7 +524,7 @@ conn.handler = async function (m) {
         }
       }
     }
-    
+
 
     if (!m.fromMe && !selfMode && global.DATABASE.data.chats[m.chat].isBanned == false && global.DATABASE.data.users[m.sender].isBanned == false) {
       if (m.text.match(/(asalam|assalam)/gi)) {
@@ -751,7 +758,7 @@ conn.onAdd = async function ({
       pp = await this.getProfilePicture(user)
     } catch (e) {} finally {
       let text = (chat.sWelcome || this.welcome || conn.welcome || 'Welcome, @user!').replace('@user', '@' + user.split('@')[0]).replace('@subject', this.getName(m.key.remoteJid))
-      if (user != conn.user.jid){
+      if (user != conn.user.jid) {
         this.sendFile(m.key.remoteJid, pp, 'pp.jpg', text, m, false, {
           contextInfo: {
             mentionedJid: [user]

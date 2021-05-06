@@ -68,11 +68,11 @@ let handler  = async (m, { conn, usedPrefix: _p }) => {
           if (menu.help) groups[tag].push(menu)
     }
 
-    var update = "\n\n*UPDATE FITUR*\n- Tidak Aktif 1 Minggu ? Hapus Data\n- Anti Penjajah (.antipenjajah)\n- Member Spam ? Auto Close GC\n- Fitur Jadian\n- Menu Image Creator\n- Menu Logo\n- Admin Mode (.adminmode on/off)"
+    var update = "\n\n*UPDATE FITUR*\n- Sticker WM (.swm - premium only)\n- Tidak Aktif 1 Minggu ? Hapus Data\n- Anti Penjajah (.antipenjajah)\n- Member Spam ? Auto Close GC\n- Fitur Jadian"
 
     conn.menu = conn.menu ? conn.menu : {}
     // let before = conn.menu.before || `*${conn.getName(conn.user.jid)} BOT*\n\nHai, %name!\n*%exp XP | %limit Limit*\n*%week, %date [%time]*\n_Uptime: %uptime_\n%totalreg User in database\n%readmore`
-    let before = conn.menu.before || `Hai *%name*\nSaldo Rek Rp. %exp (%limit Limit)\nTotal User : %totalreg\n\n❏ Bingung dengan bot ? Ketik *.tutorial*\n❏ Upgrade premium ? Ketik *.infopremium*\n❏ Ingin undang bot ke GC ? Ketik *.join*\n❏ Req Fitur ? Fitur Error ? Unbanned ? Kesepian ? Hubungi *.owner*\n❏ Gak Aktif 1 Minggu ? Hapus Data Otomatis\n❏ SPAM ? Banned Otomatis${update}\n\nInfo Bot:\nIG: https://instagram.com/loadingtomastah\nTele: https://t.me/loadingtomastah\n\n%readmore`
+    let before = conn.menu.before || `Hai *%name*\nSaldo Rek Rp. %exp (%limit Limit)\nTotal User : %totalreg\n\n❏ Bingung dengan bot ? Ketik *.tutorial*\n❏ Upgrade premium ? Ketik *.infopremium*\n❏ Ingin undang bot ke GC ? Ketik *.join*\n❏ Req Fitur ? Fitur Error ? Unbanned ? Kesepian ? Hubungi *.owner*\n❏ Gak aktif 1 minggu ? Hapus data otomatis\n❏ SPAM ? banned otomatis${update}\n\nInfo Bot:\nIG: https://instagram.com/loadingtomastah\nTele: https://t.me/loadingtomastah\n\n%readmore`
     let header = conn.menu.header || '╔═ ✪〘 %category 〙✪'
     let body   = conn.menu.body   || '║ ❖ %cmd%islimit'
     let footer = conn.menu.footer || '╚════════════════\n'

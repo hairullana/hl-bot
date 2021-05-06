@@ -24,15 +24,16 @@ let handler = async (m, { conn }) => {
     // }else {
     //   hadiah = 20
     // }
-    if (global.DATABASE.data.users[m.sender].pemium){
+    var hadiah
+    if (global.DATABASE.data.users[m.sender].premium){
       hadiah = 150
     }else {
       hadiah = 30
     }
     conn.reply(m.chat, `*[ LIMIT CLAIM ]*\n\nSelamat bangsat dapet bonus *${hadiah} Limit*\nSilahkan claim lagi besok\n\nUser Premium : 150 Limit\nUser Biasa : 30 Limit`, m)  
-    global.DATABASE._data.users[m.sender].limit += hadiah
+    global.DATABASE.data.users[m.sender].limit += hadiah
     
-    global.DATABASE._data.users[m.sender].lastclaim = new Date * 1
+    global.DATABASE.data.users[m.sender].lastclaim = new Date * 1
   } else conn.reply(m.chat, `*[ LIMIT CLAIM ]*\n\nAnda sudah mengklaim klaim bonus harian !\nKlaim lagi dalam ${msToTime(asu2)}`, m)
 }
 handler.help = ['claim']
