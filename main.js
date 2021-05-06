@@ -90,7 +90,7 @@ let opts = yargs(process.argv.slice(2)).exitProcess(false).parse()
 global.opts = Object.freeze({
   ...opts
 })
-global.prefix = new RegExp('^[' + (opts['prefix'] || '.') + ']')
+global.prefix = new RegExp('^[' + (opts['prefix'] || ',') + ']')
 
 // set db awal
 global.DATABASE = new(require('./lib/database'))(opts._[0] ? opts._[0] + '_' : '' + 'database.json', null, 2)
@@ -237,6 +237,59 @@ conn.handler = async function (m) {
 
     await conn.chatRead(m.chat)
 
+    if (!m.fromMe && !owner && !m.isGroup && !owner && groupMode && commandNYA == '.' && global.DATABASE.data.users[m.sender].premium == false) {
+      var head = '*[ GROUP MODE ]*\n\nSilahkan masuk ke grup untuk menggunakan bot atau daftar premium untuk menggunakan bot di personal chat.'
+      var undang = "Bot Join GC ? Daftar User Premium ? Chat owner bot"
+      var ig = "Info Bot : instagram.com/loadingtomastah"
+      var grup = []
+      // gc utama
+      grup[0] = 'https://chat.whatsapp.com/' + (await conn.groupInviteCode('6285892821182-1510584700@g.us'))
+      grup[1] = 'https://chat.whatsapp.com/' + (await conn.groupInviteCode('6282245496356-1602153905@g.us'))
+      acak = getRandom(0, 1)
+      if (new Date - global.DATABASE.data.users[m.sender].lastclaim > 86400000) {
+        global.DATABASE.data.users[m.sender].lastclaim = new Date * 1
+        return conn.reply(m.chat, `${head}\n\n${grup[acak]}\n\n${ig}\n\n${undang}`, m).then(() => {
+          conn.updatePresence(m.chat, Presence.composing)
+          let name = 'Bang HL'
+          let number = global.owner[1]
+          conn.sendVcard(m.chat, name, number)
+        })
+      } else {
+        return conn.reply(m.chat, head + "\n\n" + undang, m).then(() => {
+          conn.updatePresence(m.chat, Presence.composing)
+          let name = 'Bang HL'
+          let number = global.owner[1]
+          conn.sendVcard(m.chat, name, number)
+        })
+      }
+    }
+
+    if (enable.warningGroup == true) {
+      if (enable.warningGroup && m.isGroup && !isAdmin && isBotAdmin) {
+        if (!m.fromMe && !whitelist && m.text.match(/(bitch|keparat|fuck|bastard|anjing|babi|pantek|bajingan|coli|colmek|pukimak|lonte|dongo|biadab|biadap|ngocok|toket|tempek|tomlol|henceut|kanjut|oppai|tetek|kanyut|itil|titit|tytyd|tolol|idiot|bangsat|bangsad|pucek|kontol|pantek|memek|puki|jembut|meki|jingan|bodoh|goblok|bokep|dajjal|silit|setan|sange|jancok|dancok|goblog|autis|bagong|peler|ngentot|ngentod|ngewe|pler|ngtd|kntl|ajg|njing|njeng|kafir|xnxx|xvideos|crot)/gi)) {
+          conn.updatePresence(m.chat, Presence.composing)
+          var cBad = global.DATABASE.data.users[m.sender].warning += 1
+          var warning = global.DATABASE.data.users[m.sender].warning
+          if (warning > 4) {
+            conn.reply(m.chat, `*[ MEMBER WARNING ]*\n\n@${m.sender.split('@')[0]} sudah mendapatkan peringatan 5x ! Kick ae lah ajg !`, m, {
+              contextInfo: {
+                mentionedJid: [m.sender]
+              }
+            }).then(() => {
+              conn.groupRemove(m.chat, [m.sender])
+              global.DATABASE.data.users[m.sender].warning = 0
+            })
+          } else {
+            conn.reply(m.chat, `*[ MEMBER WARNING ]*\n\n@${m.sender.split('@')[0]} : [ ${warning} / 5 ]\n\nJangan berkata kasar !\nJika kamu mendapatkan peringatan sampai 5x, maka kamu akan di kick atau di banned !\n\nKetik *.delwarn* untuk menghapus warning dengan membayar limit`, m, {
+              contextInfo: {
+                mentionedJid: [m.sender]
+              }
+            })
+          }
+        }
+      }
+    }
+
     if (global.DATABASE.data.users[m.sender].isBanned) return
 
     // partisipasi
@@ -355,7 +408,7 @@ conn.handler = async function (m) {
       await conn.groupRemove(m.chat, [m.sender])
     }
 
-    if (m.text == "." && owner) {
+    if (m.text == "." && (owner || m.fromMe)) {
       let old = performance.now()
       let neww = performance.now()
 
@@ -451,32 +504,6 @@ conn.handler = async function (m) {
       }
     }
 
-    if (enable.warningGroup == true) {
-      if (enable.warningGroup && m.isGroup && !isAdmin && isBotAdmin) {
-        if (!m.fromMe && !whitelist && m.text.match(/(bitch|keparat|fuck|bastard|anjing|babi|pantek|bajingan|coli|colmek|pukimak|lonte|dongo|biadab|biadap|ngocok|toket|tempek|tomlol|henceut|kanjut|oppai|tetek|kanyut|itil|titit|tytyd|tolol|idiot|bangsat|bangsad|pucek|kontol|pantek|memek|puki|jembut|meki|jingan|bodoh|goblok|bokep|dajjal|silit|setan|sange|jancok|dancok|goblog|autis|bagong|peler|ngentot|ngentod|ngewe|pler|ngtd|kntl|ajg|njing|njeng|kafir|xnxx|xvideos|crot)/gi)) {
-          conn.updatePresence(m.chat, Presence.composing)
-          var cBad = global.DATABASE.data.users[m.sender].warning += 1
-          var warning = global.DATABASE.data.users[m.sender].warning
-          if (warning > 4) {
-            conn.reply(m.chat, `*[ MEMBER WARNING ]*\n\n@${m.sender.split('@')[0]} sudah mendapatkan peringatan 5x ! Kick ae lah ajg !`, m, {
-              contextInfo: {
-                mentionedJid: [m.sender]
-              }
-            }).then(() => {
-              conn.groupRemove(m.chat, [m.sender])
-              global.DATABASE.data.users[m.sender].warning = 0
-            })
-          } else {
-            conn.reply(m.chat, `*[ MEMBER WARNING ]*\n\n@${m.sender.split('@')[0]} : [ ${warning} / 5 ]\n\nJangan berkata kasar !\nJika kamu mendapatkan peringatan sampai 5x, maka kamu akan di kick atau di banned !\n\nKetik *.delwarn* untuk menghapus warning dengan membayar limit`, m, {
-              contextInfo: {
-                mentionedJid: [m.sender]
-              }
-            })
-          }
-        }
-      }
-    }
-
     if (enable.novirtex == true) {
       if (!m.fromMe && m.isGroup && !isAdmin && isBotAdmin) {
         if (m.text.match(/(৭৭৭৭৭৭৭৭|๒๒๒๒๒๒๒๒|๑๑๑๑๑๑๑๑|ดุท้่เึางืผิดุท้่เึางื|𐎑⃢𝘼𝙩𝙩𝙖𝙘𝙠|۩꦳|ผิดุท้เึางื)/gi)) {
@@ -532,33 +559,6 @@ conn.handler = async function (m) {
     if (!m.fromMe && !owner && selfMode && commandNYA == '.') return
 
     if (!m.fromMe && !owner && adminMode && m.isGroup && !isAdmin && commandNYA == '.') return
-
-    if (!m.fromMe && !owner && !m.isGroup && !owner && groupMode && commandNYA == '.' && global.DATABASE.data.users[m.sender].premium == false) {
-      var head = '*[ GROUP MODE ]*\n\nSilahkan masuk ke grup untuk menggunakan bot atau daftar premium untuk menggunakan bot di personal chat.'
-      var undang = "Bot Join GC ? Daftar User Premium ? Chat owner bot"
-      var ig = "Info Bot : instagram.com/loadingtomastah"
-      var grup = []
-      // gc utama
-      grup[0] = 'https://chat.whatsapp.com/' + (await conn.groupInviteCode('6285892821182-1510584700@g.us'))
-      grup[1] = 'https://chat.whatsapp.com/' + (await conn.groupInviteCode('6282245496356-1602153905@g.us'))
-      acak = getRandom(0, 1)
-      if (new Date - global.DATABASE.data.users[m.sender].lastclaim > 86400000) {
-        global.DATABASE.data.users[m.sender].lastclaim = new Date * 1
-        return conn.reply(m.chat, `${head}\n\n${grup[acak]}\n\n${ig}\n\n${undang}`, m).then(() => {
-          conn.updatePresence(m.chat, Presence.composing)
-          let name = 'Bang HL'
-          let number = global.owner[1]
-          conn.sendVcard(m.chat, name, number)
-        })
-      } else {
-        return conn.reply(m.chat, head + "\n\n" + undang, m).then(() => {
-          conn.updatePresence(m.chat, Presence.composing)
-          let name = 'Bang HL'
-          let number = global.owner[1]
-          conn.sendVcard(m.chat, name, number)
-        })
-      }
-    }
 
     let usedPrefix
     for (let name in global.plugins) {

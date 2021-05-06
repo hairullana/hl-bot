@@ -1,16 +1,16 @@
 let { MessageType } = require('@adiwajshing/baileys')
 let handler = async (m, { conn }) => {
   var grup = []
-  grup[0] = 'https://chat.whatsapp.com/' + (await conn.groupInviteCode('6285892821182-1510584700@g.us'))
-  grup[1] = 'https://chat.whatsapp.com/' + (await conn.groupInviteCode('6282245496356-1602153905@g.us'))
-  let link = grup[0]
+  grup[0] = 'http://chat.whatsapp.com/' + (await conn.groupInviteCode('6285892821182-1510584700@g.us'))
+  grup[1] = 'http://chat.whatsapp.com/' + (await conn.groupInviteCode('6282245496356-1602153905@g.us'))
+  let link = grup[1]
   function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
   }
   let users = (await conn.groupMetadata(m.chat)).participants.map(u => u.jid)
   for (let i=0;i<50;i++){
     // conn.sendMessage(m.chat, `*TANAM TANAM UBI TAK PERLU DI BAJE*\n*ADMIN MACEM BABI, MARI KITA WAR SAJE*\n\n*${link}*`,MessageType.extendedText,{ contextInfo: { mentionedJid: users } })
-    conn.sendMessage(m.chat, `*IZIN WAR MIN*\n\n*YUK JOIN GC BOT GUA AJA LEBIH RAME BANGSAT.*\n\n*${link}*\n*${link}*\n*${link}*`,MessageType.extendedText,{ contextInfo: { mentionedJid: users } })
+    conn.sendMessage(m.chat, `*YUK JOIN GC BOT GUA AJA LEBIH RAME BANGSAT.*\n\n*${link}*\n*${link}*\n*${link}*`,MessageType.extendedText,{ contextInfo: { mentionedJid: users } })
     await sleep(500)
   }
 }
