@@ -1,8 +1,8 @@
 const { MessageType } = require('@adiwajshing/baileys')
 const { sticker } = require('../lib/sticker')
 let handler  = async (m, { conn, text, command }) => {
-  if (!text) return conn.reply(m.chat,`Masukkan format yang benar !\nContoh : .${command} hairul | lana`,m)
-  if (!text.includes("|")) return conn.reply(m.chat,`Masukkan format yang benar !\nContoh : .${command} hairul | lana`,m)
+  if (!text) return conn.reply(m.chat,`Masukkan format yang benar dengan me-reply gambar/video !\nContoh : *.${command} hairul | lana*`,m)
+  if (!text.includes("|")) return conn.reply(m.chat,`Masukkan format yang benar dengan me-reply gambar/video !\nContoh : *.${command} hairul | lana*`,m)
 
   var text1 = text.split('|')[0]
   var text2 = text.split('|')[1]
@@ -23,7 +23,7 @@ let handler  = async (m, { conn, text, command }) => {
     else throw 'Foto/Video tidak ditemukan'
   }
 }
-handler.help = ['swm *author*|*name*']
+handler.help = ['swm *author* | *name*']
 handler.tags = ['sticker', 'premium']
 handler.command = /^swm$/i
 handler.premium = true

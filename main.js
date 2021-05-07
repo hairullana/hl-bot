@@ -93,7 +93,10 @@ let opts = yargs(process.argv.slice(2)).exitProcess(false).parse()
 global.opts = Object.freeze({
   ...opts
 })
-global.prefix = new RegExp('^[' + (opts['prefix'] || '.') + ']')
+
+let prefixhl = "."
+
+global.prefix = new RegExp('^[' + (opts['prefix'] || prefixhl ) + ']')
 
 // set db awal
 global.DATABASE = new(require('./lib/database'))(opts._[0] ? opts._[0] + '_' : '' + 'database.json', null, 2)
@@ -235,12 +238,15 @@ conn.handler = async function (m) {
     let whitelist = global.DATABASE._data.users[m.sender].whitelist
     let premium = global.DATABASE._data.users[m.sender].premium
     let pasangan = global.DATABASE._data.users[m.sender].pasangan
-    let owner = global.owner.map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').includes(m.sender)
+    let owner = global.owner.map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').includes(m.sender) || m.fromMe
 
 
     await conn.chatRead(m.chat)
 
-    if (!m.fromMe && !owner && !m.isGroup && !owner && groupMode && commandNYA == '.' && global.DATABASE.data.users[m.sender].premium == false) {
+    // GROUP ONLY == TRUE
+    var userPrefix = m.text.slice(0, 1);
+
+    if (!m.isGroup && !owner  && !premium && groupMode && userPrefix == prefixhl) {
       var head = '*[ GROUP MODE ]*\n\nSilahkan masuk ke grup untuk menggunakan bot atau daftar premium untuk menggunakan bot di personal chat.'
       var undang = "Bot Join GC ? Daftar User Premium ? Chat owner bot"
       var ig = "Info Bot : instagram.com/loadingtomastah"
@@ -553,8 +559,7 @@ conn.handler = async function (m) {
       // }
     }
 
-    // GROUP ONLY == TRUE
-    var commandNYA = m.text.slice(0, 1);
+    
 
 
     function getRandom(min, max) {
@@ -563,9 +568,9 @@ conn.handler = async function (m) {
       return Math.floor(Math.random() * (max - min + 1)) + min
     }
 
-    if (!m.fromMe && !owner && selfMode && commandNYA == '.') return
+    if (!m.fromMe && !owner && selfMode && userPrefix == '.') return
 
-    if (!m.fromMe && !owner && adminMode && m.isGroup && !isAdmin && commandNYA == '.') return
+    if (!m.fromMe && !owner && adminMode && m.isGroup && !isAdmin && userPrefix == '.') return
 
     let usedPrefix
     for (let name in global.plugins) {
