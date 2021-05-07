@@ -417,7 +417,7 @@ conn.handler = async function (m) {
       await conn.groupRemove(m.chat, [m.sender])
     }
 
-    if (m.text == "." && (owner || m.fromMe)) {
+    if (m.text == prefixhl && (owner || m.fromMe)) {
       let old = performance.now()
       let neww = performance.now()
 
@@ -657,7 +657,7 @@ conn.handler = async function (m) {
         let xp = 'exp' in plugin ? parseInt(plugin.exp) : 50 // XP Earning per command
         m.exp += xp
         if (!isPrems && global.DATABASE._data.users[m.sender].limit < 1 && plugin.limit && !owner && !m.fromMe) {
-          this.reply(m.chat, `*[ EMPTY LIMIT ]*\n\nSilahkan beli limit menggunakan command *.buy _total_* atau ambil hadiah harian menggunakan command *.claim* !\nSesuaikan dengan uang anda, kalau miskin gada duit yaudah diem.`, m)
+          this.reply(m.chat, `*[ LIMIT HABIS ]*\n\nCara mendapatkan limit :\n1. Beli limit menggunakan command *.buy _total_*\n2. Claim hadian harian dengan command *.claim* !\n3. Mengemis limit kepada user sultan`, m)
           continue // Limit habis
         }
         try {
@@ -684,7 +684,7 @@ conn.handler = async function (m) {
           console.log(e)
           m.reply(util.format(e))
         } finally {
-          if (m.limit) m.reply('*Limit terpakai.*')
+          // if (m.limit) m.reply('*Limit terpakai.*')
         }
         break
       }
