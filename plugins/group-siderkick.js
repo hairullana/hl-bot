@@ -12,7 +12,7 @@ let handler = async (m, { conn, text, participants }) => {
 	var sider = []
 	for(let i = 0; i < sum; i++) {
 		let users = m.isGroup ? participants.find(u => u.jid == member[i]) : {}
-		if((typeof global.DATABASE.data.users[member[i]] == 'undefined' || global.DATABASE.data.users[member[i]].chat == 0) && !users.isAdmin && !users.isSuperAdmin) { 
+		if((typeof global.DATABASE.data.users[member[i]] == 'undefined' || global.DATABASE.data.users[member[i]].lastseen < lama) && !users.isAdmin && !users.isSuperAdmin) { 
 			if (typeof global.DATABASE.data.users[member[i]] !== 'undefined'){
 				if(global.DATABASE.data.users[member[i]].whitelist == false){
 					total++
@@ -29,7 +29,7 @@ let handler = async (m, { conn, text, participants }) => {
 
 	for(let i = 0; i < sum; i++) {
 		let users = m.isGroup ? participants.find(u => u.jid == member[i]) : {}
-		if((typeof global.DATABASE.data.users[member[i]] == 'undefined' || global.DATABASE.data.users[member[i]].chat == 0) && !users.isAdmin && !users.isSuperAdmin) { 
+		if((typeof global.DATABASE.data.users[member[i]] == 'undefined' || global.DATABASE.data.users[member[i]].lastseen < lama) && !users.isAdmin && !users.isSuperAdmin) { 
 			if (typeof global.DATABASE.data.users[member[i]] !== 'undefined'){
 				if(global.DATABASE.data.users[member[i]].whitelist == false){
 					await conn.groupRemove(m.chat, [member[i]])

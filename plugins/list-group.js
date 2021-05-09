@@ -15,10 +15,14 @@ let handler = async (m, { conn }) => {
 		}
 		// +minutes+":"+sec;
   }
+
+	var total = 0
   let txt = conn.chats.array.filter(v => v.jid.endsWith('g.us')).map(v =>`*${conn.getName(v.jid)}*\n${msToDate(global.DATABASE.data.chats[v.jid].expired - new Date())} [${v.read_only ? 'Left' : 'Joined'}]`).join`\n\n`
-  conn.reply(m.chat,txt, m)
+
+  conn.chats.array.filter(v => v.jid.endsWith('g.us')).map(v => total+=1 )
+  conn.reply(m.chat,`❏ Total Group : ${total}\n❏ Invite bot ke GC ? Ketik *.join*\n(hanya menerima jika total grup dibawah 25)\n\n` + txt, m)
 }
-handler.help = ['grouplist']
+handler.help = ['grouplist','grouplist']
 handler.tags = ['group tools']
 handler.command = /^(grouplist|listgroup)$/i
 handler.owner = false

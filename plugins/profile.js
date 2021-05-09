@@ -16,7 +16,7 @@ let handler = async (m, { conn, text }) => {
 		minutes = Math.floor((hoursms)/(60*1000));
 		minutesms = ms % (60*1000);
 		sec = Math.floor((minutesms)/(1000));
-		return days+" Hari "+hours+" Jam "+ minutes + " Menit";
+		return days+"H "+hours+"J "+ minutes + "M";
 		// +minutes+":"+sec;
   }
 	function msToDate2(ms) {
@@ -31,7 +31,7 @@ let handler = async (m, { conn, text }) => {
 		if (days == 0 && hours == 0 && minutes == 0){
 			return "Baru Saja"
 		}else {
-			return days+" Hari "+hours+" Jam " + minutes + " Menit";
+			return days+"H "+hours+"J " + minutes + "M";
 		}
 		// +minutes+":"+sec;
   }
@@ -115,7 +115,7 @@ let handler = async (m, { conn, text }) => {
 			var name = isName
 		} else {
 			var name = '(Tanpa Nama)'
-		} conn.sendFile(m.chat, pp, 'profile.jpg', `*[ IDENTITAS USER ]*\n\n*Nama* : ${name}\n*Tentang* : ${about}\n*Nomor* : ${nomor}\n*Uang* : Rp. ${Number(money).toLocaleString().replace(/,/g, '.')},-\n*Limit* : ${format(limit)}\n*Whitelist* : ${whitelist}\n*Premium* : ${premium}\n*Warning* : ${warn} / 5\n*Konstribusi* : ${chat}\n*Banned* : ${banned}\n*Last Seen* : ${lastseen}`, m)
+		} conn.sendFile(m.chat, pp, 'profile.jpg', `*[ IDENTITAS USER ]*\n\n*Nama* : ${name}\n*Tentang* : ${about}\n*Nomor* : ${nomor}\n*Uang* : Rp. ${Number(money).toLocaleString().replace(/,/g, '.')},-\n*Limit* : ${format(limit)}\n*Whitelist* : ${whitelist}\n*Premium* : ${premium}\n*Warning* : ${warn} / 5\n*Banned* : ${banned}\n*Last Seen* : ${lastseen}`, m)
 	}
 }
 handler.help = ['*62xx*','*@user*','*(reply)*'].map(v => 'profile ' + v)

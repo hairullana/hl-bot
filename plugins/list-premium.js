@@ -25,8 +25,8 @@ let handler  = async (m, { conn, text }) => {
 
   return conn.reply(m.chat,`❏ Upgrade Premium ? Ketik *.infopremium*\n❏ Total Premium : ${i-1} user\n${text}`,m)
 }
-handler.help = ['listpremium']
+handler.help = ['listpremium','premiumlist']
 handler.tags = ['bot']
-handler.command = /^(listpremium)$/i
+handler.command = /^(listpremium|premiumlist)$/i
 handler.exp = 2000
 module.exports = handler

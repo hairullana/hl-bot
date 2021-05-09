@@ -1,15 +1,11 @@
 let { Presence } = require('@adiwajshing/baileys')
-let handler  = async (m, { conn, text }) => {
-	await conn.updatePresence(m.chat, Presence.composing) 
-
-	if (text == "ori"){
-		var name = 'Hairul Lana'
-		var number = '6283119526456'
-	}else {
-		var name = 'Bang HL'
-		var number = '6282215215399'
-	}
-	conn.sendVcard(m.chat, name, number, m)
+let handler  = async (m, { conn }) => {
+	await conn.updatePresence(m.chat, Presence.composing)
+	var name = 'Hairul Lana'
+	var number = '6283119526456'
+	conn.sendVcard(m.chat, name, number, m).then(() =>{
+		conn.reply(m.chat,`*Harap chat owner jika penting saja dan to the point.*\n*Makasih :)*`,m)
+	})
 }
 handler.help = ['owner']
 handler.tags = ['info']

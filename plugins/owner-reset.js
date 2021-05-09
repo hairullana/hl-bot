@@ -42,7 +42,7 @@ let handler = async (m, { conn, text }) => {
   
 	delete global.DATABASE.data.users[user]
  	
- 	conn.reply(m.chat, `*[ RESET DATA BERHASIL ]*\n\nBerhasil me-reset data @${number}`, null, {contextInfo: {
+ 	conn.reply(m.chat, `*[ RESET DATA BERHASIL ]*\n\nBerhasil menghapus @${number} dari database`, null, {contextInfo: {
     mentionedJid: [user]
  	}})
 

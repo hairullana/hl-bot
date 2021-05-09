@@ -1,4 +1,5 @@
 let handler = async (m, { conn, text }) => {
+	return conn.reply(m.chat,"*Fitur dinonaktifkan karena membuat bot terbanned.*\n*Silahkan lakukan manual asu !*",m)
 	if(isNaN(text) && !text.match(/@/g)){
 		return conn.reply(m.chat, `*Penggunaan yang benar*\n\n.promote @user\n.promote -> reply chat`, m)
 	}else if(isNaN(text)) {

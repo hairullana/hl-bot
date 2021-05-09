@@ -12,8 +12,8 @@ let handler  = async (m, { conn, text }) => {
 
   return conn.reply(m.chat,`❏ Daftar Banned\n❏ Total : ${i-1} user\n${text}`,m)
 }
-handler.help = ['listbanned']
+handler.help = ['listbanned','bannedlist']
 handler.tags = ['bot']
-handler.command = /^(listbanned)$/i
+handler.command = /^(listbanned|bannedlist)$/i
 handler.exp = 2000
 module.exports = handler

@@ -25,8 +25,8 @@ let handler  = async (m, { conn, text }) => {
 
   return conn.reply(m.chat,`❏ Daftar Whitelist\n❏ Total : ${i-1} user\n${text}`,m)
 }
-handler.help = ['listwhite']
+handler.help = ['listwhite','whitelist']
 handler.tags = ['bot']
-handler.command = /^(listwhite)$/i
+handler.command = /^(listwhite|whitelist)$/i
 handler.exp = 2000
 module.exports = handler

@@ -1,7 +1,7 @@
 let handler  = async (m, { conn, text }) => {
 	let users = global.DATABASE.data.users
   let chats = global.DATABASE.data.chats
-  let anu = 86400000 * 7
+  let anu = 86400000 * 10
   let now = new Date() * 1
 
   if (text == "clean"){
@@ -12,11 +12,14 @@ let handler  = async (m, { conn, text }) => {
         user += 1
       }
     }
-  
+    var chat = 0
     for (let jid in chats){
-      if  (now - chats[jid].lastseen > anu) delete chats[jid]
+      if  (now - chats[jid].lastseen > anu){
+        delete chats[jid]
+        chat += 1
+      }
     }
-    return conn.reply(m.chat,`*Berhasil membersihkan ${user} data user yang tidak aktif.*`,m)
+    return conn.reply(m.chat,`*Berhasil membersihkan ${user} data user dan ${chat} data chat yang tidak aktif.*`,m)
   }
 
   var user = 0

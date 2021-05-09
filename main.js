@@ -49,7 +49,7 @@ function clockString(ms) {
 global.packname = 'HL Gans'
 global.author = 'LTM BOT'
 
-global.owner = ['6283119526456', '6282215215399'] // Put your number here
+global.owner = ['6283119526456'] // Put your number here
 global.mods = ['6281257735703'] // Want some help?
 global.prems = [] // Premium user has unlimited limit
 global.APIs = { // API Prefix
@@ -159,7 +159,6 @@ conn.handler = async function (m) {
         if (!isNumber(user.limit)) user.limit = 10
         if (!isNumber(user.lastclaim)) user.lastclaim = 0
         if (!isNumber(user.spam)) user.spam = 0
-        if (!isNumber(user.chat)) user.chat = 0
         if (!isNumber(user.price)) user.price = 0
         if (!isNumber(user.premiumDate)) user.premiumDate = 0
         if (!isNumber(user.afk)) user.afk = -1
@@ -177,7 +176,6 @@ conn.handler = async function (m) {
         command: 0,
         job: "x",
         price: 0,
-        chat: 0,
         whitelist: false,
         isBanned: false,
         spam: 0
@@ -260,14 +258,14 @@ conn.handler = async function (m) {
         return conn.reply(m.chat, `${head}\n\n${grup[acak]}\n\n${ig}\n\n${undang}`, m).then(() => {
           conn.updatePresence(m.chat, Presence.composing)
           let name = 'Bang HL'
-          let number = global.owner[1]
+          let number = global.owner[0]
           conn.sendVcard(m.chat, name, number)
         })
       } else {
         return conn.reply(m.chat, head + "\n\n" + undang, m).then(() => {
           conn.updatePresence(m.chat, Presence.composing)
           let name = 'Bang HL'
-          let number = global.owner[1]
+          let number = global.owner[0]
           conn.sendVcard(m.chat, name, number)
         })
       }
@@ -304,7 +302,7 @@ conn.handler = async function (m) {
     // partisipasi
     global.DATABASE.data.chats[m.chat].lastseen = new Date() * 1
     if (global.DATABASE.data.users[m.sender].isBanned == false) {
-      global.DATABASE.data.users[m.sender].chat += 1
+      global.DATABASE.data.users[m.sender].exp += 1000
       global.DATABASE.data.users[m.sender].lastseen = new Date() * 1
     }
 
@@ -315,7 +313,7 @@ conn.handler = async function (m) {
         conn.reply(m.chat, "*Maaf waktunya bot untuk meninggalkan grup :(*\n*Chat owner untuk invite bot lagi*").then(() => {
           conn.updatePresence(m.chat, Presence.composing)
           let name = 'Bang HL'
-          let number = global.owner[1]
+          let number = global.owner[0]
           conn.sendVcard(m.chat, name, number).then(() => {
             conn.groupLeave(m.chat).then(() => {
               global.DATABASE.data.chats[m.chat].expired = 0
@@ -332,7 +330,7 @@ conn.handler = async function (m) {
           global.DATABASE.data.users[m.sender].premium = false
           conn.updatePresence(m.chat, Presence.composing)
           let name = 'Bang HL'
-          let number = global.owner[1]
+          let number = global.owner[0]
           conn.sendVcard(m.chat, name, number)
         })
 
@@ -397,16 +395,15 @@ conn.handler = async function (m) {
 
     }
 
-    var myprefix = "."
 
     // ANTI-SPAM COMMAND
-    if (m.text.slice(0, 1) == myprefix) {
+    if (m.text.slice(0, 1) == prefixhl) {
       global.DATABASE.data.chats[m.chat].command += 1
     }
     let cmd = global.DATABASE.data.chats[m.chat].command
     if (cmd >= 1) setTimeout(() => {
       global.DATABASE.data.chats[m.chat].command = 0
-    }, 5000)
+    }, 7500)
     if (cmd <= 1) {
       if (!m.fromMe && !owner && opts['self']) return
     } else {
@@ -475,7 +472,7 @@ conn.handler = async function (m) {
 
     if (enable.nolink == true && !whitelist) {
       var linkGC = 'chat.whatsapp.com/' + (conn.groupInviteCode(m.chat))
-      if (m.isGroup && !isAdmin && isBotAdmin && !m.text.match(linkGC)) {
+      if (m.isGroup && !isAdmin && isBotAdmin) {
         if (m.text.match(/(chat.whatsapp.com)/gi)) {
           conn.groupRemove(m.chat, [m.sender], m)
           // conn.reply(m.chat,`*[ LINK DETECTOR ]*\n\nSorry motherfucker, you will be removed from this group !`,m).then(() => {
@@ -485,7 +482,7 @@ conn.handler = async function (m) {
       }
     }
 
-    if (m.text.match(/(@62)/gi) && !m.fromMe && m.text.slice(0, 1) != myprefix) {
+    if (m.text.match(/(@62)/gi) && !m.fromMe && m.text.slice(0, 1) != prefixhl) {
       var xxx = m.text.split(' ')
       var jancok
       for (i = 0; i < xxx.length; i++) {
@@ -504,7 +501,7 @@ conn.handler = async function (m) {
 
         if (global.DATABASE.data.users[bebeb].pasangan == ayang && global.DATABASE.data.users[ayang].pasangan == bebeb && m.sender != bebeb) {
           if (m.sender != ayang) {
-            var denda = 0.1
+            var denda = 1
             var nominalDenda = Math.ceil((global.DATABASE.data.users[m.sender].exp / 100) * denda)
             global.DATABASE.data.users[m.sender].exp -= nominalDenda
             conn.reply(m.chat, `*Hey njing ngapain ngetag ngetag bebebnya si @${ayang.split('@')[0]} 😠😠😠 gatelan amat !!!*\n\n*Denda Rp. ${format(nominalDenda)} (${denda}%)*`, m, {
@@ -523,7 +520,6 @@ conn.handler = async function (m) {
           conn.updatePresence(m.chat, Presence.composing)
           conn.reply(m.chat, `${virtex}`, m).then(() => {
             conn.groupRemove(m.chat, [m.sender], m).then(() => {
-              conn.reply(m.chat, `HL Gans\nHL Gans\nHL Gans\nHL Gans\nHL Gans\nHL Gans\nHL Gans\nHL Gans\nHL Gans\nHL Gans\nHL Gans\nHL Gans\nHL Gans\nHL Gans\nHL Gans\nHL Gans\nHL Gans\nHL Gans\nHL Gans\nHL Gans\nHL Gans\nHL Gans\nHL Gans\nHL Gans\nHL Gans\nHL Gans\nHL Gans\nHL Gans\nHL Gans\nHL Gans\nHL Gans\nHL Gans\nHL Gans\nHL Gans\nHL Gans\nHL Gans\nHL Gans\nHL Gans\nHL Gans\nHL Gans\nHL Gans\nHL Gans\nHL Gans\nHL Gans\nHL Gans\nHL Gans\nHL Gans\nHL Gans\nHL Gans\nHL Gans\nHL Gans\nHL Gans\nHL Gans\nHL Gans\nHL Gans\nHL Gans\nHL Gans\nHL Gans\nHL Gans\nHL Gans\nHL Gans\nHL Gans\nHL Gans\nHL Gans\nHL Gans\nHL Gans\nHL Gans\nHL Gans\nHL Gans\nHL Gans\nHL Gans\nHL Gans\nHL Gans\nHL Gans\nHL Gans\nHL Gans\nHL Gans\nHL Gans\nHL Gans\nHL Gans\nHL Gans\nHL Gans\nHL Gans\nHL Gans\n`)
               conn.reply(m.chat, `Tanda Telah Dibaca Dulu Ya Ngntd Biar Ga Lag !\nTerus Clear Chat !`)
             })
           })
@@ -655,9 +651,9 @@ conn.handler = async function (m) {
 
         m.isCommand = true
         let xp = 'exp' in plugin ? parseInt(plugin.exp) : 50 // XP Earning per command
-        m.exp += xp
+        // m.exp += xp
         if (!isPrems && global.DATABASE._data.users[m.sender].limit < 1 && plugin.limit && !owner && !m.fromMe) {
-          this.reply(m.chat, `*[ LIMIT HABIS ]*\n\nCara mendapatkan limit :\n1. Beli limit menggunakan command *.buy _total_*\n2. Claim hadian harian dengan command *.claim* !\n3. Mengemis limit kepada user sultan`, m)
+          this.reply(m.chat, `*[ LIMIT HABIS ]*\n\nCara mendapatkan limit :\n\n1. Beli limit menggunakan command *.buy _total_*\n2. Claim hadian harian dengan command *.claim* !\n3. Mengemis limit/saldo kepada user sultan`, m)
           continue // Limit habis
         }
         try {
@@ -693,7 +689,7 @@ conn.handler = async function (m) {
     //console.log(global.DATABASE._data.users[m.sender])
     let user
     if (m && m.sender && (user = global.DATABASE._data.users[m.sender])) {
-      user.exp += m.exp
+      // user.exp += m.exp
       var limitAsli
       if (global.DATABASE._data.users[m.sender].limit > 11000000000000) {
         limitAsli = 10000000000000
@@ -719,7 +715,7 @@ conn.handler = async function (m) {
         limitAsli = 1000
       } else if (global.DATABASE._data.users[m.sender].limit > 110) {
         limitAsli = 100
-      } else if (global.DATABASE._data.users[m.sender].limit > 50) {
+      } else if (global.DATABASE._data.users[m.sender].limit > 30) {
         limitAsli = 10
       } else if (global.DATABASE._data.users[m.sender].limit > 5) {
         limitAsli = 5
@@ -731,7 +727,7 @@ conn.handler = async function (m) {
       // user.limit -= limitAsli
       if (user.premium == true) {
         user.limit -= m.limit * 1
-      } else if (user.limit > 30) {
+      } else if (user.limit > 30 || user.exp > 100000000) {
         user.limit -= m.limit * limitAsli
       } else {
         user.limit -= m.limit * 1

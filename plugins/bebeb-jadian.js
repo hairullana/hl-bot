@@ -35,13 +35,11 @@ let handler = async (m, { conn, text }) => {
     if(!users) return conn.reply(m.chat, `*Target atau Nomor tidak ditemukan, mungkin sudah keluar atau bukan anggota grup ini.*`, m)
     if(user === m.sender) return conn.reply(m.chat, `*Tidak bisa berpacaran dengan diri sendiri.*`, m)
     if(user === conn.user.jid) return conn.reply(m.chat, `*Tidak bisa berpacaran dengan bot.*`, m)
-
-    if (user.split('@')[0] == global.owner[0] || user.split('@')[0] == global.owner[1]){
-      return conn.reply(m.chat,`*Maaf Hairul Lana tidak ingin ditembak oleh siapapun.*`,m)
-    }
     
     if(global.DATABASE.data.users[m.sender].pasangan != "" && global.DATABASE.data.users[global.DATABASE.data.users[m.sender].pasangan].pasangan == m.sender && global.DATABASE.data.users[m.sender].pasangan != user){
-      conn.reply(m.chat,`*Kamu sudah berpacaran dengan @${global.DATABASE.data.users[m.sender].pasangan.split('@')[0]}*\n\nSilahkan putus dulu (.putus) untuk menembak @${user.split('@')[0]}`,m,{contextInfo: {
+      var denda = Math.ceil(global.DATABASE.data.users[m.sender].exp/100*10)
+      global.DATABASE.data.users[m.sender].exp -= denda
+      conn.reply(m.chat,`*Kamu sudah berpacaran dengan @${global.DATABASE.data.users[m.sender].pasangan.split('@')[0]}*\n\nSilahkan putus dulu (.putus) untuk menembak @${user.split('@')[0]}\n\nBtw yang setia dikit bangsat !\nDenda : Rp. ${format(denda)}`,m,{contextInfo: {
         mentionedJid: [user,global.DATABASE.data.users[m.sender].pasangan]
       }})
     }else if(global.DATABASE.data.users[user].pasangan != ""){
