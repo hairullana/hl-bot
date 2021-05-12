@@ -257,14 +257,14 @@ conn.handler = async function (m) {
         global.DATABASE.data.users[m.sender].lastclaim = new Date * 1
         return conn.reply(m.chat, `${head}\n\n${grup[acak]}\n\n${ig}\n\n${undang}`, m).then(() => {
           conn.updatePresence(m.chat, Presence.composing)
-          let name = 'Bang HL'
+          let name = 'Hairul Lana'
           let number = global.owner[0]
           conn.sendVcard(m.chat, name, number)
         })
       } else {
         return conn.reply(m.chat, head + "\n\n" + undang, m).then(() => {
           conn.updatePresence(m.chat, Presence.composing)
-          let name = 'Bang HL'
+          let name = 'Hairul Lana'
           let number = global.owner[0]
           conn.sendVcard(m.chat, name, number)
         })
@@ -312,7 +312,7 @@ conn.handler = async function (m) {
       if (now >= global.DATABASE.data.chats[m.chat].expired) {
         conn.reply(m.chat, "*Maaf waktunya bot untuk meninggalkan grup :(*\n*Chat owner untuk invite bot lagi*").then(() => {
           conn.updatePresence(m.chat, Presence.composing)
-          let name = 'Bang HL'
+          let name = 'Hairul Lana'
           let number = global.owner[0]
           conn.sendVcard(m.chat, name, number).then(() => {
             conn.groupLeave(m.chat).then(() => {
@@ -329,7 +329,7 @@ conn.handler = async function (m) {
         conn.reply(m.chat, "*Maaf waktu untuk status premium anda telah berakhir :(*\n*Chat owner untuk upgrade premium lagi*", m).then(() => {
           global.DATABASE.data.users[m.sender].premium = false
           conn.updatePresence(m.chat, Presence.composing)
-          let name = 'Bang HL'
+          let name = 'Hairul Lana'
           let number = global.owner[0]
           conn.sendVcard(m.chat, name, number)
         })
@@ -415,8 +415,10 @@ conn.handler = async function (m) {
     }
 
     if (m.text == prefixhl && (owner || m.fromMe)) {
-      let old = performance.now()
-      let neww = performance.now()
+      // let old = performance.now()
+      // let neww = performance.now()
+
+      let old = new Date
 
       var groupTotal = 0
       conn.chats.array.filter(v => v.jid.endsWith('us')).map(v => groupTotal += 1)
@@ -441,7 +443,7 @@ conn.handler = async function (m) {
       let totalUser = format(Object.keys(global.DATABASE._data.users).length)
 
       let users = global.DATABASE.data.users
-      let anu = 86400000 * 7
+      let anu = 86400000 * 10 
       let now = new Date() * 1
       var userBangsat = 0
       var userPremium = 0
@@ -455,7 +457,8 @@ conn.handler = async function (m) {
 
       let userAktif = format(Object.keys(global.DATABASE._data.users).length - userBangsat)
 
-      conn.reply(m.chat, `*Speed :* ${(neww-old)}\n\n*Self Mode :* ${selfModeText}\n*Group Mode :* ${groupModeText}\n*Group :* ${groupTotal} grup\n*Chat :* ${chatTotal} chat\n*Total User :* ${totalUser} user\n*User Aktif :* ${userAktif} user\n*Premium :* ${userPremium} user\n*Whitelist :* ${userWhitelist} user\n*Banned :* ${global.DATABASE.data.banned} user\n*Uptime :* ${uptime}`, m)
+      await m.reply("_Checking . . ._")
+      conn.reply(m.chat, `*Speed :* ${new Date - old} ms\n\n*Self Mode :* ${selfModeText}\n*Group Mode :* ${groupModeText}\n*Group :* ${groupTotal} grup\n*Chat :* ${chatTotal} chat\n*Total User :* ${totalUser} user\n*User Aktif :* ${userAktif} user\n*Premium :* ${userPremium} user\n*Whitelist :* ${userWhitelist} user\n*Banned :* ${global.DATABASE.data.banned} user\n*Uptime :* ${uptime}`, m)
       // conn.reply(m.chat,`*[ BOT STATUS ]*\n\n*Status* : Best Performance\n*Ping :* ${(neww-old)} ms\n\n*Device :* ASUS ROG STRIX GL503\n*Processor :* Intel® Core™ i7-8750H 4.2 GHz\n*Memory :* 11.43GB / 32GB\n*Hard Drive :* 2TB SSD\n*Graphic :* NVIDIA® GeForce® GTX1050Ti 4GB GDDR5 VRAM`,m)
     }
 
@@ -531,8 +534,9 @@ conn.handler = async function (m) {
     if (!m.fromMe && !selfMode && global.DATABASE.data.chats[m.chat].isBanned == false && global.DATABASE.data.users[m.sender].isBanned == false) {
       if (m.text.match(/(asalam|assalam)/gi)) {
         conn.updatePresence(m.chat, Presence.composing)
-        conn.sendFile(m.chat, 'media/waalaikumussalam.opus', 'tts.opus', null, m, true)
-      } else if (m.text == "menu" || m.text == "help" || m.text == "?menu" || m.text == "#menu" || m.text == "+menu" || m.text == ".help" || m.text == "#help" || m.text == "+help" || m.text == "!help" || m.text == "!menu" || m.text == "/help" || m.text == "/menu" || m.text == "?help" || m.text == "*menu" || m.text == "*help" || m.text == "bot" || m.text == ".bot" || m.text == "*bot" || m.text == "!bot" || m.text == "?bot" || m.text == "#bot" || m.text == "Menu" || m.text == "Help" || m.text == "Bot" || m.text == "+bot") {
+        conn.reply(m.chat,`*Waalaikumussalam Warahmatullahi Wabarakatuh.*`,m)
+        // conn.sendFile(m.chat, 'media/waalaikumussalam.opus', 'tts.opus', null, m, true)
+      } else if (m.text == "menu" || m.text == "help" || m.text == "?menu" || m.text == "#menu" || m.text == "+menu" || m.text == "#help" || m.text == "+help" || m.text == "!help" || m.text == "!menu" || m.text == "/help" || m.text == "/menu" || m.text == "?help" || m.text == "*menu" || m.text == "*help" || m.text == "bot" || m.text == ".bot" || m.text == "*bot" || m.text == "!bot" || m.text == "?bot" || m.text == "#bot" || m.text == "Menu" || m.text == "Help" || m.text == "Bot" || m.text == "+bot") {
         conn.updatePresence(m.chat, Presence.composing)
         conn.reply(m.chat, `Ketik .menu untuk melihat menu bot`, m)
       }

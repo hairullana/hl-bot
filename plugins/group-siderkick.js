@@ -1,6 +1,7 @@
 let { MessageType, Presence } = require('@adiwajshing/baileys')
 let handler = async (m, { conn, text, participants }) => {
 	await conn.updatePresence(m.chat, Presence.composing) 
+	var lama = 86400000 * 10
 	let member = participants.map(u => u.jid)
 	if(!text) {
 		var sum = member.length
