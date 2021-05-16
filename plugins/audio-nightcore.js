@@ -3,28 +3,30 @@ const fs = require('fs')
 const path = require('path')
 const { exec } = require('child_process')
 let handler = async (m, { conn }) => {
+	await conn.updatePresence(m.chat, Presence.composing) 
 	const content = JSON.stringify(m.message)
 	const type = Object.keys(m.message)[0]
-	const isVideo = type === 'extendedTextMessage' && content.includes('videoMessage')
-	if(!isVideo) return m.reply(`*Reply video untuk di convert menjadi Audio.*`)
-	m.reply(`*Tunggu ±1 menit . . .*`)
+	const isAudio = type === 'extendedTextMessage' && content.includes('audioMessage')
+	if(!isAudio) return m.reply(`*Reply audio.*`)
+	m.reply(global.wait)
 	encmedia = JSON.parse(JSON.stringify(m).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo
 	media = await conn.downloadAndSaveMediaMessage(encmedia)
 	ranc = getRandom('.mp3')
 	ran = path.join(__dirname, '../tmp', ranc)
-	exec(`ffmpeg -i ${media} ${ran}`, (err) => {
+	exec(`ffmpeg -i ${media} -filter:a atempo=1.06,asetrate=44100*1.25 ${ran}`, (err, stderr, stdout) => {
 	fs.unlinkSync(media)
-	if (err) return m.reply(`*Terjadi kesalahan . . .*`)
+	if (err) return m.reply(global.error)
 		buffer = fs.readFileSync(ran)
-		conn.sendFile(m.chat, buffer, 'audio.mp3', null, m)
+		const option = { quoted: m, mimetype: 'audio/mp4', ptt:true }
+		conn.voice(m.chat, buffer, option)
 		fs.unlinkSync(ran)
 	})
 }
-handler.help = ['tomp3']
-handler.tags = ['tools']
-handler.command = /^(tomp3)$/i
+handler.help = ['nightcore']
+handler.tags = ['audio']
+handler.command = /^(nightcore)$/i
 handler.owner = false
-handler.exp = 5000
+handler.exp = 0
 handler.limit = true
 handler.fail = null
 module.exports = handler

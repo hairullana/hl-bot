@@ -39,7 +39,7 @@
       "spam": 0
     },
     "6282215215399@s.whatsapp.net": {
-      "exp": 0,
+      "exp": 2000,
       "limit": 10,
       "lastclaim": 0,
       "warning": 0,
@@ -54,7 +54,8 @@
       "chat": 0,
       "whitelist": false,
       "isBanned": false,
-      "spam": 0
+      "spam": 0,
+      "lastseen": 1621126853009
     },
     "628998512588@s.whatsapp.net": {
       "exp": 0,
@@ -25968,6 +25969,21 @@
       "command": 0
     },
     "62859109973060@s.whatsapp.net": {
+      "adminMode": false,
+      "isBanned": false,
+      "expired": 0,
+      "welcome": false,
+      "left": false,
+      "warningGroup": false,
+      "nolink": false,
+      "novirtex": false,
+      "nobadword": false,
+      "sWelcome": "",
+      "sBye": "",
+      "command": 0
+    },
+    "6282215215399-1621126837@g.us": {
+      "lastseen": 1621126853009,
       "adminMode": false,
       "isBanned": false,
       "expired": 0,

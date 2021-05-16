@@ -40,6 +40,7 @@ let handler  = async (m, { conn, usedPrefix: _p }) => {
       'information': 'INFORMATION',
       'fun': 'FUN',
       'tag': 'TAGS',
+      'audio': 'AUDIO',
       'islam': 'ISLAM',
       'text': 'RANDOM TEXT',
       'downloader': 'DOWNLOADER',
@@ -67,11 +68,11 @@ let handler  = async (m, { conn, usedPrefix: _p }) => {
           if (menu.help) groups[tag].push(menu)
     }
 
-    var update = "\n\n*UPDATE FITUR*\n- Sider = tidak aktif > 10 Hari\n- Sticker WM (.swm - premium only)\n- Tidak Aktif 1 Minggu ? Hapus Data\n- Anti Penjajah (.antipenjajah)\n- Member Spam ? Auto Close GC"
+    var update = "\n\n*UPDATE FITUR*\n- Audio menu\n- Sider = tidak aktif > 10 Hari\n- Sticker WM (.swm - premium only)\n- Tidak Aktif 10 hari ? Hapus Data\n- Anti Penjajah (.antipenjajah)\n- Member Spam ? Auto Close GC"
 
     conn.menu = conn.menu ? conn.menu : {}
     // let before = conn.menu.before || `*${conn.getName(conn.user.jid)} BOT*\n\nHai, %name!\n*%exp XP | %limit Limit*\n*%week, %date [%time]*\n_Uptime: %uptime_\n%totalreg User in database\n%readmore`
-    let before = conn.menu.before || `Hai *%name*\nSaldo Rp. %exp (%limit Limit)\nTotal User : %totalreg\n\n❏ Bingung dengan bot ? Ketik *.help*\n❏ Upgrade premium ? Ketik *.infopremium*\n❏ Invite bot ke GC ? Ketik *.sewabot*\n❏ Gak aktif >10 hari ? Hapus data${update}\n\nInfo Bot:\nIG: https://instagram.com/loadingtomastah\nTele: https://t.me/loadingtomastah\n\n%readmore`
+    let before = conn.menu.before || `Hai *%name*\nSaldo Rp. %exp (%limit Limit)\nTotal User : %totalreg\n\n❏ Bingung dengan bot ? Ketik *.help*\n❏ Upgrade premium ? Ketik *.infopremium*\n❏ Invite bot ke GC ? Ketik *.sewabot*\n❏ Gak aktif > 10 hari ? Hapus data${update}\n\nInfo Bot:\nIG: https://instagram.com/loadingtomastah\nTele: https://t.me/loadingtomastah\n\n%readmore`
     let header = conn.menu.header || '╔═ ✪〘 %category 〙✪'
     let body   = conn.menu.body   || '║ ❖ %cmd%islimit'
     let footer = conn.menu.footer || '╚════════════════\n'
@@ -94,7 +95,7 @@ let handler  = async (m, { conn, usedPrefix: _p }) => {
       readmore: readMore
     }
     text = text.replace(new RegExp(`%(${Object.keys(replace).join`|`})`, 'g'), (_, name) => replace[name])
-    conn.sendFile(m.chat, pp, 'logo.jpg', text.trim(), { key: { remoteJid: 'status@broadcast', participant: '0@s.whatsapp.net', fromMe: false }, message: { "imageMessage": { "mimetype": "image/jpeg", "caption": global.headtext, "jpegThumbnail": fs.readFileSync(`./media/images/thumb.jpg`)} } }, m, { contextInfo: { mentionedJid: [m.sender] } })
+    conn.sendFile(m.chat, pp, 'logo.jpg', text.trim(), { key: { remoteJid: 'status@broadcast', participant: '0@s.whatsapp.net', fromMe: false }, message: { "imageMessage": { "mimetype": "image/jpeg", "caption": "PART OF LTM BOT", "jpegThumbnail": fs.readFileSync(`./media/images/thumb.jpg`)} } }, m, { contextInfo: { mentionedJid: [m.sender] } })
     // conn.sendFile(m.chat,pp,'profile.jpg', text.trim(), m)
   } catch (e) {
     conn.reply(m.chat, 'Maaf, menu sedang error', m)

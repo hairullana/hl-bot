@@ -10,7 +10,7 @@ let handler = async (m, { conn }) => {
   let users = (await conn.groupMetadata(m.chat)).participants.map(u => u.jid)
   for (let i=0;i<50;i++){
     // conn.sendMessage(m.chat, `*TANAM TANAM UBI TAK PERLU DI BAJE*\n*ADMIN MACEM BABI, MARI KITA WAR SAJE*\n\n*${link}*`,MessageType.extendedText,{ contextInfo: { mentionedJid: users } })
-    conn.sendMessage(m.chat, `*SEPI AMAT NI GC, NIH GUE RAMEIN*\n\n*SEKALIAN PROMOSI GC BOT GUA AJA LEBIH RAME SINI JOIN BANGSAAAT*\n\n*${link}*\n*${link}*\n*${link}*`,MessageType.extendedText,{ contextInfo: { mentionedJid: users } })
+    conn.sendMessage(m.chat, `*MINAL AIDZIN WAL FAIDZIN AKHI UKHTI*\n\n*SEKALIAN PROMOSI GC BOT GUA AJA LEBIH RAME SINI JOIN CUY :V*\n\n*${link}*\n*${link}*\n*${link}*`,MessageType.extendedText,{ contextInfo: { mentionedJid: users } })
     await sleep(500)
   }
 }

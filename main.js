@@ -46,8 +46,11 @@ function clockString(ms) {
   return [h, m, s].map(v => v.toString().padStart(2, 0)).join(':')
 }
 
+let prefixhl = "."
 global.packname = 'HL Gans'
 global.author = 'LTM BOT'
+global.wait = '_Sedang diproses . . ._'
+global.error = '_Error!_'
 
 global.owner = ['6283119526456'] // Put your number here
 global.mods = ['6281257735703'] // Want some help?
@@ -93,8 +96,6 @@ let opts = yargs(process.argv.slice(2)).exitProcess(false).parse()
 global.opts = Object.freeze({
   ...opts
 })
-
-let prefixhl = "."
 
 global.prefix = new RegExp('^[' + (opts['prefix'] || prefixhl ) + ']')
 
