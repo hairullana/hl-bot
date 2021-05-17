@@ -68,7 +68,7 @@ let handler  = async (m, { conn, usedPrefix: _p }) => {
           if (menu.help) groups[tag].push(menu)
     }
 
-    var update = "\n\n*UPDATE FITUR*\n- Audio menu\n- Sider = tidak aktif > 10 Hari\n- Sticker WM (.swm - premium only)\n- Tidak Aktif 10 hari ? Hapus Data\n- Anti Penjajah (.antipenjajah)\n- Member Spam ? Auto Close GC"
+    var update = "\n\n*UPDATE FITUR*\n- AFK sudah berfungsi\n- Game tebak bendera work\n- Audio menu\n- Sider = tidak aktif > 10 Hari\n- Sticker WM (.swm - premium only)\n- Tidak Aktif 10 hari ? Hapus Data"
 
     conn.menu = conn.menu ? conn.menu : {}
     // let before = conn.menu.before || `*${conn.getName(conn.user.jid)} BOT*\n\nHai, %name!\n*%exp XP | %limit Limit*\n*%week, %date [%time]*\n_Uptime: %uptime_\n%totalreg User in database\n%readmore`

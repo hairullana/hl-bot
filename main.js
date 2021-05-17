@@ -224,6 +224,10 @@ conn.handler = async function (m) {
     if (m.isBaileys) return
     m.exp += 0
 
+    let _user = global.DATABASE.data && global.DATABASE.data.users && global.DATABASE.data.users[m.sender]
+    let isROwner = [global.conn.user.jid, ...global.owner].map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').includes(m.sender)
+    let isOwner = isROwner || m.fromMe
+    let isMods = isOwner || global.mods.map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').includes(m.sender)
     let groupMetadata = m.isGroup ? await this.groupMetadata(m.chat) : {}
     let participants = m.isGroup ? groupMetadata.participants : []
     let user = m.isGroup ? participants.find(u => u.jid == m.sender) : {}
@@ -235,7 +239,7 @@ conn.handler = async function (m) {
     let selfMode = global.DATABASE.data.selfMode
     let adminMode = global.DATABASE.data.chats[m.chat].adminMode
     let whitelist = global.DATABASE._data.users[m.sender].whitelist
-    let premium = global.DATABASE._data.users[m.sender].premium
+    let isPrems = global.DATABASE._data.users[m.sender].premium
     let pasangan = global.DATABASE._data.users[m.sender].pasangan
     let owner = global.owner.map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').includes(m.sender) || m.fromMe
 
@@ -576,83 +580,103 @@ conn.handler = async function (m) {
     let usedPrefix
     for (let name in global.plugins) {
       let plugin = global.plugins[name]
-      if (!plugin) continue
-      if (plugin.tags && plugin.tags.includes('admin')) continue
-      let _prefix = plugin.customPrefix ? plugin.customPrefix : conn.prefix ? conn.prefix : global.prefix
-      if ((usedPrefix = (_prefix.exec(m.text) || '')[0])) {
-        let noPrefix = m.text.replace(usedPrefix, '')
-        let [command, ...args] = noPrefix.trim().split ` `.filter(v => v)
-        let _args = noPrefix.trim().split ` `.slice(1)
-        let text = _args.join ` `
-        command = (command || '').toLowerCase()
-        let isROwner = [global.conn.user.jid, ...global.owner].map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').includes(m.sender)
-        let isOwner = isROwner || m.fromMe
+        if (!plugin) continue
+        if (plugin.disabled) continue
+        if (!opts['restrict']) if (plugin.tags && plugin.tags.includes('admin')) continue
+        const str2Regex = str => str.replace(/[|\\{}()[\]^$+*?.]/g, '\\$&')
+        let _prefix = plugin.customPrefix ? plugin.customPrefix : conn.prefix ? conn.prefix : global.prefix
+        let match = (_prefix instanceof RegExp ? // RegExp Mode?
+          [[_prefix.exec(m.text), _prefix]] :
+          Array.isArray(_prefix) ? // Array?
+            _prefix.map(p => {
+              let re = p instanceof RegExp ? // RegExp in Array?
+                p :
+                new RegExp(str2Regex(p))
+              return [re.exec(m.text), re]
+            }) :
+            typeof _prefix === 'string' ? // String?
+              [[new RegExp(str2Regex(_prefix)).exec(m.text), new RegExp(str2Regex(_prefix))]] :
+              [[[], new RegExp]]
+        ).find(p => p[1])
+        if (typeof plugin.before == 'function') if (await plugin.before.call(this, m, {
+          match,
+          conn: this,
+          participants,
+          groupMetadata,
+          user,
+          bot,
+          isROwner,
+          isOwner,
+          isAdmin,
+          isBotAdmin,
+          isPrems
+        })) continue
+        if ((usedPrefix = (match[0] || '')[0])) {
+          let noPrefix = m.text.replace(usedPrefix, '')
+          let [command, ...args] = noPrefix.trim().split` `.filter(v => v)
+          args = args || []
+          let _args = noPrefix.trim().split` `.slice(1)
+          let text = _args.join` `
+          command = (command || '').toLowerCase()
+          let fail = plugin.fail || global.dfail // When failed
+          let isAccept = plugin.command instanceof RegExp ? // RegExp Mode?
+            plugin.command.test(command) :
+            Array.isArray(plugin.command) ? // Array?
+              plugin.command.some(cmd => cmd instanceof RegExp ? // RegExp in Array?
+                cmd.test(command) :
+                cmd === command
+              ) :
+              typeof plugin.command === 'string' ? // String?
+                plugin.command === command :
+                false
 
-        let isAccept = plugin.command instanceof RegExp ? // RegExp Mode?
-          plugin.command.test(command) :
-          Array.isArray(plugin.command) ? // Array?
-          plugin.command.some(cmd => cmd instanceof RegExp ? // RegExp in Array?
-            cmd.test(command) :
-            cmd === command
-          ) :
-          typeof plugin.command === 'string' ? // String?
-          plugin.command === command :
-          false
+          if (!isAccept) continue
+          m.plugin = name
+          if (m.chat in global.DATABASE._data.chats || m.sender in global.DATABASE._data.users) {
+            let chat = global.DATABASE._data.chats[m.chat]
+            let user = global.DATABASE._data.users[m.sender]
+            if (name != 'on.js' && chat && chat.isBanned) return // Except this
+            if (name != 'me.js' && user && user.banned) return
+          }
+          if (plugin.rowner && plugin.owner && !(isROwner || isOwner)) { // Both Owner
+            fail('owner', m, this)
+            continue
+          }
+          if (plugin.rowner && !isROwner) { // Real Owner
+            fail('rowner', m, this)
+            continue
+          }
+          if (plugin.owner && !isOwner) { // Number Owner
+            fail('owner', m, this)
+            continue
+          }
+          if (plugin.mods && !isMods) { // Moderator
+            fail('mods', m, this)
+            continue
+          }
+          if (plugin.premium && !isPrems) { // Premium
+            fail('premium', m, this)
+            continue
+          }
+          if (plugin.group && !m.isGroup) { // Group Only
+            fail('group', m, this)
+            continue
+          } else if (plugin.botAdmin && !isBotAdmin) { // You Admin
+            fail('botAdmin', m, this)
+            continue
+          } else if (plugin.admin && !isAdmin) { // User Admin
+            fail('admin', m, this)
+            continue
+          }
+          if (plugin.private && m.isGroup) { // Private Chat Only
+            fail('private', m, this)
+            continue
+          }
+          if (plugin.register == true && _user.registered == false) { // Butuh daftar?
+            fail('unreg', m, this)
+            continue
+          }
 
-        if (!isAccept) continue
-        let isMods = isOwner || global.mods.map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').includes(m.sender)
-        // let isPrems = isROwner || global.prems.map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').includes(m.sender)
-        let isPrems = global.DATABASE._data.users[m.sender].premium
-        let groupMetadata = m.isGroup ? await this.groupMetadata(m.chat) : {}
-        let participants = m.isGroup ? groupMetadata.participants : []
-        let user = m.isGroup ? participants.find(u => u.jid == m.sender) : {} // User Data
-        let bot = m.isGroup ? participants.find(u => u.jid == this.user.jid) : {} // Your Data
-        let isAdmin = user.isAdmin || user.isSuperAdmin || false // Is User Admin?
-        let isBotAdmin = bot.isAdmin || bot.isSuperAdmin || false // Are you Admin?
-        if (m.chat in global.DATABASE._data.chats) {
-          let chat = global.DATABASE._data.chats[m.chat]
-          if (name != 'on.js' && chat && chat.isBanned) return // Except this
-        }
-
-        if (m.sender in global.DATABASE._data.users) {
-          let nomor = global.DATABASE._data.users[m.sender]
-          if (name != 'me.js' && nomor && nomor.isBanned) return
-        }
-
-        if (plugin.before && plugin.before({
-            usedPrefix
-          })) return
-        let fail = plugin.fail || global.dfail // When failed
-        if (plugin.rowner && !isROwner) { // Real Owner
-          fail('rowner', m, this)
-          continue
-        }
-        if (plugin.owner && !isOwner) { // Number Owner
-          fail('owner', m, this)
-          continue
-        }
-        if (plugin.mods && !isMods) { // Moderator
-          fail('mods', m, this)
-          continue
-        }
-        if (plugin.premium && !isPrems) { // Premium
-          fail('premium', m, this)
-          continue
-        }
-        if (plugin.group && !m.isGroup) { // Group Only
-          fail('group', m, this)
-          continue
-        } else if (plugin.botAdmin && !isBotAdmin) { // You Admin
-          fail('botAdmin', m, this)
-          continue
-        } else if (plugin.admin && !isAdmin) { // User Admin
-          fail('admin', m, this)
-          continue
-        }
-        if (plugin.private && m.isGroup) { // Private Chat Only
-          fail('private', m, this)
-          continue
-        }
 
         m.isCommand = true
         let xp = 'exp' in plugin ? parseInt(plugin.exp) : 50 // XP Earning per command

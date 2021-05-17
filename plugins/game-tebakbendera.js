@@ -2,7 +2,7 @@ let fetch = require('node-fetch')
 const { MessageType } = require('@adiwajshing/baileys')
 
 let timeout = 250000
-let poin = 500
+let poin = 200000
 let handler = async (m, { conn, usedPrefix }) => {
     conn.tebakbendera = conn.tebakbendera ? conn.tebakbendera : {}
     let id = m.chat
@@ -21,7 +21,7 @@ ${json.bendera}
 
 Timeout ${(timeout / 1000).toFixed(2)} detik
 Ketik ${usedPrefix}clue untuk clue
-Bonus: ${poin} XP
+Bonus: Rp. ${poin.toLocaleString()}
 balas pesan ini untuk menjawab!`.trim()
     conn.tebakbendera[id] = [
         await conn.sendMessage(m.chat, caption, MessageType.text, {
