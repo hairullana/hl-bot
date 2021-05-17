@@ -27,6 +27,7 @@ handler.command = /^(antibadword)$/i
 handler.owner = false
 handler.admin = true
 handler.botAdmin = true
+handler.group = true
 handler.exp = 0
 handler.limit = false
 module.exports = handler
