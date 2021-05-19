@@ -46,7 +46,7 @@ function clockString(ms) {
   return [h, m, s].map(v => v.toString().padStart(2, 0)).join(':')
 }
 
-let prefixhl = "."
+global.prefixhl = "."
 global.packname = 'HL Gans'
 global.author = 'LTM BOT'
 global.wait = '_Sedang diproses . . ._'
@@ -251,7 +251,7 @@ conn.handler = async function (m) {
     // GROUP ONLY == TRUE
     var userPrefix = m.text.slice(0, 1);
 
-    if (!m.isGroup && !owner  && !premium && groupMode && userPrefix == prefixhl) {
+    if (!m.isGroup && !owner && !isPrems && groupMode && userPrefix == prefixhl) {
       var head = '*[ GROUP MODE ]*\n\nSilahkan masuk ke grup untuk menggunakan bot atau daftar premium untuk menggunakan bot di personal chat.'
       var undang = "Bot Join GC ? Daftar User Premium ? Chat owner bot"
       var ig = "Info Bot : instagram.com/loadingtomastah"
@@ -331,7 +331,7 @@ conn.handler = async function (m) {
       }
     }
 
-    if (global.DATABASE.data.users[m.sender].premium == true) {
+    if (isPrems) {
       if (now >= global.DATABASE.data.users[m.sender].premiumDate) {
         conn.reply(m.chat, "*Maaf waktu untuk status premium anda telah berakhir :(*\n*Chat owner untuk upgrade premium lagi*", m).then(() => {
           global.DATABASE.data.users[m.sender].premium = false
@@ -557,9 +557,9 @@ conn.handler = async function (m) {
       return Math.floor(Math.random() * (max - min + 1)) + min
     }
 
-    if (!m.fromMe && !owner && selfMode && userPrefix == '.') return
+    if (!m.fromMe && !owner && selfMode && userPrefix == prefixhl) return
 
-    if (!m.fromMe && !owner && adminMode && m.isGroup && !isAdmin && userPrefix == '.') return
+    if (!m.fromMe && !owner && adminMode && m.isGroup && !isAdmin && userPrefix == prefixhl) return
 
     let usedPrefix
     for (let name in global.plugins) {

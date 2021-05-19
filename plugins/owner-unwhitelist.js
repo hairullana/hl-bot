@@ -31,9 +31,9 @@ try {
 	}	
 }
 
-handler.help = ['*62xx*','*@user*','*(reply)*'].map(v => 'unwhitelist ' + v)
+handler.help = ['*62xx*','*@user*','*(reply)*'].map(v => 'unmark ' + v)
 handler.tags = ['owner']
-handler.command = /^unwhitelist$/i
+handler.command = /^unmark$/i
 // handler.owner = true
 handler.mods = true
 module.exports = handler
