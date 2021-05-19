@@ -26,7 +26,7 @@ let handler = async (m, { conn, text, participants }) => {
 		}
 	}
 	if(total == 0) return conn.reply(m.chat, `*Digrup ini tidak terdapat sider.*`, m)
-	conn.reply(m.chat, `*${total}/${sum} anggota adalah sider (penyimak profesional) yang tidak aktif selama 10 hari lebih*\n\n_“${pesan}”_\n\n*LIST SIDER :*\n${sider.map(v => '  ○ @' + v.replace(/@.+/, '')).join('\n')}`, m,{ contextInfo: { mentionedJid: sider } })
+	conn.reply(m.chat, `*${total}/${sum}* anggota grup *${conn.getName(m.chat)}* adalah sider dengan alasan :\n1. Tidak aktif selama lebih dari 10 hari\n2. Baru join tetapi tidak pernah nimbrung\n\n_“${pesan}”_\n\n*LIST SIDER :*\n${sider.map(v => '  ○ @' + v.replace(/@.+/, '')).join('\n')}`, m,{ contextInfo: { mentionedJid: sider } })
 }
 handler.help = ['sider']
 handler.tags = ['group', 'group admin']
@@ -36,7 +36,6 @@ handler.mods = false
 handler.premium = false
 handler.group = true
 handler.private = false
-// handler.admin = true
 handler.botAdmin = true
 handler.fail = null
 module.exports = handler

@@ -404,14 +404,9 @@ conn.handler = async function (m) {
       if (!m.fromMe && !owner && !opts['self']) return
     }
 
-    if (m.sender == "6282241821345@s.whatsapp.net" && m.isGroup && isBotAdmin) {
-      await conn.groupRemove(m.chat, [m.sender])
-    }
-
     if (m.text == prefixhl && (owner || m.fromMe)) {
       // let old = performance.now()
       // let neww = performance.now()
-
       let old = new Date
 
       var groupTotal = 0

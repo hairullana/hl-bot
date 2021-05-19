@@ -20,7 +20,7 @@ let handler = async (m, { conn, text, participants }) => {
 		}
 	}
 
-	if(total == 0) return conn.reply(m.chat, `*Digrup ini tidak terdapat tai.*`, m) 
+	if(total == 0) return conn.reply(m.chat, `Di grup *${conn.getName(m.chat)}* tidak terdapat user yang dibanned dari bot.`, m) 
 
 	for(let i = 0; i < sum; i++) {
 		let users = m.isGroup ? participants.find(u => u.jid == member[i]) : {}
@@ -30,11 +30,11 @@ let handler = async (m, { conn, text, participants }) => {
       }
 		}
 	}
-	conn.reply(m.chat, `*Berhasil mengeluarkan ${total} tai.*`, m)
+	conn.reply(m.chat, `Berhasil mengeluarkan ${total} user bot yang bermasalah dari grup *${conn.getName(m.chat)}*.`, m)
 }
-handler.help = ['kicktai']
+handler.help = ['kickbanned']
 handler.tags = ['group admin']
-handler.command = /^(kicktai)$/i
+handler.command = /^(kickbanned)$/i
 handler.owner = false
 handler.mods = false
 handler.premium = false
