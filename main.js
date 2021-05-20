@@ -294,7 +294,7 @@ conn.handler = async function (m) {
               global.DATABASE.data.users[m.sender].warning = 0
             })
           } else {
-            conn.reply(m.chat, `*[ MEMBER WARNING ]*\n\n@${m.sender.split('@')[0]} : [ ${warning} / 5 ]\n\nJangan berkata kasar !\nJika kamu mendapatkan peringatan sampai 5x, maka kamu akan di kick atau di banned !\n\nKetik *.delwarn* untuk menghapus warning dengan membayar limit`, m, {
+            conn.reply(m.chat, `*[ MEMBER WARNING ]*\n\n@${m.sender.split('@')[0]} : [ ${warning} / 5 ]\n\nJangan berkata kasar !\nJika kamu mendapatkan peringatan sampai 5x, maka kamu akan di kick!\n\nKetik *.delwarn* untuk menghapus warning dengan membayar limit`, m, {
               contextInfo: {
                 mentionedJid: [m.sender]
               }
@@ -379,7 +379,7 @@ conn.handler = async function (m) {
             })
           }else if(!m.isGroup) {
             conn.updatePresence(m.chat, Presence.composing)
-            return conn.reply(m.chat, `*[ OVER SPAM DETECTED ]*\n\nMaaf kamu di banned dari bot !\nHubungi owner ( *.owner* ) atau moderator ( *.mods* ) untuk unbanned, tapi harus sadar diri ya bangsat !`, m).then(() => {
+            return conn.reply(m.chat, `*[ OVER SPAM DETECTED ]*\n\nMaaf kamu di banned dari bot !`, m).then(() => {
               global.DATABASE.data.users[m.sender].spam = 0
               global.DATABASE.data.users[m.sender].isBanned = true
               global.DATABASE.data.banned += 1
