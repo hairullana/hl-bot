@@ -1,8 +1,11 @@
 let { Presence } = require('@adiwajshing/baileys')
 let handler  = async (m, { conn }) => {
 	await conn.updatePresence(m.chat, Presence.composing) 
-	let name = 'Loli Cantik'
-	let number = '6281257735703'
+	let name = 'Loli'
+	let number = global.mods[0]
+	conn.sendVcard(m.chat, name, number, m)
+	name = 'Mila'
+	number = global.mods[1]
 	conn.sendVcard(m.chat, name, number, m)
 }
 handler.help = ['mods']

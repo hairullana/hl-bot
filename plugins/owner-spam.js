@@ -3,7 +3,7 @@ let handler = async (m, { conn }) => {
   var grup = []
   grup[0] = 'http://chat.whatsapp.com/' + (await conn.groupInviteCode('6285892821182-1510584700@g.us'))
   grup[1] = 'http://chat.whatsapp.com/' + (await conn.groupInviteCode('6282245496356-1602153905@g.us'))
-  let link = grup[1]
+  let link = grup[0]
   function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
   }

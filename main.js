@@ -52,8 +52,8 @@ global.author = 'LTM BOT'
 global.wait = '_Sedang diproses . . ._'
 global.error = '_Error!_'
 
-global.owner = ['6283119526456'] // Put your number here
-global.mods = ['6281257735703'] // Want some help?
+global.owner = ['6283119526456','6285157700416'] // Put your number here
+global.mods = ['6281257735703','62895323133060'] // Want some help?
 global.prems = [] // Premium user has unlimited limit
 global.APIs = { // API Prefix
   // name: 'https://website'
