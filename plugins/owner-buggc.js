@@ -5,7 +5,7 @@ let handler  = async (m, { conn, text }) => {
   }
 	for (i=0;i<10;i++){
 		await conn.toggleDisappearingMessages(m.chat, { quoted: m })
-		await sleep(1000)
+		await sleep(250)
 	}
 	// conn.reply(m.chat, text.trim(), null)
 }

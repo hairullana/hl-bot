@@ -1,5 +1,5 @@
 let handler  = async (m, { conn }) => {
-  conn.reply(m.chat,`${pickRandom(global.bucin)}\n\n_~ HL Bot_`, m)
+  conn.reply(m.chat,`${pickRandom(global.sad)}\n\n_~ HL Bot_`, m)
 }
 handler.help = ['sadboy','sadgirl']
 handler.tags = ['text']
@@ -22,7 +22,7 @@ function pickRandom(list) {
   return list[Math.floor(list.length * Math.random())]
 }
 
-global.bucin = [
+global.sad = [
   "Baikmu kepada semua orang sampai aku bingung dan merasa teristimewakan.",
   "Aku ingin menjadi satu satunya bintang yang kamu tatap.\nTapi aku sadar tidak ada bintang yang muncul sendirian.\nJadi sepertinya aku bukan yang satu satunya.",
   "Memilikimu adalah angan yang terlalu egois.\nTapi melupakanmu adalah ketidakmungkinan yang terlalu aku paksakan.",

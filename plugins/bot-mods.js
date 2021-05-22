@@ -1,7 +1,7 @@
 let { Presence } = require('@adiwajshing/baileys')
 let handler  = async (m, { conn }) => {
 	await conn.updatePresence(m.chat, Presence.composing) 
-	let name = 'Loli'
+	let name = 'Galang'
 	let number = global.mods[0]
 	conn.sendVcard(m.chat, name, number, m)
 	name = 'Mila'

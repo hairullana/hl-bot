@@ -1,4 +1,10 @@
 let handler = async (m, { conn, text }) => {
+	function no(number){
+    return number.replace(/\s/g,'').replace(/([+-])/g,'')
+  }
+
+	text = no(text)
+	
 	const format = num => {
 		const n = String(num),
 					p = n.indexOf('.')

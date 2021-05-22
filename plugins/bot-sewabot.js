@@ -3,8 +3,8 @@ let handler = async (m, { conn }) => {
 	pp = await conn.getProfilePicture(global.conn.user.jid)
   conn.sendFile(m.chat, pp, 'profile.jpg',`*[ SEWA BOT ]*\n\nSilahkan hubungi owner ( *.owner* ) jika ingin menyewa bot untuk grup chat kalian dengan biaya Rp. 10.000 per bulan\n\nUntuk upgrade premium hanya Rp. 5.000 per bulan ( *.infopremium* )`, m)
 }
-handler.help = ['join','sewabot']
+handler.help = ['infosewa','sewabot']
 handler.tags = ['info']
-handler.command = /^join|sewabot$/i
+handler.command = /^infosewa|sewabot$/i
 
 module.exports = handler

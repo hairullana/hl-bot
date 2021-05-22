@@ -1,9 +1,7 @@
 let fetch = require('node-fetch')
 let handler = async (m, { conn, args }) => {
   if (!args[0]) throw '*[ IG DOWNLOADER ]*\n\nMasukkan url yang benar'
-  let res = await fetch(global.API('xteam', '/dl/ig', {
-    url: args[0]
-  }, 'APIKEY'))
+  let res = await fetch(global.API('fikri', '/api/igdl', {url: args[0]}))
   if (res.status !== 200) {
     res.text()
     throw res.status

@@ -23,7 +23,6 @@ let {
 } = require('perf_hooks')
 let WAConnection = simple.WAConnection(_WAConnection)
 
-
 const format = num => {
   const n = String(num),
     p = n.indexOf('.')
@@ -53,7 +52,7 @@ global.wait = '_Sedang diproses . . ._'
 global.error = '_Error!_'
 
 global.owner = ['6283119526456','6285157700416'] // Put your number here
-global.mods = ['6281257735703','62895323133060'] // Want some help?
+global.mods = ['6281524633549','62895323133060'] // Want some help?
 global.prems = [] // Premium user has unlimited limit
 global.APIs = { // API Prefix
   // name: 'https://website'
@@ -251,8 +250,8 @@ conn.handler = async function (m) {
     // GROUP ONLY == TRUE
     var userPrefix = m.text.slice(0, 1);
 
-    if (!m.isGroup && !owner && !isPrems && groupMode && userPrefix == prefixhl) {
-      var head = '*[ GROUP MODE ]*\n\nSilahkan masuk ke grup untuk menggunakan bot atau daftar premium untuk menggunakan bot di personal chat.'
+    if (!m.isGroup && !owner && !isPrems && groupMode && userPrefix == prefixhl && (m.text != ".sk" && m.text != ".sticker" && m.text != ".stiker" && m.text != ".swm" && m.text != ".sgif" && m.text != ".stickergif" && m.text != ".stikergif")) {
+      var head = '*[ GROUP MODE ]*\n\nSilahkan masuk ke grup untuk menggunakan bot atau daftar premium untuk menggunakan bot di personal chat.\n\nKhusus fitur pembuatan *stiker* bisa digunakan di personal chat bot.'
       var undang = "Bot Join GC ? Daftar User Premium ? Chat owner bot"
       var ig = "Info Bot : instagram.com/loadingtomastah"
       var grup = []

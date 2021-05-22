@@ -1,28 +1,30 @@
 let { MessageType } = require('@adiwajshing/baileys')
 let handler = async (m, { conn, text }) => {
-  if(!m.quoted) return conn.reply(m.chat, `*[ USER PREMIUM ]*\n\nTag orang yang ingin di jadikan user premium !`, m)
-
-
-  if (!text){
-    return conn.reply(m.chat,"*[ USER PREMIUM ]*\n\nMasukkan angka mewakili jumlah hari !\nMisal : .premium 30")
-  }else if (isNaN(text)){
-    return conn.reply(m.chat,"*[ USER PREMIUM ]*\n\nMasukkan hanya angka mewakili jumlah hari !\nMisal : .premium 30")
+  function no(number){
+    return number.replace(/\s/g,'').replace(/([+-])/g,'')
   }
-  var jumlahHari = 86400000 * text
+
+  var hl = []
+  hl[0] = text.split(',')[0]
+  hl[0] = no(hl[0]) + "@s.whatsapp.net"
+  hl[1] = text.split(',')[1]
+
+  var jumlahHari = 86400000 * hl[1]
   // var jumlahHari = 1000 * text
   var now = new Date() * 1
-  global.DATABASE.data.users[m.quoted.sender].premium = true
-  global.DATABASE.data.users[m.quoted.sender].premiumDate = now + jumlahHari
-  conn.reply(m.chat,`*[ USER PREMIUM ]*\n\nBerhasil memberikan akses premium kepada *@${m.quoted.sender.split('@')[0]}* selama *${text} hari*.`,m,{ contextInfo: { mentionedJid: [m.quoted.sender] } }) 
+  global.DATABASE.data.users[hl[0]].premium = true
+  global.DATABASE.data.users[hl[0]].premiumDate = now + jumlahHari
+  conn.reply(m.chat,`*[ USER PREMIUM ]*\n\nBerhasil memberikan akses premium kepada *@${hl[0].split('@')[0]}* selama *${hl[1]} hari*.`,m,{ contextInfo: { mentionedJid: [hl[0]] } })
+  conn.reply(hl[0],`*[ USER PREMIUM ]*\n\nBerhasil memberikan akses premium kepada *@${hl[0].split('@')[0]}* selama *${hl[1]} hari*.`,m,{ contextInfo: { mentionedJid: [hl[0]] } }) 
 
 }
-handler.help = ['premium *days*']
+handler.help = ['prem *days*']
 handler.tags = ['owner']
-handler.command = /^(premium)$/i
+handler.command = /^(prem)$/i
 handler.owner = true
 handler.mods = false
 handler.premium = false
-handler.group = true
+// handler.group = true
 handler.private = false
 handler.admin = false
 handler.botAdmin = false
