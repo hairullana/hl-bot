@@ -68,7 +68,7 @@ let handler  = async (m, { conn, usedPrefix: _p }) => {
           if (menu.help) groups[tag].push(menu)
     }
 
-    var update = "\n\n*UPDATE FITUR*\nFitur .antispam on/off\n- Khusus fitur stiker bisa digunakan di PC Bot\n- Fitur random text .sadboy/.sadgirl\n- Fitur _sampah_ dan _tai_ dihapus\n- Fitur AFK sudah berfungsi\n- Game tebak bendera work\n- Audio menu"
+    var update = "\n\n*UPDATE FITUR*\n- .goimg .pinterest .nobg\nFitur .antispam on/off\n- Khusus fitur stiker bisa digunakan di PC Bot\n- Fitur random text .sadboy/.sadgirl\n- Fitur _sampah_ dan _tai_ dihapus\n- Fitur AFK sudah berfungsi\n- Game tebak bendera work\n- Audio menu"
 
     conn.menu = conn.menu ? conn.menu : {}
     // let before = conn.menu.before || `*${conn.getName(conn.user.jid)} BOT*\n\nHai, %name!\n*%exp XP | %limit Limit*\n*%week, %date [%time]*\n_Uptime: %uptime_\n%totalreg User in database\n%readmore`

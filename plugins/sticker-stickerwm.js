@@ -8,6 +8,7 @@ let handler  = async (m, { conn, text, command }) => {
   var text2 = text.split('|')[1]
 
   let stiker = false
+  m.reply(global.wait)
   try {
     let q = m.quoted ? m.quoted : m
     let mime = (q.msg || q).mimetype || ''

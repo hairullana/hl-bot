@@ -153,8 +153,8 @@
       "spam": 0
     },
     "6283119526456@s.whatsapp.net": {
-      "lastseen": 1621712575354,
-      "exp": 1188800,
+      "lastseen": 1621740965436,
+      "exp": 1199800,
       "limit": 4,
       "lastclaim": 0,
       "warning": 0,
@@ -913,8 +913,8 @@
       "spam": 2
     },
     "6282388556223@s.whatsapp.net": {
-      "lastseen": 1621261480382,
-      "exp": 6000,
+      "lastseen": 1621740870837,
+      "exp": 11000,
       "limit": 10,
       "lastclaim": 0,
       "warning": 0,
@@ -5807,8 +5807,8 @@
       "spam": 0
     },
     "6288215708337@s.whatsapp.net": {
-      "lastseen": 1621601629447,
-      "exp": 1000,
+      "lastseen": 1621740964276,
+      "exp": 16000,
       "limit": 10,
       "lastclaim": 0,
       "warning": 0,
@@ -5969,8 +5969,8 @@
       "spam": 0
     },
     "628979026417@s.whatsapp.net": {
-      "lastseen": 1621699654469,
-      "exp": 23000,
+      "lastseen": 1621740960200,
+      "exp": 31000,
       "limit": 10,
       "lastclaim": 0,
       "warning": 0,
@@ -6023,8 +6023,8 @@
       "spam": 0
     },
     "628886565974@s.whatsapp.net": {
-      "lastseen": 1621693796704,
-      "exp": 2000,
+      "lastseen": 1621740898983,
+      "exp": 4000,
       "limit": 10,
       "lastclaim": 0,
       "warning": 0,
@@ -6113,8 +6113,8 @@
       "spam": 0
     },
     "6281257156383@s.whatsapp.net": {
-      "lastseen": 1621666628044,
-      "exp": 1000,
+      "lastseen": 1621740701737,
+      "exp": 2000,
       "limit": 10,
       "lastclaim": 0,
       "warning": 0,
@@ -6203,8 +6203,8 @@
       "spam": 1
     },
     "62895605081440@s.whatsapp.net": {
-      "lastseen": 1621699682472,
-      "exp": 27000,
+      "lastseen": 1621740965256,
+      "exp": 38000,
       "limit": 10,
       "lastclaim": 0,
       "warning": 0,
@@ -6473,8 +6473,8 @@
       "spam": 0
     },
     "994404774407@s.whatsapp.net": {
-      "lastseen": 1621712559650,
-      "exp": 6000,
+      "lastseen": 1621740916787,
+      "exp": 9000,
       "limit": 10,
       "lastclaim": 0,
       "warning": 0,
@@ -6651,6 +6651,24 @@
       "whitelist": false,
       "isBanned": false,
       "spam": 0
+    },
+    "6283896619579@s.whatsapp.net": {
+      "lastseen": 1621740960202,
+      "exp": 3000,
+      "limit": 10,
+      "lastclaim": 0,
+      "warning": 0,
+      "afk": -1,
+      "afkReason": "",
+      "pasangan": "",
+      "premium": false,
+      "premiumDate": 0,
+      "command": 0,
+      "job": "x",
+      "price": 0,
+      "whitelist": false,
+      "isBanned": false,
+      "spam": 0
     }
   },
   "groups": {},
@@ -6701,7 +6719,7 @@
       "command": 0
     },
     "6282245496356-1602153905@g.us": {
-      "lastseen": 1621699682472,
+      "lastseen": 1621740965256,
       "adminMode": false,
       "isBanned": true,
       "expired": 0,
@@ -6713,7 +6731,7 @@
       "nobadword": false,
       "sWelcome": "*Selamat Datang @user di @subject*\n\n*Ketik _\"bot\"_ untuk menggunakan bot*\n*Jangan lupa baca deskripsi grup biar kamu makin cakep. Mwah*",
       "sBye": "",
-      "command": 1
+      "command": 0
     },
     "6283119526456@s.whatsapp.net": {
       "lastseen": 1621693102117,
@@ -6731,7 +6749,7 @@
       "command": 0
     },
     "6283119526456-1550555731@g.us": {
-      "lastseen": 1621712575354,
+      "lastseen": 1621740965436,
       "adminMode": false,
       "isBanned": false,
       "expired": 0,
@@ -8073,6 +8091,22 @@
     "6287899549689-1616334469@g.us": {
       "antiSpam": true,
       "lastseen": 1621699585219,
+      "adminMode": false,
+      "isBanned": false,
+      "expired": 0,
+      "welcome": false,
+      "left": false,
+      "warningGroup": false,
+      "nolink": false,
+      "novirtex": false,
+      "nobadword": false,
+      "sWelcome": "",
+      "sBye": "",
+      "command": 0
+    },
+    "6283872351765@s.whatsapp.net": {
+      "antiSpam": true,
+      "lastseen": 0,
       "adminMode": false,
       "isBanned": false,
       "expired": 0,
