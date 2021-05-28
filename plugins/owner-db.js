@@ -7,7 +7,7 @@ let handler  = async (m, { conn, text }) => {
   if (text == "clean"){
     var user = 0
     for (let jid in users){
-      if (now - users[jid].lastseen > anu && !users[jid].whitelist){
+      if (now - users[jid].lastseen > anu && !users[jid].whitelist && !users[jid].premium){
         delete users[jid]
         user += 1
       }

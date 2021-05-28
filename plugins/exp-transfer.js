@@ -1,15 +1,27 @@
-let handler = async (m, { conn, command, args }) => {
-	if(!args || !args[0] || !args[1]){
-    return conn.reply(m.chat,`*Masukkan Format Yang Benar !*\n\n*Contoh :*\n*.tf @${global.conn.user.jid.split('@')[0]} 10.000.000*`,m,{contextInfo: {
+let handler = async (m, { conn, command, text }) => {
+	if(!text){
+    return conn.reply(m.chat,`*Masukkan Format Yang Benar !*\n\n*Contoh :*\n*.tf @${global.conn.user.jid.split('@')[0]} 10.000.000*\n*.tf 10.000.000 (reply chat)*`,m,{contextInfo: {
       mentionedJid: [global.conn.user.jid]
     }})
   }
 
-  target = args[0].replace(/([@+-])/g,'') + "@s.whatsapp.net"
-  jumlah = args[1].replace(/([.])/g,'')
+  var hl = [] 
+  hl[0] = text.split(' ')[0]
+  hl[1] = text.split(' ')[1]
+  var target
+
+  if(m.quoted){
+    target = m.quoted.sender
+    jumlah = hl[0].replace(/([.])/g,'')
+  }else {
+    target = hl[0].replace(/([@+-])/g,'') + "@s.whatsapp.net"
+    jumlah = hl[1].replace(/([.])/g,'')
+  }
 
   if (typeof global.DATABASE.data.users[target] == "undefined"){
-    return m.reply("*Nomor yang ingin anda transfer tidak terdaftar di bot.*")
+    return m.reply(`*Nomor yang ingin anda transfer tidak terdaftar di bot.*\n\n*Contoh :*\n*.tf @${global.conn.user.jid.split('@')[0]} 10.000.000*\n*.tf 10.000.000 (reply chat)*`,m,{contextInfo: {
+      mentionedJid: [global.conn.user.jid]
+    }})
   }
 
   if (isNaN(jumlah)){
@@ -43,4 +55,5 @@ handler.help = ['transfer','tf'].map(v => v + " *total*")
 handler.tags = ['xp']
 handler.command = /^transfer|tf$/i
 handler.owner = false
+handler.limit = true
 module.exports = handler

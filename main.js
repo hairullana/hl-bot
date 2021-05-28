@@ -241,7 +241,7 @@ conn.handler = async function (m) {
     let adminMode = global.DATABASE.data.chats[m.chat].adminMode
     let whitelist = global.DATABASE._data.users[m.sender].whitelist
     let owner = global.owner.map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').includes(m.sender) || m.fromMe
-    let isPrems = global.DATABASE._data.users[m.sender].premium || owner
+    let isPrems = global.DATABASE._data.users[m.sender].premium
     let antiSpam = global.DATABASE.data.chats[m.chat].antiSpam
     let pasangan = global.DATABASE._data.users[m.sender].pasangan
 
