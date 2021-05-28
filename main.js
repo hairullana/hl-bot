@@ -240,10 +240,10 @@ conn.handler = async function (m) {
     let selfMode = global.DATABASE.data.selfMode
     let adminMode = global.DATABASE.data.chats[m.chat].adminMode
     let whitelist = global.DATABASE._data.users[m.sender].whitelist
-    let isPrems = global.DATABASE._data.users[m.sender].premium
+    let owner = global.owner.map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').includes(m.sender) || m.fromMe
+    let isPrems = global.DATABASE._data.users[m.sender].premium || owner
     let antiSpam = global.DATABASE.data.chats[m.chat].antiSpam
     let pasangan = global.DATABASE._data.users[m.sender].pasangan
-    let owner = global.owner.map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').includes(m.sender) || m.fromMe
 
 
     await conn.chatRead(m.chat)
@@ -397,7 +397,7 @@ conn.handler = async function (m) {
     let cmd = global.DATABASE.data.chats[m.chat].command
     if (cmd >= 1) setTimeout(() => {
       global.DATABASE.data.chats[m.chat].command = 0
-    }, 10000)
+    }, 7500)
     if (cmd <= 1) {
       if (!m.fromMe && !owner && opts['self']) return
     } else {
@@ -680,47 +680,45 @@ conn.handler = async function (m) {
     if (m && m.sender && (user = global.DATABASE._data.users[m.sender])) {
       // user.exp += m.exp
       var limitAsli
-      if (global.DATABASE._data.users[m.sender].limit > 11000000000000) {
+      if (global.DATABASE._data.users[m.sender].limit > 10000000000100) {
         limitAsli = 10000000000000
-      } else if (global.DATABASE._data.users[m.sender].limit > 1100000000000) {
+      } else if (global.DATABASE._data.users[m.sender].limit > 1100000000100) {
         limitAsli = 1000000000000
-      } else if (global.DATABASE._data.users[m.sender].limit > 110000000000) {
+      } else if (global.DATABASE._data.users[m.sender].limit > 110000000100) {
         limitAsli = 100000000000
-      } else if (global.DATABASE._data.users[m.sender].limit > 11000000000) {
+      } else if (global.DATABASE._data.users[m.sender].limit > 11000000100) {
         limitAsli = 10000000000
-      } else if (global.DATABASE._data.users[m.sender].limit > 1100000000) {
+      } else if (global.DATABASE._data.users[m.sender].limit > 1100000100) {
         limitAsli = 1000000000
-      } else if (global.DATABASE._data.users[m.sender].limit > 110000000) {
+      } else if (global.DATABASE._data.users[m.sender].limit > 110000100) {
         limitAsli = 100000000
-      } else if (global.DATABASE._data.users[m.sender].limit > 11000000) {
+      } else if (global.DATABASE._data.users[m.sender].limit > 11000100) {
         limitAsli = 10000000
-      } else if (global.DATABASE._data.users[m.sender].limit > 1100000) {
+      } else if (global.DATABASE._data.users[m.sender].limit > 1100100) {
         limitAsli = 1000000
-      } else if (global.DATABASE._data.users[m.sender].limit > 110000) {
+      } else if (global.DATABASE._data.users[m.sender].limit > 110100) {
         limitAsli = 100000
-      } else if (global.DATABASE._data.users[m.sender].limit > 11000) {
+      } else if (global.DATABASE._data.users[m.sender].limit > 11100) {
         limitAsli = 10000
-      } else if (global.DATABASE._data.users[m.sender].limit > 5000) {
+      } else if (global.DATABASE._data.users[m.sender].limit > 5100) {
         limitAsli = 1000
-      } else if (global.DATABASE._data.users[m.sender].limit > 1000) {
+      } else if (global.DATABASE._data.users[m.sender].limit > 1100) {
         limitAsli = 100
-      } else if (global.DATABASE._data.users[m.sender].limit > 150) {
+      } else if (global.DATABASE._data.users[m.sender].limit > 100) {
         limitAsli = 10
+      } else if (global.DATABASE._data.users[m.sender].limit > 50) {
+        limitAsli = 2
       } else(
         limitAsli = 1
       )
       // user.limit -= limitAsli
       if (user.premium == true) {
         user.limit -= m.limit * 1
-      } else if (user.limit > 30 || user.exp > 1000000000) {
+      } else if (user.limit > 100 || user.exp > 1000000000) {
         user.limit -= m.limit * limitAsli
       } else {
         user.limit -= m.limit * 1
       }
-      // user.limit -= m.limit
-      // conn.reply(m.chat,`@${m.sender.split('@')[0]} berhasil menggunakan ${format(limitAsli)}\n\nSisa limit : ${format(global.DATABASE._data.users[m.sender].limit)}`,{contextInfo: {
-      // mentionedJid: [m.sender]
-      // }})
     }
     try {
       require('./lib/print')(m, this)
