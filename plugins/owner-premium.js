@@ -1,7 +1,7 @@
 let { MessageType } = require('@adiwajshing/baileys')
 let handler = async (m, { conn, text }) => {
   function no(number){
-    return number.replace(/\s/g,'').replace(/([+-])/g,'')
+    return number.replace(/\s/g,'').replace(/([@+-])/g,'')
   }
 
   var hl = []

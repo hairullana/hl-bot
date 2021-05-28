@@ -1,12 +1,28 @@
 let { Presence } = require('@adiwajshing/baileys')
-let handler  = async (m, { conn }) => {
-	await conn.updatePresence(m.chat, Presence.composing) 
-	let name = 'Galang'
-	let number = global.mods[0]
-	conn.sendVcard(m.chat, name, number, m)
-	name = 'Mila'
-	number = global.mods[1]
-	conn.sendVcard(m.chat, name, number, m)
+let handler  = async (m, { conn,text }) => {
+	await conn.updatePresence(m.chat, Presence.composing)
+	text = text.toLowerCase()
+	let name
+	let number
+	if (text == global.modsName[0]){
+		name = global.modsName[0]
+		number = global.mods[0]
+		conn.sendVcard(m.chat, name, number, m)
+	}else if (text == global.modsName[1]){
+		name = global.modsName[1]
+		number = global.mods[1]
+		conn.sendVcard(m.chat, name, number, m)
+	}else if (text == global.modsName[2]){
+		name = global.modsName[2]
+		number = global.mods[2]
+		conn.sendVcard(m.chat, name, number, m)
+	}else if (text == global.modsName[3]){
+		name = global.modsName[3]
+		number = global.mods[3]
+		conn.sendVcard(m.chat, name, number, m)
+	}else (
+		m.reply("*Silahkan pilih kontak moderator :*\n\n.mods loli\n.mods mila\n.mods galang\n.mods ara")
+	)
 }
 handler.help = ['mods']
 handler.tags = ['info']

@@ -18,7 +18,7 @@ let handler  = async (m, { conn, args }) => {
         else throw 'Foto/Video tidak ditemukan'
     }
 }
-handler.help = ['stickergif *(caption|reply)*','sgif *(caption|reply)*']
+handler.help = ['stickergif2 *(caption|reply)*','sgif2 *(caption|reply)*']
 handler.tags = ['sticker']
 handler.command = /^stickergif|stikergif|sgif$/i
 handler.owner = false

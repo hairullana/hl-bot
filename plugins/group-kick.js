@@ -1,8 +1,8 @@
 let handler = async (m, { conn, text }) => {
 	function no(number){
-    return number.replace(/\s/g,'').replace(/([+-])/g,'')
+    return number.replace(/\s/g,'').replace(/([@+-])/g,'')
   }
-
+	
 	text = no(text)
 	
 	if(isNaN(text)) {

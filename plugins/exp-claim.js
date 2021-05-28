@@ -26,13 +26,26 @@ let handler = async (m, { conn }) => {
     // }
     var hadiah
     if (global.DATABASE.data.users[m.sender].premium){
-      hadiah = 150
+      hadiah = 100
     }else {
-      hadiah = 30
+      hadiah = 25
     }
-    conn.reply(m.chat, `*[ LIMIT CLAIM ]*\n\nSelamat bangsat dapet bonus *${hadiah} Limit*\nSilahkan claim lagi besok\n\nUser Premium : 150 Limit\nUser Biasa : 30 Limit`, m)  
+
+    function getRandom(min,max){
+      min = Math.ceil(min)
+      max = Math.floor(max)
+      return Math.floor(Math.random()*(max-min+1)) + min
+    }
+
+    if (global.DATABASE.data.users[m.sender].premium){
+      petiRahasia = getRandom(1,250) * 1000000
+      global.DATABASE.data.users[m.sender].exp += petiRahasia
+      conn.reply(m.chat, `*[ LIMIT CLAIM ]*\n\nSelamat bangsat dapet bonus *${hadiah} Limit* dan peti rahasia berisikan uang *Rp. ${petiRahasia.toLocaleString()}*\nSilahkan claim lagi besok\n\nUser Premium : 100 Limit\nUser Biasa : 25 Limit`, m)
+    }else {
+      conn.reply(m.chat, `*[ LIMIT CLAIM ]*\n\nSelamat bangsat dapet bonus *${hadiah} Limit*\nSilahkan claim lagi besok\n\nUser Premium : 100 Limit\nUser Biasa : 25 Limit`, m)  
+    }
+
     global.DATABASE.data.users[m.sender].limit += hadiah
-    
     global.DATABASE.data.users[m.sender].lastclaim = new Date * 1
   } else conn.reply(m.chat, `*[ LIMIT CLAIM ]*\n\nAnda sudah mengklaim klaim bonus harian !\nKlaim lagi dalam ${msToTime(asu2)}`, m)
 }

@@ -1,7 +1,43 @@
 {
-  "users": {},
+  "users": {
+    "6282215215399@s.whatsapp.net": {
+      "lastseen": 1621743696344,
+      "exp": 1000,
+      "limit": 10,
+      "lastclaim": 0,
+      "warning": 0,
+      "afk": -1,
+      "afkReason": "",
+      "pasangan": "",
+      "premium": false,
+      "premiumDate": 0,
+      "command": 0,
+      "job": "x",
+      "price": 0,
+      "whitelist": false,
+      "isBanned": false,
+      "spam": 0
+    }
+  },
   "groups": {},
-  "chats": {},
+  "chats": {
+    "6285750337321-1617799832@g.us": {
+      "antiSpam": true,
+      "lastseen": 1621743696344,
+      "adminMode": false,
+      "isBanned": false,
+      "expired": 0,
+      "welcome": false,
+      "left": false,
+      "warningGroup": false,
+      "nolink": false,
+      "novirtex": false,
+      "nobadword": false,
+      "sWelcome": "",
+      "sBye": "",
+      "command": 0
+    }
+  },
   "blocked": 0,
   "banned": 0,
   "groupMode": false,

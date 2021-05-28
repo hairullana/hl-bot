@@ -10,11 +10,18 @@ let handler = async (m, { conn, args }) => {
     )
   }
 
+  const delay = time => new Promise(res=>setTimeout(res,time));
+
   function getRandom(min,max){
     min = Math.ceil(min)
     max = Math.floor(max)
     return Math.floor(Math.random()*(max-min+1)) + min
   }
+
+  let wait = getRandom(1,5)
+  let minute = wait * 1000 * 60
+  m.reply("*Sedang memancing selama " + wait + " menit*\n\n*Silahkan mengkopi dan mengsabar dulu*")
+  await delay(minute)
 
   let ikan = ['🐠','🐟','🐡','🐬','🐳','🐋','🦈','🦀','🐊']
   var randIkan = ikan[Math.floor(Math.random() * ikan.length)]

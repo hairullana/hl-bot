@@ -1,4 +1,10 @@
 let handler = async (m, { conn, text }) => {
+	function no(number){
+    return number.replace(/\s/g,'').replace(/([@+-])/g,'')
+  }
+
+	text = no(text)
+
   if(isNaN(text)) {
 		var number = text.split`@`[1]
   } else if(!isNaN(text)) {

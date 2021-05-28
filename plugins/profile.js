@@ -1,10 +1,10 @@
 // let PhoneNumber = require('awesome-phonenumber')
 let handler = async (m, { conn, text }) => {
 	function no(number){
-    return number.replace(/\s/g,'').replace(/([+-])/g,'')
+    return number.replace(/\s/g,'').replace(/([@+-])/g,'')
   }
 
-	text = no(text)
+  text = no(text)
 	
   let pp = './src/avatar_contact.png'
   if(isNaN(text)) {

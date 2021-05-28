@@ -52,7 +52,8 @@ global.wait = '_Sedang diproses . . ._'
 global.error = '_Error!_'
 
 global.owner = ['6283119526456','6285157700416'] // Put your number here
-global.mods = ['6281524633549','62895323133060'] // Want some help?
+global.mods = ['6281524633549','62895323133060','6281257735703','6281351236907'] // Want some help?
+global.modsName = ['galang','mila','loli','ara']
 global.prems = [] // Premium user has unlimited limit
 global.APIs = { // API Prefix
   // name: 'https://website'
@@ -396,7 +397,7 @@ conn.handler = async function (m) {
     let cmd = global.DATABASE.data.chats[m.chat].command
     if (cmd >= 1) setTimeout(() => {
       global.DATABASE.data.chats[m.chat].command = 0
-    }, 7500)
+    }, 10000)
     if (cmd <= 1) {
       if (!m.fromMe && !owner && opts['self']) return
     } else {
@@ -520,35 +521,11 @@ conn.handler = async function (m) {
 
 
     if (!m.fromMe && !selfMode && global.DATABASE.data.chats[m.chat].isBanned == false && global.DATABASE.data.users[m.sender].isBanned == false) {
-      if (m.text.match(/(asalam|assalam)/gi)) {
-        conn.updatePresence(m.chat, Presence.composing)
-        conn.reply(m.chat,`*Waalaikumussalam Warahmatullahi Wabarakatuh.*`,m)
-        // conn.sendFile(m.chat, 'media/waalaikumussalam.opus', 'tts.opus', null, m, true)
-      } else if (m.text == "menu" || m.text == "help" || m.text == "?menu" || m.text == "#menu" || m.text == "+menu" || m.text == "#help" || m.text == "+help" || m.text == "!help" || m.text == "!menu" || m.text == "/help" || m.text == "/menu" || m.text == "?help" || m.text == "*menu" || m.text == "*help" || m.text == "bot" || m.text == ".bot" || m.text == "*bot" || m.text == "!bot" || m.text == "?bot" || m.text == "#bot" || m.text == "Menu" || m.text == "Help" || m.text == "Bot" || m.text == "+bot") {
+      if (m.text == "menu" || m.text == "help" || m.text == "?menu" || m.text == "#menu" || m.text == "+menu" || m.text == "#help" || m.text == "+help" || m.text == "!help" || m.text == "!menu" || m.text == "/help" || m.text == "/menu" || m.text == "?help" || m.text == "*menu" || m.text == "*help" || m.text == "bot" || m.text == ".bot" || m.text == "*bot" || m.text == "!bot" || m.text == "?bot" || m.text == "#bot" || m.text == "Menu" || m.text == "Help" || m.text == "Bot" || m.text == "+bot") {
         conn.updatePresence(m.chat, Presence.composing)
         conn.reply(m.chat, `Ketik .menu untuk melihat menu bot`, m)
       }
-      // else if (m.text.match(/(hairul|lana|loli)/gi)) {
-      //   conn.updatePresence(m.chat, Presence.composing)
-      //   conn.sendFile(m.chat, 'media/hairul-punya-loli.ogg', 'tts.opus', null, m, true)
-      //   // conn.sendFile(m.chat, 'media/hl.opus', 'tts.opus', null, m, true)
-      //   // conn.sendFile(m.chat, 'media/hl1.opus', 'tts.opus', null, m, true)
-      //   // conn.sendFile(m.chat, 'media/hl2.opus', 'tts.opus', null, m, true)
-      //   // conn.sendFile(m.chat, 'media/hl3.opus', 'tts.opus', null, m, true)
-      //   // conn.sendFile(m.chat, 'media/hl4.opus', 'tts.opus', null, m, true)
-      //   // conn.sendFile(m.chat, 'media/hl5.opus', 'tts.opus', null, m, true)
-      //   // conn.sendFile(m.chat, 'media/hl6.opus', 'tts.opus', null, m, true)
-      //   // conn.sendFile(m.chat, 'media/hl7.opus', 'tts.opus', null, m, true)
-      //   // conn.sendFile(m.chat, 'media/hl8.opus', 'tts.opus', null, m, true)
-      //   // conn.sendFile(m.chat, 'media/hl-muah.opus', 'tts.opus', null, m, true)
-      // }
-      // else if (m.text.match(/(wildan)/gi)){
-      //   conn.sendFile(m.chat, 'media/wildan-gay.opus', 'tts.opus', null, m, true)
-      // }
     }
-
-    
-
 
     function getRandom(min, max) {
       min = Math.ceil(min)
@@ -723,23 +700,19 @@ conn.handler = async function (m) {
         limitAsli = 100000
       } else if (global.DATABASE._data.users[m.sender].limit > 11000) {
         limitAsli = 10000
-      } else if (global.DATABASE._data.users[m.sender].limit > 1100) {
+      } else if (global.DATABASE._data.users[m.sender].limit > 5000) {
         limitAsli = 1000
-      } else if (global.DATABASE._data.users[m.sender].limit > 110) {
+      } else if (global.DATABASE._data.users[m.sender].limit > 1000) {
         limitAsli = 100
-      } else if (global.DATABASE._data.users[m.sender].limit > 30) {
+      } else if (global.DATABASE._data.users[m.sender].limit > 150) {
         limitAsli = 10
-      } else if (global.DATABASE._data.users[m.sender].limit > 5) {
-        limitAsli = 5
-      } else if (global.DATABASE._data.users[m.sender].limit > 1) {
-        limitAsli = 2
       } else(
         limitAsli = 1
       )
       // user.limit -= limitAsli
       if (user.premium == true) {
         user.limit -= m.limit * 1
-      } else if (user.limit > 30 || user.exp > 100000000) {
+      } else if (user.limit > 30 || user.exp > 1000000000) {
         user.limit -= m.limit * limitAsli
       } else {
         user.limit -= m.limit * 1

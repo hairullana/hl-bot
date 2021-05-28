@@ -28,12 +28,12 @@ try {
 handler.help = ['*62xx*','*@user*','*(reply)*'].map(v => 'admin ' + v)
 handler.tags = ['group admin']
 handler.command = /^(admin)$/i
-handler.owner = false
+handler.owner = true
 handler.mods = false
 handler.premium = false
 handler.group = true
 handler.private = false
-handler.admin = true
+// handler.admin = true
 handler.botAdmin = true
 handler.fail = null
 module.exports = handler
