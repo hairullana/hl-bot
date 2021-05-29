@@ -12,11 +12,23 @@ let handler = async (m, { conn, command, text }) => {
 
   if(m.quoted){
     target = m.quoted.sender
+    if (hl[0].startsWith("@")) {
+      return conn.reply(m.chat,`*Masukkan Format Yang Benar !*\n\n*Contoh :*\n*.gift @${global.conn.user.jid.split('@')[0]} 10.000.000*\n*.gift 10.000.000 (reply chat)*`,m,{contextInfo: {
+        mentionedJid: [global.conn.user.jid]
+      }})
+    }
     jumlah = hl[0].replace(/([.])/g,'')
   }else {
     target = hl[0].replace(/([@+-])/g,'') + "@s.whatsapp.net"
+    if (!hl[1]) {
+      return conn.reply(m.chat,`*Masukkan Format Yang Benar !*\n\n*Contoh :*\n*.gift @${global.conn.user.jid.split('@')[0]} 10.000.000*\n*.gift 10.000.000 (reply chat)*`,m,{contextInfo: {
+        mentionedJid: [global.conn.user.jid]
+      }})
+    }
     jumlah = hl[1].replace(/([.])/g,'')
   }
+
+  if (target == global.conn.user.jid) return m.reply("*Tidak bisa melakukan transfer ke HL Bot.*")
 
   if (typeof global.DATABASE.data.users[target] == "undefined"){
     return m.reply(`*Nomor yang ingin anda transfer tidak terdaftar di Hl Bot.*\n\n*Contoh :*\n*.gift @${global.conn.user.jid.split('@')[0]} 10.000.000*\n*.gift 10.000.000 (reply chat)*`,m,{contextInfo: {
