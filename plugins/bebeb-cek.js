@@ -25,7 +25,7 @@ let handler = async (m, { conn, text }) => {
     return m.reply("*Orang yang anda tag tidak terdaftar di HL Bot.*")
   }
 
-  if (typeof global.DATABASE.data.users[global.DATABASE.data.users[user].pasangan] == "undefined"){
+  if (global.DATABASE.data.users[global.DATABASE.data.users[user].pasangan] == "" && typeof global.DATABASE.data.users[global.DATABASE.data.users[user].pasangan] == "undefined"){
     return m.reply("*Pacar/gebetan target tidak terdaftar di HL Bot.*")
   }
 
@@ -46,12 +46,5 @@ let handler = async (m, { conn, text }) => {
 handler.help = ['cekpacar']
 handler.tags = ['gabut']
 handler.command = /^(cekpacar)$/i
-// handler.owner = true
-handler.mods = false
-handler.premium = false
-handler.group = true
-// handler.limit = true
-// handler.admin = true
-// handler.botAdmin = true
 handler.fail = null
 module.exports = handler

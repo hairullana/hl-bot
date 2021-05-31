@@ -6,7 +6,13 @@ let handler = async (m, { conn }) => {
   }
   
   beb = global.DATABASE.data.users[global.DATABASE.data.users[m.sender].pasangan]
-  // return conn.reply(m.chat,ayg.pasangan + ' ' + beb + '\n\n' + beb.pasangan + ' ' + ayg,m)
+
+  if (typeof beb == "undefined"){
+    conn.reply(m.chat,`*Berhasil putus hubungan dengan @${global.DATABASE.data.users[m.sender].pasangan.split('@')[0]}*\n\n*Masih banyak manusia lain njing, jadi jangan bundir dulu !*`,m,{contextInfo: {
+      mentionedJid: [global.DATABASE.data.users[m.sender].pasangan]
+    }})
+    ayg.pasangan = ""
+  }
 
   if (m.sender == beb.pasangan){
     conn.reply(m.chat,`*Berhasil putus hubungan dengan @${global.DATABASE.data.users[m.sender].pasangan.split('@')[0]}*\n\n*Masih banyak manusia lain njing, jadi jangan bundir dulu !*`,m,{contextInfo: {

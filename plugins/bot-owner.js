@@ -2,7 +2,7 @@ let { Presence } = require('@adiwajshing/baileys')
 let handler  = async (m, { conn }) => {
 	await conn.updatePresence(m.chat, Presence.composing)
 	var name = 'Hairul Lana'
-	var number = '6283119526456'
+	var number = global.owner[1]
 	conn.sendVcard(m.chat, name, number, m).then(() =>{
 		conn.reply(m.chat,`*Harap chat owner jika penting saja dan to the point.*\n*Makasih :)*`,m)
 	})

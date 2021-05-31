@@ -51,7 +51,7 @@ global.author = 'LTM BOT'
 global.wait = '_Sedang diproses . . ._'
 global.error = '_Error!_'
 
-global.owner = ['6283119526456','6285157700416'] // Put your number here
+global.owner = ['6283119526456','6282215215399'] // Put your number here
 global.mods = ['6281524633549','62895323133060','6281257735703','6281351236907'] // Want some help?
 global.modsName = ['galang','mila','loli','ara']
 global.prems = [] // Premium user has unlimited limit
