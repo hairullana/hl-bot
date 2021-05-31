@@ -29,8 +29,6 @@ let handler = async (m, { conn, text }) => {
     return m.reply("*Pacar/gebetan target tidak terdaftar di HL Bot.*")
   }
 
-  pp = await conn.getProfilePicture(user)
-
   if (global.DATABASE.data.users[user].pasangan == "") {
     conn.reply(m.chat, `*${orang} tidak memiliki pasangan dan tidak sedang menembak siapapun*\n\n*Ketik .jadian @user untuk menembak seseorang*`, m)
   }else if (global.DATABASE.data.users[global.DATABASE.data.users[user].pasangan].pasangan != user){
