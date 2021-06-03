@@ -3,11 +3,10 @@ let handler  = async (m, { conn, text }) => {
 	function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
   }
-	for (i=0;i<10;i++){
+	for (i=0;i<5;i++){
 		await conn.toggleDisappearingMessages(m.chat, { quoted: m })
-		await sleep(250)
+		await sleep(2000)
 	}
-	// conn.reply(m.chat, text.trim(), null)
 }
 handler.help = ['']
 handler.tags = ['']
