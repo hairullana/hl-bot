@@ -265,14 +265,14 @@ conn.handler = async function (m) {
         return conn.reply(m.chat, `${head}\n\n${grup[acak]}\n\n${ig}\n\n${undang}`, m).then(() => {
           conn.updatePresence(m.chat, Presence.composing)
           let name = 'Hairul Lana'
-          let number = global.owner[0]
+          let number = global.owner[1]
           conn.sendVcard(m.chat, name, number)
         })
       } else {
         return conn.reply(m.chat, head + "\n\n" + undang, m).then(() => {
           conn.updatePresence(m.chat, Presence.composing)
           let name = 'Hairul Lana'
-          let number = global.owner[0]
+          let number = global.owner[1]
           conn.sendVcard(m.chat, name, number)
         })
       }
@@ -320,7 +320,7 @@ conn.handler = async function (m) {
         conn.reply(m.chat, "*Maaf waktunya bot untuk meninggalkan grup :(*\n*Chat owner untuk invite bot lagi*").then(() => {
           conn.updatePresence(m.chat, Presence.composing)
           let name = 'Hairul Lana'
-          let number = global.owner[0]
+          let number = global.owner[1]
           conn.sendVcard(m.chat, name, number).then(() => {
             conn.groupLeave(m.chat).then(() => {
               global.DATABASE.data.chats[m.chat].expired = 0
@@ -337,7 +337,7 @@ conn.handler = async function (m) {
           global.DATABASE.data.users[m.sender].premium = false
           conn.updatePresence(m.chat, Presence.composing)
           let name = 'Hairul Lana'
-          let number = global.owner[0]
+          let number = global.owner[1]
           conn.sendVcard(m.chat, name, number)
         })
 
@@ -432,7 +432,7 @@ conn.handler = async function (m) {
       let totalUser = format(Object.keys(global.DATABASE._data.users).length)
 
       let users = global.DATABASE.data.users
-      let anu = 86400000 * 10 
+      let anu = 86400000 * 14
       let now = new Date() * 1
       var userBangsat = 0
       var userPremium = 0
