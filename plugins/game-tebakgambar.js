@@ -3,6 +3,7 @@ let fetch = require('node-fetch')
 let timeout = 120000
 let poin = 200000
 let handler = async (m, { conn, usedPrefix }) => {
+    return m.reply("*Fitur tebak gambar sedang error kak.*")
     conn.tebakgambar = conn.tebakgambar ? conn.tebakgambar : {}
     let id = m.chat
     if (id in conn.tebakgambar) {

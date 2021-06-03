@@ -163,7 +163,9 @@ conn.handler = async function (m) {
         if (!isNumber(user.price)) user.price = 0
         if (!isNumber(user.premiumDate)) user.premiumDate = 0
         if (!isNumber(user.afk)) user.afk = -1
+        if (!isNumber(user.usebot)) user.usebot = 0
       } else global.DATABASE._data.users[m.sender] = {
+        usebot: 0,
         lastseen: 0,
         exp: 0,
         limit: 10,
@@ -311,6 +313,9 @@ conn.handler = async function (m) {
     if (global.DATABASE.data.users[m.sender].isBanned == false) {
       global.DATABASE.data.users[m.sender].exp += 1000
       global.DATABASE.data.users[m.sender].lastseen = new Date() * 1
+      if (userPrefix == prefixhl){
+        global.DATABASE.data.users[m.sender].usebot = new Date() * 1
+      }
     }
 
     // Keluar GC Otomatis Sesuai Tanggal
@@ -343,10 +348,6 @@ conn.handler = async function (m) {
 
       }
     }
-
-    // anu
-    // let list = Object.entries(global.DATABASE.data.users)
-    // list.slice(0, list.length).map(([user, data], i) => (Number(data.exp -= Math.floor((data.exp/100)*50))))
 
     // anti spam
     if (antiSpam){
@@ -388,7 +389,6 @@ conn.handler = async function (m) {
         }
       }
     }
-
 
     // ANTI-SPAM COMMAND
     if (m.text.slice(0, 1) == prefixhl) {
@@ -435,19 +435,22 @@ conn.handler = async function (m) {
       let anu = 86400000 * 14
       let now = new Date() * 1
       var userBangsat = 0
+      var userBangsat2 = 0
       var userPremium = 0
       var userWhitelist = 0
 
       for (let jid in users) {
-        if (now - users[jid].lastseen > anu && !users[jid].whitelist) userBangsat += 1
+        if (now - users[jid].lastseen > anu && !users[jid].premium) userBangsat += 1
+        if (now - users[jid].usebot > anu && !users[jid].premium) userBangsat2 += 1
         if (users[jid].premium) userPremium += 1
         if (users[jid].whitelist) userWhitelist += 1
       }
 
       let userAktif = format(Object.keys(global.DATABASE._data.users).length - userBangsat)
+      let userAktifBot = format(Object.keys(global.DATABASE._data.users).length - userBangsat2)
 
       await m.reply("_Checking . . ._")
-      conn.reply(m.chat, `*Speed :* ${new Date - old} ms\n\n*Self Mode :* ${selfModeText}\n*Group Mode :* ${groupModeText}\n*Group :* ${groupTotal} grup\n*Chat :* ${chatTotal} chat\n*Total User :* ${totalUser} user\n*User Aktif :* ${userAktif} user\n*Premium :* ${userPremium} user\n*Whitelist :* ${userWhitelist} user\n*Banned :* ${global.DATABASE.data.banned} user\n*Uptime :* ${uptime}`, m)
+      conn.reply(m.chat, `*Speed :* ${new Date - old} ms\n\n*Self Mode :* ${selfModeText}\n*Group Mode :* ${groupModeText}\n*Group :* ${groupTotal} grup\n*Chat :* ${chatTotal} chat\n*Total User :* ${totalUser} user\n*User Aktif Biasa :* ${userAktif} user\n*User Aktif Bot :* ${userAktifBot} user\n*Premium :* ${userPremium} user\n*Whitelist :* ${userWhitelist} user\n*Banned :* ${global.DATABASE.data.banned} user\n*Uptime :* ${uptime}`, m)
       // conn.reply(m.chat,`*[ BOT STATUS ]*\n\n*Status* : Best Performance\n*Ping :* ${(neww-old)} ms\n\n*Device :* ASUS ROG STRIX GL503\n*Processor :* Intel® Core™ i7-8750H 4.2 GHz\n*Memory :* 11.43GB / 32GB\n*Hard Drive :* 2TB SSD\n*Graphic :* NVIDIA® GeForce® GTX1050Ti 4GB GDDR5 VRAM`,m)
     }
 

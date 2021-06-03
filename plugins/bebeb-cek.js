@@ -39,7 +39,7 @@ let handler = async (m, { conn, text }) => {
     conn.reply(m.chat, `*${orang} sedang menjalani hubungan dengan @${global.DATABASE.data.users[user].pasangan.split('@')[0]} 💓💓💓*`, m,{contextInfo: {
       mentionedJid: [global.DATABASE.data.users[user].pasangan]
     }})
-  }	
+  }
 }
 handler.help = ['cekpacar']
 handler.tags = ['gabut']

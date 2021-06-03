@@ -43,7 +43,7 @@ let handler = async (m, { conn, text }) => {
   }
 	
 	// if(!text && !m.quoted) return conn.reply(m.chat, `*Penggunaan yang benar*\n\n.profile @user\n.profile -> reply chat`, m)
-	if(number.length > 15 || (number.length < 9 && number.length > 0)) return conn.reply(m.chat, `*Masukin nomor yg bener gblk !*`, m)
+	if(number.length > 15 || (number.length < 9 && number.length > 0)) return conn.reply(m.chat, `*Masukkan nomor dengan format yang benar !*`, m)
   try {
 		if (!text && !m.quoted){
 			user = m.sender
@@ -66,16 +66,6 @@ let handler = async (m, { conn, text }) => {
 					(m, i) => p < 0 || i < p ? `${m},` : m
 			)
 		}
-
-		// function inArray(needle, haystack) {
-		// 	var length = haystack.length;
-		// 	for(var i = 0; i < length; i++) {
-		// 			if(haystack[i] == needle) return true;
-		// 	}
-		// 	return false;
-		// }	
-
-		// conn.reply(m.chat, `${global.DATABASE.data.users["6283119526456@s.whatsapp.net"]}`, m)
 
 		if(typeof global.DATABASE.data.users[user] !== 'undefined'){
 			var money = global.DATABASE.data.users[user].exp
@@ -101,27 +91,30 @@ let handler = async (m, { conn, text }) => {
 				var premium = '❎'
 			}
 
-			var lastseen = msToDate2(now - global.DATABASE._data.users[user].lastseen)
+			var lastseen = msToDate2(now - global.DATABASE.data.users[user].lastseen)
+			var usebot = msToDate2(now - global.DATABASE.data.users[user].usebot)
+			let about = (await conn.getStatus(user)).status
+			let pasangan
+
+			if (global.DATABASE.data.users[user].pasangan == "") {
+				pasangan = "Jomblo"
+			}else if (global.DATABASE.data.users[global.DATABASE.data.users[user].pasangan].pasangan != user){
+				pasangan = "Digantung"
+			}else {
+				pasangan = "Berpacaran"
+			}
+			
+			var nomor = user.split`@`[0]
+			var isName = conn.getName(user)
+			if (typeof isName !== 'undefined') {
+				var name = isName
+			} else {
+				var name = '(Tanpa Nama)'
+			} conn.sendFile(m.chat, pp, 'profile.jpg', `*[ IDENTITAS USER ]*\n\n*Nama* : ${name}\n*Tentang* : ${about}\n*Nomor* : ${nomor}\n*Uang* : Rp. ${Number(money).toLocaleString().replace(/,/g, '.')},-\n*Limit* : ${format(limit)}\n*Pasangan* : ${pasangan}\n*Whitelist* : ${whitelist}\n*Premium* : ${premium}\n*Warning* : ${warn} / 5\n*Banned* : ${banned}\n*Use Bot* : ${usebot}\n*Last Seen* : ${lastseen}`, m)
 			
 		}else{
-			var warn = 0
-			var chat = 0
-			var money = 0
-			var limit = 0
-			var whitelist = '❎'
-			var premium = '❎'
-			var banned = "Belum Terdaftar"
+			m.reply(`*Nomor ${text} tidak terdaftar di bot.*`)
 		}
-		// let badword = global.DATABASE._data.users[user].warning
-		let about = (await conn.getStatus(user)).status
-		
-		var nomor = user.split`@`[0]
-		var isName = conn.getName(user)
-		if (typeof isName !== 'undefined') {
-			var name = isName
-		} else {
-			var name = '(Tanpa Nama)'
-		} conn.sendFile(m.chat, pp, 'profile.jpg', `*[ IDENTITAS USER ]*\n\n*Nama* : ${name}\n*Tentang* : ${about}\n*Nomor* : ${nomor}\n*Uang* : Rp. ${Number(money).toLocaleString().replace(/,/g, '.')},-\n*Limit* : ${format(limit)}\n*Whitelist* : ${whitelist}\n*Premium* : ${premium}\n*Warning* : ${warn} / 5\n*Banned* : ${banned}\n*Last Seen* : ${lastseen}`, m)
 	}
 }
 handler.help = ['*62xx*','*@user*','*(reply)*'].map(v => 'profile ' + v)
