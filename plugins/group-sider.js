@@ -13,7 +13,7 @@ let handler = async (m, { conn, text, participants }) => {
 	var sider = []
 	for(let i = 0; i < sum; i++) {
 		let users = m.isGroup ? participants.find(u => u.jid == member[i]) : {}
-		if((typeof global.DATABASE.data.users[member[i]] == 'undefined' || global.DATABASE.data.users[member[i]].lastseen < lama) && !users.isAdmin && !users.isSuperAdmin) { 
+		if((typeof global.DATABASE.data.users[member[i]] == 'undefined' || new Date() * 1 - global.DATABASE.data.users[member[i]].lastseen > lama) && !users.isAdmin && !users.isSuperAdmin) { 
 			if (typeof global.DATABASE.data.users[member[i]] !== 'undefined'){
 				if(global.DATABASE.data.users[member[i]].whitelist == false){
 					total++
