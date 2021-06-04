@@ -100,7 +100,7 @@ let handler = async (m, { conn, args }) => {
     }, 1000)
 	} 
 }
-handler.help = ['spin _money_','judi _money_', 'spin all', 'judi all']
+handler.help = ['spin _money_','judi _money_', 'spin _all_', 'judi _all_']
 handler.tags = ['game']
 handler.command = /^(spin|judi)$/i
 handler.owner = false

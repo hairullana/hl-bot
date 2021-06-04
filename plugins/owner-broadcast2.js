@@ -8,17 +8,19 @@ let handler  = async (m, { conn, text, participants }) => {
 	const isVideo = type === 'extendedTextMessage' && content.includes('videoMessage')
 	let groups = conn.chats.array.filter(v => v.jid.endsWith('g.us') && !v.read_only && v.message).map(v => v.jid)
 	for (let id of groups) { 
-		let users = participants.map(u => u.jid)
-		if(isImage || isVideo) {
-			var encmedia = JSON.parse(JSON.stringify(m).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo
-			var media = await conn.downloadAndSaveMediaMessage(encmedia)
-			if(isImage) { conn.sendFile(id, media, 'image.png', `❏  B R O A D C A S T\n\n${text ? text : m.quoted.caption }`, null) }
-			if(isVideo) { conn.sendFile(id, media, 'video.mp4', `❏  B R O A D C A S T\n\n${text ? text : m.quoted.caption }`, null) }
-		} else {
-			conn.reply(id, `❏  B R O A D C A S T\n\n${text}`, null, { contextInfo: { mentionedJid: users } })
+		if (!global.DATABASE.data.chats[id].isBanned){
+			let users = participants.map(u => u.jid)
+			if(isImage || isVideo) {
+				var encmedia = JSON.parse(JSON.stringify(m).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo
+				var media = await conn.downloadAndSaveMediaMessage(encmedia)
+				if(isImage) { conn.sendFile(id, media, 'image.png', `❏  B R O A D C A S T\n\n${text ? text : m.quoted.caption }`, null) }
+				if(isVideo) { conn.sendFile(id, media, 'video.mp4', `❏  B R O A D C A S T\n\n${text ? text : m.quoted.caption }`, null) }
+			} else {
+				conn.reply(id, `❏  B R O A D C A S T\n\n${text}`, null, { contextInfo: { mentionedJid: users } })
+			}
 		}
 		await delay(2500)
-	} conn.reply(m.chat, `Sukses mengirim broadcast.`, m)
+	} conn.reply(m.chat, `*Sukses mengirim broadcast ke ${groups.length} grup tuan.*`, m)
 }
 handler.help = ['broadcast2'].map(v => v + ' _text_')
 handler.tags = ['owner']
