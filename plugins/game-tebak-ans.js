@@ -7,7 +7,7 @@ handler.before = async function (m) {
 
     if (m.quoted.id == conn.tebak[id][0].id) {
         let json = JSON.parse(JSON.stringify(conn.tebak[id][1]))
-        if (" " + m.text.toLowerCase() == json.result.jawaban.toLowerCase()) {
+        if (m.text.toLowerCase() == json.result.jawaban.toLowerCase()) {
             global.DATABASE._data.users[m.sender].exp += conn.tebak[id][2]
             m.reply(`Benar!\n+ Rp. ${conn.tebak[id][2].toLocaleString()}`)
             clearTimeout(conn.tebak[id][3])

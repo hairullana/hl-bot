@@ -19,9 +19,9 @@ let handler = async (m, { conn }) => {
   if (new Date - global.DATABASE._data.users[m.sender].lastclaim > waktuClaim) {
     var hadiah
     if (global.DATABASE.data.users[m.sender].premium){
-      hadiah = 120
+      hadiah = 100
     }else {
-      hadiah = 30
+      hadiah = 20
     }
 
     function getRandom(min,max){
@@ -31,11 +31,13 @@ let handler = async (m, { conn }) => {
     }
 
     if (global.DATABASE.data.users[m.sender].premium){
-      petiRahasia = getRandom(1,25) * 1000000
+      petiRahasia = getRandom(1,20) * 1000000
       global.DATABASE.data.users[m.sender].exp += petiRahasia
-      conn.reply(m.chat, `*❏ D A I L Y  C L A I M*\n\nSelamat bangsat dapet bonus *${hadiah} Limit* dan peti rahasia berisikan uang *Rp. ${petiRahasia.toLocaleString()}*\nSilahkan claim lagi besok\n\nUser Premium : 100 Limit\nUser Biasa : 25 Limit`, m)
+      conn.reply(m.chat, `*❏ D A I L Y  C L A I M*\n\nSelamat bangsat dapet bonus *${hadiah} Limit* dan peti rahasia berisikan uang *Rp. ${petiRahasia.toLocaleString()}*\nSilahkan claim lagi besok\n\nUser Premium : 100 Limit\nUser Biasa : 20 Limit`, m)
     }else {
-      conn.reply(m.chat, `*❏ D A I L Y  C L A I M*\n\nSelamat bangsat dapet bonus *${hadiah} Limit*\nSilahkan claim lagi besok\n\nUser Premium : 100 Limit\nUser Biasa : 25 Limit`, m)  
+      petiRahasia = getRandom(1,20) * 100000
+      global.DATABASE.data.users[m.sender].exp += petiRahasia
+      conn.reply(m.chat, `*❏ D A I L Y  C L A I M*\n\nSelamat bangsat dapet bonus *${hadiah} Limit* dan peti rahasia berisikan uang *Rp. ${petiRahasia.toLocaleString()}*\nSilahkan claim lagi besok\n\nUser Premium : 100 Limit\nUser Biasa : 20 Limit`, m)
     }
 
     global.DATABASE.data.users[m.sender].limit += hadiah
@@ -46,7 +48,5 @@ handler.help = ['claim']
 handler.tags = ['xp']
 handler.command = /^(claim)$/i
 handler.fail = null
-handler.exp = 0
-
 module.exports = handler
 
