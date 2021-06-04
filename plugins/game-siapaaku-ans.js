@@ -13,7 +13,14 @@ handler.before = async function (m) {
             clearTimeout(conn.siapaaku[id][3])
             delete conn.siapaaku[id]
         } else if (m.text.toLowerCase().endsWith(json.result.jawaban.split` `[1])) m.reply(`Dikit Lagi!`)
-        else m.reply(`Salah!`)
+        else {
+          if (global.DATABASE.data.users[m.sender].exp < 50000){
+            global.DATABASE.data.users[m.sender].exp = 0
+          }else {
+            global.DATABASE.data.users[m.sender].exp -= 50000
+          }
+          m.reply(`*Jawabanmu Salah!*\nUangmu berkurang Rp. 50.000,-`)
+        }
     }
 }
 handler.exp = 0
