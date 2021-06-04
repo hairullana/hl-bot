@@ -10,7 +10,7 @@ let handler  = async (m, { conn, text, usedPrefix, command }) => {
 		conn.reply(m.chat, `Berhasil mengirim panggilan ke nomor 0${text}`, m) 
 	}) .catch(() => { conn.reply(m.chat, `Limit 3x / Nomor.`, m) })
 }
-handler.help = ['spamcall2 *8xx*']
+handler.help = ['spamcall2 _8xx_']
 handler.tags = ['premium','tools']
 handler.command = /^(spamcall2)$/i
 handler.owner = false

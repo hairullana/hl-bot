@@ -53,21 +53,12 @@ let handler = async (m, { conn, args, usedPrefix }) => {
     } else throw `kirim stiker kemudian reply dengan caption ${usedPrefix}tovid`
 }
 
-handler.help = ['tovideo *(reply sticker)*']
+handler.help = ['tovideo _(reply sticker)_']
 handler.tags = ['sticker','premium']
 handler.command = /^(tovid(eo)?)$/i
-handler.owner = false
-handler.mods = false
 handler.premium = true
-handler.group = false
-handler.private = false
-
-handler.admin = false
-handler.botAdmin = false
-
 handler.fail = null
-handler.limit = false
-
+handler.limit = true
 module.exports = handler
 
 const getRandom = () => {

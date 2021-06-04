@@ -2,7 +2,7 @@ let { Presence } = require('@adiwajshing/baileys')
 let gis = require('g-i-s')
 let handler  = async (m, { conn, args, usedPrefix, command }) => {
 	await conn.updatePresence(m.chat, Presence.composing) 
-	if (!args || !args[0]) return conn.reply(m.chat, `❏  *Format salah!*\n\n*Contoh : ${usedPrefix + command} kucing*`, m)
+	if (!args || !args[0]) return conn.reply(m.chat, `*Format salah!*\n\n*Contoh : ${usedPrefix + command} kucing*`, m)
 	let text = args.join` `
 	conn.reply(m.chat, global.wait, m)
 	gis(encodeURIComponent(text), logResults)

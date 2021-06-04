@@ -7,8 +7,8 @@ let handler  = async (m, { conn, args, usedPrefix, command }) => {
 		.then(res => res.json())
 		.then(batch => {
 			conn.updatePresence(m.chat, Presence.composing) 
-			conn.reply(m.chat, `*[ ANIME QUOTES ]*\n\n*Anime :* ${batch.result.anime}\n*Character :* ${batch.result.character}\n*Quotes :* ${batch.result.quotes}`, m)   
-	}) .catch(() => { conn.reply(m.chat, `*[ FITUR ERROR ]*\n\nMaaf fitur ${command} sedang tidak bisa digunakan.`, m) })
+			conn.reply(m.chat, `*❏  A N I M E  Q U O T E S*\n\n*Anime :* ${batch.result.anime}\n*Character :* ${batch.result.character}\n*Quotes :* ${batch.result.quotes}`, m)   
+	}) .catch(() => { conn.reply(m.chat, global.error, m) })
 }
 handler.help = ['quotesanime']
 handler.tags = ['text']

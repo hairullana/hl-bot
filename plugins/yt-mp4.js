@@ -3,10 +3,12 @@ let { JSDOM } = require('jsdom')
 let limit = 30
 let handler = async (m, { conn, args, isPrems, isOwner }) => {
   if (!args || !args[0]) return conn.reply(m.chat, '*Masukkan URL Youtube yang ingin di download videonya*', m)
-  conn.reply(m.chat,'*Tunggu sebentar . . .*',m)
+  conn.reply(m.chat,global.wait,m)
   let { dl_link, thumb, title, filesize, filesizeF} = await ytv(args[0])
   let isLimit = (isPrems || isOwner ? 99 : limit) * 1024 < filesize
   conn.sendFile(m.chat, thumb, 'thumbnail.jpg', `
+*❏  Y O U T U B E  M P 4*
+
 *Title:* ${title}
 *Filesize:* ${filesizeF}
 *${isLimit ? 'Pakai ': ''}Link:* ${dl_link}
@@ -18,7 +20,7 @@ s
 // *Filesize:* ${filesizeF}
 // `.trim(), m)
 }
-handler.help = ['ytmp4'].map(v => v + ' *url*')
+handler.help = ['ytmp4'].map(v => v + ' _url_')
 handler.tags = ['downloader']
 handler.command = /^ytmp4$/i
 handler.owner = false

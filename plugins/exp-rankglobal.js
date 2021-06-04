@@ -7,48 +7,25 @@ let handler = async (m, { conn, args }) => {
   let usersLim = sortedLim.map(v => v[0])
   let len = args[0] && args[0].length > 0 ? Math.min(1000, Math.max(parseInt(args[0]), 5)) : Math.min(10, sortedExp.length)
 
-  if (args[0] > 25) {
-    conn.reply(m.chat, `Masukkan max 25 ya bgst, ntar ngelag kntl !`, m)
+  if (args[0] > 100) {
+    conn.reply(m.chat, `*Masukkan maksimal 100*`, m)
   }else {
-    // format mata uang
-    const format = num => {
-      const n = String(num),
-            p = n.indexOf('.')
-      return n.replace(
-          /\d(?=(?:\d{3})+(?:\.|$))/g,
-          (m, i) => p < 0 || i < p ? `${m},` : m
-      )
-    }
-    
-    //yg isi ngetag
-    //${sortedExp.slice(0, len).map(([user, data], i) => (i + 1) + '. @' + user.split`@`[0] + ': *' + data.exp + ' Exp*').join`\n`}
-    
     let text = `
-• *TOP ${len} TERKAYA GLOBAL* •\n
-_Kamu punya *Rp. ${format(global.DATABASE.data.users[m.sender].exp)}* dan *${format(global.DATABASE.data.users[m.sender].limit)} Limit*_
+*❏  T O P  ${len}  T E R K A Y A  G L O B A L*\n
+_Kamu punya *Rp. ${global.DATABASE.data.users[m.sender].exp.toLocaleString()}* dan *${global.DATABASE.data.users[m.sender].limit.toLocaleString()} Limit*_
 _Kamu peringkat *${usersExp.indexOf(m.sender) + 1}* dari *${usersExp.length}* orang_
   
-${sortedExp.slice(0, len).map(([user, data], i) => (i + 1) + '. '  + conn.getName(user) + '\n    wa.me/' + user.split('@')[0] + '\n    *Rp. ' + format(data.exp) + '*').join`\n`}
+${sortedExp.slice(0, len).map(([user, data], i) => (i + 1) + '. '  + conn.getName(user) + '\n    wa.me/' + user.split('@')[0] + '\n    *Rp. ' + data.exp.toLocaleString() + '*').join`\n`}
     `.trim()
   
     conn.reply(m.chat, text, m)
   }
 
 }
-handler.help = ['rankglobal','rankglobal *total*']
+handler.help = ['rankglobal','rankglobal _total_']
 handler.tags = ['xp']
 handler.command = /^(rankglobal)$/i
-handler.owner = false
-handler.mods = false
-handler.premium = false
-handler.group = false
-handler.private = false
-
-handler.admin = false
-handler.botAdmin = false
-
 handler.fail = null
 handler.exp = 100
-
 module.exports = handler
 

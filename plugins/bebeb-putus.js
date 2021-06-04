@@ -27,12 +27,6 @@ let handler = async (m, { conn }) => {
 handler.help = ['putus']
 handler.tags = ['gabut']
 handler.command = /^(putus)$/i
-// handler.owner = true
-handler.mods = false
-handler.premium = false
 handler.group = true
-handler.limit = false
-// handler.admin = true
-// handler.botAdmin = true
 handler.fail = null
 module.exports = handler

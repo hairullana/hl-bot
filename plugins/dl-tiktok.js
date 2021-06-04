@@ -4,8 +4,8 @@ let handler = async (m, { conn, args }) => {
   let res = await fetch(global.API('xteam', '/dl/tiktok', {
     url: args[0]
   }, 'APIKEY'))
-  conn.reply(m.chat,'*Tunggu sebenar . . .*',m)
   let json = await res.json()
+  conn.reply(m.chat,'*Tunggu sebenar . . .*',m)
   if (!json.result) conn.reply(m.chat,'*[ TIKTOK DOWNLOADER ]*\n\nSilahkan download video tiktok melalui link di bawah :\n' + json.server_2,m)
 //   conn.sendFile(m.chat, json.result.url, 'tiktok.mp4', `
 // Username: @${json.result.username}
@@ -13,8 +13,9 @@ let handler = async (m, { conn, args }) => {
 //     thumbnail
 //   })
 }
-handler.help = ['tiktok'].map(v => v + ' *url*')
+handler.help = ['tiktok'].map(v => v + ' _url_')
 handler.tags = ['downloader','premium']
 handler.command = /^(tiktok(dl)?)$/i
 handler.premium = true
+handler.limit = true
 module.exports = handler

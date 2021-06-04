@@ -1,26 +1,25 @@
 let { Presence } = require('@adiwajshing/baileys')
 let fetch = require('node-fetch')
-let handler  = async (m, { conn, args, usedPrefix, command }) => {
-	let text = args.join` `
-	await conn.updatePresence(m.chat, Presence.composing)
-	fetch('https://videfikri.com/api/kbbi/?query=')
-		.then(res => res.json())
-		.then(batch => {
-			conn.updatePresence(m.chat, Presence.composing) 
-			conn.reply(m.chat, `*[ KBBI ]*\n\n*Anime :* ${batch.result.anime}\n*Character :* ${batch.result.character}\n*Quotes :* ${batch.result.quotes}`, m)   
-	}) .catch(() => { conn.reply(m.chat, `*[ FITUR ERROR ]*\n\nMaaf fitur ${command} sedang tidak bisa digunakan.`, m) })
+let handler  = async (m, { conn, text, usedPrefix, command }) => {
+	if (!text) throw `Contoh: \n\n${usedPrefix}kbbi membaca`
+	try {
+			let res = await fetch(global.API('xteam', '/kbbi', { kata: text }, 'APIKEY'))
+			let json = await res.json()
+			if (json.code == 200){
+				let arti = ""
+				for(let i = 0; i<json.message.list.length; i++) {
+					arti += json.message.list[i] + '\n'
+				}
+				m.reply(`*❏  K B B I*\n\n*Kata :*\n` + json.message.word + '\n\n*Arti :*\n' + arti)
+			}else throw global.error
+	} catch (e) {
+			console.log(e)
+			throw global.error
+	}
 }
-handler.help = ['kbbi *query*']
-handler.tags = ['text']
+handler.help = ['kbbi _query_']
+handler.tags = ['data']
 handler.command = /^(kbbi)$/i
-handler.owner = false
-handler.mods = false
-handler.premium = false
-handler.group = false
-handler.private = false
-handler.admin = false
-handler.botAdmin = false
 handler.fail = null
 handler.limit = true
-handler.exp = 500
 module.exports = handler

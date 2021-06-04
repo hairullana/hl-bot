@@ -27,7 +27,7 @@ let handler  = async (m, { conn, usedPrefix: _p }) => {
     let uptime = clockString(_uptime)
     let totalreg = format(Object.keys(global.DATABASE._data.users).length)
     let tags = {
-      'premium': 'PREMIUM'
+      'premium': 'P R E M I U M'
     }
     for (let plugin of Object.values(global.plugins))
       if (plugin && 'tags' in plugin)
@@ -58,9 +58,9 @@ let handler  = async (m, { conn, usedPrefix: _p }) => {
     conn.menu = conn.menu ? conn.menu : {}
     // let before = conn.menu.before || `*${conn.getName(conn.user.jid)} BOT*\n\nHai, %name!\n*%exp XP | %limit Limit*\n*%week, %date [%time]*\n_Uptime: %uptime_\n%totalreg User in database\n%readmore`
     let before = conn.menu.before || `❏ Upgrade Premium ? Ketik *.infopremium*\n❏ Total Premium : ${premium} user\n`
-    let header = conn.menu.header || '╔═ ✪〘 %category 〙✪'
-    let body   = conn.menu.body   || '║ ❖ %cmd%islimit'
-    let footer = conn.menu.footer || '╚════════════════\n'
+    let header = conn.menu.header || '   *❖  %category*\n'
+    let body   = conn.menu.body   || ' » %cmd%islimit'
+    // let footer = conn.menu.footer || '╚════════════════\n'
     let after  = conn.menu.after  || conn.user.jid == global.conn.user.jid ? '' : `\nPowered by https://wa.me/${global.conn.user.jid.split`@`[0]}`
     let _text  = before + '\n'
     for (let tag in groups) {
@@ -68,14 +68,8 @@ let handler  = async (m, { conn, usedPrefix: _p }) => {
       for (let menu of groups[tag]) {
         for (let help of menu.help)
           _text += body.replace(/%cmd/g, menu.prefix ? help : '%p' + help).replace(/%islimit/g, menu.limit ? ' (lim)' : '')  + '\n'
-          // _text += body.replace(/%cmd/g, menu.prefix ? help : '%p' + help).replace(/%isprem/g, menu.premium ? ' (prem)' : '')  + '\n'
       }
-      // for (let menu of groups[tag]) {
-      //   for (let help of menu.help)
-      //     // _text += body.replace(/%cmd/g, menu.prefix ? help : '%p' + help).replace(/%islimit/g, menu.limit ? ' (lim)' : '')  + '\n'
-      //     _text += body.replace(/%cmd/g, menu.prefix ? help : '%p' + help).replace(/%isprem/g, menu.premium ? ' (prem)' : '')  + '\n'
-      // }
-      _text += footer + '\n'
+      _text += '\n'
     }
     _text += after
     text =  typeof conn.menu == 'string' ? conn.menu : typeof conn.menu == 'object' ? _text : ''

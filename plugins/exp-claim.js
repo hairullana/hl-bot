@@ -17,18 +17,11 @@ let handler = async (m, { conn }) => {
   }
 
   if (new Date - global.DATABASE._data.users[m.sender].lastclaim > waktuClaim) {
-    // if (global.DATABASE._data.users[m.sender].limit > 200 || global.DATABASE._data.users[m.sender].exp > 25000000){
-    //   hadiah = 5
-    // }else if (global.DATABASE._data.users[m.sender].limit > 50 || global.DATABASE._data.users[m.sender].exp > 10000000) {
-    //   hadiah = 10
-    // }else {
-    //   hadiah = 20
-    // }
     var hadiah
     if (global.DATABASE.data.users[m.sender].premium){
-      hadiah = 100
+      hadiah = 120
     }else {
-      hadiah = 25
+      hadiah = 30
     }
 
     function getRandom(min,max){
@@ -38,29 +31,20 @@ let handler = async (m, { conn }) => {
     }
 
     if (global.DATABASE.data.users[m.sender].premium){
-      petiRahasia = getRandom(1,250) * 1000000
+      petiRahasia = getRandom(1,25) * 1000000
       global.DATABASE.data.users[m.sender].exp += petiRahasia
-      conn.reply(m.chat, `*[ LIMIT CLAIM ]*\n\nSelamat bangsat dapet bonus *${hadiah} Limit* dan peti rahasia berisikan uang *Rp. ${petiRahasia.toLocaleString()}*\nSilahkan claim lagi besok\n\nUser Premium : 100 Limit\nUser Biasa : 25 Limit`, m)
+      conn.reply(m.chat, `*❏ D A I L Y  C L A I M*\n\nSelamat bangsat dapet bonus *${hadiah} Limit* dan peti rahasia berisikan uang *Rp. ${petiRahasia.toLocaleString()}*\nSilahkan claim lagi besok\n\nUser Premium : 100 Limit\nUser Biasa : 25 Limit`, m)
     }else {
-      conn.reply(m.chat, `*[ LIMIT CLAIM ]*\n\nSelamat bangsat dapet bonus *${hadiah} Limit*\nSilahkan claim lagi besok\n\nUser Premium : 100 Limit\nUser Biasa : 25 Limit`, m)  
+      conn.reply(m.chat, `*❏ D A I L Y  C L A I M*\n\nSelamat bangsat dapet bonus *${hadiah} Limit*\nSilahkan claim lagi besok\n\nUser Premium : 100 Limit\nUser Biasa : 25 Limit`, m)  
     }
 
     global.DATABASE.data.users[m.sender].limit += hadiah
     global.DATABASE.data.users[m.sender].lastclaim = new Date * 1
-  } else conn.reply(m.chat, `*[ LIMIT CLAIM ]*\n\nAnda sudah mengklaim klaim bonus harian !\nKlaim lagi dalam ${msToTime(asu2)}`, m)
+  } else conn.reply(m.chat, `*❏ D A I L Y  C L A I M*\n\nAnda sudah mengklaim klaim bonus harian !\nKlaim lagi dalam ${msToTime(asu2)}`, m)
 }
 handler.help = ['claim']
 handler.tags = ['xp']
 handler.command = /^(claim)$/i
-handler.owner = false
-handler.mods = false
-handler.premium = false
-handler.group = false
-handler.private = false
-
-handler.admin = false
-handler.botAdmin = false
-
 handler.fail = null
 handler.exp = 0
 

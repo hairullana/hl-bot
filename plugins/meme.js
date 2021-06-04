@@ -12,7 +12,7 @@ let handler = async(m, { conn, command }) => {
             conn.sendFile(m.chat, body.url, '', '', m)
         })
         .catch(() => {
-          conn.reply(m.chat, `*[ FITUR ERROR ]*\n\nFitur ${command} sedang tidak bisa di gunakan`, m)
+          m.reply(global.wait)
         })
 }
 handler.help = ['meme']

@@ -48,15 +48,10 @@ let handler = async (m, { conn, text }) => {
     }
 	}	
 }
-handler.help = ['terima @user']
+handler.help = ['terima _@user_']
 handler.tags = ['gabut']
 handler.command = /^(terima)$/i
-// handler.owner = true
-handler.mods = false
-handler.premium = false
 handler.group = true
 handler.limit = true
-// handler.admin = true
-// handler.botAdmin = true
 handler.fail = null
 module.exports = handler

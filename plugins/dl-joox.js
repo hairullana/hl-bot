@@ -10,23 +10,16 @@ let handler = async (m, { conn, args, isPrems, isOwner, usedPrefix, command }) =
     	.then(res => res.json())
     	.then(json => {
 	if(json.error == false) {
-    		conn.reply(m.chat, `_Tunggu sebentar . . ._`, m)
+    		conn.reply(m.chat, global.wait, m)
     		conn.sendFile(m.chat, joox.result.imgSrc, 'thumbnail.jpg', `*[ JOOX PLAY ]*\n\n	○ ${joox.result.msinger + ' - ' + joox.result.msong}\n\n*Sedang mengirim audio . . .*`, m)
     		conn.sendFile(m.chat, joox.result.mp3Url, joox.result.msinger + ' - ' + joox.result.msong + '.mp3', '', m, false, { asDocument: true })
 			}
 		})
-	}) .catch(() => { conn.reply(m.chat, `_Error!_`, m) })
+	}) .catch(() => { conn.reply(m.chat,global.error, m) })
 }
-handler.help = ['joox'].map(v => v + ' *title*')
+handler.help = ['joox'].map(v => v + ' title')
 handler.tags = ['downloader','premium']
 handler.command = /^(joox)$/i
-handler.owner = false
-handler.mods = false
-handler.premium = false
-handler.group = false
-handler.private = false
-handler.admin = false
-handler.botAdmin = false
 handler.fail = null
 handler.limit = true
 handler.premium = true

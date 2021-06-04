@@ -6,7 +6,7 @@ let handler = async(m, { conn, args, command, usedPrefix }) => {
     let randomnimex = randomnime[Math.floor(Math.random() * randomnime.length)]
     conn.sendFile(m.chat, randomnimex, '', 'Selamat, ini adalah neko khayalan anda.', m)
   }).catch(() => {
-    conn.reply(m.chat, `*[ FITUR ERROR ]*\n\nMaaf fitur ${command} sedang error !`, m)
+    m.reply(global.error)
   })
 }
 

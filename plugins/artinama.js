@@ -1,18 +1,21 @@
 let { Presence } = require('@adiwajshing/baileys')
 let fetch = require('node-fetch')
-let handler  = async (m, { conn, args, usedPrefix, command }) => {
-	if (!args || !args[0]) return conn.reply(m.chat, `⺀ Format salah!\n\n*Contoh* : _${usedPrefix + command} tokyo ghoul_`, m)
-	let text = args.join` `
+let handler  = async (m, { conn, text, usedPrefix, command }) => {
+	if (!text) return conn.reply(m.chat, `*Format salah!*\n\n*Contoh* : _${usedPrefix + command} hairul lana_`, m)
+
 	await conn.updatePresence(m.chat, Presence.composing) 
-	conn.reply(m.chat, `*Sedang mencari data . . .*`, m)
-	fetch('https://videfikri.com/api/primbon/artinama/?nama=' + encodeURIComponent(text))
-		.then(res => res.json())
-		.then(batch => {
-			conn.updatePresence(m.chat, Presence.composing) 
-			conn.reply(m.chat, `*[ ARTI NAMA ]*\n${batch.result.arti}${batch.result.desk}`, m)   
-	}) .catch(() => { conn.reply(m.chat, `*[ FITUR ERROR ]*\n\nMaaf fitur ${command} sedang tidak bisa digunakan.`, m) })
+	conn.reply(m.chat, global.wait, m)
+
+	let res = await fetch(global.API('xteam', '/primbon/artinama', {
+    q: text
+  }, 'APIKEY'))
+  let json = await res.json()
+
+	if (json.code == 200){
+		conn.reply(m.chat, `*❏ ARTI NAMA*\n\n*Nama :* ${json.result.nama}\n*Arti :* ${json.result.arti}\n\n${json.result.maksud}`, m)
+	}
 }
-handler.help = ['artinama'].map(v => v + ' *query*')
+handler.help = ['artinama'].map(v => v + ' _query_')
 handler.tags = ['fun','data']
 handler.command = /^(artinama)$/i
 handler.owner = false

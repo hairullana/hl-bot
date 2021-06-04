@@ -21,7 +21,7 @@ let handler  = async (m, { conn }) => {
     })
   }
 }
-handler.help = ['toimg *(reply sticker)*']
+handler.help = ['toimg _(reply sticker)_']
 handler.tags = ['sticker']
 handler.command = /^toimg$/i
 handler.owner = false

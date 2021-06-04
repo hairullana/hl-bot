@@ -19,16 +19,13 @@ let handler = async (m, { conn }) => {
 	if (err) return m.reply(global.error)
 		buffer = fs.readFileSync(ran)
 		conn.sendFile(m.chat, buffer, 'a.png', '', m)
-		// let stiker = sticker('./tmp/' + ranc, false, global.packname, global.author)
-    	// conn.sendMessage(m.chat, ran, MessageType.sticker, { quoted: m })
 		fs.unlinkSync(ran)
 	})
 }
 handler.help = ['nobg']
 handler.tags = ['sticker']
 handler.command = /^(s?nobg)$/i
-handler.owner = false
-handler.exp = 150000
+handler.premium = true
 handler.limit = true
 handler.fail = null
 module.exports = handler

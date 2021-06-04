@@ -22,13 +22,13 @@ let handler = async (m, { conn, args, participants }) => {
     conn.reply(m.chat, `*Di grup ini tidak ada orang asing.*\n\n*NKRI HARGA MATI !!!*`, m)
   }
 }
-handler.help = ['antipenjajah','antiasing']
-handler.tags = ['xp']
-handler.command = /^(antipenjajah|antiasing)$/i
+handler.help = ['antiasing']
+handler.tags = ['group admin']
+handler.command = /^(antiasing)$/i
 handler.group = true
 handler.admin = true
 handler.botAdmin = true
-
+handler.limit = true
 handler.fail = null
 handler.exp = 5000
 

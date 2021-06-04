@@ -22,13 +22,11 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
 		conn.reply(m.chat, `*Format salah! Contoh :*\n\n	*○ ${usedPrefix + command} on*\n	*○ ${usedPrefix + command} off*`, m)
 	} 
 }
-handler.help = ['antilink *on/off*']
+handler.help = ['antilink _on/off_']
 handler.tags = ['group admin']
 handler.command = /^(antilink)$/i
-handler.owner = false
 handler.group = true
 handler.admin = true
 handler.botAdmin = true
-handler.exp = 0
 handler.limit = true
 module.exports = handler

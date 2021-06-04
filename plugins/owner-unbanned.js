@@ -20,8 +20,8 @@ let handler = async (m, { conn, text }) => {
 		var number = text
 	}
 	
-	if(!text && !m.quoted) return conn.reply(m.chat, `*[ UNBANNED FAILED ]*\n\nReply target, tag member, atau sertakan nomor`, m)
-	if(number.length > 15) return conn.reply(m.chat, `*[ UNBANNED FAILED ]*\n\nFormat nomor tidak valid`, m)
+	if(!text && !m.quoted) return conn.reply(m.chat, `Reply target, tag member, atau sertakan nomor`, m)
+	if(number.length > 15) return conn.reply(m.chat, `Format nomor tidak valid`, m)
 	
 try {
 	if(text) {
@@ -34,14 +34,14 @@ try {
 } catch (e) {
 		} finally {
 			if(global.DATABASE._data.users[user].isBanned == false){
-			  conn.reply(m.chat, `*[ UNBANNED FAILED ]*\n\nUser tidak masuk ke dalam list banned`, m)
+			  conn.reply(m.chat, `User tidak masuk ke dalam list banned`, m)
 			}else{
 				denda = Math.ceil((global.DATABASE._data.users[user].exp/100) * 10)
 				global.DATABASE._data.users[user].exp -= denda
 				global.DATABASE._data.users[user].isBanned = false
 				global.DATABASE._data.banned -= 1
 				var banTotal = global.DATABASE._data.banned
-				conn.reply(m.chat, `*[ UNBANNED SUCCESS ]*\n\nSukses men-unbanned @${user.split('@')[0]} dan menghapus status user bangsat dengan denda Rp. ${format(denda)} (10% saldo)\n\nTotal Banned : ${banTotal}`, m,{
+				conn.reply(m.chat, `*Sukses men-unbanned @${user.split('@')[0]} dan menghapus status user bangsat dengan denda Rp. ${format(denda)} (10% saldo)\n\nTotal Banned : ${banTotal}`, m,{
 					contextInfo: {
 						mentionedJid: [user]
 					}
@@ -50,7 +50,7 @@ try {
 	}	
 }
 
-handler.help = ['*62xx*','*@user*','*(reply)*'].map(v => 'unban ' + v)
+handler.help = ['_62xx_','_@user_','_(reply)_'].map(v => 'unban ' + v)
 handler.tags = ['owner']
 handler.command = /^unban$/i
 // handler.owner = true

@@ -58,10 +58,9 @@ let handler = async (m, { conn, command, text }) => {
   }})
 }
 
-handler.help = ['gift','giftlimit'].map(v => v + " *total*")
+handler.help = ['gift'].map(v => v + " _total_")
 handler.tags = ['xp']
-handler.command = /^gift|giftlimit$/i
-handler.owner = false
+handler.command = /^gift$/i
 handler.premium = true
 handler.limit = true
 module.exports = handler

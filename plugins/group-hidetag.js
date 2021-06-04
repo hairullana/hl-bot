@@ -6,14 +6,8 @@ let handler = async (m, { conn, text }) => {
 handler.help = ['hidetag','tag'].map(v => v + ' *text*')
 handler.tags = ['owner']
 handler.command = /^(hidetag|tag)$/i
-handler.mods = false
-handler.premium = false
 handler.group = true
-handler.private = false
 handler.admin = true
-handler.botAdmin = false
 handler.limit = true
-
 handler.fail = null
-
 module.exports = handler

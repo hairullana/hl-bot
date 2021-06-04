@@ -11,16 +11,13 @@ let handler  = async (m, { conn, args }) => {
 		conn.groupUpdateSubject(m.chat, text)
 	} 
 }
-handler.help = ['setname *text*']
+handler.help = ['setname _text_']
 handler.tags = ['group admin']
 handler.command = /^(setname)$/i
-handler.owner = false
-handler.mods = false
-handler.premium = false
-handler.group = false
-handler.private = false
 handler.admin = true
 handler.botAdmin = true
+handler.group = true
+handler.limit = true
 handler.fail = null
 handler.exp = 0
 module.exports = handler

@@ -11,7 +11,7 @@ let handler  = async (m, { conn, args, usedPrefix, command }) => {
     conn.reply(m.chat, `${batch.success}`, m)
   }) .catch(() => { conn.reply(m.chat, `_Fitur simi sedang error ! Maaf :(_`, m) })
 }
-handler.help = ['simi','s'].map(v => v + ' *text*')
+handler.help = ['simi','s'].map(v => v + ' _text_')
 handler.tags = ['fun']
 handler.command = /^(simi|s)$/i
 handler.owner = false

@@ -20,7 +20,7 @@ let handler  = async (m, { conn, text }) => {
     })
   }
 }
-handler.help = ['emo *text*']
+handler.help = ['emo _text_']
 handler.tags = ['sticker']
 handler.command = /^emo$/i
 handler.owner = false

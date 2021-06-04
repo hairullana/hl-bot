@@ -16,12 +16,11 @@ let handler  = async (m, { conn, text, participants }) => {
 			if(isVideo) { conn.sendFile(id, media, 'video.mp4', `❏  B R O A D C A S T\n\n${text ? text : m.quoted.caption }`, null) }
 		} else {
 			conn.reply(id, `❏  B R O A D C A S T\n\n${text}`, null, { contextInfo: { mentionedJid: users } })
-			// conn.reply(id, `❏  B R O A D C A S T\n\n${text}`, null)
 		}
 		await delay(2500)
 	} conn.reply(m.chat, `Sukses mengirim broadcast.`, m)
 }
-handler.help = ['broadcast2'].map(v => v + ' *text*')
+handler.help = ['broadcast2'].map(v => v + ' _text_')
 handler.tags = ['owner']
 handler.command = /^(bc2|broadcast2)$/i
 handler.owner = true

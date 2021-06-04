@@ -21,13 +21,11 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
 		conn.reply(m.chat, `*[ FORMAT SALAH ]*\n\nContoh :\n	○ ${usedPrefix + command} on\n	○ ${usedPrefix + command} off`, m)
 	} 
 }
-handler.help = ['antispam *on/off*']
+handler.help = ['antispam _on/off_']
 handler.tags = ['group admin']
 handler.command = /^(antispam)$/i
-handler.owner = false
 handler.group = true
 handler.admin = true
 handler.botAdmin = true
-handler.exp = 0
 handler.limit = true
 module.exports = handler

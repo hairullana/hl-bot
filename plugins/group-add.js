@@ -22,15 +22,9 @@ try {
 			await conn.groupAdd(m.chat, [user])
 	}	
 }
-handler.help = ['add *62xx*','add *(reply)*']
+handler.help = ['add _62xx_','add _(reply)_']
 handler.tags = ['group admin']
 handler.command = /^(add)$/i
-handler.mods = false
-handler.premium = false
 handler.group = true
-handler.private = false
-handler.admin = false
-handler.botAdmin = true
-handler.limit = false
 handler.fail = null
 module.exports = handler

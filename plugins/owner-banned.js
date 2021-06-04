@@ -11,8 +11,8 @@ let handler = async (m, { conn, text }) => {
 		var number = text
 	}
 	
-	if(!text && !m.quoted) return conn.reply(m.chat, `*[ BANNED FAILED ]*\n\n*Reply target atau sertakan nomor*`, m)
-	if(number.length > 15) return conn.reply(m.chat, `*[ BANNED FAILED ]*\n\n*Format nomor tidak valid*`, m)
+	if(!text && !m.quoted) return conn.reply(m.chat, `Reply target atau sertakan nomor*`, m)
+	if(number.length > 15) return conn.reply(m.chat, `Format nomor tidak valid*`, m)
 	
 try {
 	if(text) {
@@ -32,7 +32,7 @@ try {
         global.DATABASE._data.users[user].isBanned = true
 				global.DATABASE._data.banned += 1
 				var banTotal = global.DATABASE._data.banned
-				conn.reply(m.chat, `*[ BANNED SUCCESS ]*\n\nSukses mem-banned @${user.split('@')[0]} dan memberikan status user bangsat\n\n○ Total Banned : ${banTotal}`, m,{
+				conn.reply(m.chat, `Sukses mem-banned @${user.split('@')[0]} dan memberikan status user bangsat\n\n○ Total Banned : ${banTotal}`, m,{
 					contextInfo: {
 						mentionedJid: [user]
 					}
@@ -42,7 +42,7 @@ try {
 	}	
 }
 
-handler.help = ['*62xx*','*@user*','*(reply)*'].map(v => 'ban ' + v)
+handler.help = ['_62xx_','_@user_','_(reply)_'].map(v => 'ban ' + v)
 handler.tags = ['owner']
 handler.command = /^ban|banned$/i
 // handler.owner = true

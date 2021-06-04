@@ -9,7 +9,7 @@ let handler  = async (m, { conn, text }) => {
   }
   conn.reply(m.chat, `_Mengirim pesan broadcast ke ${groups.length} chat_`, m)
 }
-handler.help = ['bcpc'].map(v => v + ' *text*')
+handler.help = ['bcpc'].map(v => v + ' _text_')
 handler.tags = ['owner']
 handler.command = /^(bcpc)$/i
 handler.owner = true

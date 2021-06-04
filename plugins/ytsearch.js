@@ -2,14 +2,14 @@ let { Presence } = require('@adiwajshing/baileys')
 let fetch = require('node-fetch')
 let handler  = async (m, { conn, args, usedPrefix, command }) => {
 	await conn.updatePresence(m.chat, Presence.composing) 
-	if (!args || !args[0]) return conn.reply(m.chat, `*[ YOUTUBE SEARCH ]*\n\nPenggunaan Salah !\nContoh : ${usedPrefix + command} pale pale`, m)
+	if (!args || !args[0]) return conn.reply(m.chat, `Penggunaan Salah !\nContoh : ${usedPrefix + command} pale pale`, m)
 	// if(text.match(/(bokep|sex|hentai|gore)/gi)) return conn.reply(m.chat, `*Keyword tidak diizinkan!*`, m)
 	let text = args.join` `
-	conn.reply(m.chat, `*Sedang mencari data . . .*`, m)
+	conn.reply(m.chat, global.wait, m)
 	fetch('https://api.zeks.xyz/api/yts?q=' + encodeURIComponent(text) + '&apikey=apivinz')
     .then(res => res.json())
     .then(json => {
-			var yts = '*[ YOUTUBE SEARCH ]*\n\n'
+			var yts = '*❏  Y O U T U B E  S E A R C H*\n\n'
 			var i
 			for(i = 1; i < 10; i++) {
 				// if (json.result[i].channel.id < 0){
@@ -22,7 +22,7 @@ let handler  = async (m, { conn, args, usedPrefix, command }) => {
 				// }
 			}
 			conn.reply(m.chat, `${yts}`, m)	
-		}).catch(() => { conn.reply(m.chat, `*[ YOUTUBE SEARCH ]*\n\nFitur Youtube Search Sedang Error Teman !`, m) })
+		}).catch(() => { conn.reply(m.chat, global.error, m) })
 }
 handler.help = ['ytsearch','yts']
 handler.tags = ['downloader','data']

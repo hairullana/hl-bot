@@ -16,7 +16,7 @@ let handler = async (m, { text }) => {
             tiga = buah[Math.floor(Math.random() * (buah.length))]	
   if (satu === dua && dua === tiga){
     global.DATABASE._data.users[m.sender].exp += count
-    await m.reply(`*[ YOU WIN ]*
+    await m.reply(`❏  Y O U  W I N
   
 [  🎰 | SLOTS ]
 -----------------
@@ -29,7 +29,7 @@ ${satu} : ${dua} : ${tiga}
 BONUS Rp. ${format(count)}
 `)
   } else {
-    await m.reply(`*[ YOU LOSE ]*
+    await m.reply(`❏  Y O U  L O O S E
 
 [  🎰 | SLOTS ]
 -----------------

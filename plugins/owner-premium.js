@@ -14,19 +14,13 @@ let handler = async (m, { conn, text }) => {
   var now = new Date() * 1
   global.DATABASE.data.users[hl[0]].premium = true
   global.DATABASE.data.users[hl[0]].premiumDate = now + jumlahHari
-  conn.reply(m.chat,`*[ USER PREMIUM ]*\n\nBerhasil memberikan akses premium kepada *@${hl[0].split('@')[0]}* selama *${hl[1]} hari*.`,m,{ contextInfo: { mentionedJid: [hl[0]] } })
-  conn.reply(hl[0],`*[ USER PREMIUM ]*\n\nBerhasil memberikan akses premium kepada *@${hl[0].split('@')[0]}* selama *${hl[1]} hari*.`,m,{ contextInfo: { mentionedJid: [hl[0]] } }) 
+  conn.reply(m.chat,`*❏  P R E M I U M*\n\nBerhasil memberikan akses premium kepada *@${hl[0].split('@')[0]}* selama *${hl[1]} hari*.`,m,{ contextInfo: { mentionedJid: [hl[0]] } })
+  conn.reply(hl[0],`*❏  P R E M I U M*\n\nBerhasil memberikan akses premium kepada *@${hl[0].split('@')[0]}* selama *${hl[1]} hari*.`,m,{ contextInfo: { mentionedJid: [hl[0]] } }) 
 
 }
-handler.help = ['prem *days*']
+handler.help = ['prem _days_']
 handler.tags = ['owner']
 handler.command = /^(prem)$/i
 handler.owner = true
-handler.mods = false
-handler.premium = false
-// handler.group = true
-handler.private = false
-handler.admin = false
-handler.botAdmin = false
 handler.fail = null
 module.exports = handler

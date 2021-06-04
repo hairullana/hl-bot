@@ -60,14 +60,13 @@ let handler = async (m, { conn, command, text }) => {
   global.DATABASE.data.users[m.sender].exp -= tax
   global.DATABASE.data.users[target].exp += jumlah
 
-  conn.reply(m.chat, `*[ TRANSFER SUCCESS ]*\n\nTransfer *Rp. ${jumlah.toLocaleString()}* kepada @${target.split('@')[0]}\nPPN *Rp. ${tax.toLocaleString()}* (5%)\n\n@${target.split('@')[0]} : Rp. ${global.DATABASE._data.users[target].exp.toLocaleString()}\n@${m.sender.split('@')[0]} : Rp. ${global.DATABASE._data.users[m.sender].exp.toLocaleString()}`, m, {contextInfo: {
+  conn.reply(m.chat, `*❏  T R A N S F E R  S U C C E S S*\n\nTransfer *Rp. ${jumlah.toLocaleString()}* kepada @${target.split('@')[0]}\nPPN *Rp. ${tax.toLocaleString()}* (5%)\n\n@${target.split('@')[0]} : Rp. ${global.DATABASE._data.users[target].exp.toLocaleString()}\n@${m.sender.split('@')[0]} : Rp. ${global.DATABASE._data.users[m.sender].exp.toLocaleString()}`, m, {contextInfo: {
     mentionedJid: [target,m.sender]
   }})
 }
 
-handler.help = ['transfer','tf'].map(v => v + " *total*")
+handler.help = ['transfer','tf'].map(v => v + " _total_")
 handler.tags = ['xp']
 handler.command = /^transfer|tf$/i
-handler.owner = false
 handler.limit = true
 module.exports = handler

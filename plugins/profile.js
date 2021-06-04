@@ -110,14 +110,14 @@ let handler = async (m, { conn, text }) => {
 				var name = isName
 			} else {
 				var name = '(Tanpa Nama)'
-			} conn.sendFile(m.chat, pp, 'profile.jpg', `*[ IDENTITAS USER ]*\n\n*Nama* : ${name}\n*Tentang* : ${about}\n*Nomor* : ${nomor}\n*Uang* : Rp. ${Number(money).toLocaleString().replace(/,/g, '.')},-\n*Limit* : ${format(limit)}\n*Pasangan* : ${pasangan}\n*Whitelist* : ${whitelist}\n*Premium* : ${premium}\n*Warning* : ${warn} / 5\n*Banned* : ${banned}\n*Use Bot* : ${usebot}\n*Last Seen* : ${lastseen}`, m)
+			} conn.sendFile(m.chat, pp, 'profile.jpg', `*❏  P R O F I L E  U S E R*\n\n*Nama* : ${name}\n*Tentang* : ${about}\n*Nomor* : ${nomor}\n*Uang* : Rp. ${Number(money).toLocaleString().replace(/,/g, '.')},-\n*Limit* : ${format(limit)}\n*Pasangan* : ${pasangan}\n*Whitelist* : ${whitelist}\n*Premium* : ${premium}\n*Warning* : ${warn} / 5\n*Banned* : ${banned}\n*Use Bot* : ${usebot}\n*Last Seen* : ${lastseen}`, m)
 			
 		}else{
 			m.reply(`*Nomor ${text} tidak terdaftar di bot.*`)
 		}
 	}
 }
-handler.help = ['*62xx*','*@user*','*(reply)*'].map(v => 'profile ' + v)
+handler.help = ['_62xx_','_@user_','_(reply)_'].map(v => 'profile ' + v)
 handler.tags = ['group tools','tools']
 handler.command = /^(profile|profil)$/i
 handler.exp = 0

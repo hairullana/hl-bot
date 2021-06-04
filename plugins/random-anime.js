@@ -6,24 +6,13 @@ let handler = async(m, { conn, args, command, usedPrefix }) => {
     let randomnimex = randomnime[Math.floor(Math.random() * randomnime.length)]
     conn.sendFile(m.chat, randomnimex, '', 'dua tiga makan pentol\nwibu kek lu emang tolol', m)
   }).catch(() => {
-    conn.reply(m.chat, `*[ FITUR ERROR ]*\n\nMaaf fitur ${command} sedang error !`, m)
+    m.reply(global.error)
   })
 }
 
 handler.help = ['anime']
 handler.tags = ['images']
 handler.command = /^(anime)$/i
-handler.owner = false
-handler.mods = false
-handler.premium = false
-handler.group = false
-handler.private = false
-
-handler.admin = false
-handler.botAdmin = false
-
-handler.fail = null
-handler.exp = 0
 handler.limit = true
-
+handler.fail = null
 module.exports = handler

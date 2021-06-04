@@ -25,11 +25,12 @@ try {
 			conn.reply(m.chat, `*Target has demoted.*`, m)
 	}	
 }
-handler.help = ['*62xx*','*@user*','*(reply)*'].map(v => 'member ' + v)
+handler.help = ['_62xx_','_@user_','_(reply)_'].map(v => 'member ' + v)
 handler.tags = ['group admin']
 handler.command = /^(member)$/i
 handler.group = true
 handler.admin = true
 handler.botAdmin = true
+handler.limit = true
 handler.fail = null
 module.exports = handler

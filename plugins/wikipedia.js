@@ -10,18 +10,10 @@ let handler = async(m, { conn, text, usedPrefix }) => {
         })
         .catch()
 }
-handler.help = ['wiki *query*','wikipedia *query*']
+handler.help = ['wiki _query_','wikipedia _query_']
 handler.tags = ['data']
 handler.command = /^(wiki|wikipedia)$/i
-handler.owner = false
-handler.mods = false
-handler.premium = false
-handler.group = false
-handler.private = false
-
-handler.admin = false
-handler.botAdmin = false
-
+handler.limit = true
 handler.fail = null
 
 module.exports = handler

@@ -7,10 +7,10 @@ let handler = async (m, { conn, text, command }) => {
     text: text
   }, 'APIKEY')
   
-  conn.reply(m.chat,'*Tunggu sebenar . . .*',m)
+  m.reply(global.wait)
   conn.sendFile(m.chat, img, 'img.jpg', null, m)
 }
-handler.help = ['sand'].map(v => v + ' *text*')
+handler.help = ['sand'].map(v => v + ' _text_')
 handler.tags = ['creator']
 handler.limit = true
 handler.exp = 5000

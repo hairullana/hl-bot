@@ -1,7 +1,7 @@
 let { Presence } = require('@adiwajshing/baileys')
 let fetch = require('node-fetch')
 let handler  = async (m, { conn, args, usedPrefix, command }) => {
-	if (!args || !args[0]) return conn.reply(m.chat, `❏  *Format salah!\n\nContoh :*\n\n*${usedPrefix + command} hosico*`, m)
+	if (!args || !args[0]) return conn.reply(m.chat, `*Format salah!\n\nContoh :*\n\n*${usedPrefix + command} hosico*`, m)
 	let text = args.join` `
 	await conn.updatePresence(m.chat, Presence.composing) 
 	conn.reply(m.chat, global.search, m)

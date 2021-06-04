@@ -1,13 +1,5 @@
 let { MessageType, Presence } = require('@adiwajshing/baileys')
 let handler = async (m, { conn, text, participants }) => {
-  const format = num => {
-    const n = String(num),
-          p = n.indexOf('.')
-    return n.replace(
-        /\d(?=(?:\d{3})+(?:\.|$))/g,
-        (m, i) => p < 0 || i < p ? `${m},` : m
-    )
-  }
 	await conn.updatePresence(m.chat, Presence.composing) 
 	let member = participants.map(u => u.jid)
 	if(!text) {
@@ -26,19 +18,13 @@ let handler = async (m, { conn, text, participants }) => {
       }
 		}
 	}
-	if(total == 0) return conn.reply(m.chat, `*[ LIST JOB]*\n\nTidak ada yang menawarkan jasa apapun di grup ini`, m) 
-	conn.reply(m.chat, `*[ LIST JOB ]*\n\n${user.map(v => '  ○ @' + v.replace(/@.+/, '') + ' [ ' + global.DATABASE.data.users[v].job + ' - Rp. ' + format(global.DATABASE.data.users[v].price)  +' ]').join('\n')}\n\nKetik .sewa @user untuk menyewa orang`, m,{ contextInfo: { mentionedJid: user } })
+	if(total == 0) return conn.reply(m.chat, `*❏  L I S T  J O B*\n\nTidak ada yang menawarkan jasa apapun di grup ini`, m) 
+	conn.reply(m.chat, `*❏  L I S T  J O B*\n\n${user.map(v => '  ○ @' + v.replace(/@.+/, '') + ' [ ' + global.DATABASE.data.users[v].job + ' - Rp. ' + global.DATABASE.data.users[v].price.toLocaleString()  +' ]').join('\n')}\n\nKetik .sewa @user untuk menyewa orang`, m,{ contextInfo: { mentionedJid: user } })
 }
 handler.help = ['listjob']
 handler.tags = ['game']
 handler.command = /^(listjob)$/i
-handler.owner = false
-handler.mods = false
-handler.premium = false
 handler.group = true
-handler.private = false
-handler.admin = false
-handler.botAdmin = false
 handler.fail = null
 module.exports = handler
 

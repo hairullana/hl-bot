@@ -26,7 +26,7 @@ let handler  = async (m, { conn,text }) => {
 }
 handler.help = ['mods']
 handler.tags = ['info']
-handler.command = /^(mods|mod)$/i
+handler.command = /^(mods)$/i
 handler.owner = false
 handler.mods = false
 handler.premium = false

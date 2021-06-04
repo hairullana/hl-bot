@@ -1,15 +1,5 @@
 let { Presence } = require('@adiwajshing/baileys')
 let handler = async (m, { conn, args }) => {
-
-	const format = num => {
-    const n = String(num),
-          p = n.indexOf('.')
-    return n.replace(
-        /\d(?=(?:\d{3})+(?:\.|$))/g,
-        (m, i) => p < 0 || i < p ? `${m},` : m
-    )
-  }
-
 	let money = global.DATABASE._data.users[m.sender].exp
 	if (args[0] == "all"){
 		args[0] = global.DATABASE._data.users[m.sender].exp
@@ -31,8 +21,7 @@ let handler = async (m, { conn, args }) => {
 		conn.reply(m.chat, `*Tidak bisa melakukan spin dengan nominal di bawah Rp. 10.000,-*`, m)
 	}else {
 		global.DATABASE._data.users[m.sender].exp -= args[0]
-		await conn.updatePresence(m.chat, Presence.composing) 
-		// conn.reply(m.chat, `*Spining! Please wait 10s . . .*`, m)
+		await conn.updatePresence(m.chat, Presence.composing)
 		setTimeout(() => {
 			var maxReward = 5
 			if (money > 1000000000){		// > 1 M
@@ -105,15 +94,13 @@ let handler = async (m, { conn, args }) => {
 			let last = global.DATABASE._data.users[m.sender].exp
 			let total = last
 
-			conn.updatePresence(m.chat, Presence.composing) 
+			conn.updatePresence(m.chat, Presence.composing)
 
-			// conn.reply(m.chat, `*[ SPIN RESULT ]*\n\n	- *Rp. ${Number(args[0]).toLocaleString().replace(/,/g, '.')}*\n	+ *Rp. ${Number(reward).toLocaleString().replace(/,/g, '.')}*\n\n*Total : Rp. ${Number(total).toLocaleString().replace(/,/g, '.')},-*\n\n*NB* : “Rentang hadiah adalah Rp. 1 sampai ${maxReward}x lipat modal dengan pengurangan 1 limit setiap kali penggunaan”\n\n*Tapi khusus sultan seperti anda, pengurangan limit sebesar ${format(limitAsli)}*`, m)  
-
-			return conn.reply(m.chat, `*[ SPIN RESULT ]*\n\n	- *Rp. ${Number(args[0]).toLocaleString().replace(/,/g, '.')}*\n	+ *Rp. ${Number(reward).toLocaleString().replace(/,/g, '.')}*\n\n*Total : Rp. ${Number(total).toLocaleString().replace(/,/g, '.')},-*\n\n*NB* : “Rentang hadiah adalah Rp. 1 sampai ${maxReward}x lipat modal dengan pengurangan limit setiap kali penggunaan”`, m)  
+			return conn.reply(m.chat, `*❏  S P I N  R E S U L T*\n\n	- *Rp. ${Number(args[0]).toLocaleString().replace(/,/g, '.')}*\n	+ *Rp. ${Number(reward).toLocaleString().replace(/,/g, '.')}*\n\n*Total : Rp. ${Number(total).toLocaleString().replace(/,/g, '.')},-*\n\n*NB* : “Rentang hadiah adalah Rp. 1 sampai ${maxReward}x lipat modal dengan pengurangan limit setiap kali penggunaan”`, m)  
     }, 1000)
 	} 
 }
-handler.help = ['spin *money*','judi *money*', 'spin all', 'judi all']
+handler.help = ['spin _money_','judi _money_', 'spin all', 'judi all']
 handler.tags = ['game']
 handler.command = /^(spin|judi)$/i
 handler.owner = false

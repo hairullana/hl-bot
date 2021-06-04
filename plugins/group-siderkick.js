@@ -49,12 +49,9 @@ let handler = async (m, { conn, text, participants }) => {
 handler.help = ['kicksider']
 handler.tags = ['group admin']
 handler.command = /^(kicksider)$/i
-handler.owner = false
-handler.mods = false
-handler.premium = false
 handler.group = true
-handler.private = false
 handler.admin = true
 handler.botAdmin = true
+handler.limit = true
 handler.fail = null
 module.exports = handler

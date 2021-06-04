@@ -32,7 +32,7 @@ Contoh penggunaan: ${usedPrefix}math hard
     }, math.time)
   ]
 }
-handler.help = ['math *level*']
+handler.help = ['math _level_']
 handler.tags = ['game']
 handler.command = /^math/i
 

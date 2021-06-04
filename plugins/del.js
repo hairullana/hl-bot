@@ -7,16 +7,10 @@ let handler  = async (m, { conn }) => {
 		conn.deleteMessage(m.chat, {id: m.quoted.id, remoteJid: m.chat, fromMe: true})
 	} 
 }
-handler.help = ['del *(reply)*', 'delete *(reply)*']
-handler.tags = ['group admin','premium']
+handler.help = ['del (reply)', 'delete (reply)']
+handler.tags = ['premium']
 handler.command = /^(del|delete)$/i
-handler.owner = false
-handler.mods = false
 handler.premium = true
-handler.group = false
-handler.private = false
-// handler.admin = true
-// handler.botAdmin = true
 handler.fail = null
 handler.exp = 0
 module.exports = handler

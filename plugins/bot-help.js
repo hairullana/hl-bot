@@ -51,10 +51,10 @@ let handler  = async (m, { conn, participants }) => {
     .tai (member yang dibanned oleh bot)
     .antiasing (kick member dengan nomor selain +62)
 
-*(+) Hati hati dalam menggunakan _.kicksider_ dan _.kicksampah_ karena butuh beberapa hari agar bot dapat mengenali sider/sampah !*
+*(+) Hati hati dalam menggunakan _.kicksider_ karena butuh beberapa hari agar bot dapat mengenali sider !*
 `,m)
 }
-handler.help = ['help (tutorial bot)']
+handler.help = ['help (Tutorial Bot)']
 handler.tags = ['info']
 handler.command = /^(help)$/i
 handler.owner = false

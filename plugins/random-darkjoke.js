@@ -3,8 +3,7 @@ let handler = async (m, { conn }) => {
 
   let img = global.API('xteam', '/asupan/darkjoke', {} ,'APIKEY')
   
-  // conn.reply(m.chat,'*Tunggu sebenar . . .*',m)
-  // conn.reply(m.chat, img, m)
+  m.reply(global.wait)
   conn.sendFile(m.chat, img, 'img.jpg', null, m)
 }
 handler.help = ['darkjoke']

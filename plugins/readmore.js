@@ -4,7 +4,7 @@ let handler = async (m, { conn, text }) => {
   if (!r) r = ''
   conn.reply(m.chat, l + readMore + r, m)
 }
-handler.help = ['readmore'].map(v => v + ' *text* | *text*')
+handler.help = ['readmore'].map(v => v + ' _text_ | _text_')
 handler.tags = ['tools']
 handler.command = /^(readmore)$/i
 handler.owner = false

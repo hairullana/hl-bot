@@ -6,7 +6,7 @@ let handler = async(m, { conn, args, usedPrefix, command }) => {
     let randomkpopx = randomkpop[Math.floor(Math.random() * randomkpop.length)]
     conn.sendFile(m.chat, randomkpopx, '', '', m)
   }).catch(() => {
-    conn.reply(m.chat, `*[ FITUR ERROR ]*\n\nFitur ${command} sedang tidak bisa di gunakan`, m)
+    m.reply(global.error)
   })
 
 }
@@ -14,17 +14,7 @@ let handler = async(m, { conn, args, usedPrefix, command }) => {
 handler.help = ['blackpinkrandom']
 handler.tags = ['images']
 handler.command = /^(blackpinkrandom)$/i
-handler.owner = false
-handler.mods = false
-handler.premium = false
-handler.group = false
-handler.private = false
-
-handler.admin = false
-handler.botAdmin = false
-
 handler.fail = null
-handler.exp = 1000
 handler.limit = true
 
 module.exports = handler

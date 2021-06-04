@@ -6,7 +6,7 @@ let handler = async (m, { conn, args }) => {
     res.text()
     throw res.status
   }
-  conn.reply(m.chat,'*Tunggu sebenar . . .*',m)
+  conn.reply(m.chat,global.wait,m)
   let json = await res.json()
   if (!json.result) return conn.reply(m.chat,json,m)
   let { name, username, likes, caption, data } = json.result
@@ -19,7 +19,7 @@ ${caption}
   for (let { data: url, type } of data)
     conn.sendFile(m.chat, url, 'ig' + (type == 'video' ? '.mp4' : '.jpg'), text, m)
 }
-handler.help = ['ig','igdl'].map(v => v + ' *url*')
+handler.help = ['ig','igdl'].map(v => v + ' _url_')
 handler.tags = ['downloader']
 handler.limit = true
 handler.command = /^(ig(dl)?)$/i

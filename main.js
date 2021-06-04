@@ -49,14 +49,13 @@ global.prefixhl = "."
 global.packname = 'HL Gans'
 global.author = 'LTM BOT'
 global.wait = '_Sedang diproses . . ._'
-global.error = '_Error!_'
+global.error = '_Fitur Error!_'
 
-global.owner = ['6283119526456','6282215215399'] // Put your number here
-global.mods = ['6281524633549','62895323133060','6281257735703','6281351236907'] // Want some help?
+global.owner = ['6283119526456','6282215215399']
+global.mods = ['6281524633549','62895323133060','6281257735703','6281351236907']
 global.modsName = ['galang','mila','loli','ara']
-global.prems = [] // Premium user has unlimited limit
-global.APIs = { // API Prefix
-  // name: 'https://website'
+global.prems = []
+global.APIs = {
   nrtm: 'https://nurutomo.herokuapp.com',
   xteam: 'https://api.xteam.xyz',
   tobz: 'https://tobz-api.herokuapp.com',
@@ -77,9 +76,7 @@ global.APIs = { // API Prefix
   public_restapi: 'http://public-restapi.herokuapp.com',
   lindow: 'https://lindow-api.herokuapp.com'
 }
-global.APIKeys = { // APIKey Here
-  // 'https://website': 'apikey'
-  'https://videfikri.com': '',
+global.APIKeys = {
   'https://api.xteam.xyz': 'hairullana'
 }
 global.API = (name, path = '/', query = {}, apikeyqueryname) => (name in global.APIs ? global.APIs[name] : name) + path + (query || apikeyqueryname ? '?' + new URLSearchParams(Object.entries({
@@ -451,7 +448,6 @@ conn.handler = async function (m) {
 
       await m.reply("_Checking . . ._")
       conn.reply(m.chat, `*Speed :* ${new Date - old} ms\n\n*Self Mode :* ${selfModeText}\n*Group Mode :* ${groupModeText}\n*Group :* ${groupTotal} grup\n*Chat :* ${chatTotal} chat\n*Total User :* ${totalUser} user\n*User Aktif Biasa :* ${userAktif} user\n*User Aktif Bot :* ${userAktifBot} user\n*Premium :* ${userPremium} user\n*Whitelist :* ${userWhitelist} user\n*Banned :* ${global.DATABASE.data.banned} user\n*Uptime :* ${uptime}`, m)
-      // conn.reply(m.chat,`*[ BOT STATUS ]*\n\n*Status* : Best Performance\n*Ping :* ${(neww-old)} ms\n\n*Device :* ASUS ROG STRIX GL503\n*Processor :* Intel® Core™ i7-8750H 4.2 GHz\n*Memory :* 11.43GB / 32GB\n*Hard Drive :* 2TB SSD\n*Graphic :* NVIDIA® GeForce® GTX1050Ti 4GB GDDR5 VRAM`,m)
     }
 
     if ((m.text == "y" || m.text == "Y") && (owner || m.fromMe)) {
@@ -470,9 +466,6 @@ conn.handler = async function (m) {
       if (m.isGroup && !isAdmin && isBotAdmin) {
         if (m.text.match(/(chat.whatsapp.com)/gi)) {
           conn.groupRemove(m.chat, [m.sender], m)
-          // conn.reply(m.chat,`*[ LINK DETECTOR ]*\n\nSorry motherfucker, you will be removed from this group !`,m).then(() => {
-          // conn.groupRemove(m.chat, [m.sender],m)
-          // })
         }
       }
     }
@@ -483,13 +476,10 @@ conn.handler = async function (m) {
       for (i = 0; i < xxx.length; i++) {
         if (xxx[i].match(/(@62)/gi)) {
           jancok = xxx[i]
-          // conn.reply(m.chat, jancok, m)
           jancok = jancok.replace(/@/g, '')
-          // conn.reply(m.chat, jancok, m)
           i = xxx.length
         }
       }
-      // return conn.reply(m.chat, jancok, m)
       var bebeb = jancok + "@s.whatsapp.net"
       if (!m.fromMe && global.DATABASE.data.users[bebeb].pasangan !== "") {
         var ayang = global.DATABASE.data.users[bebeb].pasangan
@@ -524,9 +514,10 @@ conn.handler = async function (m) {
 
 
     if (!m.fromMe && !selfMode && global.DATABASE.data.chats[m.chat].isBanned == false && global.DATABASE.data.users[m.sender].isBanned == false) {
-      if (m.text == "menu" || m.text == "help" || m.text == "?menu" || m.text == "#menu" || m.text == "+menu" || m.text == "#help" || m.text == "+help" || m.text == "!help" || m.text == "!menu" || m.text == "/help" || m.text == "/menu" || m.text == "?help" || m.text == "*menu" || m.text == "*help" || m.text == "bot" || m.text == ".bot" || m.text == "*bot" || m.text == "!bot" || m.text == "?bot" || m.text == "#bot" || m.text == "Menu" || m.text == "Help" || m.text == "Bot" || m.text == "+bot") {
+      haloBot = m.text.toLowerCase()
+      if (haloBot == "bot") {
         conn.updatePresence(m.chat, Presence.composing)
-        conn.reply(m.chat, `Ketik .menu untuk melihat menu bot`, m)
+        conn.reply(m.chat, `*${prefixhl}menu* = melihat menu bot\n*${prefixhl}help* = cara menggunakan bot`, m)
       }
     }
 
@@ -803,14 +794,14 @@ conn.on('close', async () => {
 
 global.dfail = (type, m, conn) => {
   let msg = {
-    rowner: '*[ ERROR COMMAND ]*\n\nHanya owner yang dapat menggunakan perintah ini !',
-    owner: '*[ ERROR COMMAND ]*\n\nHanya owner yang dapat menggunakan perintah ini !',
-    mods: '*[ ERROR COMMAND ]*\n\nHanya owner yang dapat menggunakan perintah ini !',
-    premium: '*[ ERROR COMMAND ]*\n\nFitur ini khusus untuk user premium !\nHubungi owner ( *.owner* ) untuk upgrade premium',
-    group: '*[ ERROR COMMAND ]*\n\nPerintah ini hanya dapat digunakan didalam grup !',
-    private: '*[ ERROR COMMAND ]*\n\nPerintah ini hanya dapat digunakan di privat chat !',
-    admin: '*[ ERROR COMMAND ]*\n\nFitur ini khusus untuk admin grup !',
-    botAdmin: '*[ ERROR COMMAND ]*\n\nPerintah ini akan hanya dapat digunakan ketika BOT menjadi admin !'
+    rowner: '*❏  A K S E S  D I T O L A K*\n\nHanya owner yang dapat menggunakan perintah ini !',
+    owner: '*❏  A K S E S  D I T O L A K*\n\nHanya owner yang dapat menggunakan perintah ini !',
+    mods: '*❏  A K S E S  D I T O L A K*\n\nHanya owner yang dapat menggunakan perintah ini !',
+    premium: '*❏  A K S E S  D I T O L A K*\n\nFitur ini khusus untuk user premium !\nHubungi owner ( *.owner* ) untuk upgrade premium',
+    group: '*❏  A K S E S  D I T O L A K*\n\nPerintah ini hanya dapat digunakan didalam grup !',
+    private: '*❏  A K S E S  D I T O L A K*\n\nPerintah ini hanya dapat digunakan di privat chat !',
+    admin: '*❏  A K S E S  D I T O L A K*\n\nFitur ini khusus untuk admin grup !',
+    botAdmin: '*❏  A K S E S  D I T O L A K*\n\nPerintah ini akan hanya dapat digunakan ketika BOT menjadi admin !'
   } [type]
   if (msg) conn.reply(m.chat, msg, m)
 }

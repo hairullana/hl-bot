@@ -52,7 +52,7 @@ let handler = async (m, { conn, text }) => {
     }})
   }
 }
-handler.help = ['clean *62xx*', 'clean *(reply)*','clean *@user*']
+handler.help = ['clean _62xx_', 'clean _(reply)_','clean _@user_']
 handler.tags = ['group admin']
 handler.command = /^clean$/i
 handler.admin = true

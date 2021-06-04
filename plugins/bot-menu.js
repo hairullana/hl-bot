@@ -1,4 +1,5 @@
 let fs = require ('fs')
+const { MessageType } = require('@adiwajshing/baileys')
 let handler  = async (m, { conn, usedPrefix: _p }) => {
   try {
     let pp = './src/avatar_contact.png'
@@ -26,27 +27,27 @@ let handler  = async (m, { conn, usedPrefix: _p }) => {
     let uptime = clockString(_uptime)
     let totalreg = format(Object.keys(global.DATABASE._data.users).length)
     let tags = {
-      'info': 'INFO BOT',
-      'xp': 'MONEY & LIMIT',
-      'premium': 'PREMIUM',
-      'game': 'GAME',
-      'gabut': 'JADIAN',
-      'sticker': 'STICKER',
-      'creator': 'CREATOR',
-      'logo': 'LOGO',
-      'images' : 'IMAGES',
-      'data' : 'SEARCHING',
-      'tools': 'TOOLS',
-      'information': 'INFORMATION',
-      'fun': 'FUN',
-      'tag': 'TAGS',
-      'audio': 'AUDIO',
-      'islam': 'ISLAM',
-      'text': 'RANDOM TEXT',
-      'downloader': 'DOWNLOADER',
-      'group tools' : 'GROUP TOOLS',
-      'group admin': 'GROUP ADMIN',
-      'owner': 'OWNER'
+      'info': 'I N F O  B O T',
+      'xp': 'M O N E Y  &  L I M I T',
+      'premium': 'P R E M I U M',
+      'game': 'G A M E',
+      'gabut': 'J A D I A N',
+      'sticker': 'S T I C K E R',
+      'creator': 'C R E A T O R',
+      'logo': 'L O G O',
+      'images' : 'I M A G E S',
+      'data' : 'S E A R C H I N G',
+      'tools': 'T O O L S',
+      'information': 'I N F O R M A T I O N',
+      'fun': 'F U N',
+      'tag': 'T A G S',
+      'audio': 'A U D I O',
+      'islam': 'I S L A M',
+      'text': 'R A N D O M  T E X T',
+      'downloader': ' D O W N L O A D E R',
+      'group tools' : 'G R O U P  T O O L S',
+      'group admin': 'G R O U P  A D M I N',
+      'owner': 'O W N E R'
     }
     for (let plugin of Object.values(global.plugins))
       if (plugin && 'tags' in plugin)
@@ -68,14 +69,13 @@ let handler  = async (m, { conn, usedPrefix: _p }) => {
           if (menu.help) groups[tag].push(menu)
     }
 
-    var update = "\n\n*UPDATE FITUR*\n- .goimg .pinterest .nobg\n- Fitur .antispam on/off\n- Fitur stiker bisa di PC Bot\n- Fitur _sampah_ dan _tai_ dihapus"
+    var update = ""
 
     conn.menu = conn.menu ? conn.menu : {}
-    // let before = conn.menu.before || `*${conn.getName(conn.user.jid)} BOT*\n\nHai, %name!\n*%exp XP | %limit Limit*\n*%week, %date [%time]*\n_Uptime: %uptime_\n%totalreg User in database\n%readmore`
-    let before = conn.menu.before || `Hai *%name*\nSaldo Rp. %exp (%limit Limit)\nTotal User : %totalreg\n\n❏ Bingung dengan bot ? Ketik *.help*\n❏ Upgrade premium ? Ketik *.infopremium*\n❏ Invite bot ke GC ? Ketik *.sewabot*\n❏ Gak aktif > 10 hari ? Hapus data${update}\n\nInfo Bot:\nIG: https://instagram.com/loadingtomastah\nTele: https://t.me/loadingtomastah\n\n%readmore`
-    let header = conn.menu.header || '╔═ ✪〘 %category 〙✪'
-    let body   = conn.menu.body   || '║ ❖ %cmd%islimit'
-    let footer = conn.menu.footer || '╚════════════════\n'
+    let before = conn.menu.before || `Hai *%name*\nSaldo Rp. %exp (%limit Limit)\nTotal User : %totalreg\n\n❏ Bingung dengan bot ? Ketik *.help*\n❏ Upgrade ? Ketik *.infopremium*\n❏ Invite bot ke GC ? Ketik *.sewabot*${update}\n\nInfo Bot:\nIG: https://instagram.com/loadingtomastah\nTele: https://t.me/loadingtomastah\n\n%readmore`
+    let header = conn.menu.header || '   *❖  %category*\n'
+    let body   = conn.menu.body   || ' » %cmd%islimit'
+    // let footer = conn.menu.footer || '╚════════════════\n'
     let after  = conn.menu.after  || conn.user.jid == global.conn.user.jid ? '' : `\nPowered by https://wa.me/${global.conn.user.jid.split`@`[0]}`
     let _text  = before + '\n'
     for (let tag in groups) {
@@ -84,7 +84,8 @@ let handler  = async (m, { conn, usedPrefix: _p }) => {
         for (let help of menu.help)
           _text += body.replace(/%cmd/g, menu.prefix ? help : '%p' + help).replace(/%islimit/g, menu.limit ? ' (L)' : '')  + '\n'
       }
-      _text += footer + '\n'
+      // _text += footer + '\n'
+      _text += '\n'
     }
     _text += after
     text =  typeof conn.menu == 'string' ? conn.menu : typeof conn.menu == 'object' ? _text : ''
@@ -95,8 +96,11 @@ let handler  = async (m, { conn, usedPrefix: _p }) => {
       readmore: readMore
     }
     text = text.replace(new RegExp(`%(${Object.keys(replace).join`|`})`, 'g'), (_, name) => replace[name])
-    conn.sendFile(m.chat, pp, 'logo.jpg', text.trim(), { key: { remoteJid: 'status@broadcast', participant: '0@s.whatsapp.net', fromMe: false }, message: { "imageMessage": { "mimetype": "image/jpeg", "caption": "PART OF LTM BOT", "jpegThumbnail": fs.readFileSync(`./media/images/thumb.jpg`)} } }, m, { contextInfo: { mentionedJid: [m.sender] } })
-    // conn.sendFile(m.chat,pp,'profile.jpg', text.trim(), m)
+    // status(m.chat,text,fs.readFileSync(`./media/images/thumb.jpg`),"PART OF LTM BOT",m.sender)
+    conn.sendMessage(m.chat, text, MessageType.text, {contextInfo: { mentionedJid: [m.sender] }, quoted: {key: {fromMe: false, participant: `0@s.whatsapp.net`, ...(m.chat ? { remoteJid: 'status@broadcast' } : {}) }, message: { "imageMessage": { "mimetype": "image/jpeg", "caption": "PART OF LTM BOT", "jpegThumbnail": fs.readFileSync(`./media/images/thumb.jpg`)} } }})
+    // conn.sendFile(m.chat, pp, 'logo.jpg', text.trim(), { key: { remoteJid: 'status@broadcast', participant: '0@s.whatsapp.net', fromMe: false }, message: { "imageMessage": { "mimetype": "image/jpeg", "caption": "PART OF LTM BOT", "jpegThumbnail": fs.readFileSync(`./media/images/thumb.jpg`)} } }, m, { contextInfo: { mentionedJid: [m.sender] } })
+    // m.reply(text)
+    conn.sendFile(m.chat, fs.readFileSync(`./media/images/thumb.jpg`), 'pp.jpg', text,m)
   } catch (e) {
     conn.reply(m.chat, 'Maaf, menu sedang error', m)
     throw e
@@ -105,18 +109,7 @@ let handler  = async (m, { conn, usedPrefix: _p }) => {
 handler.help = ['menu']
 handler.tags = ['info']
 handler.command = /^(menu)$/i
-handler.owner = false
-handler.mods = false
-handler.premium = false
-handler.group = false
-handler.private = false
-
-handler.admin = false
-handler.botAdmin = false
-
 handler.fail = null
-handler.exp = 350
-
 module.exports = handler
 
 const more = String.fromCharCode(8206)

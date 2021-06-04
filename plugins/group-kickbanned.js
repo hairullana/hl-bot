@@ -33,14 +33,10 @@ let handler = async (m, { conn, text, participants }) => {
 	conn.reply(m.chat, `Berhasil mengeluarkan ${total} user bot yang bermasalah dari grup *${conn.getName(m.chat)}*.`, m)
 }
 handler.help = ['kickbanned']
-handler.tags = ['group admin']
+handler.tags = ['owner']
 handler.command = /^(kickbanned)$/i
-handler.owner = false
-handler.mods = false
-handler.premium = false
+handler.owner = true
 handler.group = true
-handler.private = false
-handler.admin = true
 handler.botAdmin = true
 handler.fail = null
 module.exports = handler

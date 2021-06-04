@@ -37,7 +37,7 @@ try {
 	}	
 }
 
-handler.help = ['*62xx*','*@user*','*(reply)*'].map(v => 'mark ' + v)
+handler.help = ['_62xx_','_@user_','_(reply)_'].map(v => 'mark ' + v)
 handler.tags = ['owner']
 handler.command = /^mark$/i
 // handler.owner = true

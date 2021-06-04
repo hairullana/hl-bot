@@ -1,5 +1,4 @@
 let handler = async (m, { conn, text }) => {
-	// return conn.reply(m.chat,"*Fitur dinonaktifkan karena membuat bot terbanned.*\n*Silahkan lakukan manual asu !*",m)
 	if(isNaN(text) && !text.match(/@/g)){
 		return conn.reply(m.chat, `*Penggunaan yang benar*\n\n.promote @user\n.promote -> reply chat`, m)
 	}else if(isNaN(text)) {
@@ -22,14 +21,17 @@ try {
 } catch (e) {
 		} finally {
 			conn.groupMakeAdmin(m.chat, [user]).catch(console.log)
-			conn.reply(m.chat, `*Target has promoted.*`, m)
+			conn.reply(m.chat, `*Berhasil menjadikan @${user.split('@')[0]} sebagai admin*`, m, {contextInfo: {
+        mentionedJid: [user]
+      }})
 	}	
 }
-handler.help = ['*62xx*','*@user*','*(reply)*'].map(v => 'admin ' + v)
+handler.help = ['_62xx_','_@user_','_(reply)_'].map(v => 'admin ' + v)
 handler.tags = ['group admin']
 handler.command = /^(admin)$/i
 handler.group = true
 handler.admin = true
 handler.botAdmin = true
+handler.limit = true
 handler.fail = null
 module.exports = handler

@@ -11,8 +11,6 @@ let handler = async (m, { conn, text }) => {
   	var number = text
   }
   if(!text && !m.quoted) return conn.reply(m.chat, `*Berikan nomor, tag atau reply chat target.*`, m)
-  // let exists = await conn.isOnWhatsApp(number)
-  // if (exists) return conn.reply(m.chat, `*Nomor target tidak terdaftar di WhatsApp*`, m)
   if(isNaN(number)) return conn.reply(m.chat, `*Nomor tidak valid.*`, m)
   if(number.length > 15) return conn.reply(m.chat, `*Format is Invalid.*`, m)
   try {
@@ -34,17 +32,12 @@ let handler = async (m, { conn, text }) => {
 	let isAdmin = users.isAdmin || users.isSuperAdmin || false
 	let number = user.split('@')[0]
 	await conn.groupRemove(m.chat, [user])
-	// conn.reply(m.chat,conn.user.jid,m)
 	}	
 }
 handler.help = ['kick']
 handler.tags = ['']
 handler.command = /^(kick)$/i
-handler.owner = false
-handler.mods = false
-handler.premium = false
 handler.group = true
-handler.private = false
 handler.admin = true
 handler.botAdmin = true
 handler.fail = null

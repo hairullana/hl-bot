@@ -24,8 +24,9 @@ let handler  = async (m, { conn, text, command }) => {
     else throw 'Foto/Video tidak ditemukan'
   }
 }
-handler.help = ['swm *author* | *name*']
+handler.help = ['swm author|name']
 handler.tags = ['sticker', 'premium']
 handler.command = /^swm$/i
 handler.premium = true
+handler.limit = true
 module.exports = handler

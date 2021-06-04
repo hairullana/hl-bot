@@ -22,13 +22,11 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
 		conn.reply(m.chat, `*Format salah! Contoh :*\n\n	*○ ${usedPrefix + command} on*\n	*○ ${usedPrefix + command} off*`, m)
 	} 
 }
-handler.help = ['antivirtex *on/off*']
+handler.help = ['antivirtex _on/off_']
 handler.tags = ['group admin']
 handler.command = /^(antivirtex)$/i
-handler.owner = false
 handler.group = true
 handler.admin = true
 handler.botAdmin = true
-handler.exp = 0
 handler.limit = true
 module.exports = handler

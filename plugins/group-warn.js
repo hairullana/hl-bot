@@ -70,7 +70,7 @@ let handler = async (m, { conn, text }) => {
  
  }
 }
-handler.help = ['warn *62xx*', 'warn *(reply)*','warn *@user*']
+handler.help = ['warn _62xx_', 'warn _(reply)_','warn _@user_']
 handler.tags = ['group admin']
 handler.command = /^warn$/i
 handler.admin = true

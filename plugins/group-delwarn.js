@@ -11,7 +11,6 @@ let handler = async (m, { conn }) => {
 handler.help = ['delwarn']
 handler.tags = ['group admin']
 handler.command = /^delwarn$/i
-handler.admin = false
 handler.group = true
 handler.botAdmin = true
 handler.limit = true

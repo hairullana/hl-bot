@@ -4,20 +4,10 @@ let handler = async (m, { conn, command, text }) => {
 *Jawaban:* ${Math.floor(Math.random() * 10)} ${pickRandom(['detik', 'menit', 'jam', 'hari', 'minggu', 'bulan', 'tahun', 'dekade', 'abad'])} lagi ...
 `.trim(), m)
 }
-handler.help = ['kapan'].map(v => v + ' *question*')
+handler.help = ['kapan','kapankah'].map(v => v + ' _question_')
 handler.tags = ['fun']
-// handler.command = /^(kapan)?/i
-handler.owner = false
-handler.mods = false
-handler.premium = false
-handler.group = false
-handler.private = false
-handler.exp = 250
-handler.admin = false
-handler.botAdmin = false
-
+handler.command = /^(kapan|kapankah)/i
 handler.fail = null
-
 module.exports = handler
 
 function pickRandom(list) {

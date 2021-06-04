@@ -37,7 +37,7 @@ try {
 	}	
 }
 
-handler.help = ['*62xx*','*@user*','*(reply)*'].map(v => 'unmark ' + v)
+handler.help = ['_62xx_','_@user_','_(reply)_'].map(v => 'unmark ' + v)
 handler.tags = ['owner']
 handler.command = /^unmark$/i
 // handler.owner = true

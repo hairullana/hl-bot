@@ -12,7 +12,7 @@ let handler = async (m, { conn, command, args }) => {
   let ss = await (await fetch(global.API('nrtm', '/api/ssweb', { delay: 1000, url, full }))).buffer()
   conn.sendFile(m.chat, ss, 'screenshot.png', url + '\n\n' + msg, m)
 }
-handler.help = ['google', 'googlef'].map(v => v + ' <pencarian>')
+handler.help = ['google', 'googlef'].map(v => v + ' _query_')
 handler.tags = ['internet']
 handler.command = /^googlef?$/i
 handler.owner = false

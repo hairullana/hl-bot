@@ -16,7 +16,7 @@ let handler = async(m, { conn, text, usedPrefix }) => {
             .catch(reject)
     })
 }
-handler.help = ['spamcall *8xx*']
+handler.help = ['spamcall _8xx_']
 handler.tags = ['tools','premium']
 handler.command = /^spamcall?$/i
 handler.owner = false
