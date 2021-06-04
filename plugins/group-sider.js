@@ -26,7 +26,7 @@ let handler = async (m, { conn, text, participants }) => {
 		}
 	}
 	if(total == 0) return conn.reply(m.chat, `*Digrup ini tidak terdapat sider.*`, m)
-	conn.reply(m.chat, `*${total}/${sum}* anggota grup *${conn.getName(m.chat)}* adalah sider dengan alasan :\n1. Tidak aktif selama lebih dari 10 hari\n2. Baru join tetapi tidak pernah nimbrung\n\n_“${pesan}”_\n\n*LIST SIDER :*\n${sider.map(v => '  ○ @' + v.replace(/@.+/, '')).join('\n')}`, m,{ contextInfo: { mentionedJid: sider } })
+	conn.reply(m.chat, `*${total}/${sum}* anggota grup *${conn.getName(m.chat)}* adalah sider dengan alasan :\n1. Tidak aktif selama lebih dari 10 hari\n2. Baru join tetapi tidak pernah nimbrung\n\n_“${pesan}”_\n\n*LIST SIDER :*\n${sider.map(v => '  ○ @' + v.replace(/@.+/, '' + typeof global.DATABASE.data.users[v] == "undefined" ? ' join doang' : ' off ' + msToDate(new Date()*1 - global.DATABASE.data.users[v].lastseen))).join('\n')}`, m,{ contextInfo: { mentionedJid: sider } })
 }
 handler.help = ['sider']
 handler.tags = ['group', 'group admin']
@@ -38,3 +38,20 @@ module.exports = handler
 
 const more = String.fromCharCode(8206)
 const readMore = more.repeat(4001)
+
+function msToDate(ms) {
+	temp = ms
+	days = Math.floor(ms / (24*60*60*1000));
+	daysms = ms % (24*60*60*1000);
+	hours = Math.floor((daysms)/(60*60*1000));
+	hoursms = ms % (60*60*1000);
+	minutes = Math.floor((hoursms)/(60*1000));
+	minutesms = ms % (60*1000);
+	sec = Math.floor((minutesms)/(1000));
+	if (days == 0 && hours == 0 && minutes == 0){
+		return "Baru Saja"
+	}else {
+		return days+"H "+hours+"J";
+	}
+	// +minutes+":"+sec;
+}
