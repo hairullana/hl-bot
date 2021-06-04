@@ -69,7 +69,7 @@ let handler  = async (m, { conn, usedPrefix: _p }) => {
           if (menu.help) groups[tag].push(menu)
     }
 
-    var update = ""
+    var update = "\n\n- Perbaikan game *.tebakbendera*\n- Game baru *.siapaaku*, *.tebak* (tebak-tebakan), *.tebakkata*, *.susunkata*, *.asahotak*"
 
     conn.menu = conn.menu ? conn.menu : {}
     let before = conn.menu.before || `Hai *%name*\nSaldo Rp. %exp (%limit Limit)\nTotal User : %totalreg\n\n❏ Bingung dengan bot ? Ketik *.help*\n❏ Upgrade ? Ketik *.infopremium*\n❏ Invite bot ke GC ? Ketik *.sewabot*${update}\n\nInfo Bot:\nIG: https://instagram.com/loadingtomastah\nTele: https://t.me/loadingtomastah\n\n%readmore`
@@ -97,7 +97,7 @@ let handler  = async (m, { conn, usedPrefix: _p }) => {
     }
     text = text.replace(new RegExp(`%(${Object.keys(replace).join`|`})`, 'g'), (_, name) => replace[name])
     // status(m.chat,text,fs.readFileSync(`./media/images/thumb.jpg`),"PART OF LTM BOT",m.sender)
-    conn.sendMessage(m.chat, text, MessageType.text, {contextInfo: { mentionedJid: [m.sender] }, quoted: {key: {fromMe: false, participant: `0@s.whatsapp.net`, ...(m.chat ? { remoteJid: 'status@broadcast' } : {}) }, message: { "imageMessage": { "mimetype": "image/jpeg", "caption": "PART OF LTM BOT", "jpegThumbnail": fs.readFileSync(`./media/images/thumb.jpg`)} } }})
+    // conn.sendMessage(m.chat, text, MessageType.text, {contextInfo: { mentionedJid: [m.sender] }, quoted: {key: {fromMe: false, participant: `0@s.whatsapp.net`, ...(m.chat ? { remoteJid: 'status@broadcast' } : {}) }, message: { "imageMessage": { "mimetype": "image/jpeg", "caption": "PART OF LTM BOT", "jpegThumbnail": fs.readFileSync(`./media/images/thumb.jpg`)} } }})
     // conn.sendFile(m.chat, pp, 'logo.jpg', text.trim(), { key: { remoteJid: 'status@broadcast', participant: '0@s.whatsapp.net', fromMe: false }, message: { "imageMessage": { "mimetype": "image/jpeg", "caption": "PART OF LTM BOT", "jpegThumbnail": fs.readFileSync(`./media/images/thumb.jpg`)} } }, m, { contextInfo: { mentionedJid: [m.sender] } })
     // m.reply(text)
     conn.sendFile(m.chat, fs.readFileSync(`./media/images/thumb.jpg`), 'pp.jpg', text,m)
