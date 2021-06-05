@@ -2,7 +2,7 @@ let fetch = require('node-fetch')
 const { MessageType } = require('@adiwajshing/baileys')
 
 let timeout = 120000
-let poin = 250000
+let poin = 200000
 
 let handler = async (m, { conn, usedPrefix }) => {
     conn.susunkata = conn.susunkata ? conn.susunkata : {}

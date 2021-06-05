@@ -97,7 +97,7 @@ let handler = async (m, { conn, text }) => {
 			let about = (await conn.getStatus(user)).status
 			let pasangan
 
-			if (global.DATABASE.data.users[user].pasangan == "") {
+			if (global.DATABASE.data.users[user].pasangan == "" || typeof global.DATABASE.data.users[global.DATABASE.data.users[user].pasangan] == "undefined") {
 				pasangan = "Jomblo"
 			}else if (global.DATABASE.data.users[global.DATABASE.data.users[user].pasangan].pasangan != user){
 				pasangan = "Digantung"

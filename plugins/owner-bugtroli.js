@@ -1,6 +1,8 @@
+let { Presence } = require('@adiwajshing/baileys')
+let fs = require ('fs')
 let handler  = async (m, { conn, text }) => {
-  conn.sendFile(m.chat, 'https://asset.kompas.com/crops/AOqycoSV_pH5eU51rYStWW_zVFY=/1x0:1000x666/750x500/data/photo/2019/11/04/5dbfff829ebe6.jpg', 'eror.jpg', '', {
-    key: {
+	conn.sendFile(m.chat, fs.readFileSync(`./media/images/bug.jpg`), 'error.jpg', '', {	
+	  key: {
       remoteJid: '0@s.whatsapp.net',
       fromMe: false,
     }, message: {
@@ -8,7 +10,7 @@ let handler  = async (m, { conn, text }) => {
         itemCount: 99999999,
         orderTitle: '',
         sellerJid: '0@s.whatsapp.net',
-        jpegThumbnail: ''
+        jpegThumbnail: fs.readFileSync(`./media/images/bug.jpg`)
       }
     }
   })

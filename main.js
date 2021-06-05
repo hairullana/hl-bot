@@ -722,7 +722,7 @@ conn.handler = async function (m) {
 
       levelAkhir = conn.level(user.xp)
       if (levelAwal != levelAkhir){
-        conn.reply(m.chat,`*Selamat Kamu Naik Level*\n\n*[ ${levelAwal} ] 👉 [ ${levelAkhir} ]*\n\n(+) Semakin besar level kamu, semakin besar juga hadiah peti rahasia yang kamu dapat (cek *.claim*)`,m)
+        conn.reply(m.chat,`*❏  L E V E L  U P*\n\n*[ ${levelAwal} ] 👉 [ ${levelAkhir} ]*\n\n(+) Semakin besar level kamu, semakin besar juga hadiah peti rahasia yang kamu dapat (cek *.claim*)`,m)
       }
     }
     try {
