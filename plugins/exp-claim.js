@@ -17,13 +17,6 @@ let handler = async (m, { conn }) => {
   }
 
   if (new Date - global.DATABASE._data.users[m.sender].lastclaim > waktuClaim) {
-    var hadiah
-    if (global.DATABASE.data.users[m.sender].premium){
-      hadiah = 100
-    }else {
-      hadiah = 20
-    }
-
     function getRandom(min,max){
       min = Math.ceil(min)
       max = Math.floor(max)
@@ -31,13 +24,17 @@ let handler = async (m, { conn }) => {
     }
 
     if (global.DATABASE.data.users[m.sender].premium){
-      petiRahasia = getRandom(1,20) * 1000000
+      level = conn.level(global.DATABASE.data.users[m.sender].xp)
+      hadiah = 100
+      petiRahasia = getRandom(level,level+9) * 10000
       global.DATABASE.data.users[m.sender].exp += petiRahasia
-      conn.reply(m.chat, `*❏ D A I L Y  C L A I M*\n\nSelamat bangsat dapet bonus *${hadiah} Limit* dan peti rahasia berisikan uang *Rp. ${petiRahasia.toLocaleString()}*\nSilahkan claim lagi besok\n\nUser Premium : 100 Limit\nUser Biasa : 20 Limit`, m)
+      conn.reply(m.chat, `*❏  D A I L Y  C L A I M*\n\nSelamat anda mendapatkan hadiah harian *${hadiah} Limit* dan peti rahasia berisikan uang *Rp. ${petiRahasia.toLocaleString()}*\nSilahkan claim dalam 24 jam\n\n*❏ Hadiah Limit*\nUser Premium : 100 Limit\nUser Biasa : 20 Limit\n\n*❏ Peti Rahasia (Level ${level})*\nUser Premium : Rp. ${Number(level*10000).toLocaleString()} - Rp. ${Number((level+9)*10000).toLocaleString()}\nUser Biasa : Rp. ${Number(level*1000).toLocaleString()} - Rp. ${Number((level+9)*1000).toLocaleString()}`, m)
     }else {
-      petiRahasia = getRandom(1,20) * 100000
+      level = conn.level(global.DATABASE.data.users[m.sender].xp)
+      hadiah = 20
+      petiRahasia = getRandom(level,level+9) * 1000
       global.DATABASE.data.users[m.sender].exp += petiRahasia
-      conn.reply(m.chat, `*❏ D A I L Y  C L A I M*\n\nSelamat bangsat dapet bonus *${hadiah} Limit* dan peti rahasia berisikan uang *Rp. ${petiRahasia.toLocaleString()}*\nSilahkan claim lagi besok\n\nUser Premium : 100 Limit\nUser Biasa : 20 Limit`, m)
+      conn.reply(m.chat, `*❏  D A I L Y  C L A I M*\n\nSelamat anda mendapatkan bonus *${hadiah} Limit* dan peti rahasia berisikan uang *Rp. ${petiRahasia.toLocaleString()}*\nSilahkan claim dalam 24 jam\n\n*❏ Hadiah Limit*\nUser Premium : 100 Limit\nUser Biasa : 20 Limit\n\n*❏ Peti Rahasia (Level ${level})*\nUser Premium : Rp. ${Number(level*10000).toLocaleString()} - Rp. ${Number((level+9)*10000).toLocaleString()}\nUser Biasa : Rp. ${Number(level*1000).toLocaleString()} - Rp. ${Number((level+9)*1000).toLocaleString()}`, m)
     }
 
     global.DATABASE.data.users[m.sender].limit += hadiah

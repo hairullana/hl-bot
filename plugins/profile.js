@@ -69,6 +69,7 @@ let handler = async (m, { conn, text }) => {
 
 		if(typeof global.DATABASE.data.users[user] !== 'undefined'){
 			var money = global.DATABASE.data.users[user].exp
+			var xp = global.DATABASE.data.users[user].xp
 			var limit = global.DATABASE.data.users[user].limit
 			var warn = global.DATABASE.data.users[user].warning
 			var chat = global.DATABASE.data.users[user].chat
@@ -110,7 +111,7 @@ let handler = async (m, { conn, text }) => {
 				var name = isName
 			} else {
 				var name = '(Tanpa Nama)'
-			} conn.sendFile(m.chat, pp, 'profile.jpg', `*❏  P R O F I L E  U S E R*\n\n*Nama* : ${name}\n*Tentang* : ${about}\n*Nomor* : ${nomor}\n*Uang* : Rp. ${Number(money).toLocaleString().replace(/,/g, '.')},-\n*Limit* : ${format(limit)}\n*Pasangan* : ${pasangan}\n*Whitelist* : ${whitelist}\n*Premium* : ${premium}\n*Warning* : ${warn} / 5\n*Banned* : ${banned}\n*Use Bot* : ${usebot}\n*Last Seen* : ${lastseen}`, m)
+			} conn.sendFile(m.chat, pp, 'profile.jpg', `*❏  P R O F I L E  U S E R*\n\n*Nama* : ${name}\n*Tentang* : ${about}\n*Nomor* : ${nomor}\n*Level* : ${conn.level(xp)}\n*Uang* : Rp. ${Number(money).toLocaleString().replace(/,/g, '.')},-\n*Limit* : ${format(limit)}\n*Pasangan* : ${pasangan}\n*Whitelist* : ${whitelist}\n*Premium* : ${premium}\n*Warning* : ${warn} / 5\n*Banned* : ${banned}\n*Use Bot* : ${usebot}\n*Last Seen* : ${lastseen}`, m)
 			
 		}else{
 			m.reply(`*Nomor ${text} tidak terdaftar di bot.*`)

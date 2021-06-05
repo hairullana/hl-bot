@@ -161,7 +161,9 @@ conn.handler = async function (m) {
         if (!isNumber(user.premiumDate)) user.premiumDate = 0
         if (!isNumber(user.afk)) user.afk = -1
         if (!isNumber(user.usebot)) user.usebot = 0
+        if (!isNumber(user.xp)) user.xp = 0
       } else global.DATABASE._data.users[m.sender] = {
+        xp: 0,
         usebot: 0,
         lastseen: 0,
         exp: 0,
@@ -635,8 +637,8 @@ conn.handler = async function (m) {
         m.isCommand = true
         let xp = 'exp' in plugin ? parseInt(plugin.exp) : 50 // XP Earning per command
         // m.exp += xp
-        if (!isPrems && global.DATABASE._data.users[m.sender].limit < 1 && plugin.limit && !owner && !m.fromMe) {
-          this.reply(m.chat, `*[ LIMIT HABIS ]*\n\nCara mendapatkan limit :\n\n1. Beli limit menggunakan command *.buy _total_*\n2. Claim hadian harian dengan command *.claim* !\n3. Mengemis limit/saldo kepada user sultan`, m)
+        if (global.DATABASE.data.users[m.sender].limit < 1 && plugin.limit) {
+          this.reply(m.chat, `*❏  L I M I T  H A B I S*\n\nCara mendapatkan limit :\n\n1. Beli limit menggunakan command *.buy _total_*\n2. Claim hadian harian dengan command *.claim* !\n3. Mengemis limit/saldo kepada user sultan`, m)
           continue // Limit habis
         }
         try {
@@ -656,14 +658,15 @@ conn.handler = async function (m) {
             isBotAdmin,
             isPrems
           })
-          if (!isPrems) m.limit = m.limit || plugin.limit || false
+          // if (!isPrems) m.limit = m.limit || plugin.limit || false
+          m.limit = m.limit || plugin.limit || false
         } catch (e) {
           // Error occured
           m.error = e
           console.log(e)
           m.reply(util.format(e))
         } finally {
-          // if (m.limit) m.reply('*Limit terpakai.*')
+          // limit terpakai
         }
         break
       }
@@ -671,47 +674,55 @@ conn.handler = async function (m) {
   } finally {
     //console.log(global.DATABASE._data.users[m.sender])
     let user
-    if (m && m.sender && (user = global.DATABASE._data.users[m.sender])) {
+    if (m && m.sender && (user = global.DATABASE.data.users[m.sender])) {
       // user.exp += m.exp
       var limitAsli
-      if (global.DATABASE._data.users[m.sender].limit > 10000000000100) {
+      if (global.DATABASE.data.users[m.sender].limit > 10000000000100) {
         limitAsli = 10000000000000
-      } else if (global.DATABASE._data.users[m.sender].limit > 1100000000100) {
+      } else if (global.DATABASE.data.users[m.sender].limit > 1100000000100) {
         limitAsli = 1000000000000
-      } else if (global.DATABASE._data.users[m.sender].limit > 110000000100) {
+      } else if (global.DATABASE.data.users[m.sender].limit > 110000000100) {
         limitAsli = 100000000000
-      } else if (global.DATABASE._data.users[m.sender].limit > 11000000100) {
+      } else if (global.DATABASE.data.users[m.sender].limit > 11000000100) {
         limitAsli = 10000000000
-      } else if (global.DATABASE._data.users[m.sender].limit > 1100000100) {
+      } else if (global.DATABASE.data.users[m.sender].limit > 1100000100) {
         limitAsli = 1000000000
-      } else if (global.DATABASE._data.users[m.sender].limit > 110000100) {
+      } else if (global.DATABASE.data.users[m.sender].limit > 110000100) {
         limitAsli = 100000000
-      } else if (global.DATABASE._data.users[m.sender].limit > 11000100) {
+      } else if (global.DATABASE.data.users[m.sender].limit > 11000100) {
         limitAsli = 10000000
-      } else if (global.DATABASE._data.users[m.sender].limit > 1100100) {
+      } else if (global.DATABASE.data.users[m.sender].limit > 1100100) {
         limitAsli = 1000000
-      } else if (global.DATABASE._data.users[m.sender].limit > 110100) {
+      } else if (global.DATABASE.data.users[m.sender].limit > 110100) {
         limitAsli = 100000
-      } else if (global.DATABASE._data.users[m.sender].limit > 11100) {
+      } else if (global.DATABASE.data.users[m.sender].limit > 11100) {
         limitAsli = 10000
-      } else if (global.DATABASE._data.users[m.sender].limit > 5100) {
+      } else if (global.DATABASE.data.users[m.sender].limit > 5100) {
         limitAsli = 1000
-      } else if (global.DATABASE._data.users[m.sender].limit > 1100) {
+      } else if (global.DATABASE.data.users[m.sender].limit > 1100) {
         limitAsli = 100
-      } else if (global.DATABASE._data.users[m.sender].limit > 100) {
+      } else if (global.DATABASE.data.users[m.sender].limit > 100) {
         limitAsli = 10
-      } else if (global.DATABASE._data.users[m.sender].limit > 50) {
+      } else if (global.DATABASE.data.users[m.sender].limit > 50) {
         limitAsli = 2
       } else(
         limitAsli = 1
       )
       // user.limit -= limitAsli
+      levelAwal = conn.level(user.xp)
       if (user.premium == true) {
         user.limit -= m.limit * 1
       } else if (user.limit > 100 || user.exp > 1000000000) {
         user.limit -= m.limit * limitAsli
       } else {
         user.limit -= m.limit * 1
+      }
+      // nambah level
+      user.xp += m.limit*1
+
+      levelAkhir = conn.level(user.xp)
+      if (levelAwal != levelAkhir){
+        conn.reply(m.chat,`*Selamat Kamu Naik Level*\n\n*[ ${levelAwal} ] 👉 [ ${levelAkhir} ]*\n\n(+) Semakin besar level kamu, semakin besar juga hadiah peti rahasia yang kamu dapat (cek *.claim*)`,m)
       }
     }
     try {

@@ -7,6 +7,7 @@ let handler  = async (m, { conn, usedPrefix: _p }) => {
 
     let exp = format(global.DATABASE.data.users[m.sender].exp)
     let limit = format(global.DATABASE.data.users[m.sender].limit)
+    let xp = format(global.DATABASE.data.users[m.sender].xp)
     let name = conn.getName(m.sender)
     let d = new Date
     let locale = 'id'
@@ -69,10 +70,10 @@ let handler  = async (m, { conn, usedPrefix: _p }) => {
           if (menu.help) groups[tag].push(menu)
     }
 
-    var update = "\n\n- Perbaikan game *.tebakgambar*\n- Game baru *.siapaaku*, *.tebak* (tebak-tebakan), *.tebakkata*, *.susunkata*, *.asahotak*"
+    var update = "\n\n- Leveling (hadiah peti rahasia menyesuaikan level)\n- Perbaikan game *.tebakgambar*\n- Game baru *.siapaaku*, *.tebak* (tebak-tebakan), *.tebakkata*, *.susunkata*, *.asahotak*"
 
     conn.menu = conn.menu ? conn.menu : {}
-    let before = conn.menu.before || `Hai *%name*\nSaldo Rp. %exp (%limit Limit)\nTotal User : %totalreg\n\n❏ Bingung dengan bot ? Ketik *.help*\n❏ Upgrade ? Ketik *.infopremium*\n❏ Invite bot ke GC ? Ketik *.sewabot*${update}\n\nInfo Bot:\nIG: https://instagram.com/loadingtomastah\nTele: https://t.me/loadingtomastah\n\n%readmore`
+    let before = conn.menu.before || `Hai *%name*\nLevel : ${conn.level(xp)} (${xp.toLocaleString()} xp)\nSaldo Rp. %exp (%limit Limit)\nTotal User : %totalreg\n\n❏ Bingung dengan bot ? Ketik *.help*\n❏ Upgrade ? Ketik *.infopremium*\n❏ Invite bot ke GC ? Ketik *.sewabot*${update}\n\nInfo Bot:\nIG: https://instagram.com/loadingtomastah\nTele: https://t.me/loadingtomastah\n\n%readmore`
     let header = conn.menu.header || '   *❖  %category*\n'
     let body   = conn.menu.body   || ' » %cmd%islimit'
     // let footer = conn.menu.footer || '╚════════════════\n'
