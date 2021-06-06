@@ -36,10 +36,6 @@ let handler  = async (m, { conn, text }) => {
     }
     m.reply(`Expired Grup *${conn.getName(hl[1])}*\n\n` + msToDate(global.DATABASE.data.chats[hl[1]].expired - new Date()))
   }else if(hl[0] == "expired"){
-    if (hl[1] == "forever"){
-      global.DATABASE.data.chats[m.chat].expired = 0
-      return conn.reply(m.chat,`*❏  E X P I R E D  D A T E*\n\nBerhasil menetapkan _expired day_ untuk *${conn.getName(hl[2])}* untuk selamanya.*`)
-    }
     var jumlahHari = 86400000 * hl[1]
     var now = new Date() * 1
     global.DATABASE.data.chats[hl[2]].expired = now + jumlahHari

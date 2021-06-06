@@ -37,17 +37,17 @@ let handler = async (m, { conn, text }) => {
     if(user === conn.user.jid) return conn.reply(m.chat, `*Tidak bisa berpacaran dengan bot.*`, m)
     
     if(global.DATABASE.data.users[m.sender].pasangan != "" && global.DATABASE.data.users[global.DATABASE.data.users[m.sender].pasangan].pasangan == m.sender && global.DATABASE.data.users[m.sender].pasangan != user){
-      var denda = Math.ceil(global.DATABASE.data.users[m.sender].exp/100*10)
+      var denda = Math.ceil(global.DATABASE.data.users[m.sender].exp/100*20)
       global.DATABASE.data.users[m.sender].exp -= denda
-      conn.reply(m.chat,`*Kamu sudah berpacaran dengan @${global.DATABASE.data.users[m.sender].pasangan.split('@')[0]}*\n\nSilahkan putus dulu (.putus) untuk menembak @${user.split('@')[0]}\n\nBtw yang setia dikit bangsat !\nDenda : Rp. ${format(denda)}`,m,{contextInfo: {
+      conn.reply(m.chat,`*Kamu sudah berpacaran dengan @${global.DATABASE.data.users[m.sender].pasangan.split('@')[0]}*\n\nSilahkan putus dulu (.putus) untuk menembak @${user.split('@')[0]}\n\nBtw yang setia dikit bangsat !\nDenda : Rp. ${format(denda)} (20% saldo)`,m,{contextInfo: {
         mentionedJid: [user,global.DATABASE.data.users[m.sender].pasangan]
       }})
     }else if(global.DATABASE.data.users[user].pasangan != ""){
       var pacar = global.DATABASE.data.users[user].pasangan
       if (global.DATABASE.data.users[pacar].pasangan == user){
-        var denda = Math.ceil(global.DATABASE.data.users[m.sender].exp/100*10)
+        var denda = Math.ceil(global.DATABASE.data.users[m.sender].exp/100*20)
         global.DATABASE.data.users[m.sender].exp -= denda
-        if (m.sender == pacar && global.DATABASE.data.users[m.sender].pasangan == user) return conn.reply(m.chat,`*Anda sudah berpacaran dengan @${beb.split('@')[0]}*\n\n*Yang setia jadi orang bosss*\n\n*Denda : Rp. ${format(denda)} (10%)*`,m,{contextInfo: {
+        if (m.sender == pacar && global.DATABASE.data.users[m.sender].pasangan == user) return conn.reply(m.chat,`*Anda sudah berpacaran dengan @${beb.split('@')[0]}*\n\n*Yang setia jadi orang bosss*\n\n*Denda : Rp. ${format(denda)} (20% saldo)*`,m,{contextInfo: {
           mentionedJid: [beb]
         }})
         conn.reply(m.chat,`*Tau sopan santun dikit teman*\n*@${user.split('@')[0]} sudah berpacaran dengan @${pacar.split('@')[0]}*\n\n*Silahkan cari pasangan lain aja anjing !*\n*Denda : Rp. ${format(denda)} (10%)*`,m,{contextInfo: {

@@ -36,12 +36,12 @@ try {
 			if(global.DATABASE._data.users[user].isBanned == false){
 			  conn.reply(m.chat, `User tidak masuk ke dalam list banned`, m)
 			}else{
-				denda = Math.ceil((global.DATABASE._data.users[user].exp/100) * 10)
+				denda = Math.ceil((global.DATABASE._data.users[user].exp/100) * 50)
 				global.DATABASE._data.users[user].exp -= denda
 				global.DATABASE._data.users[user].isBanned = false
 				global.DATABASE._data.banned -= 1
 				var banTotal = global.DATABASE._data.banned
-				conn.reply(m.chat, `*Sukses men-unbanned @${user.split('@')[0]} dan menghapus status user bangsat dengan denda Rp. ${format(denda)} (10% saldo)\n\nTotal Banned : ${banTotal}`, m,{
+				conn.reply(m.chat, `*Sukses men-unbanned @${user.split('@')[0]} dan menghapus status user bangsat dengan denda Rp. ${format(denda)} (50% saldo)\n\nTotal Banned : ${banTotal}`, m,{
 					contextInfo: {
 						mentionedJid: [user]
 					}

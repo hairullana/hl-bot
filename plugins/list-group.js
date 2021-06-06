@@ -9,7 +9,7 @@ let handler = async (m, { conn }) => {
 		minutesms = ms % (60*1000);
 		sec = Math.floor((minutesms)/(1000));
 		if (temp < 0){
-			return "Forever"
+			return "Ilegal / Belum Set Expired"
 		}else {
 			return days+" Hari "+hours+" Jam "+ minutes + " Menit";
 		}
@@ -40,7 +40,7 @@ handler.group = false
 handler.private = false
 handler.admin = false
 handler.botAdmin = false
-handler.limit = 2000
+handler.limit = true
 handler.fail = null
 
 module.exports = handler

@@ -472,34 +472,35 @@ conn.handler = async function (m) {
       }
     }
 
-    if (m.text.match(/(@62)/gi) && !m.fromMe && m.text.slice(0, 1) != prefixhl) {
-      var xxx = m.text.split(' ')
-      var jancok
-      for (i = 0; i < xxx.length; i++) {
-        if (xxx[i].match(/(@62)/gi)) {
-          jancok = xxx[i]
-          jancok = jancok.replace(/@/g, '')
-          i = xxx.length
-        }
-      }
-      var bebeb = jancok + "@s.whatsapp.net"
-      if (!m.fromMe && global.DATABASE.data.users[bebeb].pasangan !== "") {
-        var ayang = global.DATABASE.data.users[bebeb].pasangan
+    // cek tag pacar
+    // if (m.text.match(/(@62)/gi) && !m.fromMe && m.text.slice(0, 1) != prefixhl) {
+    //   var xxx = m.text.split(' ')
+    //   var jancok
+    //   for (i = 0; i < xxx.length; i++) {
+    //     if (xxx[i].match(/(@62)/gi)) {
+    //       jancok = xxx[i]
+    //       jancok = jancok.replace(/@/g, '')
+    //       i = xxx.length
+    //     }
+    //   }
+    //   var bebeb = jancok + "@s.whatsapp.net"
+    //   if (!m.fromMe && global.DATABASE.data.users[bebeb].pasangan !== "") {
+    //     var ayang = global.DATABASE.data.users[bebeb].pasangan
 
-        if (global.DATABASE.data.users[bebeb].pasangan == ayang && global.DATABASE.data.users[ayang].pasangan == bebeb && m.sender != bebeb) {
-          if (m.sender != ayang) {
-            var denda = 1
-            var nominalDenda = Math.ceil((global.DATABASE.data.users[m.sender].exp / 100) * denda)
-            global.DATABASE.data.users[m.sender].exp -= nominalDenda
-            conn.reply(m.chat, `*Hey njing ngapain ngetag ngetag bebebnya si @${ayang.split('@')[0]} 😠😠😠 gatelan amat !!!*\n\n*Denda Rp. ${format(nominalDenda)} (${denda}%)*`, m, {
-              contextInfo: {
-                mentionedJid: [ayang]
-              }
-            })
-          }
-        }
-      }
-    }
+    //     if (global.DATABASE.data.users[bebeb].pasangan == ayang && global.DATABASE.data.users[ayang].pasangan == bebeb && m.sender != bebeb) {
+    //       if (m.sender != ayang) {
+    //         var denda = 1
+    //         var nominalDenda = Math.ceil((global.DATABASE.data.users[m.sender].exp / 100) * denda)
+    //         global.DATABASE.data.users[m.sender].exp -= nominalDenda
+    //         conn.reply(m.chat, `*Hey njing ngapain ngetag ngetag bebebnya si @${ayang.split('@')[0]} 😠😠😠 gatelan amat !!!*\n\n*Denda Rp. ${format(nominalDenda)} (${denda}%)*`, m, {
+    //           contextInfo: {
+    //             mentionedJid: [ayang]
+    //           }
+    //         })
+    //       }
+    //     }
+    //   }
+    // }
 
     if (enable.novirtex == true) {
       if (!m.fromMe && m.isGroup && !isAdmin && isBotAdmin) {
