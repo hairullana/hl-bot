@@ -28,9 +28,9 @@ let handler  = async (m, { conn, args }) => {
     })
   }
 }
-// handler.help = ['sticker2 *(reply)*', 'sticker2 *(caption)*', 'sticker2 *url*']
+handler.help = ['sticker2 *(reply)*', 'sticker2 *(caption)*', 'sticker2 *url*']
 handler.tags = ['sticker']
-// handler.command = /^stic?ker2|sk2$/i
+handler.command = /^stic?ker2|sk2$/i
 handler.owner = false
 handler.mods = false
 handler.premium = false

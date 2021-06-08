@@ -12,9 +12,9 @@ let handler = async (m, { conn, command, args }) => {
   var money = global.DATABASE._data.users[m.sender].exp
   // harga limit 
   var hargaLimit = 100000
-  if (money <= 1000000){
+  if (money <= 10000000){
     var hargaLimit = 100000
-  }else if(money <= 10000000){     // max 25jt
+  }else if(money <= 50000000){     // max 25jt
     var hargaLimit = 250000
   }else if(money <= 100000000){   // max 100jt
     var hargaLimit = 500000
