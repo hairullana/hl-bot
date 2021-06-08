@@ -17,7 +17,9 @@ let handler = async (m, { conn, command, text, isPrems, isOwner }) => {
 *URL :* ${vid.url}
 *${isLimit ? 'Pakai ': ''}Download :* ${dl_link}
 
-Follow https://instagram.com/loadingtomastah
+*Info Bot*
+Instagram : https://instagram.com/loadingtomastah
+Telegram : https://t.me/loadingtomastah
 `.trim(), m)
 //   if (!isLimit) conn.sendFile(m.chat, dl_link, title + '.mp' + (3 + /2$/.test(command)), `
 // *Title:* ${title}

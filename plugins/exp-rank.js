@@ -19,10 +19,10 @@ let handler = async (m, { conn, args, participants }) => {
   }else {
     let text = `
 *❏  R A N K  ${len}  G R U P*\n
-_Kamu berada di *level ${conn.level(global.DATABASE.data.users[m.sender].xp).toLocaleString()}* dengan *${global.DATABASE.data.users[m.sender].xp.toLocaleString()} XP*_
+_Kamu berada di *level ${conn.level(global.DATABASE.data.users[m.sender].xp)[0].toLocaleString()}* dengan *${global.DATABASE.data.users[m.sender].xp.toLocaleString()} XP* (${conn.level(global.DATABASE.data.users[m.sender].xp)[2].toLocaleString()} XP lagi untuk naik level)_
 _Kamu peringkat *${usersXP.indexOf(m.sender) + 1}* dari *${usersXP.length}* member grup ${conn.getName(m.chat)}_
   
-${sortedXP.slice(0, len).map(([user, data], i) => '*' + (i + 1) + '. '  + conn.getName(user) + '*\n    wa.me/' + user.split('@')[0] + '\n    Level ' + conn.level(data.xp).toLocaleString() + ` (` + data.xp.toLocaleString() + ' XP)').join`\n`}
+${sortedXP.slice(0, len).map(([user, data], i) => '*' + (i + 1) + '. '  + conn.getName(user) + '*\n    wa.me/' + user.split('@')[0] + '\n    Level ' + conn.level(data.xp)[0].toLocaleString() + " (" + data.xp.toLocaleString() + " / " + conn.level(data.xp)[1].toLocaleString() + ")").join`\n`}
     `.trim()
     conn.reply(m.chat, text, m)
   }

@@ -665,7 +665,12 @@ conn.handler = async function (m) {
           // Error occured
           m.error = e
           console.log(e)
-          m.reply(util.format(e))
+          if (e) {
+            let text = util.format(e)
+            for (let key of Object.values(global.APIKeys))
+              text = text.replace(new RegExp(key, 'g'), '#HIDDEN#')
+            m.reply(text)
+          }
         } finally {
           // limit terpakai
         }
@@ -710,7 +715,7 @@ conn.handler = async function (m) {
         limitAsli = 1
       )
       // user.limit -= limitAsli
-      levelAwal = conn.level(user.xp)
+      levelAwal = conn.level(user.xp)[0]
       if (user.premium == true) {
         user.limit -= m.limit * 1
       } else if (user.limit > 100 || user.exp > 1000000000) {
@@ -721,7 +726,7 @@ conn.handler = async function (m) {
       // nambah level
       user.xp += m.limit*1
 
-      levelAkhir = conn.level(user.xp)
+      levelAkhir = conn.level(user.xp)[0]
       if (levelAwal != levelAkhir){
         conn.reply(m.chat,`*❏  L E V E L  U P*\n\n*[ ${levelAwal} ] 👉 [ ${levelAkhir} ]*\n\n(+) Semakin besar level kamu, semakin besar juga hadiah peti rahasia yang kamu dapat (cek *.claim*)`,m)
       }

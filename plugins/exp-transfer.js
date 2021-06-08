@@ -31,13 +31,13 @@ let handler = async (m, { conn, command, text }) => {
   if (target == global.conn.user.jid) return m.reply("*Tidak bisa melakukan transfer ke HL Bot.*")
 
   if (typeof global.DATABASE.data.users[target] == "undefined"){
-    return m.reply(`*Nomor yang ingin anda transfer tidak terdaftar di bot.*\n\n*Contoh :*\n*.tf @${global.conn.user.jid.split('@')[0]} 10.000.000*\n*.tf 10.000.000 (reply chat)*`,m,{contextInfo: {
+    return conn.reply(m.chat,`*Nomor yang ingin anda transfer tidak terdaftar di bot.*\n\n*Contoh :*\n*.tf @${global.conn.user.jid.split('@')[0]} 10.000.000*\n*.tf 10.000.000 (reply chat)*`,m,{contextInfo: {
       mentionedJid: [global.conn.user.jid]
     }})
   }
 
   if (isNaN(jumlah)){
-    return m.reply(`*Masukkan hanya berupa angka saja.*\n\n*Contoh :*\n*.tf @${global.conn.user.jid.split('@')[0]} 10.000.000*\n*.tf 10.000.000 (reply chat)*`,m,{contextInfo: {
+    return conn.reply(m.chat,`*Masukkan hanya berupa angka saja.*\n\n*Contoh :*\n*.tf @${global.conn.user.jid.split('@')[0]} 10.000.000*\n*.tf 10.000.000 (reply chat)*`,m,{contextInfo: {
       mentionedJid: [global.conn.user.jid]
     }})
   }
@@ -53,7 +53,7 @@ let handler = async (m, { conn, command, text }) => {
 
   if (global.DATABASE.data.users[m.sender].exp < totalTF){
     maxTF = Math.floor(global.DATABASE.data.users[m.sender].exp / 105 * 100)
-    return m.reply(`*Uang anda tidak mencukupi untuk melakukan transfer dengan jumlah Rp. ${jumlah.toLocaleString()} + Rp. ${tax.toLocaleString()} (5% Pajak)*\n\n*Saldo anda : Rp. ${global.DATABASE.data.users[m.sender].exp.toLocaleString()}*\n*Max TF : Rp. ${maxTF.toLocaleString()}*`)
+    return conn.reply(m.chat,`*Uang anda tidak mencukupi untuk melakukan transfer dengan jumlah Rp. ${jumlah.toLocaleString()} + Rp. ${tax.toLocaleString()} (5% Pajak)*\n\n*Saldo anda : Rp. ${global.DATABASE.data.users[m.sender].exp.toLocaleString()}*\n*Max TF : Rp. ${maxTF.toLocaleString()}*`)
   }
 
   global.DATABASE.data.users[m.sender].exp -= jumlah

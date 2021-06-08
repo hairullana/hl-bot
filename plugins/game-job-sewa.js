@@ -51,7 +51,9 @@ let handler = async (m, { conn, text, participants }) => {
         global.DATABASE.data.users[user].job = "x"
       }else if (global.DATABASE.data.users[user].job === "maling"){
         let users = participants.map(u => u.jid)
-		    var tag = users[Math.floor(users.length * Math.random())]
+        var tag
+		    tag = users[Math.floor(users.length * Math.random())]
+        while(typeof global.DATABASE.data.users[tag] == "undefined" || global.DATABASE.data.users[tag].limit == 0) tag = users[Math.floor(users.length * Math.random())]
         limitMax = getRandom(1,Math.floor(global.DATABASE.data.users[user].price/100000)*2)
         if (global.DATABASE.data.users[tag].limit < limitMax){
           limitMax = global.DATABASE.data.users[tag].limit

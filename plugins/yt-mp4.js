@@ -13,7 +13,9 @@ let handler = async (m, { conn, args, isPrems, isOwner }) => {
 *Filesize:* ${filesizeF}
 *${isLimit ? 'Pakai ': ''}Link:* ${dl_link}
 
-s
+*Info Bot*
+Instagram : https://instagram.com/loadingtomastah
+Telegram : https://t.me/loadingtomastah
 `.trim(), m)
 //   if (!isLimit) conn.sendFile(m.chat, dl_link, 'video.mp4', `
 // *Title:* ${title}
