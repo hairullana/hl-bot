@@ -51,7 +51,7 @@ global.author = 'LTM BOT'
 global.wait = '_Sedang diproses . . ._'
 global.error = '_Fitur Error!_'
 
-global.owner = ['6283119526456','6282215215399']
+global.owner = ['6283119526456','6282215215399','6285157700416']
 global.mods = ['6281524633549','62895323133060','6281257735703','6281351236907']
 global.modsName = ['galang','mila','loli','ara']
 global.prems = []
@@ -515,15 +515,6 @@ conn.handler = async function (m) {
       }
     }
 
-
-    if (!m.fromMe && !selfMode && global.DATABASE.data.chats[m.chat].isBanned == false && global.DATABASE.data.users[m.sender].isBanned == false) {
-      haloBot = m.text.toLowerCase()
-      if (haloBot == "bot") {
-        conn.updatePresence(m.chat, Presence.composing)
-        conn.reply(m.chat, `*${prefixhl}menu* = melihat menu bot\n*${prefixhl}help* = cara menggunakan bot`, m)
-      }
-    }
-
     function getRandom(min, max) {
       min = Math.ceil(min)
       max = Math.floor(max)
@@ -718,10 +709,13 @@ conn.handler = async function (m) {
       levelAwal = conn.level(user.xp)[0]
       if (user.premium == true) {
         user.limit -= m.limit * 1
+        user.xp += m.limit*1
       } else if (user.limit > 100 || user.exp > 1000000000) {
         user.limit -= m.limit * limitAsli
+        // user.xp += m.limit*1
       } else {
         user.limit -= m.limit * 1
+        // user.xp += m.limit*1
       }
       // nambah level
       user.xp += m.limit*1

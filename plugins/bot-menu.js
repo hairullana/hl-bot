@@ -73,7 +73,7 @@ let handler  = async (m, { conn, usedPrefix: _p }) => {
     var update = "\n\n*❏ UPDATE FITUR*\n- Perubahan command peringkat .rank (level) / .rich (saldo) / .top (limit)\n- Leveling (hadiah peti rahasia menyesuaikan level)\n- Perbaikan game *.tebakgambar*\n- Game baru *.siapaaku*, *.tebak* (tebak-tebakan), *.tebakkata*, *.susunkata*, *.asahotak*"
 
     conn.menu = conn.menu ? conn.menu : {}
-    let before = conn.menu.before || `Hai *%name*\nLevel : ${conn.level(xp)} (${xp.toLocaleString()} xp)\nSaldo Rp. %exp (%limit Limit)\nTotal User : %totalreg\n\n❏ Bingung dengan bot ? Ketik *.help*\n❏ Upgrade ? Ketik *.infopremium*\n❏ Invite bot ke GC ? Ketik *.sewabot*${update}\n\nInfo Bot:\nIG: https://instagram.com/loadingtomastah\nTele: https://t.me/loadingtomastah\n\n%readmore`
+    let before = conn.menu.before || `Hai *%name*\nLevel : ${conn.level(xp)[0].toLocaleString()} (${xp.toLocaleString()} XP / ${conn.level(xp)[1].toLocaleString()} XP)\nSaldo Rp. %exp (%limit Limit)\nTotal User : %totalreg\n\n❏ Bingung dengan bot ? Ketik *.help*\n❏ Upgrade ? Ketik *.infopremium*\n❏ Invite bot ke GC ? Ketik *.sewabot*${update}\n\nInfo Bot:\nIG: https://instagram.com/loadingtomastah\nTele: https://t.me/loadingtomastah\n\n%readmore`
     let header = conn.menu.header || '   *❖  %category*\n'
     let body   = conn.menu.body   || ' » %cmd%islimit'
     // let footer = conn.menu.footer || '╚════════════════\n'

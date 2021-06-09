@@ -20,7 +20,3 @@ handler.botAdmin = false
 handler.fail = null
 handler.exp = 0
 module.exports = handler
-
-function pickRandom(list) {
-  return list[Math.floor(Math.random() * list.length)]
-}
