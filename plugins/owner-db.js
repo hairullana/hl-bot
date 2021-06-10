@@ -30,7 +30,7 @@ let handler  = async (m, { conn, text }) => {
   for (let jid in chats){
     if  (now - chats[jid].lastseen > anu) chat += 1
   }
-  return conn.reply(m.chat,`Terdapat *${user} member* dan *${chat} chat* di database yang tidak aktif lebih dari seminggu.\n\nKetik *.db clean* untuk membersihkan data`,m)
+  return conn.reply(m.chat,`Terdapat *${user} user* dan *${chat} chat* di database yang tidak aktif lebih dari seminggu.\n\nKetik *.db clean* untuk membersihkan data`,m)
 }
 handler.help = ['db']
 handler.tags = ['owner']

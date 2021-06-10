@@ -2,7 +2,9 @@ let gtts = require('node-gtts')
 let fs = require('fs')
 let path = require('path')
 let { spawn } = require('child_process')
-let handler = async (m, { conn, args }) => {
+let handler = async (m, { conn, args, usedPrefix, command }) => {
+  if (!args[0]) return m.reply(`*Contoh Format Yang Benar :*\n\n*${usedPrefix + command} id saya dari indonesia*`)
+
   let lang = 'id'
   let text = args.slice(1).join(' ')
   if (args[0].length === 2) lang = args[0]
@@ -11,7 +13,7 @@ let handler = async (m, { conn, args }) => {
   let res
   try { res = await tts(text, lang) }
   catch (e) {
-    m.reply(e + '')
+    // m.reply(e + '')
     res = await tts(text)
   } finally {
     conn.sendFile(m.chat, res, 'tts.opus', null, m, true)

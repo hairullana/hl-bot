@@ -16,6 +16,7 @@ let handler = async (m, { conn, args, participants }) => {
   let usersExp = sortedExp.map(v => v[0])
   let usersLim = sortedLim.map(v => v[0])
   let len = args[0] && args[0].length > 0 ? Math.min(1000, Math.max(parseInt(args[0]), 5)) : Math.min(10, sortedExp.length)
+  if (isNaN(len)) len = 10
 
   if (args[0] > 100) {
     conn.reply(m.chat, `*Masukkan maksimal 100*`, m)
@@ -31,9 +32,9 @@ ${sortedLim.slice(0, len).map(([user, data], i) => (i + 1) + '. ' + conn.getName
   }
 
 }
-handler.help = ['toplokal','toplokal _total_','ranklimit','ranklimit _total_']
+handler.help = ['toplokal','toplokal _total_','ranklimit','ranklimit _total_',]
 handler.tags = ['xp']
-handler.command = /^(toplokal|ranklimit|top)$/i
+handler.command = /^(toplokal|ranklimit)$/i
 handler.fail = null
 handler.exp = 100
 module.exports = handler

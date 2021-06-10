@@ -8,7 +8,9 @@ const format = num => {
   )
 }
 
-let handler = async (m, { conn, command, args }) => {
+let handler = async (m, { conn, usedPrefix, command, args }) => {
+  
+
   var money = global.DATABASE._data.users[m.sender].exp
   // harga limit 
   var hargaLimit = 100000
@@ -34,6 +36,7 @@ let handler = async (m, { conn, command, args }) => {
   let count = command.replace(/^buy/i, '')
   count = count ? /all/i.test(count) ? Math.floor(global.DATABASE._data.users[m.sender].exp / hargaLimit) : parseInt(count) : args[0] ? parseInt(args[0]) : 1
   count = Math.max(1, count)
+  if (isNaN(count)) return m.reply(`*Contoh Format Yang Benar :*\n\n*${usedPrefix}buy 1*\n*${usedPrefix}buyall*`)
   if (global.DATABASE._data.users[m.sender].exp >= hargaLimit * count) {
     global.DATABASE._data.users[m.sender].exp -= hargaLimit * count
     global.DATABASE._data.users[m.sender].limit += count

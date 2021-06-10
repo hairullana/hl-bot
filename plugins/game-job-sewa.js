@@ -53,7 +53,12 @@ let handler = async (m, { conn, text, participants }) => {
         let users = participants.map(u => u.jid)
         var tag
 		    tag = users[Math.floor(users.length * Math.random())]
-        while(typeof global.DATABASE.data.users[tag] == "undefined" || global.DATABASE.data.users[tag].limit == 0) tag = users[Math.floor(users.length * Math.random())]
+        let x = 0
+        while(typeof global.DATABASE.data.users[tag] == "undefined" || global.DATABASE.data.users[tag].limit == 0 || global.DATABASE.data.users[tag].premium) {
+          tag = users[Math.floor(users.length * Math.random())]
+          x += 1
+          if (x == 10) return m.reply("*Gagal mendapatkan limit karena si maling terlalu tolol.*")
+        }
         limitMax = getRandom(1,Math.floor(global.DATABASE.data.users[user].price/100000)*2)
         if (global.DATABASE.data.users[tag].limit < limitMax){
           limitMax = global.DATABASE.data.users[tag].limit
