@@ -70,7 +70,7 @@ let handler = async (m, { conn, command, text }) => {
 
   if (global.DATABASE.data.users[m.sender].exp < jumlah){
     maxTF = Math.floor(global.DATABASE.data.users[m.sender].exp / 105 * 100)
-    return conn.reply(m.chat,`*Uang anda tidak mencukupi untuk melakukan transfer dengan jumlah Rp. ${jumlah.toLocaleString()}
+    return conn.reply(m.chat,`*Uang anda tidak mencukupi untuk melakukan transfer dengan jumlah Rp. ${jumlah.toLocaleString()}*
   
 *Saldo anda : Rp. ${global.DATABASE.data.users[m.sender].exp.toLocaleString()}*`)
   }

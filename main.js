@@ -463,7 +463,7 @@ conn.handler = async function (m) {
       conn.voice(m.chat, buffer, option)
     }
 
-    if (enable.nolink == true && !whitelist) {
+    if (enable.nolink == true) {
       var linkGC = 'chat.whatsapp.com/' + (conn.groupInviteCode(m.chat))
       if (m.isGroup && !isAdmin && isBotAdmin) {
         if (m.text.match(/(chat.whatsapp.com)/gi)) {

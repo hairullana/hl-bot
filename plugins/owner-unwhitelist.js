@@ -1,40 +1,27 @@
 let handler = async (m, { conn, text }) => {
-	function no(number){
-    return number.replace(/\s/g,'').replace(/([@+-])/g,'')
-  }
-
-	text = no(text)
+	if(!text && !m.quoted) return conn.reply(m.chat, `*Masukkan atau tag nomor user.*`, m)
+	let number
 	
-	if(isNaN(text)) {
-		var number = text.split`@`[1]
-	} else if(!isNaN(text)) {
-		var number = text
-	}
-	
-	if(!text && !m.quoted) return conn.reply(m.chat, `*Give a number or reply chat target.*`, m)
-	if(number.length > 15) return conn.reply(m.chat, `*Format is Invalid.*`, m)
-	
-try {
 	if(text) {
+		number = conn.number(text)
+		if (isNaN(number)) return m.reply(`*Masukkan format nomor yang benar.*`)
 		var user = number + '@s.whatsapp.net'
 	} else if(m.quoted.sender) {
 		var user = m.quoted.sender
-	} else if(m.mentionedJid) {
-		var user = number + '@s.whatsapp.net'
-	} 
-} catch (e) {
-		} finally {
-			if(global.DATABASE._data.users[user].whitelist == false){
-			  conn.reply(m.chat, `*@${user.split('@')[0]} tidak berada di whitelist user*`, m, {contextInfo: {
-          mentionedJid: [user]
-        }})
-			}else {
-        global.DATABASE._data.users[user].whitelist = false
-				conn.reply(m.chat, `*Berhasil menghapus @${user.split('@')[0]} di whitelist user*`, m, {contextInfo: {
-          mentionedJid: [user]
-        }})
-			}
-	}	
+	}
+
+	if (typeof global.DATABASE.data.users[user] == "undefined") return m.reply(`*Nomor ${user.split('@')[0]} tidak terdaftar di bot.*`)
+
+	if(global.DATABASE._data.users[user].whitelist == false){
+		conn.reply(m.chat, `*@${user.split('@')[0]} tidak berada di whitelist user*`, m, {contextInfo: {
+			mentionedJid: [user]
+		}})
+	}else {
+		global.DATABASE._data.users[user].whitelist = false
+		conn.reply(m.chat, `*Berhasil menghapus @${user.split('@')[0]} di whitelist user*`, m, {contextInfo: {
+			mentionedJid: [user]
+		}})
+	}
 }
 
 handler.help = ['_62xx_','_@user_','_(reply)_'].map(v => 'unmark ' + v)
