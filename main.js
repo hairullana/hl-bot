@@ -52,8 +52,8 @@ global.wait = '_Sedang diproses . . ._'
 global.error = '_Fitur Error!_'
 
 global.owner = ['6283119526456','6282215215399','6285157700416']
-global.mods = ['6281524633549','62895323133060','6281257735703','6281351236907']
-global.modsName = ['galang','mila','loli','ara']
+global.mods = ['6281524633549','62895323133060','6281257735703','6281351236907','6282288064481']
+global.modsName = ['galang','mila','loli','ara','floren']
 global.prems = []
 global.APIs = {
   nrtm: 'https://nurutomo.herokuapp.com',

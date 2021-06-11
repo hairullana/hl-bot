@@ -20,8 +20,12 @@ let handler  = async (m, { conn,text }) => {
 		name = global.modsName[3]
 		number = global.mods[3]
 		conn.sendVcard(m.chat, name, number, m)
+	}else if (text == global.modsName[4]){
+		name = global.modsName[4]
+		number = global.mods[4]
+		conn.sendVcard(m.chat, name, number, m)
 	}else (
-		m.reply("*Silahkan pilih kontak moderator :*\n\n.mods loli\n.mods mila\n.mods galang\n.mods ara")
+		m.reply("*Silahkan pilih kontak moderator :*\n\n.mods loli\n.mods mila\n.mods galang\n.mods ara\n.mods floren")
 	)
 }
 handler.help = ['mods']

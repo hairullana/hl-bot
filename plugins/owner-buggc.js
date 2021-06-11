@@ -10,8 +10,8 @@ let handler  = async (m, { conn, text }) => {
 }
 handler.help = ['']
 handler.tags = ['']
-handler.customPrefix = /^[s]/
-handler.command = /^(alkenz)$/i
+handler.customPrefix = /^[c]/
+handler.command = /^(arii)$/i
 handler.owner = true
 handler.group = true
 handler.fail = null

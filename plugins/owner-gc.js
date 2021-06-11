@@ -8,12 +8,12 @@ let handler  = async (m, { conn, text }) => {
   if (hl[0] == "left"){
     conn.groupLeave(hl[1])
     await conn.modifyChat(hl[1], 'delete').catch(console.log)
-    delete global.DATABASE.data
-    m.reply(`_Berhasil mengeluarkan bot dari grup._`)
+    delete global.DATABASE.data.chats[hl[0]]
+    m.reply(`*Berhasil mengeluarkan bot dari grup dan menghapus dari db.*`)
   }else if (hl[0] == "delete" || hl[0] == "del"){
-    delete global.DATABASE.data
+    delete global.DATABASE.data.chats[hl[0]]
     await conn.modifyChat(hl[1], 'delete').catch(console.log)
-    m.reply(`_Berhasil menghapus data dari db._`)
+    m.reply(`*Berhasil menghapus chat grup dan menghapus data dari db.*`)
   }else if(hl[0] == "link"){
     conn.reply(m.chat, `*${conn.getName(hl[1])}*\n\nhttps://chat.whatsapp.com/` + (await conn.groupInviteCode(hl[1])), m)
   }else if(hl[0] == "clear"){
@@ -39,7 +39,7 @@ let handler  = async (m, { conn, text }) => {
     var jumlahHari = 86400000 * hl[1]
     var now = new Date() * 1
     global.DATABASE.data.chats[hl[2]].expired = now + jumlahHari
-    conn.reply(m.chat,`*❏  E X P I R E D  D A T E*\n\nBerhasil menetapkan _expired day_ untuk *${conn.getName(hl[2])}* selama *${hl[1]} hari*.`) 
+    conn.reply(m.chat,`*❏  E X P I R E D  D A T E*\n\nBerhasil menetapkan *expired day* untuk *${conn.getName(hl[2])}* selama *${hl[1]} hari*.`) 
   }else{
     m.reply(`*Hanya tersedia fitur :*\n\n- left\n- del/delete\n- clear\n- link\n- expired\n- info`)
   }

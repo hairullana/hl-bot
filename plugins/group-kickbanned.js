@@ -1,5 +1,6 @@
 let { MessageType, Presence } = require('@adiwajshing/baileys')
 let handler = async (m, { conn, text, participants }) => {
+	const delay = time => new Promise(res=>setTimeout(res,time));
 	await conn.updatePresence(m.chat, Presence.composing) 
 	let member = participants.map(u => u.jid)
 	if(!text) {
@@ -26,6 +27,7 @@ let handler = async (m, { conn, text, participants }) => {
 		let users = m.isGroup ? participants.find(u => u.jid == member[i]) : {}
 		if(typeof global.DATABASE.data.users[member[i]] !== 'undefined' && !users.isAdmin && !users.isSuperAdmin) { 
       if(global.DATABASE.data.users[member[i]].isBanned == true){
+				await delay(2500)
         await conn.groupRemove(m.chat, [member[i]])
       }
 		}

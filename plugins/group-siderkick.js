@@ -1,5 +1,6 @@
 let { MessageType, Presence } = require('@adiwajshing/baileys')
 let handler = async (m, { conn, text, participants }) => {
+	const delay = time => new Promise(res=>setTimeout(res,time));
 	await conn.updatePresence(m.chat, Presence.composing) 
 	var lama = 86400000 * 10
 	let member = participants.map(u => u.jid)
@@ -33,14 +34,12 @@ let handler = async (m, { conn, text, participants }) => {
 		if((typeof global.DATABASE.data.users[member[i]] == 'undefined' || new Date() * 1 - global.DATABASE.data.users[member[i]].lastseen > lama) && !users.isAdmin && !users.isSuperAdmin) { 
 			if (typeof global.DATABASE.data.users[member[i]] !== 'undefined'){
 				if(global.DATABASE.data.users[member[i]].whitelist == false){
+					await delay(2500)
 					await conn.groupRemove(m.chat, [member[i]])
 				}
 			}else {
+				await delay(2500)
 				await conn.groupRemove(m.chat, [member[i]])
-			}
-		}else{
-			if (typeof global.DATABASE.data.users[member[i]] !== 'undefined'){
-				global.DATABASE.data.users[member[i]].chat = 0
 			}
 		}
 	}
