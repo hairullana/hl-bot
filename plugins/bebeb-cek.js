@@ -28,10 +28,10 @@ let handler = async (m, { conn, text }) => {
   }
 
   if (typeof global.DATABASE.data.users[user] == "undefined"){
-    return m.reply("*Orang yang anda tag tidak terdaftar di HL Bot.*")
+    return m.reply("*Orang yang anda tag tidak terdaftar di Bot.*")
   }
 
-  if (global.DATABASE.data.users[global.DATABASE.data.users[user].pasangan] == "" || typeof global.DATABASE.data.users[global.DATABASE.data.users[user].pasangan] == "undefined"){
+  if (typeof global.DATABASE.data.users[global.DATABASE.data.users[user].pasangan] == "undefined"){
     return m.reply("*Pacar/gebetan target tidak terdaftar di HL Bot.*")
   }
 

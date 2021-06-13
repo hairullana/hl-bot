@@ -1,7 +1,7 @@
 let { MessageType, Presence } = require('@adiwajshing/baileys')
 let handler = async (m, { conn, text, participants }) => {
 	await conn.updatePresence(m.chat, Presence.composing) 
-	var lama = 86400000 * 10
+	var lama = 86400000 * 7
 	let member = participants.map(u => u.jid)
 	if(!text) {
 		var pesan = "Harap aktif di grup karena akan ada pembersihan member setiap saat"
@@ -26,7 +26,7 @@ let handler = async (m, { conn, text, participants }) => {
 		}
 	}
 	if(total == 0) return conn.reply(m.chat, `*Digrup ini tidak terdapat sider.*`, m)
-	conn.reply(m.chat, `*${total}/${sum}* anggota grup *${conn.getName(m.chat)}* adalah sider dengan alasan :\n1. Tidak aktif selama lebih dari 10 hari\n2. Baru join tetapi tidak pernah nimbrung\n\n_“${pesan}”_\n\n*LIST SIDER :*\n${sider.map(v => '  ○ @' + v.replace(/@.+/, '' + typeof global.DATABASE.data.users[v] == "undefined" ? ' join doang' : ' off ' + msToDate(new Date()*1 - global.DATABASE.data.users[v].lastseen))).join('\n')}`, m,{ contextInfo: { mentionedJid: sider } })
+	conn.reply(m.chat, `*${total}/${sum}* anggota grup *${conn.getName(m.chat)}* adalah sider dengan alasan :\n1. Tidak aktif selama lebih dari 7 hari\n2. Baru join tetapi tidak pernah nimbrung\n\n_“${pesan}”_\n\n*LIST SIDER :*\n${sider.map(v => '  ○ @' + v.replace(/@.+/, '' + typeof global.DATABASE.data.users[v] == "undefined" ? ' join doang' : ' off ' + msToDate(new Date()*1 - global.DATABASE.data.users[v].lastseen))).join('\n')}`, m,{ contextInfo: { mentionedJid: sider } })
 }
 handler.help = ['sider']
 handler.tags = ['group', 'group admin']

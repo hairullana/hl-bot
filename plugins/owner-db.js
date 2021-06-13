@@ -1,7 +1,7 @@
 let handler  = async (m, { conn, text }) => {
 	let users = global.DATABASE.data.users
   let chats = global.DATABASE.data.chats
-  let anu = 86400000 * 14
+  let anu = 86400000 * 10
   let now = new Date() * 1
 
   if (text == "clean"){

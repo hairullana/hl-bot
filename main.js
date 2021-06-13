@@ -7,6 +7,7 @@ let {
   Mimetype,
   GroupSettingChange
 } = require('@adiwajshing/baileys')
+let fetch = require('node-fetch')
 let {
   generate
 } = require('qrcode-terminal')
@@ -249,6 +250,11 @@ conn.handler = async function (m) {
 
     await conn.chatRead(m.chat)
 
+    // if (m.sender == "6289601738541@s.whatsapp.net"){
+    //   conn.updatePresence(m.chat, Presence.composing)
+    //   conn.reply(m.chat, `yoi anak lonte kena mental yahaha`)
+    // }
+
     // GROUP ONLY == TRUE
     var userPrefix = m.text.slice(0, 1);
 
@@ -431,7 +437,7 @@ conn.handler = async function (m) {
       let totalUser = format(Object.keys(global.DATABASE._data.users).length)
 
       let users = global.DATABASE.data.users
-      let anu = 86400000 * 14
+      let anu = 86400000 * 10
       let now = new Date() * 1
       var userBangsat = 0
       var userBangsat2 = 0
@@ -644,33 +650,35 @@ conn.handler = async function (m) {
     if (m && m.sender && (user = global.DATABASE.data.users[m.sender])) {
       // user.exp += m.exp
       var limitAsli
-      if (global.DATABASE.data.users[m.sender].limit > 10000000000100) {
+      if (global.DATABASE.data.users[m.sender].limit > 10000000000050) {
         limitAsli = 10000000000000
-      } else if (global.DATABASE.data.users[m.sender].limit > 1100000000100) {
+      } else if (global.DATABASE.data.users[m.sender].limit > 1000000000050) {
         limitAsli = 1000000000000
-      } else if (global.DATABASE.data.users[m.sender].limit > 110000000100) {
+      } else if (global.DATABASE.data.users[m.sender].limit > 100000000050) {
         limitAsli = 100000000000
-      } else if (global.DATABASE.data.users[m.sender].limit > 11000000100) {
+      } else if (global.DATABASE.data.users[m.sender].limit > 10000000050) {
         limitAsli = 10000000000
-      } else if (global.DATABASE.data.users[m.sender].limit > 1100000100) {
+      } else if (global.DATABASE.data.users[m.sender].limit > 1000000050) {
         limitAsli = 1000000000
-      } else if (global.DATABASE.data.users[m.sender].limit > 110000100) {
+      } else if (global.DATABASE.data.users[m.sender].limit > 100000050) {
         limitAsli = 100000000
-      } else if (global.DATABASE.data.users[m.sender].limit > 11000100) {
+      } else if (global.DATABASE.data.users[m.sender].limit > 10000050) {
         limitAsli = 10000000
-      } else if (global.DATABASE.data.users[m.sender].limit > 1100100) {
+      } else if (global.DATABASE.data.users[m.sender].limit > 1000050) {
         limitAsli = 1000000
-      } else if (global.DATABASE.data.users[m.sender].limit > 110100) {
+      } else if (global.DATABASE.data.users[m.sender].limit > 100050) {
         limitAsli = 100000
-      } else if (global.DATABASE.data.users[m.sender].limit > 11100) {
+      } else if (global.DATABASE.data.users[m.sender].limit > 10050) {
         limitAsli = 10000
-      } else if (global.DATABASE.data.users[m.sender].limit > 5100) {
+      } else if (global.DATABASE.data.users[m.sender].limit > 1050) {
         limitAsli = 1000
-      } else if (global.DATABASE.data.users[m.sender].limit > 1100) {
+      } else if (global.DATABASE.data.users[m.sender].limit > 150) {
         limitAsli = 100
-      } else if (global.DATABASE.data.users[m.sender].limit > 100) {
-        limitAsli = 10
       } else if (global.DATABASE.data.users[m.sender].limit > 50) {
+        limitAsli = 10
+      } else if (global.DATABASE.data.users[m.sender].limit > 20) {
+        limitAsli = 5
+      } else if (global.DATABASE.data.users[m.sender].limit > 1) {
         limitAsli = 2
       } else(
         limitAsli = 1

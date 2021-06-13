@@ -35,6 +35,8 @@ let handler = async (m, { conn, text }) => {
     if(!users) return conn.reply(m.chat, `*Target atau Nomor tidak ditemukan, mungkin sudah keluar atau bukan anggota grup ini.*`, m)
     if(user === m.sender) return conn.reply(m.chat, `*Tidak bisa berpacaran dengan diri sendiri.*`, m)
     if(user === conn.user.jid) return conn.reply(m.chat, `*Tidak bisa berpacaran dengan bot.*`, m)
+
+    if (typeof global.DATABASE.data.users[user] == "undefined") return m.reply("*Orang yang anda tag tidak terdaftar di bot.*")
     
     if(global.DATABASE.data.users[m.sender].pasangan != "" && global.DATABASE.data.users[global.DATABASE.data.users[m.sender].pasangan].pasangan == m.sender && global.DATABASE.data.users[m.sender].pasangan != user){
       var denda = Math.ceil(global.DATABASE.data.users[m.sender].exp/100*20)

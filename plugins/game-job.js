@@ -27,6 +27,7 @@ let handler = async (m, { conn, args }) => {
         mentionedJid: [m.sender]
       }})
     }else if (args[0] === "maling"){
+      return m.reply(`*Fitur job maling dinonaktifkan sementara.*`)
       global.DATABASE.data.users[m.sender].job = args[0]
       global.DATABASE.data.users[m.sender].price = parseInt(args[1])
       conn.reply(m.chat,`*❏  J A S A  M A L I N G*\n\n@${m.sender.split('@')[0]} menawarkan diri sebagai tukang maling dengan biaya ${args[1].toLocaleString()},-${ket}`,m, {contextInfo: {

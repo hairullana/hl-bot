@@ -40,7 +40,7 @@ let handler = async (m, { conn, command, text }) => {
     jumlah = hl[1].replace(/([.])/g,'')
   }
 
-  if (target == global.conn.user.jid) return m.reply("*Tidak bisa melakukan transfer ke HL Bot.*")
+  if (target == global.conn.user.jid) return m.reply("*Tidak bisa melakukan transfer ke bot.*")
 
   if (typeof global.DATABASE.data.users[target] == "undefined"){
     return conn.reply(m.chat,`*Nomor yang ingin anda transfer tidak terdaftar di bot.*
