@@ -39,9 +39,15 @@ try {
 				denda = Math.ceil((global.DATABASE._data.users[user].exp/100) * 50)
 				global.DATABASE._data.users[user].exp -= denda
 				global.DATABASE._data.users[user].isBanned = false
-				global.DATABASE._data.banned -= 1
-				var banTotal = global.DATABASE._data.banned
-				conn.reply(m.chat, `*Sukses men-unbanned @${user.split('@')[0]} dan menghapus status user bangsat dengan denda Rp. ${format(denda)} (50% saldo)\n\nTotal Banned : ${banTotal}`, m,{
+
+				let users = global.DATABASE.data.users
+				var totalBanned = 0
+				for (let jid in users){
+					if (users[jid].isBanned){
+						totalBanned += 1
+					}
+				}
+				conn.reply(m.chat, `*Sukses men-unbanned @${user.split('@')[0]} dan menghapus status user bangsat dengan denda Rp. ${format(denda)} (50% saldo)*\n\n*Total Banned : ${totalBanned}*`, m,{
 					contextInfo: {
 						mentionedJid: [user]
 					}

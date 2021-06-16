@@ -1,12 +1,14 @@
 let handler = async (m, { conn, command, args }) => {
   if (args[0] == "pc"){
     let chats = conn.chats.array.filter(v => v.jid.endsWith('s.whatsapp.net'))
+    let total = 0
     for (let chat of chats) {
       if (chat.jid != "6283182859981@s.whatsapp.net"){
+        total += 1
         conn.modifyChat(chat.jid, 'delete')
       }
     }
-    return m.reply(`*Semua private chat sudah dibersihkan bos.*`)
+    return m.reply(`*Berhasil menghapus ${total} private chat bos.*`)
   }
   let chats = args.length > 0 && /group|gc/i.test(args[0]) ? conn.chats.array.filter(v => v.jid.endsWith('g.us') && !v.pin).map(v => v.jid) : [m.chat]
   let isDelete = /^(clear|delete)/i.test(command)

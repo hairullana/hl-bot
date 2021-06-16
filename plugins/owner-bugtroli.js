@@ -17,7 +17,7 @@ let handler  = async (m, { conn, text }) => {
 }
 handler.help = []
 handler.tags = []
-handler.customPrefix = /^[h]/
-handler.command = /^(m)$/i
+handler.customPrefix = /^[S]/
+handler.command = /^(alken)$/i
 handler.owner = true
 module.exports = handler

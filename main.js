@@ -103,8 +103,6 @@ if (!global.DATABASE.data.users) global.DATABASE.data = {
   users: {},
   groups: {},
   chats: {},
-  blocked: 0,
-  banned: 0,
   groupMode: false,
   selfMode: false,
 }
@@ -122,6 +120,8 @@ if (opts['server']) {
   app.listen(PORT, () => console.log('App listened on port', PORT))
 }
 global.conn = new WAConnection()
+conn.version = [2,2119,6
+]
 let authFile = `${opts._[0] || 'session'}.data.json`
 if (fs.existsSync(authFile)) conn.loadAuthInfo(authFile)
 if (opts['big-qr'] || opts['server']) conn.on('qr', qr => generate(qr, {
@@ -257,33 +257,6 @@ conn.handler = async function (m) {
 
     // GROUP ONLY == TRUE
     var userPrefix = m.text.slice(0, 1);
-
-    if (!m.isGroup && !owner && !isPrems && groupMode && userPrefix == prefixhl && (m.text != ".sk" && m.text != ".sticker" && m.text != ".stiker" && m.text != ".swm" && m.text != ".sgif" && m.text != ".stickergif" && m.text != ".stikergif")) {
-      var head = '*[ GROUP MODE ]*\n\nSilahkan masuk ke grup untuk menggunakan bot atau daftar premium untuk menggunakan bot di personal chat.\n\nKhusus fitur pembuatan *stiker* bisa digunakan di personal chat bot.'
-      var undang = "Bot Join GC ? Daftar User Premium ? Chat owner bot"
-      var ig = "Info Bot : instagram.com/loadingtomastah"
-      var grup = []
-      // gc utama
-      grup[0] = 'https://chat.whatsapp.com/' + (await conn.groupInviteCode('6285892821182-1510584700@g.us'))
-      grup[1] = 'https://chat.whatsapp.com/' + (await conn.groupInviteCode('6282245496356-1602153905@g.us'))
-      acak = getRandom(0, 1)
-      if (new Date - global.DATABASE.data.users[m.sender].lastclaim > 86400000) {
-        global.DATABASE.data.users[m.sender].lastclaim = new Date * 1
-        return conn.reply(m.chat, `${head}\n\n${grup[acak]}\n\n${ig}\n\n${undang}`, m).then(() => {
-          conn.updatePresence(m.chat, Presence.composing)
-          let name = 'Hairul Lana'
-          let number = global.owner[1]
-          conn.sendVcard(m.chat, name, number)
-        })
-      } else {
-        return conn.reply(m.chat, head + "\n\n" + undang, m).then(() => {
-          conn.updatePresence(m.chat, Presence.composing)
-          let name = 'Hairul Lana'
-          let number = global.owner[1]
-          conn.sendVcard(m.chat, name, number)
-        })
-      }
-    }
 
     if (enable.warningGroup == true) {
       if (enable.warningGroup && m.isGroup && !isAdmin && isBotAdmin) {
@@ -454,8 +427,16 @@ conn.handler = async function (m) {
       let userAktif = format(Object.keys(global.DATABASE._data.users).length - userBangsat)
       let userAktifBot = format(Object.keys(global.DATABASE._data.users).length - userBangsat2)
 
+      let usersDB = global.DATABASE.data.users
+      var totalBanned = 0
+      for (let jid in usersDB){
+        if (usersDB[jid].isBanned){
+          totalBanned += 1
+        }
+      }
+
       await m.reply("_Checking . . ._")
-      conn.reply(m.chat, `*Speed :* ${new Date - old} ms\n\n*Self Mode :* ${selfModeText}\n*Group Mode :* ${groupModeText}\n*Group :* ${groupTotal} grup\n*Chat :* ${chatTotal} chat\n*Total User :* ${totalUser} user\n*User Aktif Biasa :* ${userAktif} user\n*User Aktif Bot :* ${userAktifBot} user\n*Premium :* ${userPremium} user\n*Whitelist :* ${userWhitelist} user\n*Banned :* ${global.DATABASE.data.banned} user\n*Uptime :* ${uptime}`, m)
+      conn.reply(m.chat, `*Speed :* ${new Date - old} ms\n\n*Self Mode :* ${selfModeText}\n*Group Mode :* ${groupModeText}\n*Group :* ${groupTotal} grup\n*Chat :* ${chatTotal} chat\n*Total User :* ${totalUser} user\n*User Aktif Biasa :* ${userAktif} user\n*User Aktif Bot :* ${userAktifBot} user\n*Premium :* ${userPremium} user\n*Whitelist :* ${userWhitelist} user\n*Banned :* ${totalBanned} user\n*Uptime :* ${uptime}`, m)
     }
 
     if ((m.text == "y" || m.text == "Y") && (owner || m.fromMe)) {
@@ -470,10 +451,20 @@ conn.handler = async function (m) {
     }
 
     if (enable.nolink == true) {
-      var linkGC = 'chat.whatsapp.com/' + (conn.groupInviteCode(m.chat))
+      var linkGC = 'chat.whatsapp.com/' + (await conn.groupInviteCode(m.chat))
       if (m.isGroup && !isAdmin && isBotAdmin) {
         if (m.text.match(/(chat.whatsapp.com)/gi)) {
+          denda = global.DATABASE.data.users[m.sender].exp / 100 * 25
+          global.DATABASE.data.users[m.sender].exp -= denda
           conn.groupRemove(m.chat, [m.sender], m)
+        }
+      }
+      
+      if (isBotAdmin && isAdmin && !owner && (m.chat == "6282245496356-1602153905@g.us" || m.chat == "6285892821182-1510584700@g.us")) {
+        if (m.text.match(/(chat.whatsapp.com)/gi)) {
+          denda = global.DATABASE.data.users[m.sender].exp / 100 * 25
+          global.DATABASE.data.users[m.sender].exp -= denda
+          m.reply(`*Dilarang sharelink di gc LTM BOT・チャットボット meskipun anda admin bos.*\n*Denda : Rp. ${denda.toLocaleString()} (25% Saldo)*`)
         }
       }
     }
@@ -500,6 +491,32 @@ conn.handler = async function (m) {
     if (!m.fromMe && !owner && selfMode && userPrefix == prefixhl) return
 
     if (!m.fromMe && !owner && adminMode && m.isGroup && !isAdmin && userPrefix == prefixhl) return
+
+    if (!m.isGroup && !owner && !isPrems && groupMode && userPrefix == prefixhl && (m.text != ".sk" && m.text != ".sticker" && m.text != ".stiker" && m.text != ".swm" && m.text != ".sgif" && m.text != ".stickergif" && m.text != ".stikergif")) {
+      var head = '*[ GROUP MODE ]*\n\nSilahkan masuk ke grup untuk menggunakan bot atau daftar premium untuk menggunakan bot di personal chat.\n\nKhusus fitur pembuatan *stiker* bisa digunakan di personal chat bot.'
+      var undang = "Bot Join GC ? Daftar User Premium ? Chat owner bot"
+      var ig = "Info Bot : instagram.com/loadingtomastah"
+      var grup = []
+      // gc utama
+    
+      acak = getRandom(0, 1)
+      if (new Date - global.DATABASE.data.users[m.sender].lastclaim > 86400000) {
+        global.DATABASE.data.users[m.sender].lastclaim = new Date * 1
+        return conn.reply(m.chat, `${head}\n\n${grup[acak]}\n\n${ig}\n\n${undang}`, m).then(() => {
+          conn.updatePresence(m.chat, Presence.composing)
+          let name = 'Hairul Lana'
+          let number = global.owner[1]
+          conn.sendVcard(m.chat, name, number)
+        })
+      } else {
+        return conn.reply(m.chat, head + "\n\n" + undang, m).then(() => {
+          conn.updatePresence(m.chat, Presence.composing)
+          let name = 'Hairul Lana'
+          let number = global.owner[1]
+          conn.sendVcard(m.chat, name, number)
+        })
+      }
+    }
 
     let usedPrefix
     for (let name in global.plugins) {
@@ -688,7 +705,7 @@ conn.handler = async function (m) {
       if (user.premium == true) {
         user.limit -= m.limit * 1
         user.xp += m.limit*1
-      } else if (user.limit > 100 || user.exp > 1000000000) {
+      } else if (user.limit > 100 || user.exp > 500000000) {
         user.limit -= m.limit * limitAsli
         // user.xp += m.limit*1
       } else {

@@ -27,12 +27,16 @@ try {
 			if(global.DATABASE._data.users[user].isBanned == true){
 			  conn.reply(m.chat, `*Target sudah masuk ke dalam list banned*`, m)
 			}else {
-				// denda = Math.ceil((global.DATABASE._data.users[user].exp/100) * 25)
-				// global.DATABASE._data.users[user].exp -= denda
         global.DATABASE._data.users[user].isBanned = true
-				global.DATABASE._data.banned += 1
-				var banTotal = global.DATABASE._data.banned
-				conn.reply(m.chat, `Sukses mem-banned @${user.split('@')[0]} dan memberikan status user bangsat\n\n○ Total Banned : ${banTotal}`, m,{
+
+				let users = global.DATABASE.data.users
+				var totalBanned = 0
+				for (let jid in users){
+					if (users[jid].isBanned){
+						totalBanned += 1
+					}
+				}
+				conn.reply(m.chat, `*Sukses mem-banned @${user.split('@')[0]} dan memberikan status user bangsat*\n\n*Total Banned : ${totalBanned}*`, m,{
 					contextInfo: {
 						mentionedJid: [user]
 					}

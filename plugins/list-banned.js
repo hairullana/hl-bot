@@ -2,15 +2,15 @@ let handler  = async (m, { conn, text }) => {
 	let users = global.DATABASE.data.users
 
   var text = ""
-  var i = 1
+  var i = 0
   for (let jid in users){
     if (users[jid].isBanned){
-      text += `\n${i}. ${conn.getName(jid)}\n    wa.me/${jid.split('@')[0]}`
       i += 1
+      text += `\n${i}. ${conn.getName(jid)}\n    wa.me/${jid.split('@')[0]}`
     }
   }
 
-  return conn.reply(m.chat,`*❏  L I S T  B A N N E D*\n❏ Total : ${i-1} user\n${text}`,m)
+  return conn.reply(m.chat,`*❏  L I S T  B A N N E D*\n❏ Total : ${i} user\n${text}`,m)
 }
 handler.help = ['listbanned','bannedlist']
 handler.tags = ['bot']

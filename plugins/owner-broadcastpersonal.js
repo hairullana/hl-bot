@@ -7,7 +7,7 @@ let handler  = async (m, { conn, text }) => {
     } : {})
     await delay(2500)
   }
-  conn.reply(m.chat, `_Mengirim pesan broadcast ke ${groups.length} chat_`, m)
+  conn.reply(m.chat, `*Mengirim pesan broadcast ke ${groups.length} chat bos*`, m)
 }
 handler.help = ['bcpc'].map(v => v + ' _text_')
 handler.tags = ['owner']
