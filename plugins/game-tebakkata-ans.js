@@ -7,12 +7,12 @@ handler.before = async function (m) {
 
     if (m.quoted.id == conn.tebakkata [id][0].id) {
         let json = JSON.parse(JSON.stringify(conn.tebakkata [id][1]))
-        if (" " + m.text.toLowerCase() == json.result.jawaban.toLowerCase()) {
+        if (m.text.toLowerCase() == json.jawaban.toLowerCase()) {
             global.DATABASE._data.users[m.sender].exp += conn.tebakkata [id][2]
             m.reply(`Benar!\n+ Rp. ${conn.tebakkata [id][2].toLocaleString()}`)
             clearTimeout(conn.tebakkata [id][3])
             delete conn.tebakkata [id]
-        } else if (m.text.toLowerCase().endsWith(json.result.jawaban.split` `[1])) m.reply(`Dikit Lagi!`)
+        } else if (m.text.toLowerCase().endsWith(json.jawaban.split` `[1])) m.reply(`Dikit Lagi!`)
         else {
           if (global.DATABASE.data.users[m.sender].exp < 50000){
             global.DATABASE.data.users[m.sender].exp = 0

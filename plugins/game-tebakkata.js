@@ -1,3 +1,4 @@
+let fs = require('fs')
 let fetch = require('node-fetch')
 const { MessageType } = require('@adiwajshing/baileys')
 
@@ -11,13 +12,16 @@ let handler = async (m, { conn, usedPrefix }) => {
         conn.reply(m.chat, 'Masih ada soal belum terjawab di chat ini', conn.tebakkata[id][0])
         throw false
     }
-    let res = await fetch(global.API('xteam', '/game/tebakkata', {}, 'APIKEY'))
-    if (res.status !== 200) throw await res.text()
-    let json = await res.json()
+
+    let tebakkata = JSON.parse(fs.readFileSync(`./src/tebakkata.json`))
+    let random = Math.floor(Math.random() * tebakkata.length)
+    const res = tebakkata[random]
+    let json = res
+
     let caption = `
 TEBAK KATA
 
-*${json.result.soal}*
+*${json.pertanyaan}*
 
 Timeout ${(timeout / 1000).toFixed(2)} detik
 Ketik ${usedPrefix}apasih untuk clue
@@ -29,7 +33,7 @@ balas pesan ini untuk menjawab!`.trim()
         }),
         json, poin,
         setTimeout(() => {
-            if (conn.tebakkata[id]) conn.reply(m.chat, `Waktu habis!\nJawabannya adalah ${json.result.jawaban}`, conn.tebakkata[id][0])
+            if (conn.tebakkata[id]) conn.reply(m.chat, `Waktu habis!\nJawabannya adalah ${json.jawaban}`, conn.tebakkata[id][0])
             delete conn.tebakkata[id]
         }, timeout)
     ]

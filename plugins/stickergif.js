@@ -1,6 +1,7 @@
 const { MessageType } = require('@adiwajshing/baileys')
 const { sticker } = require('../lib/sticker')
 let handler  = async (m, { conn, args }) => {
+    return m.reply(`*Fitur ini sedang error kak, silahkan pakai ${usedPrefix}sgif2 untuk membuat stiker gif.*`)
     let stiker = false
     m.reply(global.wait)
     try {

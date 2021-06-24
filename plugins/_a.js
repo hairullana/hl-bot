@@ -20,6 +20,10 @@ let handler = async (m, { conn, text, participants }) => {
   //   }
   // }
 	// m.reply(z)
+
+  // if(m.chat.endsWith('net')){
+  //   m.reply('yoi anak lonte')
+  // }
 }
 
 handler.command = /^(m)$/i

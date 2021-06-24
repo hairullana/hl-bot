@@ -11,6 +11,7 @@ let handler  = async (m, { conn, text }) => {
       users[jid].exp = 0
       total+=1
     }
+    users[jid].exp = Math.floor(users[jid].exp)
   }
   return conn.reply(m.chat,`*Berhasil memperbaiki ${total} error di database.*`,m)
 }

@@ -1,3 +1,4 @@
+let fs = require('fs')
 let fetch = require('node-fetch')
 const { MessageType } = require('@adiwajshing/baileys')
 
@@ -11,13 +12,16 @@ let handler = async (m, { conn, usedPrefix }) => {
         conn.reply(m.chat, 'Masih ada soal belum terjawab di chat ini', conn.siapaaku[id][0])
         throw false
     }
-    let res = await fetch(global.API('xteam', '/game/siapakahaku', {}, 'APIKEY'))
-    if (res.status !== 200) throw await res.text()
-    let json = await res.json()
+    
+    let siapaaku = JSON.parse(fs.readFileSync(`./src/siapaaku.json`))
+    let random = Math.floor(Math.random() * siapaaku.length)
+    const res = siapaaku[random]
+    let json = res
+
     let caption = `
 SIAPAKAH AKU
 
-*${json.result.soal}*
+*${json.pertanyaan}*
 
 Timeout ${(timeout / 1000).toFixed(2)} detik
 Ketik ${usedPrefix}siapasih untuk clue
@@ -29,7 +33,7 @@ balas pesan ini untuk menjawab!`.trim()
         }),
         json, poin,
         setTimeout(() => {
-            if (conn.siapaaku[id]) conn.reply(m.chat, `Waktu habis!\nJawabannya adalah ${json.result.jawaban}`, conn.siapaaku[id][0])
+            if (conn.siapaaku[id]) conn.reply(m.chat, `Waktu habis!\nJawabannya adalah ${json.jawaban}`, conn.siapaaku[id][0])
             delete conn.siapaaku[id]
         }, timeout)
     ]

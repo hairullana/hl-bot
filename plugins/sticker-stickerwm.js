@@ -1,6 +1,8 @@
 const { MessageType } = require('@adiwajshing/baileys')
 const { sticker } = require('../lib/sticker')
 let handler  = async (m, { conn, text, command }) => {
+  return m.reply(`*Fitur ini sedang error kak.*`)
+
   if (!text) return conn.reply(m.chat,`Masukkan format yang benar dengan me-reply gambar/video !\nContoh : *.${command} hairul | lana*`,m)
   if (!text.includes("|")) return conn.reply(m.chat,`Masukkan format yang benar dengan me-reply gambar/video !\nContoh : *.${command} hairul | lana*`,m)
 

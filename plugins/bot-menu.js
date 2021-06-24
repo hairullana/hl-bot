@@ -70,7 +70,11 @@ let handler  = async (m, { conn, usedPrefix: _p }) => {
           if (menu.help) groups[tag].push(menu)
     }
 
-    var update = "\n\n*❏ UPDATE FITUR*\n- Perubahan command peringkat .rank (level) / .rich (saldo) / .top (limit)\n- Leveling (hadiah peti rahasia menyesuaikan level)\n- Perbaikan game *.tebakgambar*\n- Game baru *.siapaaku*, *.tebak* (tebak-tebakan), *.tebakkata*, *.susunkata*, *.asahotak*"
+    var update = `
+
+*❏ UPDATE FITUR*
+- Game tictactoe
+- Game family100`
 
     conn.menu = conn.menu ? conn.menu : {}
     let before = conn.menu.before || `Hai *%name*\nLevel : ${conn.level(xp)[0].toLocaleString()} (${xp.toLocaleString()} XP / ${conn.level(xp)[1].toLocaleString()} XP)\nSaldo Rp. %exp (%limit Limit)\nTotal User : %totalreg\n\n❏ Bingung dengan bot ? Ketik *.help*\n❏ Upgrade ? Ketik *.infopremium*\n❏ Invite bot ke GC ? Ketik *.sewabot*${update}\n\nInfo Bot:\nIG: https://instagram.com/loadingtomastah\nTele: https://t.me/loadingtomastah\n\n%readmore`
