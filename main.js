@@ -47,7 +47,7 @@ function clockString(ms) {
 }
 
 global.prefixhl = "."
-global.packname = 'HL Gans'
+global.packname = 'HL'
 global.author = 'LTM BOT'
 global.wait = '_Sedang diproses . . ._'
 global.error = '_Fitur Error!_'

