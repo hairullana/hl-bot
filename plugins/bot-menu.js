@@ -73,6 +73,7 @@ let handler  = async (m, { conn, usedPrefix: _p }) => {
     var update = `
 
 *❏ UPDATE FITUR*
+- Game ZoneWar (.war)
 - Game tictactoe
 - Game family100`
 
@@ -101,10 +102,6 @@ let handler  = async (m, { conn, usedPrefix: _p }) => {
       readmore: readMore
     }
     text = text.replace(new RegExp(`%(${Object.keys(replace).join`|`})`, 'g'), (_, name) => replace[name])
-    // status(m.chat,text,fs.readFileSync(`./media/images/thumb.jpg`),"PART OF LTM BOT",m.sender)
-    // conn.sendMessage(m.chat, text, MessageType.text, {contextInfo: { mentionedJid: [m.sender] }, quoted: {key: {fromMe: false, participant: `0@s.whatsapp.net`, ...(m.chat ? { remoteJid: 'status@broadcast' } : {}) }, message: { "imageMessage": { "mimetype": "image/jpeg", "caption": "PART OF LTM BOT", "jpegThumbnail": fs.readFileSync(`./media/images/thumb.jpg`)} } }})
-    // conn.sendFile(m.chat, pp, 'logo.jpg', text.trim(), { key: { remoteJid: 'status@broadcast', participant: '0@s.whatsapp.net', fromMe: false }, message: { "imageMessage": { "mimetype": "image/jpeg", "caption": "PART OF LTM BOT", "jpegThumbnail": fs.readFileSync(`./media/images/thumb.jpg`)} } }, m, { contextInfo: { mentionedJid: [m.sender] } })
-    // m.reply(text)
     conn.sendFile(m.chat, fs.readFileSync(`./media/images/thumb.jpg`), 'pp.jpg', text,m)
   } catch (e) {
     conn.reply(m.chat, 'Maaf, menu sedang error', m)

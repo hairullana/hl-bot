@@ -377,7 +377,7 @@ conn.handler = async function (m) {
     let cmd = global.DATABASE.data.chats[m.chat].command
     if (cmd >= 1) setTimeout(() => {
       global.DATABASE.data.chats[m.chat].command = 0
-    }, 7500)
+    }, 5000)
     if (cmd <= 1) {
       if (!m.fromMe && !owner && opts['self']) return
     } else {
