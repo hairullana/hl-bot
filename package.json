@@ -34,6 +34,7 @@
     "google-it": "^1.6.0",
     "imgbb-uploader": "^1.3.0",
     "jsdom": "^16.4.0",
+    "node-cron": "^3.0.0",
     "node-fetch": "^2.6.1",
     "node-gtts": "^2.0.2",
     "node-scrapy": "^0.5.0",

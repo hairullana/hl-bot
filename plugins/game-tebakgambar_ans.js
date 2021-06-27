@@ -6,10 +6,9 @@ handler.before = async function (m) {
     if (!(id in conn.tebakgambar)) return m.reply('Soal itu telah berakhir')
     if (m.quoted.id == conn.tebakgambar[id][0].id) {
         let json = JSON.parse(JSON.stringify(conn.tebakgambar[id][1]))
-        // m.reply(JSON.stringify(json, null, '\t'))
         if (m.text.toLowerCase() == json.jawaban.toLowerCase()) {
             global.DATABASE._data.users[m.sender].exp += conn.tebakgambar[id][2]
-            m.reply(`*Benar!*\n+${conn.tebakgambar[id][2]} XP`)
+            m.reply(`*Jawabanmu benar ! Hadiah Rp. ${conn.tebakgambar[id][2].toLocaleString()}*`)
             clearTimeout(conn.tebakgambar[id][3])
             delete conn.tebakgambar[id]
         } else if (m.text.toLowerCase().endsWith(json.jawaban.split` `[1])) m.reply(`*Dikit Lagi!*`)
@@ -19,7 +18,7 @@ handler.before = async function (m) {
           }else {
             global.DATABASE.data.users[m.sender].exp -= 50000
           }
-          m.reply(`*Jawabanmu Salah!*\nUangmu berkurang Rp. 50.000,-`)
+          m.reply(`*Jawabanmu salah ! Uangmu berkurang Rp. 50.000*`)
         }
     }
 }

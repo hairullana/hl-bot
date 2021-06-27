@@ -24,37 +24,15 @@ let {
 } = require('perf_hooks')
 let WAConnection = simple.WAConnection(_WAConnection)
 
-const format = num => {
-  const n = String(num),
-    p = n.indexOf('.')
-  return n.replace(
-    /\d(?=(?:\d{3})+(?:\.|$))/g,
-    (m, i) => p < 0 || i < p ? `${m},` : m
-  )
-}
-
-function clockString(ms) {
-  let h = Math.floor(ms / 3600000)
-  let m = Math.floor(ms / 60000) % 60
-  let s = Math.floor(ms / 1000) % 60
-  console.log({
-    ms,
-    h,
-    m,
-    s
-  })
-  return [h, m, s].map(v => v.toString().padStart(2, 0)).join(':')
-}
-
-global.prefixhl = "."
-global.packname = 'HL'
+global.hl = "."
+global.packname = 'HL BOT'
 global.author = 'LTM BOT'
 global.wait = '_Sedang diproses . . ._'
-global.error = '_Fitur Error!_'
+global.error = '_Fitur Error !_'
 
 global.owner = ['6283119526456','6282215215399']
-global.mods = ['6281524633549','62895323133060','6281257735703','6281351236907','6282288064481']
-global.modsName = ['galang','mila','loli','ara','floren']
+global.mods = ['6281524633549','6281257735703','6281351236907']
+global.modsName = ['galang','loli','ara']
 global.prems = []
 global.APIs = {
   nrtm: 'https://nurutomo.herokuapp.com',
@@ -95,7 +73,7 @@ global.opts = Object.freeze({
   ...opts
 })
 
-global.prefix = new RegExp('^[' + (opts['prefix'] || prefixhl ) + ']')
+global.prefix = new RegExp('^[' + (opts['prefix'] || hl ) + ']')
 
 // set db awal
 global.DATABASE = new(require('./lib/database'))(opts._[0] ? opts._[0] + '_' : '' + 'database.json', null, 2)
@@ -202,10 +180,9 @@ conn.handler = async function (m) {
         expired: 0,
         welcome: false,
         left: false,
-        warningGroup: false,
-        nolink: false,
-        novirtex: false,
-        nobadword: false,
+        antiLink: false,
+        antiVirtex: false,
+        antiBadword: false,
         sWelcome: '',
         sBye: '',
         command: 0,
@@ -237,53 +214,18 @@ conn.handler = async function (m) {
     let bot = m.isGroup ? participants.find(u => u.jid == this.user.jid) : {}
     let isAdmin = user.isAdmin || user.isSuperAdmin || false
     let isBotAdmin = bot.isAdmin || bot.isSuperAdmin || false
-    let enable = global.DATABASE._data.chats[m.chat]
     let groupMode = global.DATABASE.data.groupMode
     let selfMode = global.DATABASE.data.selfMode
     let adminMode = global.DATABASE.data.chats[m.chat].adminMode
     let whitelist = global.DATABASE._data.users[m.sender].whitelist
-    let owner = global.owner.map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').includes(m.sender) || m.fromMe
     let isPrems = global.DATABASE._data.users[m.sender].premium
+    let antiLink = global.DATABASE.data.chats[m.chat].antiLink
+    let antiVirtex = global.DATABASE.data.chats[m.chat].antiVirtex
     let antiSpam = global.DATABASE.data.chats[m.chat].antiSpam
-    let pasangan = global.DATABASE._data.users[m.sender].pasangan
-
+    let antiBadword = global.DATABASE.data.chats[m.chat].antiBadword
 
     await conn.chatRead(m.chat)
     conn.withoutContact = true
-
-    // if (m.sender == "6289601738541@s.whatsapp.net"){
-    //   conn.updatePresence(m.chat, Presence.composing)
-    //   conn.reply(m.chat, `yoi anak lonte kena mental yahaha`)
-    // }
-
-    // GROUP ONLY == TRUE
-    var userPrefix = m.text.slice(0, 1);
-
-    if (enable.warningGroup == true) {
-      if (enable.warningGroup && m.isGroup && !isAdmin && isBotAdmin) {
-        if (!m.fromMe && !whitelist && m.text.match(/(bitch|keparat|fuck|bastard|anjing|babi|pantek|bajingan|coli|colmek|pukimak|lonte|dongo|biadab|biadap|ngocok|toket|tempek|tomlol|henceut|kanjut|oppai|tetek|kanyut|itil|titit|tytyd|tolol|idiot|bangsat|bangsad|pucek|kontol|pantek|memek|puki|jembut|meki|jingan|bodoh|goblok|bokep|dajjal|silit|setan|sange|jancok|dancok|goblog|autis|bagong|peler|ngentot|ngentod|ngewe|pler|ngtd|kntl|ajg|njing|njeng|kafir|xnxx|xvideos|crot)/gi)) {
-          conn.updatePresence(m.chat, Presence.composing)
-          var cBad = global.DATABASE.data.users[m.sender].warning += 1
-          var warning = global.DATABASE.data.users[m.sender].warning
-          if (warning > 4) {
-            conn.reply(m.chat, `*[ MEMBER WARNING ]*\n\n@${m.sender.split('@')[0]} sudah mendapatkan peringatan 5x ! Kick ae lah ajg !`, m, {
-              contextInfo: {
-                mentionedJid: [m.sender]
-              }
-            }).then(() => {
-              conn.groupRemove(m.chat, [m.sender])
-              global.DATABASE.data.users[m.sender].warning = 0
-            })
-          } else {
-            conn.reply(m.chat, `*[ MEMBER WARNING ]*\n\n@${m.sender.split('@')[0]} : [ ${warning} / 5 ]\n\nJangan berkata kasar !\nJika kamu mendapatkan peringatan sampai 5x, maka kamu akan di kick!\n\nKetik *.delwarn* untuk menghapus warning dengan membayar limit`, m, {
-              contextInfo: {
-                mentionedJid: [m.sender]
-              }
-            })
-          }
-        }
-      }
-    }
 
     if (global.DATABASE.data.users[m.sender].isBanned) return
 
@@ -292,87 +234,16 @@ conn.handler = async function (m) {
     if (global.DATABASE.data.users[m.sender].isBanned == false) {
       global.DATABASE.data.users[m.sender].exp += 1000
       global.DATABASE.data.users[m.sender].lastseen = new Date() * 1
-      if (userPrefix == prefixhl){
+      if (m.text.slice(0, 1) == hl){
         global.DATABASE.data.users[m.sender].usebot = new Date() * 1
       }
     }
 
-    // Keluar GC Otomatis Sesuai Tanggal
-    var now = new Date() * 1
-    if (m.isGroup && global.DATABASE.data.chats[m.chat].expired != 0) {
-      if (now >= global.DATABASE.data.chats[m.chat].expired) {
-        conn.reply(m.chat, "*Maaf waktunya bot untuk meninggalkan grup :(*\n*Chat owner untuk invite bot lagi*").then(() => {
-          conn.updatePresence(m.chat, Presence.composing)
-          let name = 'Hairul Lana'
-          let number = global.owner[1]
-          conn.sendVcard(m.chat, name, number).then(() => {
-            conn.groupLeave(m.chat).then(() => {
-              global.DATABASE.data.chats[m.chat].expired = 0
-            })
-          })
-        })
-
-      }
-    }
-
-    if (isPrems) {
-      if (now >= global.DATABASE.data.users[m.sender].premiumDate) {
-        conn.reply(m.chat, "*Maaf waktu untuk status premium anda telah berakhir :(*\n*Chat owner untuk upgrade premium lagi*", m).then(() => {
-          global.DATABASE.data.users[m.sender].premium = false
-          conn.updatePresence(m.chat, Presence.composing)
-          let name = 'Hairul Lana'
-          let number = global.owner[1]
-          conn.sendVcard(m.chat, name, number)
-        })
-
-      }
-    }
-
-    if (m.chat == "6285803579558@s.whatsapp.net") return conn.reply(m.chat,'yoi bocil anak lonte',m)
-
-    // anti spam
-    if (antiSpam && isBotAdmin){
-      if (!m.fromMe && !owner) {
-        global.DATABASE.data.users[m.sender].spam += 1
-        var spam = global.DATABASE.data.users[m.sender].spam
-  
-        if (spam >= 0) setTimeout(() => {
-          global.DATABASE.data.users[m.sender].spam = 0
-        }, 7000)
-  
-        if (spam == 5) return conn.reply(m.chat, `*[ SPAM DETECTED ]*\n\nTolong @${m.sender.split('@')[0]} untuk tidak spam !`, null, {
-          contextInfo: {
-            mentionedJid: [m.sender]
-          }
-        })
-  
-        if (spam == 7) {
-          if (m.isGroup && isBotAdmin) {
-            conn.updatePresence(m.chat, Presence.composing)
-            return conn.reply(m.chat, `*[ OVER SPAM DETECTED ]*\n\nBot akan menutup grup untuk menghindari spam`, m).then(() => {
-              if (isAdmin && m.isGroup) {
-                conn.groupSettingChange(m.chat, GroupSettingChange.messageSend, true).then(() => {
-                  conn.groupDemoteAdmin(m.chat, [m.sender])
-                })
-              } else if (m.isGroup) {
-                conn.groupSettingChange(m.chat, GroupSettingChange.messageSend, true)
-              }
-              conn.reply(m.chat, `*Anda mau dikick ?*`, m)
-            })
-          }else if(!m.isGroup) {
-            conn.updatePresence(m.chat, Presence.composing)
-            return conn.reply(m.chat, `*[ OVER SPAM DETECTED ]*\n\nMaaf kamu di banned dari bot !`, m).then(() => {
-              global.DATABASE.data.users[m.sender].spam = 0
-              global.DATABASE.data.users[m.sender].isBanned = true
-              global.DATABASE.data.banned += 1
-            })
-          }
-        }
-      }
-    }
+    if (selfMode && !isOwner && m.text.slice(0, 1) == hl) return
+    if (adminMode && !isOwner && m.isGroup && !isAdmin && m.text.slice(0, 1) == hl) return
 
     // ANTI-SPAM COMMAND
-    if (m.text.slice(0, 1) == prefixhl) {
+    if (m.text.slice(0, 1) == hl) {
       global.DATABASE.data.chats[m.chat].command += 1
     }
     let cmd = global.DATABASE.data.chats[m.chat].command
@@ -380,145 +251,9 @@ conn.handler = async function (m) {
       global.DATABASE.data.chats[m.chat].command = 0
     }, 5000)
     if (cmd <= 1) {
-      if (!m.fromMe && !owner && opts['self']) return
+      if (!m.fromMe && !isOwner && opts['self']) return
     } else {
-      if (!m.fromMe && !owner && !opts['self']) return
-    }
-
-    if (m.text == prefixhl && (owner || m.fromMe)) {
-      // let old = performance.now()
-      // let neww = performance.now()
-      let old = new Date
-
-      var groupTotal = 0
-      conn.chats.array.filter(v => v.jid.endsWith('us')).map(v => groupTotal += 1)
-
-      var chatTotal = 0
-      conn.chats.array.filter(v => v.jid.endsWith('net')).map(v => chatTotal += 1)
-
-      if (global.DATABASE.data.selfMode) {
-        var selfModeText = "Aktif"
-      } else {
-        var selfModeText = "Tidak Aktif"
-      }
-
-      if (global.DATABASE.data.groupMode) {
-        var groupModeText = "Aktif"
-      } else {
-        var groupModeText = "Tidak Aktif"
-      }
-
-      let uptime = clockString(process.uptime() * 1000)
-
-      let totalUser = format(Object.keys(global.DATABASE._data.users).length)
-
-      let users = global.DATABASE.data.users
-      let anu = 86400000 * 10
-      let now = new Date() * 1
-      var userBangsat = 0
-      var userBangsat2 = 0
-      var userPremium = 0
-      var userWhitelist = 0
-
-      for (let jid in users) {
-        if (now - users[jid].lastseen > anu && !users[jid].premium) userBangsat += 1
-        if (now - users[jid].usebot > anu && !users[jid].premium) userBangsat2 += 1
-        if (users[jid].premium) userPremium += 1
-        if (users[jid].whitelist) userWhitelist += 1
-      }
-
-      let userAktif = format(Object.keys(global.DATABASE._data.users).length - userBangsat)
-      let userAktifBot = format(Object.keys(global.DATABASE._data.users).length - userBangsat2)
-
-      let usersDB = global.DATABASE.data.users
-      var totalBanned = 0
-      for (let jid in usersDB){
-        if (usersDB[jid].isBanned){
-          totalBanned += 1
-        }
-      }
-
-      await m.reply("_Checking . . ._")
-      conn.reply(m.chat, `*Speed :* ${new Date - old} ms\n\n*Self Mode :* ${selfModeText}\n*Group Mode :* ${groupModeText}\n*Group :* ${groupTotal} grup\n*Chat :* ${chatTotal} chat\n*Total User :* ${totalUser} user\n*User Aktif Biasa :* ${userAktif} user\n*User Aktif Bot :* ${userAktifBot} user\n*Premium :* ${userPremium} user\n*Whitelist :* ${userWhitelist} user\n*Banned :* ${totalBanned} user\n*Uptime :* ${uptime}`, m)
-    }
-
-    if ((m.text == "y" || m.text == "Y") && (owner || m.fromMe)) {
-      ran = "media/desah-bangsat.mp3"
-      buffer = fs.readFileSync(ran)
-      const option = {
-        quoted: m,
-        mimetype: 'audio/mp4',
-        ptt: true
-      }
-      conn.voice(m.chat, buffer, option)
-    }
-
-    if (enable.nolink == true) {
-      var linkGC = 'chat.whatsapp.com/' + (await conn.groupInviteCode(m.chat))
-      if (m.isGroup && !isAdmin && isBotAdmin) {
-        if (m.text.match(/(chat.whatsapp.com)/gi)) {
-          denda = global.DATABASE.data.users[m.sender].exp / 100 * 25
-          global.DATABASE.data.users[m.sender].exp -= denda
-          conn.groupRemove(m.chat, [m.sender], m)
-        }
-      }
-      
-      if (isBotAdmin && isAdmin && !owner && (m.chat == "6282245496356-1602153905@g.us" || m.chat == "6285892821182-1510584700@g.us")) {
-        if (m.text.match(/(chat.whatsapp.com)/gi)) {
-          denda = Math.ceil(global.DATABASE.data.users[m.sender].exp / 100 * 25)
-          global.DATABASE.data.users[m.sender].exp -= denda
-          m.reply(`*Dilarang sharelink di gc LTM BOT・チャットボット meskipun anda admin bos.*\n*Denda : Rp. ${denda.toLocaleString()} (25% Saldo)*`)
-        }
-      }
-    }
-
-    if (enable.novirtex == true) {
-      if (!m.fromMe && m.isGroup && !isAdmin && isBotAdmin) {
-        if (m.text.match(/(৭৭৭৭৭৭৭৭|๒๒๒๒๒๒๒๒|๑๑๑๑๑๑๑๑|ดุท้่เึางืผิดุท้่เึางื|𐎑⃢𝘼𝙩𝙩𝙖𝙘𝙠|۩꦳|ผิดุท้เึางื)/gi)) {
-          conn.updatePresence(m.chat, Presence.composing)
-          conn.reply(m.chat, `${virtex}`, m).then(() => {
-            conn.groupRemove(m.chat, [m.sender], m).then(() => {
-              conn.reply(m.chat, `Tanda Telah Dibaca Dulu Ya Ngntd Biar Ga Lag !\nTerus Clear Chat !`)
-            })
-          })
-        }
-      }
-    }
-
-    function getRandom(min, max) {
-      min = Math.ceil(min)
-      max = Math.floor(max)
-      return Math.floor(Math.random() * (max - min + 1)) + min
-    }
-
-    if (!m.fromMe && !owner && selfMode && userPrefix == prefixhl) return
-
-    if (!m.fromMe && !owner && adminMode && m.isGroup && !isAdmin && userPrefix == prefixhl) return
-
-    if (!m.isGroup && !owner && !isPrems && groupMode && userPrefix == prefixhl && (m.text != ".sk" && m.text != ".sticker" && m.text != ".stiker" && m.text != ".swm" && m.text != ".sgif" && m.text != ".stickergif" && m.text != ".stikergif")) {
-      var head = '*[ GROUP MODE ]*\n\nSilahkan masuk ke grup untuk menggunakan bot atau daftar premium untuk menggunakan bot di personal chat.\n\nKhusus fitur pembuatan *stiker* bisa digunakan di personal chat bot.'
-      var undang = "Bot Join GC ? Daftar User Premium ? Chat owner bot"
-      var ig = "Info Bot : instagram.com/loadingtomastah"
-      var grup = []
-      // gc utama
-    
-      acak = getRandom(0, 1)
-      if (new Date - global.DATABASE.data.users[m.sender].lastclaim > 86400000) {
-        global.DATABASE.data.users[m.sender].lastclaim = new Date * 1
-        return conn.reply(m.chat, `${head}\n\n${grup[acak]}\n\n${ig}\n\n${undang}`, m).then(() => {
-          conn.updatePresence(m.chat, Presence.composing)
-          let name = 'Hairul Lana'
-          let number = global.owner[1]
-          conn.sendVcard(m.chat, name, number)
-        })
-      } else {
-        return conn.reply(m.chat, head + "\n\n" + undang, m).then(() => {
-          conn.updatePresence(m.chat, Presence.composing)
-          let name = 'Hairul Lana'
-          let number = global.owner[1]
-          conn.sendVcard(m.chat, name, number)
-        })
-      }
+      if (!m.fromMe && !isOwner && !opts['self']) return
     }
 
     let usedPrefix
@@ -553,7 +288,11 @@ conn.handler = async function (m) {
           isOwner,
           isAdmin,
           isBotAdmin,
-          isPrems
+          isPrems,
+          antiLink,
+          antiVirtex,
+          antiSpam,
+          antiBadword
         })) continue
         if ((usedPrefix = (match[0] || '')[0])) {
           let noPrefix = m.text.replace(usedPrefix, '')
@@ -644,9 +383,9 @@ conn.handler = async function (m) {
             isOwner,
             isAdmin,
             isBotAdmin,
-            isPrems
+            isPrems,
+            whitelist
           })
-          // if (!isPrems) m.limit = m.limit || plugin.limit || false
           m.limit = m.limit || plugin.limit || false
         } catch (e) {
           // Error occured
@@ -665,10 +404,8 @@ conn.handler = async function (m) {
       }
     }
   } finally {
-    //console.log(global.DATABASE._data.users[m.sender])
     let user
     if (m && m.sender && (user = global.DATABASE.data.users[m.sender])) {
-      // user.exp += m.exp
       var limitAsli
       if (global.DATABASE.data.users[m.sender].limit > 10000000000050) {
         limitAsli = 10000000000000
@@ -703,24 +440,22 @@ conn.handler = async function (m) {
       } else(
         limitAsli = 1
       )
-      // user.limit -= limitAsli
+
       levelAwal = conn.level(user.xp)[0]
       if (user.premium == true) {
         user.limit -= m.limit * 1
         user.xp += m.limit*1
       } else if (user.limit > 100 || user.exp > 500000000) {
         user.limit -= m.limit * limitAsli
-        // user.xp += m.limit*1
       } else {
         user.limit -= m.limit * 1
-        // user.xp += m.limit*1
       }
       // nambah level
       user.xp += m.limit*1
 
       levelAkhir = conn.level(user.xp)[0]
       if (levelAwal != levelAkhir){
-        conn.reply(m.chat,`*❏  L E V E L  U P*\n\n*[ ${levelAwal} ] 👉 [ ${levelAkhir} ]*\n\n(+) Semakin besar level kamu, semakin besar juga hadiah peti rahasia yang kamu dapat (cek *.claim*)`,m)
+        conn.reply(m.chat,`*❏ LEVEL UP*\n\n*[ ${levelAwal} ] 👉 [ ${levelAkhir} ]*`,m)
       }
     }
     try {
@@ -803,14 +538,14 @@ conn.on('close', async () => {
 
 global.dfail = (type, m, conn) => {
   let msg = {
-    rowner: '*❏  A K S E S  D I T O L A K*\n\nHanya owner yang dapat menggunakan perintah ini !',
-    owner: '*❏  A K S E S  D I T O L A K*\n\nHanya owner yang dapat menggunakan perintah ini !',
-    mods: '*❏  A K S E S  D I T O L A K*\n\nHanya owner yang dapat menggunakan perintah ini !',
-    premium: '*❏  A K S E S  D I T O L A K*\n\nFitur ini khusus untuk user premium !\nHubungi owner ( *.owner* ) untuk upgrade premium',
-    group: '*❏  A K S E S  D I T O L A K*\n\nPerintah ini hanya dapat digunakan didalam grup !',
-    private: '*❏  A K S E S  D I T O L A K*\n\nPerintah ini hanya dapat digunakan di privat chat !',
-    admin: '*❏  A K S E S  D I T O L A K*\n\nFitur ini khusus untuk admin grup !',
-    botAdmin: '*❏  A K S E S  D I T O L A K*\n\nPerintah ini akan hanya dapat digunakan ketika BOT menjadi admin !'
+    rowner: '*❏ AKSES DITOLAK*\n\nFitur ini khusus untuk owner.',
+    owner: '*❏ AKSES DITOLAK*\n\nFitur ini khusus untuk owner.',
+    mods: '*❏ AKSES DITOLAK*\n\nFitur ini khusus untuk owner.',
+    premium: '*❏ AKSES DITOLAK*\n\nFitur ini khusus untuk user premium.\nHubungi owner ( *.owner* ) untuk upgrade premium',
+    group: '*❏ AKSES DITOLAK*\n\nFitur ini khusus untuk di dalam grup.',
+    private: '*❏ AKSES DITOLAK*\n\nFitur ini khusus untuk di chat pribadi bot.',
+    admin: '*❏ AKSES DITOLAK*\n\nFitur ini khusus untuk owner.',
+    botAdmin: '*❏ AKSES DITOLAK*\n\nJadikan bot sebagai admin terlebih dahulu.'
   } [type]
   if (msg) conn.reply(m.chat, msg, m)
 }

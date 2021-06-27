@@ -5,9 +5,9 @@ let handler  = async (m, { conn, usedPrefix: _p }) => {
     let pp = './src/avatar_contact.png'
 	  pp = await conn.getProfilePicture(global.conn.user.jid)
 
-    let exp = format(global.DATABASE.data.users[m.sender].exp)
-    let limit = format(global.DATABASE.data.users[m.sender].limit)
-    let xp = format(global.DATABASE.data.users[m.sender].xp)
+    let exp = global.DATABASE.data.users[m.sender].exp.toLocaleString()
+    let limit = global.DATABASE.data.users[m.sender].limit.toLocaleString()
+    let xp = global.DATABASE.data.users[m.sender].xp.toLocaleString()
     let name = conn.getName(m.sender)
     let d = new Date
     let locale = 'id'
@@ -26,7 +26,7 @@ let handler  = async (m, { conn, usedPrefix: _p }) => {
     })
     let _uptime = process.uptime() * 1000
     let uptime = clockString(_uptime)
-    let totalreg = format(Object.keys(global.DATABASE._data.users).length)
+    let totalreg = Object.keys(global.DATABASE._data.users).length.toLocaleString()
     let tags = {
       'info': 'I N F O  B O T',
       'xp': 'M O N E Y  &  L I M I T',
@@ -73,12 +73,27 @@ let handler  = async (m, { conn, usedPrefix: _p }) => {
     var update = `
 
 *❏ UPDATE FITUR*
+- Antilink tidak kick link gc sendiri
+- Update antivirtex
 - Game ZoneWar (.war)
 - Game tictactoe
 - Game family100`
 
     conn.menu = conn.menu ? conn.menu : {}
-    let before = conn.menu.before || `Hai *%name*\nLevel : ${conn.level(xp)[0].toLocaleString()} (${xp.toLocaleString()} XP / ${conn.level(xp)[1].toLocaleString()} XP)\nSaldo Rp. %exp (%limit Limit)\nTotal User : %totalreg\n\n❏ Bingung dengan bot ? Ketik *.help*\n❏ Upgrade ? Ketik *.infopremium*\n❏ Invite bot ke GC ? Ketik *.sewabot*${update}\n\nInfo Bot:\nIG: https://instagram.com/loadingtomastah\nTele: https://t.me/loadingtomastah\n\n%readmore`
+    let before = conn.menu.before || `Hai *%name*
+Level : ${conn.level(xp)[0].toLocaleString()} (${xp.toLocaleString()} XP / ${conn.level(xp)[1].toLocaleString()} XP)
+Saldo Rp. %exp (%limit Limit)
+Total User : %totalreg
+
+❏ Bingung dengan bot ? Ketik *.help*
+❏ Upgrade ? Ketik *.infopremium*
+❏ Invite bot ke GC ? Ketik *.sewabot*${update}
+
+Info Bot:
+IG: https://instagram.com/loadingtomastah
+Tele: https://t.me/loadingtomastah
+
+%readmore`
     let header = conn.menu.header || '   *❖  %category*\n'
     let body   = conn.menu.body   || ' » %cmd%islimit'
     // let footer = conn.menu.footer || '╚════════════════\n'
@@ -123,14 +138,4 @@ function clockString(ms) {
   let s = Math.floor(ms / 1000) % 60
   console.log({ms,h,m,s})
   return [h, m, s].map(v => v.toString().padStart(2, 0) ).join(':')
-}
-
-// format mata uang
-const format = num => {
-  const n = String(num),
-        p = n.indexOf('.')
-  return n.replace(
-      /\d(?=(?:\d{3})+(?:\.|$))/g,
-      (m, i) => p < 0 || i < p ? `${m},` : m
-  )
 }
