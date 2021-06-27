@@ -249,6 +249,7 @@ conn.handler = async function (m) {
 
 
     await conn.chatRead(m.chat)
+    conn.withoutContact = true
 
     // if (m.sender == "6289601738541@s.whatsapp.net"){
     //   conn.updatePresence(m.chat, Presence.composing)

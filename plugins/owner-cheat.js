@@ -15,8 +15,8 @@ let handler = async (m, { conn, text }) => {
   conn.reply(hl[0],`*❏  C H E A T*\n\nBerhasil memberikan uang sebesar Rp. ${hl[1].toLocaleString()} kepada *@${hl[0].split('@')[0]}*.`,m,{ contextInfo: { mentionedJid: [hl[0]] } }) 
 
 }
-handler.help = ['cheat _days_']
-handler.tags = ['owner']
+// handler.help = ['cheat _days_']
+// handler.tags = ['owner']
 handler.command = /^(cheat)$/i
 handler.owner = true
 handler.mods = false

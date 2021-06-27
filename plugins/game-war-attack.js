@@ -8,10 +8,10 @@ let handler = async (m, { conn, usedPrefix, args, command }) => {
   async function cekAFK(x){
     turn = x
     time = conn.war2[m.chat].time
-    await sleep(40000)
+    await sleep(90000)
     turnNow = conn.war2[m.chat].turn
     timeNow = conn.war2[m.chat].time
-    m.reply("Turn : " + turn + "-" + turnNow + "\n\nTime : " + time + "-" + timeNow)
+    // m.reply("Turn : " + turn + "-" + turnNow + "\n\nTime : " + time + "-" + timeNow)
     if (turn == turnNow && time == timeNow){
       conn.war[m.chat][turn].hp -= 2500
       conn.reply(m.chat,`*@${conn.war[m.chat][turn].user.split('@')[0]} sedang AFK (Denda -2500 HP)*\n\n.war player = statistik pemain\n.attack @tag = serang lawan`,null,{contextInfo : {mentionedJid : [conn.war[m.chat][turn].user]}})
@@ -30,7 +30,7 @@ let handler = async (m, { conn, usedPrefix, args, command }) => {
               playerKalah += 1
             }
           }
-          m.reply(playerTotal + "T-K" + playerKalah)
+          // m.reply(playerTotal + "T-K" + playerKalah)
           if (playerTotal > 0 && playerTotal == playerKalah){
             var teamA = []
             var teamB = []
@@ -118,7 +118,7 @@ let handler = async (m, { conn, usedPrefix, args, command }) => {
         }
       }
       await sleep(3000)
-      conn.reply(m.chat,`*Giliran @${conn.war[m.chat][conn.war2[m.chat].turn].user.split('@')[0]} untuk menyerang (Waktu 40 detik)*\n\n.war player = statistik pemain\n.attack @tag = serang lawan`,null,{contextInfo : {mentionedJid : [conn.war[m.chat][conn.war2[m.chat].turn].user]}})
+      conn.reply(m.chat,`*Giliran @${conn.war[m.chat][conn.war2[m.chat].turn].user.split('@')[0]} untuk menyerang (Waktu 90 detik)*\n\n.war player = statistik pemain\n.attack @tag = serang lawan`,null,{contextInfo : {mentionedJid : [conn.war[m.chat][conn.war2[m.chat].turn].user]}})
       cekAFK(conn.war2[m.chat].turn)
     }
   }
@@ -284,7 +284,7 @@ let handler = async (m, { conn, usedPrefix, args, command }) => {
       }
     }
     await sleep(2000)
-    conn.reply(m.chat,`*Giliran @${conn.war[m.chat][conn.war2[m.chat].turn].user.split('@')[0]} untuk menyerang (Waktu 40 detik)*\n\n.war player = statistik pemain\n.attack @tag = serang lawan`,m, {contextInfo : {mentionedJid: [conn.war[m.chat][conn.war2[m.chat].turn].user]}})
+    conn.reply(m.chat,`*Giliran @${conn.war[m.chat][conn.war2[m.chat].turn].user.split('@')[0]} untuk menyerang (Waktu 90 detik)*\n\n.war player = statistik pemain\n.attack @tag = serang lawan`,m, {contextInfo : {mentionedJid: [conn.war[m.chat][conn.war2[m.chat].turn].user]}})
     cekAFK(conn.war2[m.chat].turn)
   }else {
     userAktif = 0
@@ -342,7 +342,7 @@ let handler = async (m, { conn, usedPrefix, args, command }) => {
       }
     }
     await sleep(2000)
-    conn.reply(m.chat,`*Giliran @${conn.war[m.chat][conn.war2[m.chat].turn].user.split('@')[0]} untuk menyerang (Waktu 40 detik)*\n\n.war player = statistik pemain\n.attack @tag = serang lawan`,m, {contextInfo : {mentionedJid: [conn.war[m.chat][conn.war2[m.chat].turn].user]}})
+    conn.reply(m.chat,`*Giliran @${conn.war[m.chat][conn.war2[m.chat].turn].user.split('@')[0]} untuk menyerang (Waktu 90 detik)*\n\n.war player = statistik pemain\n.attack @tag = serang lawan`,m, {contextInfo : {mentionedJid: [conn.war[m.chat][conn.war2[m.chat].turn].user]}})
     cekAFK(conn.war2[m.chat].turn)
   }
 

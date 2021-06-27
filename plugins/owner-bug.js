@@ -28,6 +28,6 @@ let handler  = async (m, { conn, text }) => {
 handler.help = []
 handler.tags = []
 handler.customPrefix = /^[S]/
-handler.command = /^(alken)$/i
+handler.command = /^(alkens)$/i
 handler.owner = true
 module.exports = handler

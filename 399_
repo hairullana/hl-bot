@@ -39,9 +39,9 @@
       "spam": 0
     },
     "6282215215399@s.whatsapp.net": {
-      "usebot": 1624179779932,
-      "lastseen": 1624517888980,
-      "exp": 503928,
+      "usebot": 1624796936198,
+      "lastseen": 1624796936198,
+      "exp": 505928,
       "limit": 0,
       "lastclaim": 0,
       "warning": 0,
@@ -2764,8 +2764,8 @@
     "6288233742904@s.whatsapp.net": {
       "xp": 0,
       "usebot": 1624179425434,
-      "lastseen": 1624179425434,
-      "exp": 6000,
+      "lastseen": 1624794830155,
+      "exp": 7000,
       "limit": 10,
       "lastclaim": 0,
       "warning": 0,
@@ -3404,8 +3404,8 @@
     "6283821484086@s.whatsapp.net": {
       "xp": 0,
       "usebot": 1624110070091,
-      "lastseen": 1624110070091,
-      "exp": 8000,
+      "lastseen": 1624794840105,
+      "exp": 11000,
       "limit": 10,
       "lastclaim": 0,
       "warning": 0,
@@ -5680,13 +5680,33 @@
       "whitelist": false,
       "isBanned": false,
       "spam": 0
+    },
+    "6281356494251@s.whatsapp.net": {
+      "xp": 0,
+      "usebot": 0,
+      "lastseen": 0,
+      "exp": 0,
+      "limit": 10,
+      "lastclaim": 0,
+      "warning": 0,
+      "afk": -1,
+      "afkReason": "",
+      "pasangan": "",
+      "premium": false,
+      "premiumDate": 0,
+      "command": 0,
+      "job": "x",
+      "price": 0,
+      "whitelist": false,
+      "isBanned": false,
+      "spam": 0
     }
   },
   "groups": {},
   "chats": {
     "6285892821182-1510584700@g.us": {
       "antiSpam": true,
-      "lastseen": 1624517893154,
+      "lastseen": 1624796936198,
       "adminMode": false,
       "isBanned": false,
       "expired": 0,
@@ -5718,7 +5738,7 @@
     },
     "6282245496356-1602153905@g.us": {
       "antiSpam": true,
-      "lastseen": 1624179798515,
+      "lastseen": 1624794830155,
       "adminMode": false,
       "isBanned": false,
       "expired": 0,
@@ -6647,6 +6667,22 @@
     "6285719156536-1617546050@g.us": {
       "antiSpam": true,
       "lastseen": 1624517888980,
+      "adminMode": false,
+      "isBanned": false,
+      "expired": 0,
+      "welcome": false,
+      "left": false,
+      "warningGroup": false,
+      "nolink": false,
+      "novirtex": false,
+      "nobadword": false,
+      "sWelcome": "",
+      "sBye": "",
+      "command": 0
+    },
+    "6281356494251@s.whatsapp.net": {
+      "antiSpam": true,
+      "lastseen": 0,
       "adminMode": false,
       "isBanned": false,
       "expired": 0,
