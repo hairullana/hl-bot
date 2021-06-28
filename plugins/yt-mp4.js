@@ -22,7 +22,7 @@ Telegram : https://t.me/loadingtomastah
 // *Filesize:* ${filesizeF}
 // `.trim(), m)
 }
-handler.help = ['ytmp4'].map(v => v + ' _url_')
+handler.help = ['ytmp4'].map(v => v + ' *url*')
 handler.tags = ['downloader']
 handler.command = /^ytmp4$/i
 handler.owner = false

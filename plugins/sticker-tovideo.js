@@ -53,7 +53,7 @@ let handler = async (m, { conn, args, usedPrefix }) => {
     } else throw `kirim stiker kemudian reply dengan caption ${usedPrefix}tovid`
 }
 
-handler.help = ['tovideo _(reply sticker)_']
+handler.help = ['tovideo *(reply)*']
 handler.tags = ['sticker','premium']
 handler.command = /^(tovid(eo)?)$/i
 handler.premium = true

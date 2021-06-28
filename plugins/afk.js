@@ -4,7 +4,7 @@ let handler = (m, { text }) => {
   user.afkReason = text
   m.reply(`*${conn.getName(m.sender)} sedang AFK*${text ? '\n\nAlasan : ' + text : ''}`)
 }
-handler.help = ['afk _alasan_']
+handler.help = ['afk *reason*']
 handler.tags = ['game']
 handler.command = /^afk$/i
 handler.group = true

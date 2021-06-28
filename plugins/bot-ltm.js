@@ -9,7 +9,7 @@ let handler  = async (m, { conn }) => {
   group[0] = 'https://chat.whatsapp.com/' + (await conn.groupInviteCode('6285892821182-1510584700@g.us'))
   group[1] = 'https://chat.whatsapp.com/' + (await conn.groupInviteCode('6282245496356-1602153905@g.us'))
   acak = getRandom(0,1)
-  m.reply(`*_LTM BOT・チャットボット_*\n\n${group[acak]}`)
+  m.reply(`*LTM BOT・チャットボット*\n\n${group[acak]}`)
 }
 handler.help = ['ltm (Group Official)']
 handler.tags = ['info']

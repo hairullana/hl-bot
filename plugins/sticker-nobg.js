@@ -22,7 +22,7 @@ let handler = async (m, { conn }) => {
 		fs.unlinkSync(ran)
 	})
 }
-handler.help = ['nobg']
+handler.help = ['nobg *(reply)*']
 handler.tags = ['sticker']
 handler.command = /^(s?nobg)$/i
 handler.premium = true

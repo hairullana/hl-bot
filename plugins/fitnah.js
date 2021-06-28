@@ -17,7 +17,7 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
   }}*/)
 }
 handler.command = /^(fitnah)$/
-handler.help = ['fitnah _text @user text_']
+handler.help = ['fitnah *text @tag text*']
 handler.tags = ['fun','game']
 handler.owner = false
 handler.mods = false

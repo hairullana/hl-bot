@@ -53,7 +53,7 @@ let handler  = async (m, { conn, args }) => {
     conn.sendFile(m.chat, outputPath, 'nulis.jpg', 'Ni hasilnya beb, lain kali jangan males nulis ya bangsat', m)
   })
 }
-handler.help = ['nulis'].map(v => v + ' _text_')
+handler.help = ['nulis'].map(v => v + ' *text*')
 handler.tags = ['tools']
 handler.command = /^nulis$/i
 handler.limit = true

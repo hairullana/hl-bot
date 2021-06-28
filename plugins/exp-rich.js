@@ -22,7 +22,7 @@ let handler = async (m, { conn, args, participants }) => {
     conn.reply(m.chat, `*Masukkan maksimal 100*`, m)
   }else {
     let text = `
-*❏  T O P  ${len}  T E R K A Y A*\n
+*❏ TOP ${len} TERKAYA*\n
 _Kamu punya *Rp. ${global.DATABASE.data.users[m.sender].exp.toLocaleString()}* dan *${global.DATABASE.data.users[m.sender].limit.toLocaleString()} Limit*_
 _Kamu peringkat *${usersExp.indexOf(m.sender) + 1}* dari *${usersExp.length}* member grup ${conn.getName(m.chat)}_
   
@@ -33,7 +33,7 @@ ${sortedExp.slice(0, len).map(([user, data], i) => (i + 1) + '. '  + conn.getNam
   }
 
 }
-handler.help = ['rich','rich _total_','sultan','sultan _total_']
+handler.help = ['rich (Rank Money)','rich *total*','sultan','sultan *total*']
 handler.tags = ['xp']
 handler.command = /^(rich|sultan)$/i
 handler.fail = null

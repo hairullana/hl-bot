@@ -10,14 +10,14 @@ let handler  = async (m, { conn, text, usedPrefix, command }) => {
 				for(let i = 0; i<json.message.list.length; i++) {
 					arti += json.message.list[i] + '\n'
 				}
-				m.reply(`*❏  K B B I*\n\n*Kata :*\n` + json.message.word + '\n\n*Arti :*\n' + arti)
+				m.reply(`*❏ KBBI*\n\n*Kata :*\n` + json.message.word + '\n\n*Arti :*\n' + arti)
 			}else throw global.error
 	} catch (e) {
 			console.log(e)
 			throw global.error
 	}
 }
-handler.help = ['kbbi _query_']
+handler.help = ['kbbi *query*']
 handler.tags = ['data']
 handler.command = /^(kbbi)$/i
 handler.fail = null

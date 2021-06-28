@@ -8,7 +8,7 @@ handler.before = async function (m) {
         let json = JSON.parse(JSON.stringify(conn.tebakgambar[id][1]))
         if (m.text.toLowerCase() == json.jawaban.toLowerCase()) {
             global.DATABASE._data.users[m.sender].exp += conn.tebakgambar[id][2]
-            m.reply(`*Jawabanmu benar ! Hadiah Rp. ${conn.tebakgambar[id][2].toLocaleString()}*`)
+            m.reply(`*Jawabanmu benar ! Bonus Rp. ${conn.tebakgambar[id][2].toLocaleString()}*`)
             clearTimeout(conn.tebakgambar[id][3])
             delete conn.tebakgambar[id]
         } else if (m.text.toLowerCase().endsWith(json.jawaban.split` `[1])) m.reply(`*Dikit Lagi!*`)

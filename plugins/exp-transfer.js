@@ -78,7 +78,7 @@ let handler = async (m, { conn, command, text }) => {
   global.DATABASE.data.users[m.sender].exp -= jumlah
   global.DATABASE.data.users[target].exp += jumlah
 
-  conn.reply(m.chat, `*❏  T R A N S F E R  S U C C E S S*
+  conn.reply(m.chat, `*❏ TRANSFER*
 
 Transfer *Rp. ${jumlah.toLocaleString()}* kepada @${target.split('@')[0]}
 
@@ -88,7 +88,7 @@ Transfer *Rp. ${jumlah.toLocaleString()}* kepada @${target.split('@')[0]}
   }})
 }
 
-handler.help = ['transfer','tf'].map(v => v + " _total_")
+handler.help = ['transfer','tf']
 handler.tags = ['xp']
 handler.command = /^transfer|tf$/i
 handler.limit = true

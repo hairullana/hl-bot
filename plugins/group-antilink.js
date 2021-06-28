@@ -22,7 +22,7 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
 		conn.reply(m.chat, `*Format salah! Contoh :*\n\n	*○ ${usedPrefix + command} on*\n	*○ ${usedPrefix + command} off*`, m)
 	} 
 }
-handler.help = ['antilink _on/off_']
+handler.help = ['antilink *on/off*']
 handler.tags = ['group admin']
 handler.command = /^(antilink)$/i
 handler.group = true

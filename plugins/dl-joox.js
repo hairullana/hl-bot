@@ -10,7 +10,7 @@ let handler = async (m, { conn, args, isPrems, isOwner, usedPrefix, command }) =
     		conn.sendFile(m.chat, joox.result.mp3Url, joox.result.msinger + ' - ' + joox.result.msong + '.mp3', '', m, false, { asDocument: true })
 	}) .catch(() => { conn.reply(m.chat,global.error, m) })
 }
-handler.help = ['joox'].map(v => v + ' _title_')
+handler.help = ['joox'].map(v => v + ' *title*')
 handler.tags = ['downloader','premium']
 handler.command = /^(joox)$/i
 handler.fail = null

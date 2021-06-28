@@ -48,7 +48,7 @@ let handler = async (m, { conn, text }) => {
     }
 	}	
 }
-handler.help = ['terima _@user_']
+handler.help = ['terima *@tag*']
 handler.tags = ['gabut']
 handler.command = /^(terima)$/i
 handler.group = true

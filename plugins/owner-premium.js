@@ -14,11 +14,11 @@ let handler = async (m, { conn, text }) => {
   var now = new Date() * 1
   global.DATABASE.data.users[hl[0]].premium = true
   global.DATABASE.data.users[hl[0]].premiumDate = now + jumlahHari
-  conn.reply(m.chat,`*❏  P R E M I U M*\n\nBerhasil memberikan akses premium kepada *@${hl[0].split('@')[0]}* selama *${hl[1]} hari*.`,m,{ contextInfo: { mentionedJid: [hl[0]] } })
-  conn.reply(hl[0],`*❏  P R E M I U M*\n\nBerhasil memberikan akses premium kepada *@${hl[0].split('@')[0]}* selama *${hl[1]} hari*.`,m,{ contextInfo: { mentionedJid: [hl[0]] } }) 
+  conn.reply(m.chat,`*❏ UPGRADE PREMIUM*\n\nBerhasil memberikan akses premium kepada *@${hl[0].split('@')[0]}* selama *${hl[1]} hari*.`,m,{ contextInfo: { mentionedJid: [hl[0]] } })
+  conn.reply(hl[0],`*❏ UPGRADE PREMIUM*\n\nBerhasil memberikan akses premium kepada *@${hl[0].split('@')[0]}* selama *${hl[1]} hari*.`,m,{ contextInfo: { mentionedJid: [hl[0]] } }) 
 
 }
-handler.help = ['prem _days_']
+handler.help = ['prem *@tag,days*']
 handler.tags = ['owner']
 handler.command = /^(prem)$/i
 handler.owner = true

@@ -27,7 +27,7 @@ Telegram : https://t.me/loadingtomastah
 // *Source:* ${vid.url}
 // `.trim(), m)
 }
-handler.help = ['ytmp3','play','music'].map(v => v + ' _query_')
+handler.help = ['ytmp3','play','music'].map(v => v + ' *title*')
 handler.tags = ['downloader']
 handler.command = /^play|ytmp3|music|musik$/i
 

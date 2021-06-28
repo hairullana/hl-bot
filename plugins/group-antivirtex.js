@@ -22,7 +22,7 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
 		conn.reply(m.chat, `*Format salah! Contoh :*\n\n	*○ ${usedPrefix + command} on*\n	*○ ${usedPrefix + command} off*`, m)
 	} 
 }
-handler.help = ['antivirtex _on/off_']
+handler.help = ['antivirtex *on/off*']
 handler.tags = ['group admin']
 handler.command = /^(antivirtex)$/i
 handler.group = true

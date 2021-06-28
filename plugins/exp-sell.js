@@ -16,9 +16,9 @@ let handler = async (m, { conn, command, args }) => {
   // tambah duit
   hasilJual = jualLimit*100000
   global.DATABASE._data.users[m.sender].exp += hasilJual
-  return conn.reply(m.chat,`*❏  S E L L  L I M I T*\n\nBerhasil menjual *${jualLimit} Limit* seharga *Rp. ${hasilJual.toLocaleString()}*.\n\nSaldo : Rp. ${global.DATABASE._data.users[m.sender].exp.toLocaleString()}\nLimit : ${global.DATABASE._data.users[m.sender].limit.toLocaleString()}`,m)
+  return conn.reply(m.chat,`*❏ SELL LIMIT*\n\nBerhasil menjual *${jualLimit} Limit* seharga *Rp. ${hasilJual.toLocaleString()}*.\n\nSaldo : Rp. ${global.DATABASE._data.users[m.sender].exp.toLocaleString()}\nLimit : ${global.DATABASE._data.users[m.sender].limit.toLocaleString()}`,m)
 }
-handler.help = ['sell _total_']
+handler.help = ['sell *total*']
 handler.tags = ['xp']
 handler.command = /^sell$/i
 handler.owner = false

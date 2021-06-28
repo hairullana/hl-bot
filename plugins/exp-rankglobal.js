@@ -9,7 +9,7 @@ let handler = async (m, { conn, args }) => {
     conn.reply(m.chat, `*Masukkan maksimal 100*`, m)
   }else {
     let text = `
-*❏  R A N K  ${len}  B O T*\n
+*❏ RANK ${len} GLOBAL*\n
 _Kamu berada di *level ${conn.level(global.DATABASE.data.users[m.sender].xp)[0].toLocaleString()}* dengan *${global.DATABASE.data.users[m.sender].xp.toLocaleString()} XP* (${conn.level(global.DATABASE.data.users[m.sender].xp)[2].toLocaleString()} XP lagi untuk naik level)_
 _Kamu peringkat *${usersXP.indexOf(m.sender) + 1}* dari *${usersXP.length}* user_
   
@@ -20,7 +20,7 @@ ${sortedXP.slice(0, len).map(([user, data], i) => '*' + (i + 1) + '. '  + conn.g
   }
 
 }
-handler.help = ['rankglobal','rankglobal _total_']
+handler.help = ['rankglobal','rankglobal *total*']
 handler.tags = ['xp']
 handler.command = /^(rankglobal)$/i
 handler.fail = null

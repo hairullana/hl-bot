@@ -13,26 +13,18 @@ let handler  = async (m, { conn, text, participants }) => {
 			if(isImage || isVideo) {
 				var encmedia = JSON.parse(JSON.stringify(m).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo
 				var media = await conn.downloadAndSaveMediaMessage(encmedia)
-				if(isImage) { conn.sendFile(id, media, 'image.png', `❏  B R O A D C A S T\n\n${text ? text : m.quoted.caption }`, null) }
-				if(isVideo) { conn.sendFile(id, media, 'video.mp4', `❏  B R O A D C A S T\n\n${text ? text : m.quoted.caption }`, null) }
+				if(isImage) { conn.sendFile(id, media, 'image.png', `❏ BROADCAST\n\n${text ? text : m.quoted.caption }`, null) }
+				if(isVideo) { conn.sendFile(id, media, 'video.mp4', `❏ BROADCAST\n\n${text ? text : m.quoted.caption }`, null) }
 			} else {
-				conn.reply(id, `❏  B R O A D C A S T\n\n${text}`, null, { contextInfo: { mentionedJid: users } })
+				conn.reply(id, `❏ BROADCAST\n\n${text}`, null, { contextInfo: { mentionedJid: users } })
 			}
 		}
 		await delay(2500)
 	} conn.reply(m.chat, `*Sukses mengirim broadcast ke ${groups.length} grup tuan.*`, m)
 }
-handler.help = ['broadcast2'].map(v => v + ' _text_')
+handler.help = ['broadcast2','bc2'].map(v => v + ' *text*')
 handler.tags = ['owner']
 handler.command = /^(bc2|broadcast2)$/i
 handler.owner = true
-handler.mods = false
-handler.premium = false
-handler.group = false
-handler.private = false
-handler.admin = false
-handler.botAdmin = false
 handler.fail = null
 module.exports = handler
-// conn.reply(id, `❏  B R O A D C A S T\n\n${text}`, null, { contextInfo: { mentionedJid: users } }) }, 5000) 
-				// conn.sendFile(id, media, 'image.png', `❏  B R O A D C A S T\n\n${m.quoted.text ? text : m.quoted.text}`, null)

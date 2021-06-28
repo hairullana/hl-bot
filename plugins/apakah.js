@@ -4,7 +4,7 @@ let handler = async (m, { conn, command, text }) => {
 *Jawaban:* ${pickRandom(['Pasti dong bangsat','Ya','Mungkin iya','Mungkin','Mungkin tidak','Tidak','Tidak mungkin','Mana gw tau','Kepo bangsat'])}
 `.trim(), m)
 }
-handler.help = ['apakah'].map(v => v + ' _question_')
+handler.help = ['apakah'].map(v => v + ' *question*')
 handler.tags = ['fun']
 handler.command = /^(apakah)/i
 handler.fail = null

@@ -56,9 +56,9 @@ try {
 	}	
 }
 
-handler.help = ['_62xx_','_@user_','_(reply)_'].map(v => 'unban ' + v)
+handler.help = ['*@tag*','*(reply)*'].map(v => 'unban ' + v)
 handler.tags = ['owner']
-handler.command = /^unban$/i
+handler.command = /^(unban|unbanned)$/i
 // handler.owner = true
 handler.mods = true
 module.exports = handler

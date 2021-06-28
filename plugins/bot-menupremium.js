@@ -56,8 +56,7 @@ let handler  = async (m, { conn, usedPrefix: _p }) => {
     }
 
     conn.menu = conn.menu ? conn.menu : {}
-    // let before = conn.menu.before || `*${conn.getName(conn.user.jid)} BOT*\n\nHai, %name!\n*%exp XP | %limit Limit*\n*%week, %date [%time]*\n_Uptime: %uptime_\n%totalreg User in database\n%readmore`
-    let before = conn.menu.before || `❏ Upgrade Premium ? Ketik *.infopremium*\n❏ Total Premium : ${premium} user\n`
+    let before = conn.menu.before || `❏ Total Premium : ${premium} user\n❏ Upgrade Premium ? Ketik *.infopremium*\n`
     let header = conn.menu.header || '   *❖  %category*\n'
     let body   = conn.menu.body   || ' » %cmd%islimit'
     // let footer = conn.menu.footer || '╚════════════════\n'

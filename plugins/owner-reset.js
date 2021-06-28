@@ -11,11 +11,11 @@ let handler = async (m, { conn, text }) => {
 		var number = text
   }
 
-  if(!text && !m.quoted) return conn.reply(m.chat, `*❏  R E S E T  U S E R*\n\nTag user, tulis nomor, atau balas member yang ingin di RESET`, m)
+  if(!text && !m.quoted) return conn.reply(m.chat, `*❏ DELETE USER*\n\nTag user, tulis nomor, atau balas member yang ingin di RESET`, m)
   //let exists = await conn.isOnWhatsApp(number)
   // if (exists) return conn.reply(m.chat, `*Nomor target tidak terdaftar di WhatsApp*`, m)
-  if(isNaN(number)) return conn.reply(m.chat, `*❏  R E S E T  U S E R*\n\nNomor yang kamu masukkan tidak valid !`, m)
-  if(number.length > 15) return conn.reply(m.chat, `*❏  R E S E T  U S E R*\n\nNomor yang kamu masukkan tidak valid !`, m)
+  if(isNaN(number)) return conn.reply(m.chat, `*❏ DELETE USER*\n\nNomor yang kamu masukkan tidak valid !`, m)
+  if(number.length > 15) return conn.reply(m.chat, `*❏ DELETE USER*\n\nNomor yang kamu masukkan tidak valid !`, m)
   try {
 		if(text) {
 			var user = number + '@s.whatsapp.net'
@@ -34,14 +34,14 @@ let handler = async (m, { conn, text }) => {
   
 	delete global.DATABASE.data.users[user]
  	
- 	conn.reply(m.chat, `*[ RESET DATA BERHASIL ]*\n\nBerhasil menghapus @${number} dari database`, null, {contextInfo: {
+ 	conn.reply(m.chat, `*❏ DELETE USER*\n\nBerhasil menghapus @${number} dari database`, null, {contextInfo: {
     mentionedJid: [user]
  	}})
 
  
  }
 }
-handler.help = ['reset _62xx_', 'reset _(reply)_','reset _@user_']
+handler.help = ['reset *62xx*', 'reset *(reply)*','reset *@tag*']
 handler.tags = ['owner']
 handler.command = /^reset$/i
 handler.admin = false

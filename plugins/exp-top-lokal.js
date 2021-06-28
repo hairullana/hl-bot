@@ -21,7 +21,7 @@ let handler = async (m, { conn, args, participants }) => {
   if (args[0] > 100) {
     conn.reply(m.chat, `*Masukkan maksimal 100*`, m)
   }else {let text = `
-*❏  T O P  ${len}  L I M I T*\n
+*❏ TOP ${len} LIMIT*\n
 _Kamu punya *Rp. ${global.DATABASE.data.users[m.sender].exp.toLocaleString()}* dan *${global.DATABASE.data.users[m.sender].limit.toLocaleString()} Limit*_
 _Kamu peringkat *${usersLim.indexOf(m.sender) + 1}* dari *${usersExp.length}* member grup ${conn.getName(m.chat)}_
   
@@ -32,9 +32,9 @@ ${sortedLim.slice(0, len).map(([user, data], i) => (i + 1) + '. ' + conn.getName
   }
 
 }
-handler.help = ['toplokal','toplokal _total_','ranklimit','ranklimit _total_',]
+handler.help = ['top (Rank Limit)','top *total*']
 handler.tags = ['xp']
-handler.command = /^(toplokal|ranklimit)$/i
+handler.command = /^(top)$/i
 handler.fail = null
 handler.exp = 100
 module.exports = handler

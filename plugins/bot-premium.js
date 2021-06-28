@@ -1,7 +1,7 @@
 let handler  = async (m, { conn }) => {
   let pp = './src/avatar_contact.png'
 	pp = await conn.getProfilePicture(global.conn.user.jid)
-  conn.sendFile(m.chat, pp, 'profile.jpg',`*❏ I N F O  P R E M I U M*
+  conn.sendFile(m.chat, pp, 'profile.jpg',`*❏ INFO PREMIUM*
   
 Dengan mendaftar menjadi user premium anda akan mendapatkan keuntungan sebagai berikut :
 

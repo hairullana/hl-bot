@@ -363,7 +363,6 @@ handler.help = ['attack','atk']
 handler.tags = ['game']
 handler.command = /^(attack|atk)$/i
 handler.group = true
-// handler.owner = true
 module.exports = handler
 
 function getRandom(min,max){

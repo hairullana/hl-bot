@@ -20,7 +20,7 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
 		conn.reply(m.chat, `*Format salah! Contoh :*\n\n	*○ ${usedPrefix + command} on*\n	*○ ${usedPrefix + command} off*`, m)
 	} 
 }
-handler.help = ['leave _on/off_']
+handler.help = ['leave *on/off*']
 handler.tags = ['group admin']
 handler.command = /^(leave)$/i
 handler.admin = true

@@ -12,7 +12,7 @@ let handler = async (m, { conn, args }) => {
     conn.reply(m.chat, `*Masukkan maksimal 100*`, m)
   }else {
     let text = `
-*❏  T O P  ${len}  T E R K A Y A  G L O B A L*\n
+*❏ TOP ${len} TERKAYA GLOBAL*\n
 _Kamu punya *Rp. ${global.DATABASE.data.users[m.sender].exp.toLocaleString()}* dan *${global.DATABASE.data.users[m.sender].limit.toLocaleString()} Limit*_
 _Kamu peringkat *${usersExp.indexOf(m.sender) + 1}* dari *${usersExp.length}* orang_
   
@@ -23,9 +23,9 @@ ${sortedExp.slice(0, len).map(([user, data], i) => (i + 1) + '. '  + conn.getNam
   }
 
 }
-handler.help = ['richglobal','richglobal _total_','sultanglobal','sultanglobal _total_']
+handler.help = ['richglobal','richglobal *total*']
 handler.tags = ['xp']
-handler.command = /^(richglobal|sultanglobal)$/i
+handler.command = /^(richglobal)$/i
 handler.fail = null
 handler.exp = 100
 module.exports = handler

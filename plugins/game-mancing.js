@@ -58,7 +58,7 @@ let handler = async (m, { conn }) => {
       tampilanIkan += randIkan + " "
     }
 
-    return conn.reply(m.chat, `*❏  M A N C I N G  M A N I A*\n\nTangkapan : ${tampilanIkan}\nSelamat anda berhasil menangkap *${jumlahIkan} ekor ${namaIkan}* dengan penjualan *Rp. ${Number(hargaIkan*jumlahIkan).toLocaleString()}*`, m)
+    return conn.reply(m.chat, `*❏ MANCING MANIA*\n\nTangkapan : ${tampilanIkan}\nSelamat anda berhasil menangkap *${jumlahIkan} ekor ${namaIkan}* dengan penjualan *Rp. ${Number(hargaIkan*jumlahIkan).toLocaleString()}*`, m)
   }, 1000)
 }
 handler.help = ['mancing']

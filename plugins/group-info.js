@@ -15,7 +15,7 @@ let handler = async (m, { conn }) => {
 		let adminMode = global.DATABASE.data.chats[m.chat].adminMode
 		let antiSpam = global.DATABASE.data.chats[m.chat].antiSpam
     
-	var name = conn.getName(m.chat)
+	var name = conn.getGroup(m.chat)
 	function msToDate(ms) {
 		temp = ms
 		days = Math.floor(ms / (24*60*60*1000));

@@ -8,10 +8,10 @@ let handler  = async (m, { conn, args, usedPrefix, command }) => {
 		.then(res => res.json())
 		.then(json => {
 			if(json.result.pesan == 'error') return conn.reply(m.chat, `*Akun tidak ditemukan.*`, m)
-			 conn.sendFile(m.chat, json.result.profile_hd, 'foto.jpg', `*❏ I G  S T A L K*\n\n	○ *Name* : ${json.result.full_name}\n	○ *Username* : @${json.result.username}\n	○ *Followers* : ${Number(json.result.followers).toLocaleString().replace(/,/g, '.')}\n	○ *Following* : ${Number(json.result.following).toLocaleString().replace(/,/g, '.')}\n	○ *Post* : ${Number(json.result.post_count).toLocaleString().replace(/,/g, '.')}\n	○ *Bio* : ${json.result.bio}`, m)
+			 conn.sendFile(m.chat, json.result.profile_hd, 'foto.jpg', `*❏ INSTAGRAM STALK*\n\n	○ *Name* : ${json.result.full_name}\n	○ *Username* : @${json.result.username}\n	○ *Followers* : ${Number(json.result.followers).toLocaleString().replace(/,/g, '.')}\n	○ *Following* : ${Number(json.result.following).toLocaleString().replace(/,/g, '.')}\n	○ *Post* : ${Number(json.result.post_count).toLocaleString().replace(/,/g, '.')}\n	○ *Bio* : ${json.result.bio}`, m)
 	}) .catch(() => { conn.reply(m.chat, `*Terjadi kesalahan . . .*`, m) })
 }
-handler.help = ['igstalk _username_']
+handler.help = ['igstalk *username*']
 handler.tags = ['data']
 handler.command = /^(igstalk)$/i
 handler.owner = false

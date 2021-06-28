@@ -23,7 +23,7 @@ let handler  = async (m, { conn, text }) => {
     }
   }
 
-  return conn.reply(m.chat,`❏ Daftar Whitelist\n❏ Total : ${i-1} user\n${text}`,m)
+  return conn.reply(m.chat,`❏ Total : ${i-1} user\n${text}`,m)
 }
 handler.help = ['listwhite','whitelist']
 handler.tags = ['bot']

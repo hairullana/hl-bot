@@ -3,15 +3,15 @@ let handler  = async (m, { conn, args }) => {
 	let text = args.join` `
 	if(!args || !args[0]) {
 		await conn.updatePresence(m.chat, Presence.composing) 
-		conn.reply(m.chat, `Give a text for the name of group`, m)
+		conn.reply(m.chat, `*Masukkan nama grup.*`, m)
 	} else if(args[0].length > 25) {
 		await conn.updatePresence(m.chat, Presence.composing) 
-		conn.reply(m.chat, `Group name max. 25 character!`, m)
+		conn.reply(m.chat, `*Nama grup maksimal 25 karakter.*`, m)
 	} else {
 		conn.groupUpdateSubject(m.chat, text)
 	} 
 }
-handler.help = ['setname _text_']
+handler.help = ['setname *text*']
 handler.tags = ['group admin']
 handler.command = /^(setname)$/i
 handler.admin = true

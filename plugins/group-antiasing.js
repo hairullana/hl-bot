@@ -17,9 +17,9 @@ let handler = async (m, { conn, args, participants }) => {
   }
   
   if(total > 0){
-    conn.reply(m.chat, `*Berhasil mengusir ${total} orang asing dari grup.*\n\n*NKRI HARGA MATI !!!*`, m)
+    conn.reply(m.chat, `*Berhasil mengusir ${total} orang asing dari grup.*`, m)
   }else {
-    conn.reply(m.chat, `*Di grup ini tidak ada orang asing.*\n\n*NKRI HARGA MATI !!!*`, m)
+    conn.reply(m.chat, `*Di grup ini tidak ada orang asing.*`, m)
   }
 }
 handler.help = ['antiasing']

@@ -1,5 +1,4 @@
 let handler = async (m, { conn, text }) => {
-	// return conn.reply(m.chat,"*Fitur dinonaktifkan karena membuat bot terbanned.*\n*Silahkan lakukan manual asu !*",m)
 	if(isNaN(text) && !text.match(/@/g)){
 		return conn.reply(m.chat, `*Penggunaan yang benar*\n\n.demote @user\n.demote -> reply chat`, m)
 	}else if(isNaN(text)) {
@@ -25,7 +24,7 @@ try {
 			conn.reply(m.chat, `*Target has demoted.*`, m)
 	}	
 }
-handler.help = ['_62xx_','_@user_','_(reply)_'].map(v => 'member ' + v)
+handler.help = ['*@user*','*(reply)*'].map(v => 'member ' + v)
 handler.tags = ['group admin']
 handler.command = /^(member)$/i
 handler.group = true

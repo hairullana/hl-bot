@@ -2,17 +2,17 @@ let { Presence, GroupSettingChange } = require('@adiwajshing/baileys')
 let handler  = async (m, { conn, args }) => {
 	if(!args || !args[0]) {
 		await conn.updatePresence(m.chat, Presence.composing) 
-		conn.reply(m.chat, `Give a argument close or open!`, m)
+		conn.reply(m.chat, `*Berikan keterangan open/close.*`, m)
 	} else if(args[0] == 'open') {
 		conn.groupSettingChange(m.chat, GroupSettingChange.messageSend, false)
 	} else if(args[0] == 'close') {
 		conn.groupSettingChange(m.chat, GroupSettingChange.messageSend, true)
 	} else {
 		await conn.updatePresence(m.chat, Presence.composing) 
-		conn.reply(m.chat, `Give a argument close or open!`, m)
+		conn.reply(m.chat, `*Berikan keterangan open/close.*`, m)
 	} 
 }
-handler.help = ['group _open/close_']
+handler.help = ['group *open/close*']
 handler.tags = ['group admin']
 handler.command = /^(group)$/i
 handler.admin = true

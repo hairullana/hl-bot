@@ -15,7 +15,7 @@ let handler  = async (m, { conn, text, usedPrefix, command }) => {
 		conn.reply(m.chat, `*❏ ARTI NAMA*\n\n*Nama :* ${json.result.nama}\n*Arti :* ${json.result.arti}\n\n${json.result.maksud}`, m)
 	}
 }
-handler.help = ['artinama'].map(v => v + ' _query_')
+handler.help = ['artinama'].map(v => v + ' *nama*')
 handler.tags = ['fun','data']
 handler.command = /^(artinama)$/i
 handler.owner = false

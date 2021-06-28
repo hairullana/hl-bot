@@ -25,7 +25,7 @@ let handler  = async (m, { conn, text, command }) => {
     quoted: m
   })
 }
-handler.help = ['swm _author|name_']
+handler.help = ['swm *author|name*']
 handler.tags = ['sticker', 'premium']
 handler.command = /^swm$/i
 handler.premium = true

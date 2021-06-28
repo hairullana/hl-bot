@@ -7,22 +7,13 @@ let handler  = async (m, { conn, text }) => {
     } : {})
     await delay(2500)
   }
-  conn.reply(m.chat, `_Mengirim pesan broadcast ke ${chats.length} grup_`, m)
+  conn.reply(m.chat, `*Mengirim pesan broadcast ke ${chats.length} grup*`, m)
 }
-handler.help = ['bcgc'].map(v => v + ' _text_')
+handler.help = ['bcgc'].map(v => v + ' *text*')
 handler.tags = ['owner']
 handler.command = /^(bcgc)$/i
 handler.owner = true
-handler.mods = false
-handler.premium = false
-handler.group = false
-handler.private = false
-
-handler.admin = false
-handler.botAdmin = false
-
 handler.fail = null
-
 module.exports = handler
 
 const more = String.fromCharCode(8206)

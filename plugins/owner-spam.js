@@ -15,15 +15,8 @@ let handler = async (m, { conn }) => {
 }
 handler.help = ['spam']
 handler.tags = []
-// handler.customPrefix = /^[A]/
 handler.command = /^(spam)$/i
 handler.owner = true
-handler.mods = false
-handler.premium = false
-// handler.group = true
-
-handler.private = false
-handler.admin = false
-handler.botAdmin = false
+handler.group = true
 handler.fail = null
 module.exports = handler

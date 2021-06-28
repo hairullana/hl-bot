@@ -43,7 +43,6 @@ let handler  = async (m, { conn, usedPrefix: _p }) => {
       'fun': 'F U N',
       'tag': 'T A G S',
       'audio': 'A U D I O',
-      'islam': 'I S L A M',
       'text': 'R A N D O M  T E X T',
       'downloader': ' D O W N L O A D E R',
       'group tools' : 'G R O U P  T O O L S',
@@ -70,32 +69,27 @@ let handler  = async (m, { conn, usedPrefix: _p }) => {
           if (menu.help) groups[tag].push(menu)
     }
 
-    var update = `
-
-*❏ UPDATE FITUR*
+    var update = `*❏  U P D A T E*
+- Fix beberapa fitur error
+- Hapus fitur yg kadaluarsa
 - Antilink tidak kick link gc sendiri
-- Update antivirtex
-- Game ZoneWar (.war)
+- Update antivirtex v2
+- Game ZoneWar 5v5 (.war)
 - Game tictactoe
 - Game family100`
 
     conn.menu = conn.menu ? conn.menu : {}
-    let before = conn.menu.before || `Hai *%name*
-Level : ${conn.level(xp)[0].toLocaleString()} (${xp.toLocaleString()} XP / ${conn.level(xp)[1].toLocaleString()} XP)
+    let before = conn.menu.before || `Hai *%name* (Lv. ${conn.level(xp)[0].toLocaleString()})
 Saldo Rp. %exp (%limit Limit)
-Total User : %totalreg
 
-❏ Bingung dengan bot ? Ketik *.help*
-❏ Upgrade ? Ketik *.infopremium*
-❏ Invite bot ke GC ? Ketik *.sewabot*${update}
+${update}
 
-Info Bot:
-IG: https://instagram.com/loadingtomastah
-Tele: https://t.me/loadingtomastah
-
+» Bingung dengan bot ? Ketik *.help*
+» Upgrade user ? Ketik *.infopremium*
+» Invite bot ke GC ? Ketik *.sewabot*
 %readmore`
-    let header = conn.menu.header || '   *❖  %category*\n'
-    let body   = conn.menu.body   || ' » %cmd%islimit'
+    let header = conn.menu.header || '❏  *%category*\n'
+    let body   = conn.menu.body   || '  » %cmd%islimit'
     // let footer = conn.menu.footer || '╚════════════════\n'
     let after  = conn.menu.after  || conn.user.jid == global.conn.user.jid ? '' : `\nPowered by https://wa.me/${global.conn.user.jid.split`@`[0]}`
     let _text  = before + '\n'

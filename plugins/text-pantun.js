@@ -5,9 +5,12 @@ let handler = async(m, { conn }) => {
     let splitbijak = body.split('\n')
     let randombijak = splitbijak[Math.floor(Math.random() * splitbijak.length)]
     randombijak = randombijak.replace('aruga-line','\n')
+    randombijak = randombijak.replace('aruga-line','\n')
+    randombijak = randombijak.replace('aruga-line','\n')
+    randombijak = randombijak.replace('aruga-line','\n')
     conn.reply(m.chat, randombijak, m)
   }).catch(() => {
-    conn.reply(m.chat, `*[ FITUR ERROR ]*\n\nMaaf fitur pantun sedang error !`, m)
+    m.reply(error)
   })
 }
 handler.help = ['pantun']

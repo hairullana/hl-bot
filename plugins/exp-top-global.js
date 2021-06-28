@@ -11,7 +11,7 @@ let handler = async (m, { conn, args }) => {
     conn.reply(m.chat, `*Masukkan maksimal 100*`, m)
   }else {
     var isi = `
-*❏  T O P  ${len}  L I M I T  G L O B A L*\n
+*❏ TOP ${len} LIMIT GLOBAL*\n
 _Kamu punya *Rp. ${global.DATABASE.data.users[m.sender].exp.toLocaleString()}* dan *${global.DATABASE.data.users[m.sender].limit.toLocaleString()} Limit*_
 _Kamu peringkat *${usersLim.indexOf(m.sender) + 1}* dari *${usersLim.length}* orang_
   
@@ -21,7 +21,7 @@ ${sortedLim.slice(0, len).map(([user, data], i) => (i + 1) + '. ' + conn.getName
   
   conn.reply(m.chat, isi, m)
 }
-handler.help = ['topglobal','topglobal _total_']
+handler.help = ['topglobal','topglobal *total*']
 handler.tags = ['xp']
 handler.command = /^(topglobal)$/i
 handler.fail = null

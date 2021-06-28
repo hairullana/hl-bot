@@ -1,7 +1,7 @@
 let fs = require('fs')
 let handler = m => m
-handler.before = async (m, { conn, isMods, isOwner }) => {
-	if (m.text.toLowerCase() == "y" && (isOwner || isMods)) {
+handler.before = async (m, { conn, isMods }) => {
+	if (m.text.toLowerCase() == "y" && isMods) {
     ran = "./media/desah-bangsat.mp3"
     buffer = fs.readFileSync(ran)
     const option = {

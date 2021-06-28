@@ -81,18 +81,9 @@ let handler = async (m, { conn, args, usedPrefix }) => {
         conn.reply(m.chat,`*Gagal membuat sticker gif, mungkin videomu terlalu panjang*`,m)
     }
 }
-handler.help = ['stickergif2 _(reply)_','stickergif2 _(caption)_','sgif2 _(reply)_','sgif2 _(caption)_']
+handler.help = ['stickergif2 *(reply)*','stickergif2 *(caption)*','sgif2 *(reply)*','sgif2 *(caption)*']
 handler.tags = ['sticker']
 handler.command = /^stickergif2|stikergif2|sgif2$/i
-handler.owner = false
-handler.mods = false
-handler.premium = false
-handler.group = false
-handler.private = false
-
-handler.admin = false
-handler.botAdmin = false
-
 handler.fail = null
 handler.limit = true
 

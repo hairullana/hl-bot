@@ -14,13 +14,13 @@ handler.before = async (m, { conn, isOwner }) => {
     if (global.DATABASE.data.selfMode) {
       var selfModeText = "Aktif"
     } else {
-      var selfModeText = "Tidak Aktif"
+      var selfModeText = "Nonaktif"
     }
 
     if (global.DATABASE.data.groupMode) {
       var groupModeText = "Aktif"
     } else {
-      var groupModeText = "Tidak Aktif"
+      var groupModeText = "Nonaktif"
     }
 
     let uptime = clockString(process.uptime() * 1000)
@@ -40,7 +40,7 @@ handler.before = async (m, { conn, isOwner }) => {
       if (users[jid].whitelist) userWhitelist += 1
     }
 
-    let userAktif = (Object.keys(global.DATABASE._data.users).length - userBangsat).toLocaleString()
+    let userBot = (Object.keys(global.DATABASE._data.users).length - userBangsat).toLocaleString()
 
     let usersDB = global.DATABASE.data.users
     var totalBanned = 0
@@ -66,7 +66,7 @@ handler.before = async (m, { conn, isOwner }) => {
 *❏ BOT USER*
 
   *Total User :* ${totalUser}
-  *User Aktif :* ${userAktif}
+  *User Bot :* ${userBot}
   *Premium :* ${userPremium}
   *Whitelist :* ${userWhitelist}
   *Banned :* ${totalBanned}

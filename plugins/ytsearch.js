@@ -14,17 +14,17 @@ let handler  = async (m, { conn, args, usedPrefix, command }) => {
 			for(i = 1; i < 10; i++) {
 				// if (json.result[i].channel.id < 0){
 					yts += '*' + json.result[i].video.title + '*\n'
-					yts += '🗿 *Durasi* : ' + json.result[i].video.duration + '\n'
-					yts += '🗿 *Views* : ' + json.result[i].video.views + '\n'
-					yts += '🗿 *Uploaded* : ' + json.result[i].video.upload_date + '\n'
-					yts += '🗿 *Channel* : ' + json.result[i].uploader.username + '\n'
-					yts += '🗿 *Link* : ' + json.result[i].video.url + '\n\n'
+					yts += '  *Durasi* : ' + json.result[i].video.duration + '\n'
+					yts += '  *Views* : ' + json.result[i].video.views + '\n'
+					yts += '  *Uploaded* : ' + json.result[i].video.upload_date + '\n'
+					yts += '  *Channel* : ' + json.result[i].uploader.username + '\n'
+					yts += '  *Link* : ' + json.result[i].video.url + '\n\n'
 				// }
 			}
 			conn.reply(m.chat, `${yts}`, m)	
 		}).catch(() => { conn.reply(m.chat, global.error, m) })
 }
-handler.help = ['ytsearch','yts']
+handler.help = ['ytsearch','yts'].map(v => v + ' *query*')
 handler.tags = ['downloader','data']
 handler.command = /^(yts|ytsearch)$/i
 handler.owner = false

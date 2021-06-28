@@ -53,12 +53,12 @@ let handler = async (m, { conn, command, text }) => {
   global.DATABASE.data.users[m.sender].limit -= jumlah
   global.DATABASE.data.users[target].limit += jumlah
 
-  conn.reply(m.chat, `*[ GIFT LIMIT ]*\n\nGift *${jumlah.toLocaleString()} limit* kepada @${target.split('@')[0]}\n\n@${target.split('@')[0]} : ${global.DATABASE.data.users[target].limit.toLocaleString()} Limit\n@${m.sender.split('@')[0]} : ${global.DATABASE.data.users[m.sender].limit.toLocaleString()} Limit`, m, {contextInfo: {
+  conn.reply(m.chat, `*❏ GIFT LIMIT*\n\nGift *${jumlah.toLocaleString()} limit* kepada @${target.split('@')[0]}\n\n@${target.split('@')[0]} : ${global.DATABASE.data.users[target].limit.toLocaleString()} Limit\n@${m.sender.split('@')[0]} : ${global.DATABASE.data.users[m.sender].limit.toLocaleString()} Limit`, m, {contextInfo: {
     mentionedJid: [target,m.sender]
   }})
 }
 
-handler.help = ['gift'].map(v => v + " _total_")
+handler.help = ['gift']
 handler.tags = ['xp']
 handler.command = /^gift$/i
 handler.premium = true

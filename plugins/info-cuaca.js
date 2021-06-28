@@ -3,15 +3,16 @@ let fetch = require('node-fetch')
 let handler  = async (m, { conn, text, usedPrefix, command }) => {
 	await conn.updatePresence(m.chat, Presence.composing)
   if (!text) return conn.reply(m.chat,`Silahkan masukkan nama kota\nContoh : ${usedPrefix}${command} denpasar`)
-	fetch('https://api.xteam.xyz/cuaca?kota=' + text + '&APIKEY=hairullana')
+	m.reply(wait)
+	fetch(global.API('xteam', '/cuaca', { kota: text }, 'APIKEY'))
 		.then(res => res.json())
 		.then(batch => {
 			conn.updatePresence(m.chat, Presence.composing) 
-      if (batch.code != 200) return conn.reply(m.chat,`*[ INFO CUACA ERROR ]*\n\nFitur jadwal sholat sedang error !`)
-			conn.reply(m.chat, `**❏  I N F O  C U A C A*\n\n*Kota :* ${batch.message.kota}\n*Tanggal :* ${batch.message.hari}\n\n*Cuaca :* ${batch.message.cuaca} (${batch.message.deskripsi})\n*Suhu :* ${batch.message.suhu}\n*Pressure :* ${batch.message.pressure}\n*Kelembapan :* ${batch.message.kelembapan}\n*Angin :* ${batch.message.angin}`, m)   
-	}) .catch(() => { conn.reply(m.chat, `*[ FITUR ERROR ]*\n\nMaaf fitur ${command} sedang tidak bisa digunakan.`, m) })
+      if (batch.code != 200) return m.reply(error)
+			conn.reply(m.chat, `*❏ INFO CUACA*\n\n*Kota :* ${batch.message.kota}\n*Tanggal :* ${batch.message.hari}\n\n*Cuaca :* ${batch.message.cuaca} (${batch.message.deskripsi})\n*Suhu :* ${batch.message.suhu}\n*Pressure :* ${batch.message.pressure}\n*Kelembapan :* ${batch.message.kelembapan}\n*Angin :* ${batch.message.angin}`, m)   
+	}) .catch(() => { m.reply(error) })
 }
-handler.help = ['cuaca _kota_']
+handler.help = ['cuaca *kota*']
 handler.tags = ['information']
 handler.command = /^(cuaca)$/i
 handler.owner = false

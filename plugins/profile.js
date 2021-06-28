@@ -42,7 +42,6 @@ let handler = async (m, { conn, text }) => {
 		// +minutes+":"+sec;
   }
 	
-	// if(!text && !m.quoted) return conn.reply(m.chat, `*Penggunaan yang benar*\n\n.profile @user\n.profile -> reply chat`, m)
 	if(number.length > 15 || (number.length < 9 && number.length > 0)) return conn.reply(m.chat, `*Masukkan nomor dengan format yang benar !*`, m)
   try {
 		if (!text && !m.quoted){
@@ -57,16 +56,6 @@ let handler = async (m, { conn, text }) => {
 		pp = await conn.getProfilePicture(user)
 	} catch (e) {
 	} finally {
-		// format mata uang
-		const format = num => {
-			const n = String(num),
-						p = n.indexOf('.')
-			return n.replace(
-					/\d(?=(?:\d{3})+(?:\.|$))/g,
-					(m, i) => p < 0 || i < p ? `${m},` : m
-			)
-		}
-
 		if(typeof global.DATABASE.data.users[user] !== 'undefined'){
 			var money = global.DATABASE.data.users[user].exp
 			var xp = global.DATABASE.data.users[user].xp
@@ -118,7 +107,7 @@ let handler = async (m, { conn, text }) => {
 *Nomor* : ${nomor}
 *Level* : ${conn.level(xp)[0].toLocaleString()} (${xp.toLocaleString()} / ${conn.level(xp)[1].toLocaleString()})
 *Uang* : Rp. ${Number(money).toLocaleString().replace(/,/g, '.')},-
-*Limit* : ${format(limit)}
+*Limit* : ${limit.toLocaleString()}
 *Pasangan* : ${pasangan}
 *Whitelist* : ${whitelist}
 *Premium* : ${premium}
@@ -132,7 +121,7 @@ let handler = async (m, { conn, text }) => {
 		}
 	}
 }
-handler.help = ['_62xx_','_@user_','_(reply)_'].map(v => 'profile ' + v)
+handler.help = ['*@tag*','*(reply)*'].map(v => 'profile ' + v)
 handler.tags = ['group tools','tools']
 handler.command = /^(profile|profil)$/i
 handler.exp = 0

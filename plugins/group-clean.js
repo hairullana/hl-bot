@@ -11,11 +11,11 @@ let handler = async (m, { conn, text }) => {
 		var number = text
   }
 
-  if(!text && !m.quoted) return conn.reply(m.chat, `*[ WARN ERROR ]*\n\nTag user, tulis nomor, atau balas member yang ingin dihapus catatan kriminalnya`, m)
+  if(!text && !m.quoted) return conn.reply(m.chat, `Tag user, tulis nomor, atau balas member yang ingin dihapus catatan kriminalnya`, m)
   //let exists = await conn.isOnWhatsApp(number)
   // if (exists) return conn.reply(m.chat, `*Nomor target tidak terdaftar di WhatsApp*`, m)
-  if(isNaN(number)) return conn.reply(m.chat, `*[ WARN ERROR ]*\n\nNomor yang kamu masukkan tidak valid !`, m)
-  if(number.length > 15) return conn.reply(m.chat, `*[ WARN ERROR ]*\n\nNomor yang kamu masukkan tidak valid !`, m)
+  if(isNaN(number)) return conn.reply(m.chat, `Nomor yang kamu masukkan tidak valid !`, m)
+  if(number.length > 15) return conn.reply(m.chat, `Nomor yang kamu masukkan tidak valid !`, m)
   try {
 		if(text) {
 			var user = number + '@s.whatsapp.net'
@@ -47,12 +47,12 @@ let handler = async (m, { conn, text }) => {
 
     global.DATABASE.data.users[user].warning = 0
     var warn = global.DATABASE.data.users[user].warning
-    conn.reply(m.chat, `*[ CLEAN MEMBER WARNING ]*\n\n@${number} : [ ${warn} / 5 ]\n\nBerhasil membersihkan catatan kriminal kamu, lain kali tau diri ya bgst !`, null, {contextInfo: {
+    conn.reply(m.chat, `*❏ WARNING CLEANER*\n\n@${number} : [ ${warn} / 5 ]\n\nBerhasil membersihkan catatan kriminal kamu, lain kali tau diri ya bgst !`, null, {contextInfo: {
       mentionedJid: [user]
     }})
   }
 }
-handler.help = ['clean _62xx_', 'clean _(reply)_','clean _@user_']
+handler.help = ['clean *(reply)*','clean *@tag*']
 handler.tags = ['group admin']
 handler.command = /^clean$/i
 handler.admin = true

@@ -5,14 +5,12 @@ let handler = async (m, { conn, args }) => {
     contextInfo: { mentionedJid: online }
   })
 }
-handler.help = ['here','listonline','online']
+handler.help = ['listonline','online']
 handler.tags = ['group admin']
-handler.command = /^(here|(list)?online)$/i
+handler.command = /^((list)?online)$/i
 handler.admin = true
 handler.group = true
 handler.botAdmin = true
-
 handler.fail = null
-
 module.exports = handler
 

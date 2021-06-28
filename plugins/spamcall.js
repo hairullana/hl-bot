@@ -1,24 +1,15 @@
-const axios = require('axios')
-
-let handler = async(m, { conn, text, usedPrefix }) => {
-    if (!text) return conn.reply(m.chat, 'Masukkan nomor tujuan \n\n Contoh penggunaan : ' + usedPrefix + '8xxxxxxxx', m)
-    new Promise((resolve, reject) => {
-        axios.get(`http://alfians-api.herokuapp.com/api/spamcall?no=${text}`)
-            .then((res) => {
-                if (res.status == 200) {
-                    conn.reply(m.chat, res.logs, m)
-                    conn.reply(m.chat, `Sedang melakukan panggilan kepada 0${text}`, m)
-                } else {
-                    conn.reply(m.chat, res.msg, m)
-                }
-
-            })
-            .catch(reject)
-    })
+let fetch = require('node-fetch')
+let handler = async(m, { conn, text }) => {
+  if (!text) return conn.reply(m.chat, '*Masukkan nomor tujuan dengan awalan 62xx*', m)
+  if(isNaN(text)) return m.reply(`*Nomor hanya berupa angka dengan awalan 62xx*`)
+  let res = await fetch(global.API('xteam', '/spammer/allspam', { no: text }, 'APIKEY'))
+  let json = await res.json()
+  if (json.code == 200) m.reply(`*Sukses mengirim spam ke nomor ${text}*`)
+  else m.reply(`*Gagal mengirim spam ke nomor ${text}*`)
 }
-handler.help = ['spamcall _8xx_']
+handler.help = ['allspam *62xx*']
 handler.tags = ['tools','premium']
-handler.command = /^spamcall?$/i
+handler.command = /^(allspam)$/i
 handler.owner = false
 handler.mods = false
 handler.premium = true

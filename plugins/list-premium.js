@@ -23,7 +23,7 @@ let handler  = async (m, { conn, text }) => {
     }
   }
 
-  return conn.reply(m.chat,`❏ Upgrade Premium ? Ketik *.infopremium*\n❏ Total Premium : ${i-1} user\n${text}`,m)
+  return conn.reply(m.chat,`❏ Total Premium : ${i-1} user\n❏ Upgrade Premium ? Ketik *.infopremium*\n${text}`,m)
 }
 handler.help = ['listpremium','premiumlist']
 handler.tags = ['bot']

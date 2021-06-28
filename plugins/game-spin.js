@@ -96,11 +96,11 @@ let handler = async (m, { conn, args }) => {
 
 			conn.updatePresence(m.chat, Presence.composing)
 
-			return conn.reply(m.chat, `*❏  S P I N  R E S U L T*\n\n	- *Rp. ${Number(args[0]).toLocaleString().replace(/,/g, '.')}*\n	+ *Rp. ${Number(reward).toLocaleString().replace(/,/g, '.')}*\n\n*Total : Rp. ${Number(total).toLocaleString().replace(/,/g, '.')},-*\n\n*NB* : “Rentang hadiah adalah Rp. 1 sampai ${maxReward}x lipat modal dengan pengurangan limit setiap kali penggunaan”`, m)  
+			return conn.reply(m.chat, `*❏ SPIN RESULT*\n\n	- *Rp. ${Number(args[0]).toLocaleString().replace(/,/g, '.')}*\n	+ *Rp. ${Number(reward).toLocaleString().replace(/,/g, '.')}*\n\n*Total : Rp. ${Number(total).toLocaleString().replace(/,/g, '.')},-*\n\n*NB* : “Rentang hadiah adalah Rp. 1 sampai ${maxReward}x lipat modal dengan pengurangan limit setiap kali penggunaan”`, m)  
     }, 1000)
 	} 
 }
-handler.help = ['spin _money_','judi _money_', 'spin _all_', 'judi _all_']
+handler.help = ['spin *money*','judi *money*', 'spin *all*', 'judi *all*']
 handler.tags = ['game']
 handler.command = /^(spin|judi)$/i
 handler.owner = false

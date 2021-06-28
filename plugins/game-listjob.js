@@ -18,8 +18,8 @@ let handler = async (m, { conn, text, participants }) => {
       }
 		}
 	}
-	if(total == 0) return conn.reply(m.chat, `*❏  L I S T  J O B*\n\nTidak ada yang menawarkan jasa apapun di grup ini`, m) 
-	conn.reply(m.chat, `*❏  L I S T  J O B*\n\n${user.map(v => '  ○ @' + v.replace(/@.+/, '') + ' [ ' + global.DATABASE.data.users[v].job + ' - Rp. ' + global.DATABASE.data.users[v].price.toLocaleString()  +' ]').join('\n')}\n\nKetik .sewa @user untuk menyewa orang`, m,{ contextInfo: { mentionedJid: user } })
+	if(total == 0) return conn.reply(m.chat, `*❏ LIST JOB*\n\nTidak ada yang menawarkan jasa apapun di grup ini`, m) 
+	conn.reply(m.chat, `*❏ LIST JOB*\n\n${user.map(v => '  ○ @' + v.replace(/@.+/, '') + ' [ ' + global.DATABASE.data.users[v].job + ' - Rp. ' + global.DATABASE.data.users[v].price.toLocaleString()  +' ]').join('\n')}\n\nKetik .sewa @user untuk menyewa orang`, m,{ contextInfo: { mentionedJid: user } })
 }
 handler.help = ['listjob']
 handler.tags = ['game']

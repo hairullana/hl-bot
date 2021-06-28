@@ -10,10 +10,11 @@ let handler = async (m, { conn, args }) => {
 	list.slice(0, list.length).map(([user, data], i) => (limit += data.limit))
 	list.slice(0, list.length).map(([user, data], i) => (exp += data.exp))
 
-	conn.reply(m.chat, `*❏  H A R T A  U S E R*\n\nTotal Uang : Rp. ${exp.toLocaleString()}\nTotal Limit : ${limit.toLocaleString()}\n\nRata-Rata Uang : Rp. ${Math.floor(exp/list.length).toLocaleString()}\nRata-Rata Limit : ${Math.floor(limit/list.length).toLocaleString()}\n\nTotal User : ${list.length.toLocaleString()}`, m)
+	conn.reply(m.chat, `*❏ HARTA USER*\n\nTotal Uang : Rp. ${exp.toLocaleString()}\nTotal Limit : ${limit.toLocaleString()}\n\nRata-Rata Uang : Rp. ${Math.floor(exp/list.length).toLocaleString()}\nRata-Rata Limit : ${Math.floor(limit/list.length).toLocaleString()}\n\nTotal User : ${list.length.toLocaleString()}`, m)
 }
 handler.help = ['total']
 handler.tags = ['exp']
 handler.command = /^(total)$/i
+handler.owner = true
 handler.fail = null
 module.exports = handler

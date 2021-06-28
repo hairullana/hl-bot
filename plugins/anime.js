@@ -5,10 +5,12 @@ let handler  = async (m, { conn, args, usedPrefix, command }) => {
 	let text = args.join` `
 	await conn.updatePresence(m.chat, Presence.composing) 
 	conn.reply(m.chat,global.wait, m)
-	fetch('http://docs-jojo.herokuapp.com/api/dewabatch?q=' + encodeURIComponent(text))
+	fetch(global.API('xteam', '/anime/dewabatch', {
+    q: text
+  }, 'APIKEY'))
     	.then(res => res.json())
     	.then(batch => {
-    		if(batch.status !== 200) {
+    		if(batch.code !== 200) {
     			conn.reply(m.chat, `*Data tidak ditemukan*`, m)
     		} else {
     			conn.updatePresence(m.chat, Presence.composing) 
@@ -16,7 +18,7 @@ let handler  = async (m, { conn, args, usedPrefix, command }) => {
     	}
 	}) .catch(() => { conn.reply(m.chat, `_Error!_`, m) })
 }
-handler.help = ['anime'].map(v => v + ' _query_')
+handler.help = ['anime'].map(v => v + ' *query*')
 handler.tags = ['data']
 handler.command = /^(anime)$/i
 handler.owner = false

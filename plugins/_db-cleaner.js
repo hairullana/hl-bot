@@ -1,6 +1,7 @@
 let handler = m => m
 handler.before = async (m, { conn }) => {
-	if(new Date() * 1 - global.DATABASE.data.cleanDB > 1000 * 60 * 60){
+  // clean db 6 jam sekali
+	if(new Date() * 1 - global.DATABASE.data.cleanDB > 1000 * 60 * 60 * 6){
 		let users = global.DATABASE.data.users
   	let chats = global.DATABASE.data.chats
 		let anu = 86400000 * 10
@@ -26,7 +27,7 @@ handler.before = async (m, { conn }) => {
         chat += 1
       }
     }
-		if (user > 0 || chat > 0) conn.reply('6283119526456-1550555731@g.us',`*❏ DB Cleaner*\n\n[ - ] ${user} users\n[ - ] ${chat} chats`)
+		if (user > 0 || chat > 0) conn.reply(owner[0] + '@s.whatsapp.net',`*❏ DB Cleaner*\n\n[ - ] ${user} users\n[ - ] ${chat} chats`)
 		global.DATABASE.data.cleanDB = new Date() * 1
 	}
 }

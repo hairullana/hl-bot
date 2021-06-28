@@ -9,7 +9,7 @@ let handler = async (m, { conn, text, participants, usedPrefix, command, isPrems
     let mentionedJid = saha.concat(m.mentionedJid)
     conn.reply(m.chat, jawab, m, { contextInfo: { mentionedJid } })
 }
-handler.help = ['siapa _text_']
+handler.help = ['siapa *question*']
 handler.tags = ['fun']
 handler.command = /^siapa(kah)?$/i
 handler.group = true

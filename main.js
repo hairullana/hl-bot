@@ -49,8 +49,6 @@ global.APIs = {
   pcode: 'https://pencarikode.xyz',
   vhtear: 'https://api.vhtear.com',
   zahir: 'https://zahirr-web.herokuapp.com',
-  jojo: 'https://docs-jojo.herokuapp.com',
-  fikri: 'https://videfikri.com',
   apiflash: 'https://api.apiflash.com',
   public_restapi: 'http://public-restapi.herokuapp.com',
   lindow: 'https://lindow-api.herokuapp.com'
@@ -286,6 +284,7 @@ conn.handler = async function (m) {
           bot,
           isROwner,
           isOwner,
+          isMods,
           isAdmin,
           isBotAdmin,
           isPrems,

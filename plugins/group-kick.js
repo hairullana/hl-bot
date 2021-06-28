@@ -34,7 +34,7 @@ let handler = async (m, { conn, text }) => {
 	await conn.groupRemove(m.chat, [user])
 	}	
 }
-handler.help = ['kick']
+handler.help = ['kick *(reply)*','kick *@tag*']
 handler.tags = ['']
 handler.command = /^(kick)$/i
 handler.group = true

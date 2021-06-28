@@ -7,9 +7,9 @@ let handler  = async (m, { conn, text }) => {
 	var number = m.sender.split('@')[0]
 	conn.sendVcard(m.chat, name, number, m)
 }
-handler.help = ['me','saveme']
+handler.help = ['me','saveme','save']
 handler.tags = ['tools']
-handler.command = /^(me|saveme)$/i
+handler.command = /^(me|saveme|save)$/i
 handler.group = true
 handler.fail = null
 module.exports = handler

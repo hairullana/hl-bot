@@ -14,9 +14,9 @@ let handler = async (m, { conn, participants, command }) => {
 		}
 	}
 }
-handler.help = ['ngentod','pacaran','babi','anjing','cantik','ganteng','cakep','banci','tolol','setan']
+handler.help = ['ngentod','pacaran','babi','anjing','cantik','ganteng','cakep','banci','tolol','setan','tua']
 handler.tags = ['tag']
-handler.command = /^ngentod|pacaran|babi|anjing|cantik|ganteng|cakep|banci|tolol|setan$/i
+handler.command = /^(ngentod|pacaran|babi|anjing|cantik|ganteng|cakep|banci|tolol|setan|tua)$/i
 handler.owner = false
 handler.limit = true
 handler.fail = null
