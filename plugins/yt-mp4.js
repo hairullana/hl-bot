@@ -1,26 +1,26 @@
 let fetch = require('node-fetch')
 let { JSDOM } = require('jsdom')
-let limit = 30
-let handler = async (m, { conn, args, isPrems, isOwner }) => {
+let handler = async (m, { conn, args, isPrems }) => {
   if (!args || !args[0]) return conn.reply(m.chat, '*Masukkan URL Youtube yang ingin di download videonya*', m)
   conn.reply(m.chat,global.wait,m)
   let { dl_link, thumb, title, filesize, filesizeF} = await ytv(args[0])
-  let isLimit = (isPrems || isOwner ? 99 : limit) * 1024 < filesize
   conn.sendFile(m.chat, thumb, 'thumbnail.jpg', `
-*❏  Y O U T U B E  M P 4*
+*❏ YOUTUBE MP4*
 
 *Title:* ${title}
 *Filesize:* ${filesizeF}
-*${isLimit ? 'Pakai ': ''}Link:* ${dl_link}
+*Link:* ${dl_link}
 
-*Info Bot*
-Instagram : https://instagram.com/loadingtomastah
-Telegram : https://t.me/loadingtomastah
-`.trim(), m)
-//   if (!isLimit) conn.sendFile(m.chat, dl_link, 'video.mp4', `
-// *Title:* ${title}
-// *Filesize:* ${filesizeF}
-// `.trim(), m)
+${isPrems ? '*Tunggu, file akan segera dikirim karena kamu user premium*' : 'Ingin kirim file ? ketik *.infopremium*'}
+`.trim(), m).then(() => {
+  if (isPrems){
+    if (filesize <= 20480){
+      conn.sendFile(m.chat, dl_link, 'vid.mp4', null, m)
+    }else {
+      m.reply('*Silahkan download sendiri karena file berukuran lebih dari 20 MB.*')
+    }
+  }
+})
 }
 handler.help = ['ytmp4'].map(v => v + ' *url*')
 handler.tags = ['downloader']

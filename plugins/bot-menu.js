@@ -70,23 +70,22 @@ let handler  = async (m, { conn, usedPrefix: _p }) => {
     }
 
     var update = `*❏  U P D A T E*
-- Fix beberapa fitur error
-- Hapus fitur yg kadaluarsa
-- Antilink tidak kick link gc sendiri
-- Update antivirtex v2
-- Game ZoneWar 5v5 (.war)
-- Game tictactoe
-- Game family100`
+
+  » Kirim file ytmp3 & mp4 khusus prem
+  » Downloader igstory
+  » Antilink tidak kick link gc sendiri
+  » Update antivirtex v2
+  » Game ZoneWar 5v5 (.war)`
 
     conn.menu = conn.menu ? conn.menu : {}
     let before = conn.menu.before || `Hai *%name* (Lv. ${conn.level(xp)[0].toLocaleString()})
 Saldo Rp. %exp (%limit Limit)
 
-${update}
+  » Bingung dengan bot ? Ketik *.help*
+  » Upgrade user ? Ketik *.infopremium*
+  » Invite bot ke GC ? Ketik *.sewabot*
 
-» Bingung dengan bot ? Ketik *.help*
-» Upgrade user ? Ketik *.infopremium*
-» Invite bot ke GC ? Ketik *.sewabot*
+${update}
 %readmore`
     let header = conn.menu.header || '❏  *%category*\n'
     let body   = conn.menu.body   || '  » %cmd%islimit'

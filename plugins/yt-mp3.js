@@ -8,30 +8,28 @@ let handler = async (m, { conn, command, text, isPrems, isOwner }) => {
   let vid = results.all.find(video => video.seconds < 1200) // max 20mnt
   if (!vid) throw 'Video / Audio Tidak ditemukan'
   let { dl_link, thumb, title, filesize, filesizeF} = await (/2$/.test(command) ? ytv : yta)(vid.url, 'id4')
-  let isLimit = (isPrems || isOwner ? 99 : limit) * 1024 < filesize
+  // let isLimit = (isPrems || isOwner ? 99 : limit) * 1024 < filesize
   conn.sendFile(m.chat, thumb, 'thumbnail.jpg', `
 *❏  Y O U T U B E  M P 3*
 
 *Judul :* ${title}
 *Ukuran :* ${filesizeF}
 *URL :* ${vid.url}
-*${isLimit ? 'Pakai ': ''}Download :* ${dl_link}
+*Download :* ${dl_link}
 
-*Info Bot*
-Instagram : https://instagram.com/loadingtomastah
-Telegram : https://t.me/loadingtomastah
-`.trim(), m)
-//   if (!isLimit) conn.sendFile(m.chat, dl_link, title + '.mp' + (3 + /2$/.test(command)), `
-// *Title:* ${title}
-// *Filesize:* ${filesizeF}
-// *Source:* ${vid.url}
-// `.trim(), m)
+${isPrems ? '*Tunggu, file akan segera dikirim karena kamu user premium*' : 'Ingin kirim file ? ketik *.infopremium*'}
+`.trim(), m).then(() => {
+  if (isPrems){
+    if (filesize <= 20480){
+      conn.sendFile(m.chat, dl_link, title + '.mp' + (3 + /2$/.test(command)), null, m)
+    }else {
+      m.reply('*Silahkan download sendiri karena file berukuran lebih dari 20 MB.*')
+    }
+  }
+})
 }
 handler.help = ['ytmp3','play','music'].map(v => v + ' *title*')
 handler.tags = ['downloader']
-handler.command = /^play|ytmp3|music|musik$/i
-
-handler.exp = 0
+handler.command = /^(play|ytmp3|music|musik)$/i
 handler.limit = true
-
 module.exports = handler

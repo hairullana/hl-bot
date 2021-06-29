@@ -1,27 +1,43 @@
-let { Presence } = require('@adiwajshing/baileys')
 let fetch = require('node-fetch')
-let handler  = async (m, { conn, args, usedPrefix, command }) => {
-	await conn.updatePresence(m.chat, Presence.composing) 
-	if (!args || !args[0]) return conn.reply(m.chat, `*Format salah!*\n\nContoh : ${usedPrefix + command} hairullana_`, m)
-	m.reply(global.wait)
-	fetch('https://videfikri.com/api/igstalk/?username=' + args[0])
-		.then(res => res.json())
-		.then(json => {
-			if(json.result.pesan == 'error') return conn.reply(m.chat, `*Akun tidak ditemukan.*`, m)
-			 conn.sendFile(m.chat, json.result.profile_hd, 'foto.jpg', `*❏ INSTAGRAM STALK*\n\n	○ *Name* : ${json.result.full_name}\n	○ *Username* : @${json.result.username}\n	○ *Followers* : ${Number(json.result.followers).toLocaleString().replace(/,/g, '.')}\n	○ *Following* : ${Number(json.result.following).toLocaleString().replace(/,/g, '.')}\n	○ *Post* : ${Number(json.result.post_count).toLocaleString().replace(/,/g, '.')}\n	○ *Bio* : ${json.result.bio}`, m)
-	}) .catch(() => { conn.reply(m.chat, `*Terjadi kesalahan . . .*`, m) })
+let handler = async (m, { conn, args }) => {
+  if (!args[0]) throw '*Masukkan username instagram nya.*'
+  let res = await fetch(global.API('xteam', '/dl/igstalk', {
+    nama: args[0]
+  }, 'APIKEY'))
+	m.reply(wait)
+  let json = await res.json()
+  if (res.status != 200) throw json
+  if (json.result.error) throw json.result.message
+  let {
+    full_name,
+    username,
+    is_verified,
+    media_count,
+    follower_count,
+    following_count,
+    biography,
+    external_url,
+    profile_pic_url,
+    hd_profile_pic_url_info,
+    is_private
+  } = json.result.user
+  let pp = hd_profile_pic_url_info.url || profile_pic_url
+  let caption = `*❏ IG STALK*
+
+${full_name} *(@${username})* ${is_verified ? '✓' : ''}
+https://instagram.com/${username}
+${is_private ? 'Post Hidden by User' : ('*' + media_count + '* Post(s)')}
+Following *${following_count}* User(s)
+*${follower_count}* Followers
+*Bio:*
+${biography}${external_url ? '\n*External URL:* ' + external_url : ''}
+`.trim()
+  if (pp) conn.sendFile(m.chat, pp, 'ppig.jpg', caption, m)
+  else m.reply(caption)
 }
-handler.help = ['igstalk *username*']
-handler.tags = ['data']
+handler.help = ['igstalk'].map(v => v + ' *username*')
+handler.tags = ['downloader']
+
 handler.command = /^(igstalk)$/i
-handler.owner = false
-handler.mods = false
-handler.premium = false
-handler.group = false
-handler.private = false
-handler.admin = false
-handler.botAdmin = false
-handler.fail = null
-handler.limit = true
-handler.exp = 1000
+
 module.exports = handler
