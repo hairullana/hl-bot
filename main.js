@@ -79,8 +79,9 @@ if (!global.DATABASE.data.users) global.DATABASE.data = {
   users: {},
   groups: {},
   chats: {},
-  groupMode: false,
   selfMode: false,
+  cleanDB: 0,
+  backupDB: 0
 }
 
 if (!global.DATABASE.data.groups) global.DATABASE.data.groups = {}
@@ -212,11 +213,11 @@ conn.handler = async function (m) {
     let bot = m.isGroup ? participants.find(u => u.jid == this.user.jid) : {}
     let isAdmin = user.isAdmin || user.isSuperAdmin || false
     let isBotAdmin = bot.isAdmin || bot.isSuperAdmin || false
-    let groupMode = global.DATABASE.data.groupMode
     let selfMode = global.DATABASE.data.selfMode
     let adminMode = global.DATABASE.data.chats[m.chat].adminMode
     let whitelist = global.DATABASE._data.users[m.sender].whitelist
     let isPrems = global.DATABASE._data.users[m.sender].premium
+    let isBanned = global.DATABASE.data.users[m.sender].isBanned
     let antiLink = global.DATABASE.data.chats[m.chat].antiLink
     let antiVirtex = global.DATABASE.data.chats[m.chat].antiVirtex
     let antiSpam = global.DATABASE.data.chats[m.chat].antiSpam
@@ -225,11 +226,11 @@ conn.handler = async function (m) {
     await conn.chatRead(m.chat)
     conn.withoutContact = true
 
-    if (global.DATABASE.data.users[m.sender].isBanned) return
+    if (isBanned) return
 
     // partisipasi
     global.DATABASE.data.chats[m.chat].lastseen = new Date() * 1
-    if (global.DATABASE.data.users[m.sender].isBanned == false) {
+    if (!isBanned) {
       global.DATABASE.data.users[m.sender].exp += 1000
       global.DATABASE.data.users[m.sender].lastseen = new Date() * 1
       if (m.text.slice(0, 1) == hl){
@@ -288,6 +289,7 @@ conn.handler = async function (m) {
           isAdmin,
           isBotAdmin,
           isPrems,
+          isBanned,
           antiLink,
           antiVirtex,
           antiSpam,
@@ -364,7 +366,7 @@ conn.handler = async function (m) {
         let xp = 'exp' in plugin ? parseInt(plugin.exp) : 50 // XP Earning per command
         // m.exp += xp
         if (global.DATABASE.data.users[m.sender].limit < 1 && plugin.limit) {
-          this.reply(m.chat, `*❏  L I M I T  H A B I S*\n\nCara mendapatkan limit :\n\n1. Beli limit menggunakan command *.buy _total_*\n2. Claim hadian harian dengan command *.claim* !\n3. Mengemis limit/saldo kepada user sultan`, m)
+          this.reply(m.chat, `*❏ LIMIT HABIS*\n\nCara mendapatkan limit :\n\n1. Beli limit menggunakan command *.buy _total_*\n2. Claim hadian harian dengan command *.claim* !\n3. Mengemis limit/saldo kepada user sultan`, m)
           continue // Limit habis
         }
         try {
@@ -383,7 +385,8 @@ conn.handler = async function (m) {
             isAdmin,
             isBotAdmin,
             isPrems,
-            whitelist
+            whitelist,
+            selfMode
           })
           m.limit = m.limit || plugin.limit || false
         } catch (e) {

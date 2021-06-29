@@ -59,7 +59,6 @@ handler.before = async (m, { conn, isOwner }) => {
 *❏ BOT INFO*
 
   *Self Mode :* ${selfModeText}
-  *Group Mode :* ${groupModeText}
   *Group :* ${groupTotal} grup
   *Chat :* ${chatTotal} chat
 

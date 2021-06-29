@@ -39,7 +39,7 @@ let handler = async (m, { conn }) => {
 
     global.DATABASE.data.users[m.sender].limit += hadiah
     global.DATABASE.data.users[m.sender].lastclaim = new Date * 1
-  } else conn.reply(m.chat, `*❏DAILY CLAIM*\n\nAnda sudah mengklaim klaim bonus harian !\nKlaim lagi dalam ${msToTime(asu2)}`, m)
+  } else conn.reply(m.chat, `*❏ DAILY CLAIM*\n\nAnda sudah mengklaim klaim bonus harian !\nKlaim lagi dalam ${msToTime(asu2)}`, m)
 }
 handler.help = ['claim']
 handler.tags = ['xp']

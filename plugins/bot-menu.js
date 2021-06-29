@@ -71,6 +71,7 @@ let handler  = async (m, { conn, usedPrefix: _p }) => {
 
     var update = `*❏  U P D A T E*
 
+  » GroupMode dihapus (semua bisa pakai bot di pc)
   » Kirim file ytmp3 & mp4 khusus prem
   » Downloader igstory
   » Antilink tidak kick link gc sendiri
