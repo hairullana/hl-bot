@@ -9,7 +9,7 @@ let handler  = async (m, { conn, args }) => {
     await conn.modifyChat(args[1], 'delete').catch(console.log)
     m.reply(`*Berhasil menghapus chat grup dan menghapus data dari db.*`)
   }else if(args[0] == "link"){
-    conn.reply(m.chat, `*${conn.getName(args[1])}*\n\nhttps://chat.whatsapp.com/` + (await conn.groupInviteCode(args[1])), m)
+    conn.reply(m.chat, `*${conn.getGroup(args[1])}*\n\nhttps://chat.whatsapp.com/` + (await conn.groupInviteCode(args[1])), m)
   }else if(args[0] == "clear"){
     await conn.modifyChat(args[1], 'delete').catch(console.log)
   }else if(args[0] == "info"){

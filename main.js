@@ -543,7 +543,7 @@ global.dfail = (type, m, conn) => {
     premium: '*❏ AKSES DITOLAK*\n\nFitur ini khusus untuk user premium.\nHubungi owner ( *.owner* ) untuk upgrade premium',
     group: '*❏ AKSES DITOLAK*\n\nFitur ini khusus untuk di dalam grup.',
     private: '*❏ AKSES DITOLAK*\n\nFitur ini khusus untuk di chat pribadi bot.',
-    admin: '*❏ AKSES DITOLAK*\n\nFitur ini khusus untuk owner.',
+    admin: '*❏ AKSES DITOLAK*\n\nFitur ini khusus untuk admin.',
     botAdmin: '*❏ AKSES DITOLAK*\n\nJadikan bot sebagai admin terlebih dahulu.'
   } [type]
   if (msg) conn.reply(m.chat, msg, m)
