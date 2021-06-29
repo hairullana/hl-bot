@@ -8,11 +8,11 @@ let handler  = async (m, { conn, participants }) => {
 
   conn.sendFile(m.chat, pp, 'profile.jpg',`*TUTORIAL MENGGUNAKAN BOT*
 
-1. SPAM ? TELP/VC ? Auto Banned ! Bot menanggapi perintah setiap 7 detik, jadi SANTAY GAN
+1. SPAM ? TELP/VC ? Auto Banned ! Bot menanggapi perintah setiap 5 detik, jadi SANTAY GAN
 
-2. Untuk melihat daftar command, silahkan ketik *.menu*
+2. Untuk melihat daftar command, silahkan ketik *.menu* (Cek status bot ? ketik "bot")
 
-3. Bot tidak selalu aktif, jika bot tidak merespon artinya bot sedang offline
+3. Bot selalu aktif, jika bot tidak merespon artinya bot sedang maintenance (kalaunpun ada sesuatu, akan diinfo oleh owner)
 
 4. Beberapa fitur menggunakan *limit*, silahkan membeli limit menggunakan command *.buy _total_* menggunakan uang bot
 

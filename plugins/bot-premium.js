@@ -6,11 +6,11 @@ let handler  = async (m, { conn }) => {
 Dengan mendaftar menjadi user premium anda akan mendapatkan keuntungan sebagai berikut :
 
 1. Bisa menggunakan fitur premium ( *.menupremium* )
-2. Pengurangan rata 1 limit
+2. Penggunaan limit lebih hemat
 3. Claim limit 100 per hari
 4. Kenaikan level lebih cepat 2x lipat
 5. Mendapatkan uang bot acak 10x lipat dari user biasa di claim harian
-6. Bisa menggunakan bot melalui personal chat
+6. Fitur downloader akan langsung dikirimkan file oleh bot
 
 Silahkan hubungi owner ( *.owner* ) untuk melakukan upgrade premium hanya dengan Rp. 5.000 per bulan
 
