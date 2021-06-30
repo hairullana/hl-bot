@@ -366,7 +366,7 @@ conn.handler = async function (m) {
         let xp = 'exp' in plugin ? parseInt(plugin.exp) : 50 // XP Earning per command
         // m.exp += xp
         if (global.DATABASE.data.users[m.sender].limit < 1 && plugin.limit) {
-          this.reply(m.chat, `*❏ LIMIT HABIS*\n\nCara mendapatkan limit :\n\n1. Beli limit menggunakan command *.buy _total_*\n2. Claim hadian harian dengan command *.claim* !\n3. Mengemis limit/saldo kepada user sultan`, m)
+          this.reply(m.chat, `*❏ LIMIT HABIS*\n\nCara mendapatkan limit :\n\n1. Beli limit ( *.buy _total_* )\n2. Daily claim ( *.claim* )\n3. Mengemis limit/saldo kepada user sultan ( *.rank* )`, m)
           continue // Limit habis
         }
         try {
@@ -457,7 +457,7 @@ conn.handler = async function (m) {
 
       levelAkhir = conn.level(user.xp)[0]
       if (levelAwal != levelAkhir){
-        conn.reply(m.chat,`*❏ LEVEL UP*\n\n*[ ${levelAwal} ] 👉 [ ${levelAkhir} ]*`,m)
+        conn.reply(m.chat,`*❏ LEVEL UP*\n\n@${m.sender.split('@')[0]}\n*[ ${levelAwal} ] 👉 [ ${levelAkhir} ]*`,m, { contextInfo : { mentionedJid : [m.sender] } })
       }
     }
     try {
@@ -468,8 +468,9 @@ conn.handler = async function (m) {
   }
 }
 
-conn.welcome = 'Hai, *@user* !\nSelamat datang di grup *@subject*'
+conn.welcome = 'Hai, *@user* !\nSelamat datang di *@group*'
 conn.bye = 'Selamat Tinggal *@user* !'
+
 conn.onAdd = async function ({
   m,
   participants
@@ -481,7 +482,7 @@ conn.onAdd = async function ({
     try {
       pp = await this.getProfilePicture(user)
     } catch (e) {} finally {
-      let text = (chat.sWelcome || this.welcome || conn.welcome || 'Welcome, @user!').replace('@user', '@' + user.split('@')[0]).replace('@subject', this.getName(m.key.remoteJid))
+      let text = (chat.sWelcome || this.welcome || conn.welcome || 'Welcome, @user!').replace('@user', '@' + user.split('@')[0]).replace('@group', this.getGroup(m.key.remoteJid))
       if (user != conn.user.jid) {
         this.sendFile(m.key.remoteJid, pp, 'pp.jpg', text, m, false, {
           contextInfo: {
@@ -505,7 +506,7 @@ conn.onLeave = async function ({
     try {
       pp = await this.getProfilePicture(user)
     } catch (e) {} finally {
-      let text = (chat.sBye || this.bye || conn.bye || 'Selamat tinggal, @user!').replace('@user', '@' + user.split('@')[0]).replace('@subject', this.getName(m.key.remoteJid))
+      let text = (chat.sBye || this.bye || conn.bye || 'Selamat tinggal, @user!').replace('@user', '@' + user.split('@')[0]).replace('@group', this.getGroup(m.key.remoteJid))
       this.sendFile(m.key.remoteJid, pp, 'pp.jpg', text, m, false, {
         contextInfo: {
           mentionedJid: [user]
@@ -515,18 +516,7 @@ conn.onLeave = async function ({
   }
 }
 
-// conn.onDelete = async function (m) {
-//   await this.reply(m.key.remoteJid, `*⺀ DELETING MESSAGE ⺀*\n\n	○ *Dari :* @${m.participant.split`@`[0]}\n\n*Tunggu sebentar BOT akan mengembalikan pesan . . .*\n\n▌│█║▌║▌║║▌║▌║█│▌▌│█║`, m.message, {
-//     contextInfo: {
-//       mentionedJid: [m.participant]
-//     }
-//   })
-//   await conn.updatePresence(m.chat, Presence.composing) 
-//   this.copyNForward(m.key.remoteJid, m.message).catch(e => console.log(e, m))
-// }
-
 conn.on('message-new', conn.handler)
-// conn.on('message-delete', conn.onDelete)
 conn.on('group-add', conn.onAdd)
 conn.on('group-leave', conn.onLeave)
 conn.on('error', conn.logger.error)
@@ -582,7 +572,6 @@ if (opts['test']) {
   })
 }
 process.on('uncaughtException', console.error)
-// let strQuot = /(["'])(?:(?=(\\?))\2.)*?\1/
 
 let pluginFilter = filename => /\.js$/.test(filename)
 global.plugins = Object.fromEntries(
