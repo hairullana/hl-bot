@@ -159,8 +159,8 @@
       "spam": 0
     },
     "6283119526456@s.whatsapp.net": {
-      "lastseen": 1625056249004,
-      "exp": 1269800,
+      "lastseen": 1625071063857,
+      "exp": 1307800,
       "limit": 2,
       "lastclaim": 0,
       "warning": 0,
@@ -176,7 +176,7 @@
       "whitelist": false,
       "isBanned": false,
       "spam": 0,
-      "usebot": 1625055917589,
+      "usebot": 1625071063857,
       "xp": 2
     },
     "919875718817@s.whatsapp.net": {
@@ -6665,8 +6665,8 @@
       "spam": 0
     },
     "6283875674126@s.whatsapp.net": {
-      "lastseen": 1625062320273,
-      "exp": 26000,
+      "lastseen": 1625070964151,
+      "exp": 27000,
       "limit": 9,
       "lastclaim": 0,
       "warning": 0,
@@ -6681,7 +6681,7 @@
       "whitelist": false,
       "isBanned": false,
       "spam": 0,
-      "usebot": 1624972883477,
+      "usebot": 1625070964151,
       "xp": 1
     },
     "6289514335718@s.whatsapp.net": {
@@ -8422,9 +8422,9 @@
     },
     "6282215215399@s.whatsapp.net": {
       "xp": 0,
-      "usebot": 1624616269201,
-      "lastseen": 1624616269201,
-      "exp": 2022000,
+      "usebot": 1625070490560,
+      "lastseen": 1625070490560,
+      "exp": 2023000,
       "limit": 10,
       "lastclaim": 0,
       "warning": 0,
@@ -11999,7 +11999,7 @@
       "command": 0
     },
     "6282215215399@s.whatsapp.net": {
-      "lastseen": 1624152843443,
+      "lastseen": 1625070490560,
       "adminMode": false,
       "isBanned": false,
       "expired": 0,
@@ -12059,7 +12059,7 @@
       "command": 0
     },
     "6283119526456-1550555731@g.us": {
-      "lastseen": 1625055917589,
+      "lastseen": 1625071063857,
       "adminMode": false,
       "isBanned": false,
       "expired": 0,
@@ -12071,7 +12071,7 @@
       "nobadword": false,
       "sWelcome": "@user @group",
       "sBye": "@user @group",
-      "command": 0
+      "command": 3
     },
     "status@broadcast": {
       "lastseen": 1625056083483,
@@ -14865,5 +14865,5 @@
   "blocked": 0,
   "banned": 2,
   "groupMode": true,
-  "selfMode": true
+  "selfMode": false
 }
