@@ -31,8 +31,8 @@ global.wait = '_Sedang diproses . . ._'
 global.error = '_Fitur Error !_'
 
 global.owner = ['6282215215399']
-global.mods = ['6281524633549','6281257735703','6281351236907']
-global.modsName = ['galang','loli','ara']
+global.mods = ['6281524633549', '6281257735703', '6281351236907']
+global.modsName = ['galang', 'loli', 'ara']
 global.prems = []
 global.APIs = {
   nrtm: 'https://nurutomo.herokuapp.com',
@@ -71,7 +71,7 @@ global.opts = Object.freeze({
   ...opts
 })
 
-global.prefix = new RegExp('^[' + (opts['prefix'] || hl ) + ']')
+global.prefix = new RegExp('^[' + (opts['prefix'] || hl) + ']')
 
 // set db awal
 global.DATABASE = new(require('./lib/database'))(opts._[0] ? opts._[0] + '_' : '' + 'database.json', null, 2)
@@ -97,8 +97,7 @@ if (opts['server']) {
   app.listen(PORT, () => console.log('App listened on port', PORT))
 }
 global.conn = new WAConnection()
-conn.version = [2,2119,6
-]
+conn.version = [2, 2119, 6]
 let authFile = `${opts._[0] || 'session'}.data.json`
 if (fs.existsSync(authFile)) conn.loadAuthInfo(authFile)
 if (opts['big-qr'] || opts['server']) conn.on('qr', qr => generate(qr, {
@@ -233,7 +232,7 @@ conn.handler = async function (m) {
     if (!isBanned) {
       global.DATABASE.data.users[m.sender].exp += 1000
       global.DATABASE.data.users[m.sender].lastseen = new Date() * 1
-      if (m.text.slice(0, 1) == hl){
+      if (m.text.slice(0, 1) == hl) {
         global.DATABASE.data.users[m.sender].usebot = new Date() * 1
       }
     }
@@ -242,6 +241,7 @@ conn.handler = async function (m) {
     if (adminMode && !isOwner && m.isGroup && !isAdmin && m.text.slice(0, 1) == hl) return
 
     // ANTI-SPAM COMMAND
+    // fix this
     if (m.text.slice(0, 1) == hl) {
       global.DATABASE.data.chats[m.chat].command += 1
     }
@@ -258,108 +258,117 @@ conn.handler = async function (m) {
     let usedPrefix
     for (let name in global.plugins) {
       let plugin = global.plugins[name]
-        if (!plugin) continue
-        if (plugin.disabled) continue
-        if (!opts['restrict']) if (plugin.tags && plugin.tags.includes('admin')) continue
-        const str2Regex = str => str.replace(/[|\\{}()[\]^$+*?.]/g, '\\$&')
-        let _prefix = plugin.customPrefix ? plugin.customPrefix : conn.prefix ? conn.prefix : global.prefix
-        let match = (_prefix instanceof RegExp ? // RegExp Mode?
-          [[_prefix.exec(m.text), _prefix]] :
-          Array.isArray(_prefix) ? // Array?
-            _prefix.map(p => {
-              let re = p instanceof RegExp ? // RegExp in Array?
-                p :
-                new RegExp(str2Regex(p))
-              return [re.exec(m.text), re]
-            }) :
-            typeof _prefix === 'string' ? // String?
-              [[new RegExp(str2Regex(_prefix)).exec(m.text), new RegExp(str2Regex(_prefix))]] :
-              [[[], new RegExp]]
-        ).find(p => p[1])
-        if (typeof plugin.before == 'function') if (await plugin.before.call(this, m, {
-          match,
-          conn: this,
-          participants,
-          groupMetadata,
-          user,
-          bot,
-          isROwner,
-          isOwner,
-          isMods,
-          isAdmin,
-          isBotAdmin,
-          isPrems,
-          isBanned,
-          antiLink,
-          antiVirtex,
-          antiSpam,
-          antiBadword
-        })) continue
-        if ((usedPrefix = (match[0] || '')[0])) {
-          let noPrefix = m.text.replace(usedPrefix, '')
-          let [command, ...args] = noPrefix.trim().split` `.filter(v => v)
-          args = args || []
-          let _args = noPrefix.trim().split` `.slice(1)
-          let text = _args.join` `
-          command = (command || '').toLowerCase()
-          let fail = plugin.fail || global.dfail // When failed
-          let isAccept = plugin.command instanceof RegExp ? // RegExp Mode?
-            plugin.command.test(command) :
-            Array.isArray(plugin.command) ? // Array?
-              plugin.command.some(cmd => cmd instanceof RegExp ? // RegExp in Array?
-                cmd.test(command) :
-                cmd === command
-              ) :
-              typeof plugin.command === 'string' ? // String?
-                plugin.command === command :
-                false
+      if (!plugin) continue
+      if (plugin.disabled) continue
+      if (!opts['restrict'])
+        if (plugin.tags && plugin.tags.includes('admin')) continue
+      const str2Regex = str => str.replace(/[|\\{}()[\]^$+*?.]/g, '\\$&')
+      let _prefix = plugin.customPrefix ? plugin.customPrefix : conn.prefix ? conn.prefix : global.prefix
+      let match = (_prefix instanceof RegExp ? // RegExp Mode?
+        [
+          [_prefix.exec(m.text), _prefix]
+        ] :
+        Array.isArray(_prefix) ? // Array?
+        _prefix.map(p => {
+          let re = p instanceof RegExp ? // RegExp in Array?
+            p :
+            new RegExp(str2Regex(p))
+          return [re.exec(m.text), re]
+        }) :
+        typeof _prefix === 'string' ? // String?
+        [
+          [new RegExp(str2Regex(_prefix)).exec(m.text), new RegExp(str2Regex(_prefix))]
+        ] : [
+          [
+            [], new RegExp
+          ]
+        ]
+      ).find(p => p[1])
+      if (typeof plugin.before == 'function')
+        if (await plugin.before.call(this, m, {
+            match,
+            conn: this,
+            participants,
+            groupMetadata,
+            user,
+            bot,
+            isROwner,
+            isOwner,
+            isMods,
+            isAdmin,
+            isBotAdmin,
+            isPrems,
+            isBanned,
+            antiLink,
+            antiVirtex,
+            antiSpam,
+            antiBadword
+          })) continue
+      if ((usedPrefix = (match[0] || '')[0])) {
+        let noPrefix = m.text.replace(usedPrefix, '')
+        let [command, ...args] = noPrefix.trim().split ` `.filter(v => v)
+        args = args || []
+        let _args = noPrefix.trim().split ` `.slice(1)
+        let text = _args.join ` `
+        command = (command || '').toLowerCase()
+        let fail = plugin.fail || global.dfail // When failed
+        let isAccept = plugin.command instanceof RegExp ? // RegExp Mode?
+          plugin.command.test(command) :
+          Array.isArray(plugin.command) ? // Array?
+          plugin.command.some(cmd => cmd instanceof RegExp ? // RegExp in Array?
+            cmd.test(command) :
+            cmd === command
+          ) :
+          typeof plugin.command === 'string' ? // String?
+          plugin.command === command :
+          false
 
-          if (!isAccept) continue
-          m.plugin = name
-          if (m.chat in global.DATABASE._data.chats || m.sender in global.DATABASE._data.users) {
-            let chat = global.DATABASE._data.chats[m.chat]
-            let user = global.DATABASE._data.users[m.sender]
-            if (name != 'on.js' && chat && chat.isBanned) return // Except this
-            if (name != 'me.js' && user && user.banned) return
-          }
-          if (plugin.rowner && plugin.owner && !(isROwner || isOwner)) { // Both Owner
-            fail('owner', m, this)
-            continue
-          }
-          if (plugin.rowner && !isROwner) { // Real Owner
-            fail('rowner', m, this)
-            continue
-          }
-          if (plugin.owner && !isOwner) { // Number Owner
-            fail('owner', m, this)
-            continue
-          }
-          if (plugin.mods && !isMods) { // Moderator
-            fail('mods', m, this)
-            continue
-          }
-          if (plugin.premium && !isPrems) { // Premium
-            fail('premium', m, this)
-            continue
-          }
-          if (plugin.group && !m.isGroup) { // Group Only
-            fail('group', m, this)
-            continue
-          } else if (plugin.botAdmin && !isBotAdmin) { // You Admin
-            fail('botAdmin', m, this)
-            continue
-          } else if (plugin.admin && !isAdmin) { // User Admin
-            fail('admin', m, this)
-            continue
-          }
-          if (plugin.private && m.isGroup) { // Private Chat Only
-            fail('private', m, this)
-            continue
-          }
-          if (plugin.register == true && _user.registered == false) { // Butuh daftar?
-            fail('unreg', m, this)
-            continue
-          }
+        if (!isAccept) continue
+        m.plugin = name
+        if (m.chat in global.DATABASE._data.chats || m.sender in global.DATABASE._data.users) {
+          let chat = global.DATABASE._data.chats[m.chat]
+          let user = global.DATABASE._data.users[m.sender]
+          if (name != 'on.js' && chat && chat.isBanned) return // Except this
+          if (name != 'me.js' && user && user.banned) return
+        }
+        if (plugin.rowner && plugin.owner && !(isROwner || isOwner)) { // Both Owner
+          fail('owner', m, this)
+          continue
+        }
+        if (plugin.rowner && !isROwner) { // Real Owner
+          fail('rowner', m, this)
+          continue
+        }
+        if (plugin.owner && !isOwner) { // Number Owner
+          fail('owner', m, this)
+          continue
+        }
+        if (plugin.mods && !isMods) { // Moderator
+          fail('mods', m, this)
+          continue
+        }
+        if (plugin.premium && !isPrems) { // Premium
+          fail('premium', m, this)
+          continue
+        }
+        if (plugin.group && !m.isGroup) { // Group Only
+          fail('group', m, this)
+          continue
+        } else if (plugin.botAdmin && !isBotAdmin) { // You Admin
+          fail('botAdmin', m, this)
+          continue
+        } else if (plugin.admin && !isAdmin) { // User Admin
+          fail('admin', m, this)
+          continue
+        }
+        if (plugin.private && m.isGroup) { // Private Chat Only
+          fail('private', m, this)
+          continue
+        }
+        if (plugin.register == true && _user.registered == false) { // Butuh daftar?
+          fail('unreg', m, this)
+          continue
+        }
 
 
         m.isCommand = true
@@ -446,18 +455,22 @@ conn.handler = async function (m) {
       levelAwal = conn.level(user.xp)[0]
       if (user.premium == true) {
         user.limit -= m.limit * 1
-        user.xp += m.limit*1
+        user.xp += m.limit * 1
       } else if (user.limit > 100 || user.exp > 500000000) {
         user.limit -= m.limit * limitAsli
       } else {
         user.limit -= m.limit * 1
       }
       // nambah level
-      user.xp += m.limit*1
+      user.xp += m.limit * 1
 
       levelAkhir = conn.level(user.xp)[0]
-      if (levelAwal != levelAkhir){
-        conn.reply(m.chat,`*❏ LEVEL UP*\n\n@${m.sender.split('@')[0]}\n*[ ${levelAwal} ] 👉 [ ${levelAkhir} ]*`,m, { contextInfo : { mentionedJid : [m.sender] } })
+      if (levelAwal != levelAkhir) {
+        conn.reply(m.chat, `*❏ LEVEL UP*\n\n@${m.sender.split('@')[0]}\n*[ ${levelAwal} ] 👉 [ ${levelAkhir} ]*`, m, {
+          contextInfo: {
+            mentionedJid: [m.sender]
+          }
+        })
       }
     }
     try {
