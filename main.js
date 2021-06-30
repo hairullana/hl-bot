@@ -241,7 +241,6 @@ conn.handler = async function (m) {
     if (adminMode && !isOwner && m.isGroup && !isAdmin && m.text.slice(0, 1) == hl) return
 
     // ANTI-SPAM COMMAND
-    // fix this
     if (m.text.slice(0, 1) == hl) {
       global.DATABASE.data.chats[m.chat].command += 1
     }
