@@ -30,7 +30,7 @@ global.author = 'LTM BOT'
 global.wait = '_Sedang diproses . . ._'
 global.error = '_Fitur Error !_'
 
-global.owner = ['6282215215399']
+global.owner = ['6283119526456','6282215215399']
 global.mods = ['6281524633549', '6281257735703', '6281351236907']
 global.modsName = ['galang', 'loli', 'ara']
 global.prems = []
