@@ -47,7 +47,7 @@ let handler  = async (m, { conn, usedPrefix: _p }) => {
       'downloader': ' D O W N L O A D E R',
       'group tools' : 'G R O U P  T O O L S',
       'group admin': 'G R O U P  A D M I N',
-      'owner': 'O W N E R'
+      'owner': 'O W N E R & M O D S'
     }
     for (let plugin of Object.values(global.plugins))
       if (plugin && 'tags' in plugin)
@@ -71,12 +71,12 @@ let handler  = async (m, { conn, usedPrefix: _p }) => {
 
     var update = `*❏  U P D A T E*
 
-  » GroupMode dihapus (semua bisa pakai bot di pc)
-  » Kirim file ytmp3 & mp4 khusus prem
+  » Fitur .take
+  » GroupMode dihapus
+  » Kirim file ytmp3 & mp4
   » Downloader igstory
   » Antilink tidak kick link gc sendiri
-  » Update antivirtex v2
-  » Game ZoneWar 5v5 (.war)`
+  » Update antivirtex v2`
 
     conn.menu = conn.menu ? conn.menu : {}
     let before = conn.menu.before || `Hai *%name* (Lv. ${conn.level(xp)[0].toLocaleString()})

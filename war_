@@ -6665,8 +6665,8 @@
       "spam": 0
     },
     "6283875674126@s.whatsapp.net": {
-      "lastseen": 1625070964151,
-      "exp": 27000,
+      "lastseen": 1625076005848,
+      "exp": 29000,
       "limit": 9,
       "lastclaim": 0,
       "warning": 0,
@@ -14849,6 +14849,21 @@
     "6283119526456-1583136246@g.us": {
       "antiSpam": true,
       "lastseen": 1625056249004,
+      "adminMode": false,
+      "isBanned": false,
+      "expired": 0,
+      "welcome": false,
+      "left": false,
+      "antiLink": false,
+      "antiVirtex": false,
+      "antiBadword": false,
+      "sWelcome": "",
+      "sBye": "",
+      "command": 0
+    },
+    "6283875674126-1625075983@g.us": {
+      "antiSpam": true,
+      "lastseen": 1625076005848,
       "adminMode": false,
       "isBanned": false,
       "expired": 0,

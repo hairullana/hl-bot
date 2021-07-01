@@ -100,21 +100,21 @@ let handler = async (m, { conn, text }) => {
 				var name = isName
 			} else {
 				var name = '(Tanpa Nama)'
-			} conn.sendFile(m.chat, pp, 'profile.jpg', `*❏  P R O F I L E  U S E R*
+			} conn.sendFile(m.chat, pp, 'profile.jpg', `*❏ PROFILEUSER*
 
-*Nama* : ${name}
-*Tentang* : ${about}
-*Nomor* : ${nomor}
-*Level* : ${conn.level(xp)[0].toLocaleString()} (${xp.toLocaleString()} / ${conn.level(xp)[1].toLocaleString()})
-*Uang* : Rp. ${Number(money).toLocaleString().replace(/,/g, '.')},-
-*Limit* : ${limit.toLocaleString()}
-*Pasangan* : ${pasangan}
-*Whitelist* : ${whitelist}
-*Premium* : ${premium}
-*Warning* : ${warn} / 5
-*Banned* : ${banned}
-*Use Bot* : ${usebot}
-*Last Seen* : ${lastseen}`, m)
+*Nama*			: ${name}
+*Tentang* 	: ${about}
+*Nomor*			: ${nomor}
+*Level*			: ${conn.level(xp)[0].toLocaleString()} (${xp.toLocaleString()} / ${conn.level(xp)[1].toLocaleString()})
+*Uang*			: Rp. ${Number(money).toLocaleString().replace(/,/g, '.')},-
+*Limit*			: ${limit.toLocaleString()}
+*Pasangan*	: ${pasangan}
+*Whitelist*	: ${whitelist}
+*Premium*		: ${premium}
+*Warning*		: ${warn} / 5
+*Banned*		: ${banned}
+*Use Bot*		: ${usebot}
+*Last Seen*	: ${lastseen}`, m)
 			
 		}else{
 			m.reply(`*Nomor ${text} tidak terdaftar di bot.*`)

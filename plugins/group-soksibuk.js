@@ -32,7 +32,7 @@ let handler = async (m, { conn, args, participants }) => {
   let len = args[0] && args[0].length > 0 ? Math.min(1000, Math.max(parseInt(args[0]), 5)) : Math.min(10, sortedLS.length)
 
   let text = `
-❏  M E M B E R  S O K  S I B U K
+❏ MEMBER SOK SIBUK
 
 ${sortedLS.slice(0, len).map(([user, data], i) => (i + 1) + '. '  + conn.getName(user) + '\n    wa.me/' + user.split('@')[0] + '\n    *' + msToDate(new Date() - data.lastseen) + '*').join`\n`}
 `.trim()
