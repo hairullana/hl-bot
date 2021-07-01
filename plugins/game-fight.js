@@ -8,7 +8,7 @@ let handler = async (m, { conn, participants }) => {
   let users = participants.map(u => u.jid)
   var lawan
 	lawan = users[Math.floor(users.length * Math.random())]
-  while (typeof global.DATABASE.data.users[lawan] == "undefined"){
+  while (typeof global.DATABASE.data.users[lawan] == "undefined" || lawan == m.sender){
     lawan = users[Math.floor(users.length * Math.random())]
   }
 
@@ -36,13 +36,13 @@ let handler = async (m, { conn, participants }) => {
   }
 
   if (pointPemain > pointLawan){
-    let hadiah = getRandom(1,5)
-    global.DATABASE.data.users[m.sender].exp += Math.floor(global.DATABASE.data.users[m.sender].exp / 100 * hadiah)
-    m.reply(`*${conn.getName(m.sender)}* [${pointPemain * 10}] - [${pointLawan * 10}] *${conn.getName(lawan)}*\n\n*Kamu* (level ${conn.level(global.DATABASE.data.users[m.sender].xp)[0]}) MENANG melawan *${conn.getName(lawan)}* (level ${conn.level(global.DATABASE.data.users[lawan].xp)[0]}) karena kamu ${alasanMenang[getRandom(0,alasanMenang.length-1)]}\n\nHadiah Rp. ${Math.floor(global.DATABASE.data.users[m.sender].exp / 100 * hadiah).toLocaleString()} (${hadiah}% saldo)`)
+    let hadiah = getRandom(1,5) * 100000
+    global.DATABASE.data.users[m.sender].exp += hadiah
+    m.reply(`*${conn.getName(m.sender)}* [${pointPemain * 10}] - [${pointLawan * 10}] *${conn.getName(lawan)}*\n\n*Kamu* (level ${conn.level(global.DATABASE.data.users[m.sender].xp)[0]}) MENANG melawan *${conn.getName(lawan)}* (level ${conn.level(global.DATABASE.data.users[lawan].xp)[0]}) karena kamu ${alasanMenang[getRandom(0,alasanMenang.length-1)]}\n\nHadiah Rp. ${hadiah.toLocaleString()}`)
   }else if (pointPemain < pointLawan){
-    let denda = getRandom(1,5)
-    global.DATABASE.data.users[m.sender].exp += Math.floor(global.DATABASE.data.users[m.sender].exp / 100 * denda)
-    m.reply(`*${conn.getName(m.sender)}* [${pointPemain * 10}] - [${pointLawan * 10}] *${conn.getName(lawan)}*\n\n*Kamu* (level ${conn.level(global.DATABASE.data.users[m.sender].xp)[0]}) KALAH melawan *${conn.getName(lawan)}* (level ${conn.level(global.DATABASE.data.users[lawan].xp)[0]}) karena kamu ${alasanKalah[getRandom(0,alasanKalah.length-1)]}\n\nUang kamu berkurang Rp. ${Math.floor(global.DATABASE.data.users[m.sender].exp / 100 * denda).toLocaleString()} (${denda}% saldo)`)
+    let denda = getRandom(1,5) * 100000
+    global.DATABASE.data.users[m.sender].exp -= denda
+    m.reply(`*${conn.getName(m.sender)}* [${pointPemain * 10}] - [${pointLawan * 10}] *${conn.getName(lawan)}*\n\n*Kamu* (level ${conn.level(global.DATABASE.data.users[m.sender].xp)[0]}) KALAH melawan *${conn.getName(lawan)}* (level ${conn.level(global.DATABASE.data.users[lawan].xp)[0]}) karena kamu ${alasanKalah[getRandom(0,alasanKalah.length-1)]}\n\nUang kamu berkurang Rp. ${denda.toLocaleString()}`)
   }else {
     m.reply(`*${conn.getName(m.sender)}* [${pointPemain * 10}] - [${pointLawan * 10}] *${conn.getName(lawan)}*\n\nHasil imbang kack, ga dapet apa apa :v`)
   }
