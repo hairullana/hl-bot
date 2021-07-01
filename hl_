@@ -76832,6 +76832,5 @@
   "groupMode": true,
   "maintenance": true,
   "cleanDB": 1625142326352,
-  "backupDB": 1625140602215,
-  "selfMode": true
+  "backupDB": 1625140602215
 }
