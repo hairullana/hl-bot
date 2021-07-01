@@ -36,6 +36,7 @@ ${sortedExp.slice(0, len).map(([user, data], i) => (i + 1) + '. '  + conn.getNam
 handler.help = ['rich (Rank Money)','rich *total*','sultan','sultan *total*']
 handler.tags = ['xp']
 handler.command = /^(rich|sultan)$/i
+handler.group = true
 handler.fail = null
 handler.exp = 100
 module.exports = handler

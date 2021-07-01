@@ -32,6 +32,7 @@ ${sortedXP.slice(0, len).map(([user, data], i) => '*' + (i + 1) + '. '  + conn.g
 handler.help = ['rank (Rank Level)','rank *total*']
 handler.tags = ['xp']
 handler.command = /^(rank)$/i
+handler.group = true
 handler.fail = null
 handler.exp = 100
 module.exports = handler

@@ -1,0 +1,75 @@
+{
+  "users": {
+    "62822152153994@s.whatsapp.net": {
+      "xp": 0,
+      "usebot": 0,
+      "lastseen": 1625108969556,
+      "exp": 2000,
+      "limit": 10,
+      "lastclaim": 0,
+      "warning": 0,
+      "afk": -1,
+      "afkReason": "",
+      "pasangan": "",
+      "premium": false,
+      "premiumDate": 0,
+      "command": 0,
+      "job": "x",
+      "price": 0,
+      "whitelist": false,
+      "isBanned": false,
+      "spam": 0
+    }
+  },
+  "groups": {},
+  "chats": {
+    "6288276501923-1624082533@g.us": {
+      "antiSpam": true,
+      "lastseen": 1625108846676,
+      "adminMode": false,
+      "isBanned": false,
+      "expired": 0,
+      "welcome": false,
+      "left": false,
+      "antiLink": false,
+      "antiVirtex": false,
+      "antiBadword": false,
+      "sWelcome": "",
+      "sBye": "",
+      "command": 0
+    },
+    "62822152153993@s.whatsapp.net": {
+      "antiSpam": true,
+      "lastseen": 1625108969556,
+      "adminMode": false,
+      "isBanned": false,
+      "expired": 0,
+      "welcome": false,
+      "left": false,
+      "antiLink": false,
+      "antiVirtex": false,
+      "antiBadword": false,
+      "sWelcome": "",
+      "sBye": "",
+      "command": 0
+    },
+    "6283119526456@s.whatsapp.net": {
+      "antiSpam": true,
+      "lastseen": 0,
+      "adminMode": false,
+      "isBanned": false,
+      "expired": 0,
+      "welcome": false,
+      "left": false,
+      "antiLink": false,
+      "antiVirtex": false,
+      "antiBadword": false,
+      "sWelcome": "",
+      "sBye": "",
+      "command": 0
+    }
+  },
+  "selfMode": false,
+  "cleanDB": 1625108969563,
+  "backupDB": 1625108969562
+}

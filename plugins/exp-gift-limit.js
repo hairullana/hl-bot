@@ -61,6 +61,6 @@ let handler = async (m, { conn, command, text }) => {
 handler.help = ['gift']
 handler.tags = ['xp']
 handler.command = /^gift$/i
+handler.group = true
 handler.premium = true
-handler.limit = true
 module.exports = handler

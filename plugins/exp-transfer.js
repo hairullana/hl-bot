@@ -66,13 +66,13 @@ let handler = async (m, { conn, command, text }) => {
     return m.reply("*Transfer minimal Rp. 100.000.*")
   }
 
-  jumlah = parseInt(jumlah)
+  // jumlah = parseInt(jumlah)
 
   if (global.DATABASE.data.users[m.sender].exp < jumlah){
     maxTF = Math.floor(global.DATABASE.data.users[m.sender].exp / 105 * 100)
-    return conn.reply(m.chat,`*Uang anda tidak mencukupi untuk melakukan transfer dengan jumlah Rp. ${jumlah.toLocaleString()}*
+    return conn.reply(m.chat,`*Uang anda tidak mencukupi untuk melakukan transfer dengan jumlah Rp. ${Number(jumlah).toLocaleString()}*
   
-*Saldo anda : Rp. ${global.DATABASE.data.users[m.sender].exp.toLocaleString()}*`)
+*Saldo anda : Rp. ${global.DATABASE.data.users[m.sender].exp.toLocaleString()}*`,m)
   }
 
   global.DATABASE.data.users[m.sender].exp -= jumlah
@@ -91,5 +91,6 @@ Transfer *Rp. ${jumlah.toLocaleString()}* kepada @${target.split('@')[0]}
 handler.help = ['transfer','tf']
 handler.tags = ['xp']
 handler.command = /^transfer|tf$/i
+handler.group = true
 handler.limit = true
 module.exports = handler

@@ -1,24 +1,25 @@
-const { spawn } = require('child_process')
-const util = require('util')
-const { MessageType } = require('@adiwajshing/baileys')
+const fs = require('fs')
+const path = require('path')
+const { exec } = require('child_process')
+const { MessageType, Presence } = require('@adiwajshing/baileys')
 
 let handler  = async (m, { conn }) => {
-  if (!m.quoted) return conn.reply(m.chat, 'Tag stikernya dulu dong maniiieeezzz!', m)
+  conn.updatePresence(m.chat, Presence.composing)
+  if (!m.quoted) return conn.reply(m.chat, 'Tag stikernya!', m)
+  m.reply(global.wait)
   let q = { message: { [m.quoted.mtype]: m.quoted }}
   if (/sticker/.test(m.quoted.mtype)) {
-    let sticker = await conn.downloadM(q)
-    if (!sticker) throw sticker
-    let bufs = []
-    let im = spawn('convert', ['webp:-', 'jpeg:-'])
-    im.on('error',e =>  conn.reply(m.chat, util.format(e), m))
-    im.stdout.on('data', chunk => bufs.push(chunk))
-    im.stdin.write(sticker)
-    im.stdin.end()
-    im.on('exit', () => {
-      conn.sendMessage(m.chat, Buffer.concat(bufs), MessageType.image, {
-        quoted: m
-      })
-    })
+    encmedia = JSON.parse(JSON.stringify(m).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo
+	media = await conn.downloadAndSaveMediaMessage(encmedia)
+	ranc = getRandom('.png')
+	ran = path.join(__dirname, '../tmp', ranc)
+	exec(`ffmpeg -i ${media} ${ran}`, (err, stderr, stdout) => {
+	fs.unlinkSync(media)
+	if (err) return m.reply(global.error)
+		buffer = fs.readFileSync(ran)
+		conn.sendFile(m.chat, buffer, '', '', m)
+		fs.unlinkSync(ran)
+	})
   }
 }
 handler.help = ['toimg *(reply)*']
@@ -39,3 +40,6 @@ handler.fail = null
 
 module.exports = handler
 
+function getRandom(ext) {
+	return `${Math.floor(Math.random() * 10000)}${ext}`
+}

@@ -159,10 +159,10 @@
       "spam": 0
     },
     "6283119526456@s.whatsapp.net": {
-      "lastseen": 1625071063857,
-      "exp": 1307800,
-      "limit": 2,
-      "lastclaim": 0,
+      "lastseen": 1625109515768,
+      "exp": 1358800,
+      "limit": 16,
+      "lastclaim": 1625109454792,
       "warning": 0,
       "afk": -1,
       "afkReason": "",
@@ -176,8 +176,8 @@
       "whitelist": false,
       "isBanned": false,
       "spam": 0,
-      "usebot": 1625071063857,
-      "xp": 2
+      "usebot": 1625109515768,
+      "xp": 8
     },
     "919875718817@s.whatsapp.net": {
       "lastseen": 1625053228729,
@@ -6665,8 +6665,8 @@
       "spam": 0
     },
     "6283875674126@s.whatsapp.net": {
-      "lastseen": 1625076005848,
-      "exp": 29000,
+      "lastseen": 1625107809918,
+      "exp": 30000,
       "limit": 9,
       "lastclaim": 0,
       "warning": 0,
@@ -6681,7 +6681,7 @@
       "whitelist": false,
       "isBanned": false,
       "spam": 0,
-      "usebot": 1625070964151,
+      "usebot": 1625107809918,
       "xp": 1
     },
     "6289514335718@s.whatsapp.net": {
@@ -11979,6 +11979,26 @@
       "whitelist": false,
       "isBanned": false,
       "spam": 0
+    },
+    "62822152153993@s.whatsapp.net": {
+      "xp": 0,
+      "usebot": 0,
+      "lastseen": 0,
+      "exp": 0,
+      "limit": 10,
+      "lastclaim": 0,
+      "warning": 0,
+      "afk": -1,
+      "afkReason": "",
+      "pasangan": "",
+      "premium": false,
+      "premiumDate": 0,
+      "command": 0,
+      "job": "x",
+      "price": 0,
+      "whitelist": false,
+      "isBanned": false,
+      "spam": 0
     }
   },
   "groups": {},
@@ -12044,7 +12064,7 @@
       "command": 0
     },
     "6283119526456@s.whatsapp.net": {
-      "lastseen": 1624154182165,
+      "lastseen": 1625107801848,
       "adminMode": false,
       "isBanned": false,
       "expired": 0,
@@ -12059,7 +12079,7 @@
       "command": 0
     },
     "6283119526456-1550555731@g.us": {
-      "lastseen": 1625071063857,
+      "lastseen": 1625109515768,
       "adminMode": false,
       "isBanned": false,
       "expired": 0,
@@ -12071,7 +12091,7 @@
       "nobadword": false,
       "sWelcome": "@user @group",
       "sBye": "@user @group",
-      "command": 3
+      "command": 0
     },
     "status@broadcast": {
       "lastseen": 1625056083483,
@@ -14875,10 +14895,25 @@
       "sWelcome": "",
       "sBye": "",
       "command": 0
+    },
+    "6288276501923-1624082533@g.us": {
+      "antiSpam": true,
+      "lastseen": 1625107809918,
+      "adminMode": false,
+      "isBanned": false,
+      "expired": 0,
+      "welcome": false,
+      "left": false,
+      "antiLink": false,
+      "antiVirtex": false,
+      "antiBadword": false,
+      "sWelcome": "",
+      "sBye": "",
+      "command": 0
     }
   },
   "blocked": 0,
   "banned": 2,
   "groupMode": true,
-  "selfMode": false
+  "selfMode": true
 }

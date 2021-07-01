@@ -35,6 +35,7 @@ ${sortedLim.slice(0, len).map(([user, data], i) => (i + 1) + '. ' + conn.getName
 handler.help = ['top (Rank Limit)','top *total*']
 handler.tags = ['xp']
 handler.command = /^(top)$/i
+handler.group = true
 handler.fail = null
 handler.exp = 100
 module.exports = handler
