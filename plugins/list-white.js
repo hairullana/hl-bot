@@ -28,5 +28,5 @@ let handler  = async (m, { conn, text }) => {
 handler.help = ['listwhite','whitelist']
 handler.tags = ['bot']
 handler.command = /^(listwhite|whitelist)$/i
-handler.exp = 2000
+handler.owner = true
 module.exports = handler
