@@ -1,6 +1,12 @@
 let { Presence } = require('@adiwajshing/baileys')
 let handler = async (m, { conn }) => {
+  conn.mancing = conn.mancing ? conn.mancing : {}
+
   const delay = time => new Promise(res=>setTimeout(res,time));
+
+  if (typeof conn.mancing[m.sender] != "undefined" && conn.mancing[m.sender] == true) return m.reply(`*Tidak bisa memancing lagi karena anda sedang menunggu tangkapan ikan bro.*`)
+
+  conn.mancing[m.sender] = true
 
   let wait = getRandom(1,5)
   let minute = wait * 1000 * 60
@@ -58,7 +64,8 @@ let handler = async (m, { conn }) => {
       tampilanIkan += randIkan + " "
     }
 
-    return conn.reply(m.chat, `*❏ MANCING MANIA*\n\nTangkapan : ${tampilanIkan}\nSelamat anda berhasil menangkap *${jumlahIkan} ekor ${namaIkan}* dengan penjualan *Rp. ${Number(hargaIkan*jumlahIkan).toLocaleString()}*`, m)
+    conn.reply(m.chat, `*❏ MANCING MANIA*\n\nTangkapan : ${tampilanIkan}\nSelamat anda berhasil menangkap *${jumlahIkan} ekor ${namaIkan}* dengan penjualan *Rp. ${Number(hargaIkan*jumlahIkan).toLocaleString()}*`, m)
+    delete conn.mancing[m.sender]
   }, 1000)
 }
 handler.help = ['mancing']

@@ -11,16 +11,10 @@ handler.before = async (m, { conn, isOwner }) => {
     var chatTotal = 0
     conn.chats.array.filter(v => v.jid.endsWith('net')).map(v => chatTotal += 1)
 
-    if (global.DATABASE.data.selfMode) {
-      var selfModeText = "Aktif"
+    if (global.DATABASE.data.maintenance) {
+      var maintenanceText = "Maintenance"
     } else {
-      var selfModeText = "Nonaktif"
-    }
-
-    if (global.DATABASE.data.groupMode) {
-      var groupModeText = "Aktif"
-    } else {
-      var groupModeText = "Nonaktif"
+      var maintenanceText = "Normal"
     }
 
     let uptime = clockString(process.uptime() * 1000)
@@ -58,7 +52,7 @@ handler.before = async (m, { conn, isOwner }) => {
 
 *❏ BOT INFO*
 
-  *Self Mode :* ${selfModeText}
+  *Status :* ${maintenanceText}
   *Group :* ${groupTotal} grup
   *Chat :* ${chatTotal} chat
 

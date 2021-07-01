@@ -79,7 +79,7 @@ if (!global.DATABASE.data.users) global.DATABASE.data = {
   users: {},
   groups: {},
   chats: {},
-  selfMode: false,
+  maintenance: false,
   cleanDB: 0,
   backupDB: 0
 }
@@ -212,7 +212,7 @@ conn.handler = async function (m) {
     let bot = m.isGroup ? participants.find(u => u.jid == this.user.jid) : {}
     let isAdmin = user.isAdmin || user.isSuperAdmin || false
     let isBotAdmin = bot.isAdmin || bot.isSuperAdmin || false
-    let selfMode = global.DATABASE.data.selfMode
+    let maintenance = global.DATABASE.data.maintenance
     let adminMode = global.DATABASE.data.chats[m.chat].adminMode
     let whitelist = global.DATABASE._data.users[m.sender].whitelist
     let isPrems = global.DATABASE._data.users[m.sender].premium
@@ -237,7 +237,7 @@ conn.handler = async function (m) {
       }
     }
 
-    if (selfMode && !isOwner && m.text.slice(0, 1) == hl) return
+    if (maintenance && !isOwner && m.text.slice(0, 1) == hl) return
     if (adminMode && !isOwner && m.isGroup && !isAdmin && m.text.slice(0, 1) == hl) return
 
     // ANTI-SPAM COMMAND
@@ -394,7 +394,7 @@ conn.handler = async function (m) {
             isBotAdmin,
             isPrems,
             whitelist,
-            selfMode
+            maintenance
           })
           m.limit = m.limit || plugin.limit || false
         } catch (e) {

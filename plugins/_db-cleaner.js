@@ -1,7 +1,7 @@
 let handler = m => m
 handler.before = async (m, { conn }) => {
-  // clean db 3 jam sekali
-	if(new Date() * 1 - global.DATABASE.data.cleanDB > 1000 * 60 * 60 * 3){
+  // clean db 1 jam sekali
+	if(new Date() * 1 - global.DATABASE.data.cleanDB > 1000 * 60 * 60){
 		let users = global.DATABASE.data.users
   	let chats = global.DATABASE.data.chats
 		let anu = 86400000 * 10

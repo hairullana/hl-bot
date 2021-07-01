@@ -71,6 +71,7 @@ let handler  = async (m, { conn, usedPrefix: _p }) => {
 
     var update = `*❏  U P D A T E*
 
+  » Game .fight .adventure
   » Fitur .take
   » GroupMode dihapus
   » Kirim file ytmp3 & mp4
@@ -82,9 +83,9 @@ let handler  = async (m, { conn, usedPrefix: _p }) => {
     let before = conn.menu.before || `Hai *%name* (Lv. ${conn.level(xp)[0].toLocaleString()})
 Saldo Rp. %exp (%limit Limit)
 
-  » Bingung dengan bot ? Ketik *.help*
-  » Upgrade user ? Ketik *.infopremium*
-  » Invite bot ke GC ? Ketik *.sewabot*
+  🗿 Bingung dengan bot ? Ketik *.help*
+  🗿 Upgrade user ? Ketik *.infopremium*
+  🗿 Invite bot ke GC ? Ketik *.sewabot*
 
 ${update}
 %readmore`
