@@ -44,7 +44,7 @@ let handler = async (m, { conn, command, text }) => {
     return m.reply("*Gift minimal 1 limit.*")
   }
 
-  jumlah = parseInt(jumlah)
+  jumlah = Number(jumlah)
 
   if (global.DATABASE.data.users[m.sender].limit < jumlah+1){
     return m.reply(`*Limit anda tidak mencukupi untuk melakukan gift dengan jumlah ${jumlah.toLocaleString()} limit.*\n*Minimal tersisa 1 limit setelah melakukan gift.*`)
