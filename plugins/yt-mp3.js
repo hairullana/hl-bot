@@ -10,7 +10,7 @@ let handler = async (m, { conn, command, text, isPrems, isOwner }) => {
   let { dl_link, thumb, title, filesize, filesizeF} = await (/2$/.test(command) ? ytv : yta)(vid.url, 'id4')
   // let isLimit = (isPrems || isOwner ? 99 : limit) * 1024 < filesize
   conn.sendFile(m.chat, thumb, 'thumbnail.jpg', `
-*❏  Y O U T U B E  M P 3*
+*❏ YOUTUBE MP3*
 
 *Judul :* ${title}
 *Ukuran :* ${filesizeF}
@@ -18,7 +18,7 @@ let handler = async (m, { conn, command, text, isPrems, isOwner }) => {
 *Download :* ${dl_link}
 
 ${isPrems ? '*Tunggu, file akan segera dikirim karena kamu user premium*' : 'Ingin kirim file ? ketik *.infopremium*'}
-`.trim(), m).then(() => {
+`.trim(), m, false , { thumbnail: require('fs').readFileSync('./media/images/thumb.jpg') }).then(() => {
   if (isPrems){
     if (filesize <= 20480){
       conn.sendFile(m.chat, dl_link, title + '.mp' + (3 + /2$/.test(command)), null, m)

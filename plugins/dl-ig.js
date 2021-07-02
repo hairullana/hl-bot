@@ -1,6 +1,7 @@
 let fetch = require('node-fetch')
 let handler = async (m, { conn, args }) => {
   if (!args[0]) throw '*Masukkan url yang benar*'
+  args[0] = args[0].replace('reel','p')
   let res = await fetch(global.API('xteam', '/dl/ig', {
     url: args[0]
   }, 'APIKEY'))
@@ -20,7 +21,7 @@ Caption :
 ${caption}
 `.trim()
   for (let { data: url, type } of data)
-    conn.sendFile(m.chat, url, 'ig' + (type == 'video' ? '.mp4' : '.jpg'), text, m)
+    conn.sendFile(m.chat, url, 'ig' + (type == 'video' ? '.mp4' : '.jpg'), text, m, false , { thumbnail: require('fs').readFileSync('./media/images/thumb.jpg') })
 }
 handler.help = ['ig','igdl'].map(v => v + ' *url*')
 handler.tags = ['downloader']

@@ -17,7 +17,7 @@ let handler  = async (m, { conn }) => {
 	fs.unlinkSync(media)
 	if (err) return m.reply(global.error)
 		buffer = fs.readFileSync(ran)
-		conn.sendFile(m.chat, buffer, '', '', m)
+		conn.sendFile(m.chat, buffer, '', '', m, false , { thumbnail: require('fs').readFileSync('./media/images/thumb.jpg') })
 		fs.unlinkSync(ran)
 	})
   }

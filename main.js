@@ -54,7 +54,8 @@ global.APIs = {
   lindow: 'https://lindow-api.herokuapp.com'
 }
 global.APIKeys = {
-  'https://api.xteam.xyz': 'hairullana'
+  'https://api.xteam.xyz': 'hairullana',
+  'https://pencarikode.xyz': 'APIKEY'
 }
 global.API = (name, path = '/', query = {}, apikeyqueryname) => (name in global.APIs ? global.APIs[name] : name) + path + (query || apikeyqueryname ? '?' + new URLSearchParams(Object.entries({
   ...query,

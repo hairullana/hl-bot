@@ -23,8 +23,8 @@ let handler = async (m, { conn, participants, text }) => {
 
   await delay(1000 * 60 * lamaPertarungan)
 
-  let alasanKalah = ['cupu','tolol','kebanyakan coli','kurang tidur','pedang patah','tangan buntung','pincang','mimpi basah','dicurangi','belum ngopi','belum mandi','dengkul kopong','gay','dibenci hairul lana']
-  let alasanMenang = ['hebat','tidak suka merokok','punya pedang panjang','pedangmu kuat','tidak suka coli','sudah ngopi pagi ini','disayang hairul lana','bisa salto','jago','rajin push up','tidak suka ngocok batang']
+  let alasanKalah = ['cupu','tolol','kebanyakan coli','kurang tidur','pedang patah','tangan buntung','pincang','mimpi basah','dicurangi','belum ngopi','belum mandi','dengkul kopong','gay','dibenci hairul lana','belum upgrade premium','berak pake wc duduk']
+  let alasanMenang = ['hebat','tidak suka merokok','punya pedang panjang','punya pedang kuat','tidak suka coli','sudah ngopi pagi ini','disayang hairul lana','bisa salto','jago','rajin push up','tidak suka ngocok batang','tidak gay']
   let musuh = ['raja semut','komandan sange','gajah berkepala kuda','goblin tombak maut','wildan berkaki empat','naga kepala tiga','anjing rabies','bapakmu','lord orochimaru','guru matematika','guru BK','kepala sekolah','koruptor','kekuatan cinta atta dan aurel']
 
   let hasil = getRandom(0,1)

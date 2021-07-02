@@ -12,7 +12,7 @@ let handler = async (m, { conn, args, isPrems }) => {
 *Link:* ${dl_link}
 
 ${isPrems ? '*Tunggu, file akan segera dikirim karena kamu user premium*' : 'Ingin kirim file ? ketik *.infopremium*'}
-`.trim(), m).then(() => {
+`.trim(), m, false , { thumbnail: require('fs').readFileSync('./media/images/thumb.jpg') }).then(() => {
   if (isPrems){
     if (filesize <= 20480){
       conn.sendFile(m.chat, dl_link, 'vid.mp4', null, m)

@@ -83,9 +83,9 @@ let handler  = async (m, { conn, usedPrefix: _p }) => {
     let before = conn.menu.before || `Hai *%name* (Lv. ${conn.level(xp)[0].toLocaleString()})
 Saldo Rp. %exp (%limit Limit)
 
-  🗿 Bingung dengan bot ? Ketik *.help*
-  🗿 Upgrade user ? Ketik *.infopremium*
-  🗿 Invite bot ke GC ? Ketik *.sewabot*
+🗿 Bingung dg bot ? ketik *.help*
+🗿 Upgrade premium ? ketik *.infopremium*
+🗿 Sewa bot ? ketik *.sewabot*
 
 ${update}
 %readmore`

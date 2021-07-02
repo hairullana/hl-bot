@@ -9,7 +9,7 @@ let handler  = async (m, { conn, args, usedPrefix, command }) => {
 	fetch('https://api.zeks.xyz/api/yts?q=' + encodeURIComponent(text) + '&apikey=apivinz')
     .then(res => res.json())
     .then(json => {
-			var yts = '*❏  Y O U T U B E  S E A R C H*\n\n'
+			var yts = '*❏ YOUTUBE SEARCH*\n\n'
 			var i
 			for(i = 1; i < 10; i++) {
 				// if (json.result[i].channel.id < 0){
