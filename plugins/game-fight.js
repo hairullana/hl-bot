@@ -18,7 +18,7 @@ let handler = async (m, { conn, participants }) => {
 
   conn.fight[m.sender] = true
 
-  // await delay(1000 * 60 * lamaPertarungan)
+  await delay(1000 * 60 * lamaPertarungan)
 
   let alasanKalah = ['cupu','tolol','kebanyakan coli','kurang tidur','pedang patah','tangan buntung','pincang','mimpi basah','dicurangi','belum ngopi','belum mandi','dengkul kopong','gay','dibenci owner']
   let alasanMenang = ['hebat','tidak suka merokok','punya pedang panjang','pedangmu kuat','tidak suka coli','sudah ngopi pagi ini','disayang owner','bisa salto','jago','rajin push up','tidak suka ngocok batang']
