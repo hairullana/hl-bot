@@ -94,7 +94,7 @@ let handler = async (m, { conn, text }) => {
 				var name = isName
 			} else {
 				var name = '(Tanpa Nama)'
-			} conn.sendFile(m.chat, pp, 'profile.jpg', `*❏ PROFILEUSER*
+			} conn.sendFile(m.chat, pp, 'profile.jpg', `*❏ PROFILE USER*
 
 *Nama* : ${name}
 *Tentang*  : ${about}
