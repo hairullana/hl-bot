@@ -26,12 +26,10 @@ handler.before = async (m, { conn, isOwner }) => {
     let now = new Date() * 1
     var userBangsat = 0
     var userPremium = 0
-    var userWhitelist = 0
 
     for (let jid in users) {
       if (now - users[jid].usebot > anu && !users[jid].premium) userBangsat += 1
       if (users[jid].premium) userPremium += 1
-      if (users[jid].whitelist) userWhitelist += 1
     }
 
     let userBot = (Object.keys(global.DATABASE._data.users).length - userBangsat).toLocaleString()
@@ -61,7 +59,6 @@ handler.before = async (m, { conn, isOwner }) => {
   *Total User :* ${totalUser}
   *User Bot :* ${userBot}
   *Premium :* ${userPremium}
-  *Whitelist :* ${userWhitelist}
   *Banned :* ${totalBanned}
   *Blocked :* ${conn.blocklist.length}`, m)
   }

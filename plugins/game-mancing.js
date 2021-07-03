@@ -19,39 +19,39 @@ let handler = async (m, { conn }) => {
   
   setTimeout(() => {
     if (randIkan2 == "🐠"){
-      var jumlahIkan = getRandom(1,20)
+      var jumlahIkan = getRandom(1,25)
       var hargaIkan = 10000
       var namaIkan = "Ikan Biru"
     }else if (randIkan2 == "🐟"){
-      var jumlahIkan = getRandom(1,10)
+      var jumlahIkan = getRandom(1,13)
       var hargaIkan = 20000
       var namaIkan = "Mujair"
     }else if (randIkan2 == "🐡"){
-      var jumlahIkan = getRandom(1,5)
+      var jumlahIkan = getRandom(1,7)
       var hargaIkan = 40000
       var namaIkan = "Ikan Buntal"
     }else if (randIkan2 == "🐬"){
-      var jumlahIkan = getRandom(1,4)
-      var hargaIkan = -500000
+      var jumlahIkan = getRandom(1,3)
+      var hargaIkan = 100000
       var namaIkan = "Lumba Lumba"
     }else if (randIkan2 == "🐳"){		// < 5jt
-      var jumlahIkan = getRandom(1,3)
+      var jumlahIkan = getRandom(1,4)
       var hargaIkan = 70000
       var namaIkan = "Ikan Paus"
     }else if (randIkan2 == '🐋'){
-      var jumlahIkan = getRandom(1,2)
+      var jumlahIkan = getRandom(1,3)
       var hargaIkan = 100000
       var namaIkan = "Ikan Paus Biru"
     }else if (randIkan2 == "🦈"){
-      var jumlahIkan = getRandom(1,4)
-      var hargaIkan = 60000
+      var jumlahIkan = getRandom(1,5)
+      var hargaIkan = 50000
       var namaIkan = "Ikan Hiu"
     }else if (randIkan2 == "🐊"){
-      var jumlahIkan = getRandom(1,2)
+      var jumlahIkan = getRandom(1,3)
       var hargaIkan = 100000
       var namaIkan = "Buaya"
     }else if (randIkan2 == "🦀"){
-      var jumlahIkan = getRandom(1,13)
+      var jumlahIkan = getRandom(1,17)
       var hargaIkan = 15000
       var namaIkan = "Kepiting"
     }

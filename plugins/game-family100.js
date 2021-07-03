@@ -1,35 +1,36 @@
-let fetch = require('node-fetch')
-let winScore = 100000
-async function handler(m) {
-    this.game = this.game ? this.game : {}
-    let id = 'family100_' + m.chat
-    if (id in this.game) {
-        this.reply(m.chat, 'Masih ada kuis yang belum terjawab di chat ini', this.game[id].msg)
-        throw false
-    }
-    let res = await fetch(global.API('xteam', '/game/family100', {}, 'APIKEY'))
-    if (!res.ok) throw await res.text()
-    let json = await res.json()
-    if (!json.status) throw json
+let { Presence } = require('@adiwajshing/baileys')
+let fs = require('fs')
+let timeout = 120000
+let poin = 0
+let handler = async (m, { conn, usedPrefix }) => {
+	// let games = global.DATABASE._data.games
+	// let game = global.DATABASE._data.chats[m.chat].game
+	await conn.updatePresence(m.chat, Presence.composing) 
+	// if(!games) return conn.reply(m.chat, `*Fitur game dimatikan sementara oleh owner.*`, m)
+	// if(!game) return conn.reply(m.chat, `*Fitur game belum diaktifkan di grup ini.*`, m)
+    conn.quiz = conn.quiz ? conn.quiz : {}
+    let id = m.chat
+    if (id in conn.quiz) return conn.reply(m.chat, '*^ soal ini belum selesai!*', conn.quiz[id][0])  
+    let _quiz = JSON.parse(fs.readFileSync('./src/quiz.json'))
+    let mix = Math.floor(Math.random() * _quiz.length)
+    const res = _quiz[mix]
+    let json = res
     let caption = `
-*Soal:* ${json.soal}
-Terdapat *${json.jawaban.length}* jawaban${json.jawaban.find(v => v.includes(' ')) ? `
-(beberapa jawaban terdapat spasi)
-`: ''}
-+ Rp. ${winScore.toLocaleString()} tiap jawaban benar
-    `.trim()
-    this.game[id] = {
-        id,
-        msg: await m.reply(caption),
-        ...json,
-        terjawab: Array.from(json.jawaban, () => false),
-        winScore,
-    }
+Terdapat *${json.jawaban.length}* jawaban!
+Timeout *${((timeout / 1000) / 60)} menit*
+*Reply pesan ini untuk menjawab!*`.trim()
+    conn.quiz[id] = [
+        await conn.reply(m.chat, '*❏ FAMILY 100*\n\n	*Quiz : ' + json.pertanyaan + '*\n\n' + caption, m),
+        json, poin,
+        setTimeout(() => {
+        	conn.updatePresence(m.chat, Presence.composing)
+            if (conn.quiz[id]) conn.reply(m.chat, `*Quiz berakhir!*`, conn.quiz[id][0])
+			delete conn.quiz[id]
+        }, timeout),
+		[], [], []
+    ]
 }
 handler.help = ['family100']
 handler.tags = ['game']
-handler.command = /^family100$/i
-handler.limit = true
-handler.group = true
-
+handler.command = /^family100/i
 module.exports = handler

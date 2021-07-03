@@ -59,10 +59,23 @@ let handler = async (m, { conn, text, participants }) => {
           x += 1
           if (x == 100) return m.reply("*Gagal mendapatkan limit karena si maling terlalu tolol.*")
         }
+
+        let pertarungan = []
+        for (i=0;i<conn.level(global.DATABASE.data.users[user].xp)[0];i++) pertarungan.push(user)
+        for (i=0;i<conn.level(global.DATABASE.data.users[tag].xp)[0];i++) pertarungan.push(tag)
+        let pointMaling = 0
+        let pointKorban = 0
+        for (i=0;i<10;i++){
+          if (pertarungan[getRandom(0,pertarungan.length-1)] == user) pointMaling += 1
+          else pointKorban += 1
+        }
+        if (pointKorban >= pointMaling) return conn.reply(m.chat,`*@${user.split('@')[0]} gagal mencuri limit @${tag.split('@')[0]} karena dihajar saat berusaha mencuri.*\n\n*Note : keberhasilan mencuri tergantung dari level pencuri dan korban*`, m, {contextInfo : {mentionedJid : [tag,user]}})
+        
         limitMax = getRandom(1,Math.floor(global.DATABASE.data.users[user].price/100000)*2)
         if (global.DATABASE.data.users[tag].limit < limitMax){
           limitMax = global.DATABASE.data.users[tag].limit
         }
+
         global.DATABASE.data.users[tag].limit -= limitMax
         global.DATABASE.data.users[m.sender].limit += limitMax
         global.DATABASE.data.users[m.sender].exp -= global.DATABASE.data.users[user].price
