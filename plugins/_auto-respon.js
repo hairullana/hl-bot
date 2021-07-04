@@ -1,8 +1,8 @@
 let fs = require('fs')
 let handler = m => m
 handler.before = async (m, { conn, isMods }) => {
-  let users = (await conn.groupMetadata(m.chat)).participants.map(u => u.jid)
-	if (m.text.toLowerCase() == "y" && isMods) {
+  if (m.text.toLowerCase() == "y" && isMods) {
+    let users = (await conn.groupMetadata(m.chat)).participants.map(u => u.jid)
     ran = "./media/desah-bangsat.mp3"
     buffer = fs.readFileSync(ran)
     const option = {

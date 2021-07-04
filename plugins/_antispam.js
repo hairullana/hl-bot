@@ -1,24 +1,24 @@
 let { GroupSettingChange } = require('@adiwajshing/baileys')
 let handler = m => m
 handler.before = async (m, { conn, antiSpam, isBotAdmin, isOwner, isAdmin }) => {
-  let users = (await conn.groupMetadata(m.chat)).participants.map(u => u.jid)
-	if (antiSpam && isBotAdmin){
+  if (antiSpam && isBotAdmin){
     if (!isOwner) {
       global.DATABASE.data.users[m.sender].spam += 1
       var spam = global.DATABASE.data.users[m.sender].spam
-  
+      
       if (spam >= 0) setTimeout(() => {
         global.DATABASE.data.users[m.sender].spam = 0
       }, 7000)
-  
+      
       if (spam == 5) return conn.reply(m.chat, `*Tolong @${m.sender.split('@')[0]} untuk tidak spam !*`, null, {
         contextInfo: {
           mentionedJid: [m.sender]
         }
       })
-  
+      
       if (spam == 7) {
         if (m.isGroup && isBotAdmin) {
+          let users = (await conn.groupMetadata(m.chat)).participants.map(u => u.jid)
           return conn.reply(m.chat, `*❏ BOT AKAN MENUTUP GRUP UNTUK MENGHINDARI SPAM*`, m, { contextInfo: { mentionedJid: users } }).then(() => {
             if (isAdmin && m.isGroup) {
               conn.groupSettingChange(m.chat, GroupSettingChange.messageSend, true).then(() => {
