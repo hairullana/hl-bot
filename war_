@@ -22,8 +22,8 @@
       "xp": 0
     },
     "6283119526456@s.whatsapp.net": {
-      "lastseen": 1625402441509,
-      "exp": 2869098,
+      "lastseen": 1625403430360,
+      "exp": 2871098,
       "limit": 13,
       "lastclaim": 1625397368455,
       "warning": 0,
@@ -39,7 +39,7 @@
       "whitelist": false,
       "isBanned": false,
       "spam": 0,
-      "usebot": 1625402441509,
+      "usebot": 1625403418873,
       "xp": 69,
       "money": null
     },
@@ -314,8 +314,8 @@
     "6282215215399@s.whatsapp.net": {
       "xp": 0,
       "usebot": 1625070490560,
-      "lastseen": 1625402807921,
-      "exp": 2039000,
+      "lastseen": 1625403438653,
+      "exp": 2040000,
       "limit": 10,
       "lastclaim": 0,
       "warning": 0,
@@ -1774,8 +1774,8 @@
     "6285857948496@s.whatsapp.net": {
       "xp": 0,
       "usebot": 1625128820637,
-      "lastseen": 1625399443776,
-      "exp": 26000,
+      "lastseen": 1625403454451,
+      "exp": 28000,
       "limit": 10,
       "lastclaim": 0,
       "warning": 0,
@@ -2305,7 +2305,7 @@
       "command": 0
     },
     "6283119526456-1550555731@g.us": {
-      "lastseen": 1625402807921,
+      "lastseen": 1625403454451,
       "adminMode": false,
       "isBanned": false,
       "expired": 1626435464793,
