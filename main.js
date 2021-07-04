@@ -29,6 +29,7 @@ global.packname = 'HL BOT'
 global.author = 'LTM BOT'
 global.wait = '_Sedang diproses . . ._'
 global.error = '_Fitur Error !_'
+global.ltm = '*❏ FOLLOW*\nInstagram : https://instagram.com/loadingtomastah\nTelegram : https://t.me/loadingtomastah'
 
 global.owner = ['6283119526456','6282215215399']
 global.mods = ['6281257735703']
@@ -51,11 +52,13 @@ global.APIs = {
   zahir: 'https://zahirr-web.herokuapp.com',
   apiflash: 'https://api.apiflash.com',
   public_restapi: 'http://public-restapi.herokuapp.com',
-  lindow: 'https://lindow-api.herokuapp.com'
+  lindow: 'https://lindow-api.herokuapp.com',
+  neo: 'http://neoxr-api.herokuapp.com'
 }
 global.APIKeys = {
   'https://api.xteam.xyz': 'hairullana',
-  'https://pencarikode.xyz': 'APIKEY'
+  'https://pencarikode.xyz': 'APIKEY',
+  'http://neoxr-api.herokuapp.com': 'yntks'
 }
 global.API = (name, path = '/', query = {}, apikeyqueryname) => (name in global.APIs ? global.APIs[name] : name) + path + (query || apikeyqueryname ? '?' + new URLSearchParams(Object.entries({
   ...query,
@@ -222,6 +225,12 @@ conn.handler = async function (m) {
     let antiVirtex = global.DATABASE.data.chats[m.chat].antiVirtex
     let antiSpam = global.DATABASE.data.chats[m.chat].antiSpam
     let antiBadword = global.DATABASE.data.chats[m.chat].antiBadword
+    let isImage = m.message.imageMessage
+	  let isVideo = m.message.videoMessage
+	  let isAudio = m.message.audioMessage
+	  let isDocument = m.message.documentMessage
+	  let isSticker = m.message.stickerMessage
+	  let isProduct = m.message.productMessage
 
     await conn.chatRead(m.chat)
     conn.withoutContact = true

@@ -71,13 +71,14 @@ let handler  = async (m, { conn, usedPrefix: _p }) => {
 
     var update = `*❏  U P D A T E*
 
-  » Game .fight .adventure
+  » FB downloader
+  » Game .fight .adventure .mining
   » Fitur .take
   » GroupMode dihapus
   » Kirim file ytmp3 & mp4
   » Downloader igstory
   » Antilink tidak kick link gc sendiri
-  » Update antivirtex v2`
+  » Update antivirtex`
 
     conn.menu = conn.menu ? conn.menu : {}
     let before = conn.menu.before || `Hai *%name* (Lv. ${conn.level(xp)[0].toLocaleString()})

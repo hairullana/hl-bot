@@ -1,4 +1,17 @@
 let handler  = async (m, { conn, args }) => {
+  function msToDate(ms) {
+    temp = ms
+    days = Math.floor(ms / (24*60*60*1000));
+    daysms = ms % (24*60*60*1000);
+    hours = Math.floor((daysms)/(60*60*1000));
+    hoursms = ms % (60*60*1000);
+    minutes = Math.floor((hoursms)/(60*1000));
+    minutesms = ms % (60*1000);
+    sec = Math.floor((minutesms)/(1000));
+    return days+"H "+hours+"J "+ minutes + "M";
+    // +minutes+":"+sec;
+  }
+  
   if (args[0] == "left"){
     conn.groupLeave(args[1])
     await conn.modifyChat(args[1], 'delete').catch(console.log)
@@ -32,9 +45,11 @@ let handler  = async (m, { conn, args }) => {
   }else if(args[0] == "expired"){
     var jumlahHari = 86400000 * args[1]
     var now = new Date() * 1
-    global.DATABASE.data.chats[args[2]].expired = now + jumlahHari
-    conn.reply(m.chat,`*❏ EXPIRED GROUP*\n\nBerhasil menetapkan *expired day* untuk *${conn.getGroup(args[2])}* selama *${args[1]} hari*.`) 
-    conn.reply(args[2],`*❏ EXPIRED GROUP*\n\nBerhasil menetapkan *expired day* untuk *${conn.getGroup(args[2])}* selama *${args[1]} hari*.`) 
+    if (now < global.DATABASE.data.chats[args[2]].expired) global.DATABASE.data.chats[args[2]].expired += jumlahHari
+    else global.DATABASE.data.chats[args[2]].expired = now + jumlahHari
+    conn.reply(m.chat,`*❏ EXPIRED GROUP*\n\nBerhasil menetapkan _expired day_ untuk *${conn.getGroup(m.chat)}* selama *${args[1]
+    } hari*.\n\nTotal Expired : ${msToDate(global.DATABASE.data.chats[args[2]].expired - now)}`)
+    conn.reply(args[2],`*❏ EXPIRED GROUP*\n\nBerhasil menetapkan _expired day_ untuk *${conn.getGroup(m.chat)}* selama *${args[1]} hari*.\n\nTotal Expired : ${msToDate(global.DATABASE.data.chats[args[2]].expired - now)}`)
   }else{
     m.reply(`*Hanya tersedia fitur :*\n\n- left\n- del/delete\n- clear\n- link\n- expired\n- info`)
   }
