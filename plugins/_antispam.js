@@ -1,6 +1,7 @@
 let { GroupSettingChange } = require('@adiwajshing/baileys')
 let handler = m => m
 handler.before = async (m, { conn, antiSpam, isBotAdmin, isOwner, isAdmin }) => {
+  let users = (await conn.groupMetadata(m.chat)).participants.map(u => u.jid)
 	if (antiSpam && isBotAdmin){
     if (!isOwner) {
       global.DATABASE.data.users[m.sender].spam += 1
@@ -18,7 +19,7 @@ handler.before = async (m, { conn, antiSpam, isBotAdmin, isOwner, isAdmin }) => 
   
       if (spam == 7) {
         if (m.isGroup && isBotAdmin) {
-          return conn.reply(m.chat, `*Bot akan menutup grup untuk menghindari spam.*`, m).then(() => {
+          return conn.reply(m.chat, `*❏ BOT AKAN MENUTUP GRUP UNTUK MENGHINDARI SPAM*`, m, { contextInfo: { mentionedJid: users } }).then(() => {
             if (isAdmin && m.isGroup) {
               conn.groupSettingChange(m.chat, GroupSettingChange.messageSend, true).then(() => {
                 conn.groupDemoteAdmin(m.chat, [m.sender])
@@ -26,7 +27,7 @@ handler.before = async (m, { conn, antiSpam, isBotAdmin, isOwner, isAdmin }) => 
             } else if (m.isGroup) {
               conn.groupSettingChange(m.chat, GroupSettingChange.messageSend, true)
             }
-            conn.reply(m.chat, `*Anda mau dikick ?*`, m)
+            conn.reply(m.chat, `*ANDA MAU DIKICK ?*`, m)
           })
         }else if(!m.isGroup) {
           return conn.reply(m.chat, `*Maaf kamu di banned dari bot !*`, m).then(() => {
