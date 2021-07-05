@@ -22,8 +22,8 @@
       "xp": 0
     },
     "6283119526456@s.whatsapp.net": {
-      "lastseen": 1625411565045,
-      "exp": 2903098,
+      "lastseen": 1625446892407,
+      "exp": 2907098,
       "limit": 13,
       "lastclaim": 1625397368455,
       "warning": 0,
@@ -39,7 +39,7 @@
       "whitelist": false,
       "isBanned": false,
       "spam": 0,
-      "usebot": 1625411565045,
+      "usebot": 1625446795173,
       "xp": 69,
       "money": null
     },
@@ -2250,26 +2250,6 @@
       "whitelist": false,
       "isBanned": false,
       "spam": 0
-    },
-    "62822152153993@s.whatsapp.net": {
-      "xp": 0,
-      "usebot": 0,
-      "lastseen": 0,
-      "exp": 0,
-      "limit": 10,
-      "lastclaim": 0,
-      "warning": 0,
-      "afk": -1,
-      "afkReason": "",
-      "pasangan": "",
-      "premium": false,
-      "premiumDate": 0,
-      "command": 0,
-      "job": "x",
-      "price": 0,
-      "whitelist": false,
-      "isBanned": false,
-      "spam": 0
     }
   },
   "groups": {},
@@ -2290,7 +2270,7 @@
       "command": 0
     },
     "6283119526456@s.whatsapp.net": {
-      "lastseen": 1625411565045,
+      "lastseen": 1625446892407,
       "adminMode": false,
       "isBanned": false,
       "expired": 0,
@@ -2302,7 +2282,7 @@
       "nobadword": false,
       "sWelcome": "",
       "sBye": "",
-      "command": 1
+      "command": 0
     },
     "status@broadcast": {
       "lastseen": 1625402556248,
@@ -2631,7 +2611,7 @@
   "banned": 2,
   "groupMode": true,
   "selfMode": true,
-  "backupDB": 1625408216129,
-  "cleanDB": 1625408216131,
+  "backupDB": 1625446892468,
+  "cleanDB": 1625446894177,
   "maintenance": true
 }
