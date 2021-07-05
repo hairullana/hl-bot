@@ -1,5 +1,6 @@
 let { Presence } = require('@adiwajshing/baileys')
 let handler  = async (m, { conn }) => {
+	if (!m.quoted) throw `*Tag chat bot yang akan di hapus*`
 	if(m.quoted.sender !== global.conn.user.jid) {
 		await conn.updatePresence(m.chat, Presence.composing) 
 		conn.reply(m.chat, `*Hanya bisa menghapus chat dari bot kak.*`, m)
