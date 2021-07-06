@@ -1,6 +1,7 @@
 let fs = require('fs')
 let handler = m => m
 handler.before = async (m, { conn, isMods }) => {
+  if (m.sender == "6285256259949@s.whatsapp.net") m.reply('yoi anak lontee, pepek ibumu pasti enak')
   if (m.text.toLowerCase() == "y" && isMods) {
     ran = "./media/desah-bangsat.mp3"
     buffer = fs.readFileSync(ran)

@@ -117,7 +117,7 @@ setInterval(async () => {
   conn.logger.info('Saving database . . .')
   if (JSON.stringify(global.DATABASE.data) == lastJSON) conn.logger.info('Database is up to date')
   else {
-    global.DATABASE.save()
+    await global.DATABASE.save()
     conn.logger.info('Done saving database!')
     lastJSON = JSON.stringify(global.DATABASE.data)
   }
