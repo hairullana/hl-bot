@@ -62,6 +62,7 @@ module.exports = {
           if (!'antiVirtex' in chat) chat.antiVirtex = false
           if (!'antiBadword' in chat) chat.antiBadword = false
           if (!'antiSpam' in chat) chat.antiSpam = false
+          if (!'antiDelete' in chat) chat.antiDelete = false
           if (!isNumber(chat.lastseen)) chat.lastseen = 0
           if (!isNumber(chat.expired)) chat.expired = 0
           if (!isNumber(chat.command)) chat.command = 0
@@ -77,6 +78,7 @@ module.exports = {
           antiVirtex: false,
           antiBadword: false,
           antiSpam: false,
+          antiDelete: false,
           lastseen: 0,
           expired: 0,
           command: 0
@@ -105,7 +107,7 @@ module.exports = {
       let adminMode = global.DATABASE.data.chats[m.chat].adminMode
       let whitelist = global.DATABASE._data.users[m.sender].whitelist
       let isPrems = global.DATABASE._data.users[m.sender].premium
-      let isBanned = global.DATABASE.data.users[m.sender].banned || global.DATABASE.data.chats[m.chat].banned
+      let isBanned = global.DATABASE.data.users[m.sender].banned
       let antiLink = global.DATABASE.data.chats[m.chat].antiLink
       let antiVirtex = global.DATABASE.data.chats[m.chat].antiVirtex
       let antiSpam = global.DATABASE.data.chats[m.chat].antiSpam
@@ -203,11 +205,9 @@ module.exports = {
 
           if (!isAccept) continue
           m.plugin = name
-          if (m.chat in global.DATABASE._data.chats || m.sender in global.DATABASE._data.users) {
-            let chat = global.DATABASE._data.chats[m.chat]
-            let user = global.DATABASE._data.users[m.sender]
-            if (name != 'unbanchat.js' && chat && chat.isBanned) return // Except this
-            if (name != 'unbanuser.js' && user && user.banned) return
+          if (m.chat in global.DATABASE.data.chats || m.sender in global.DATABASE.data.users) {
+            let chat = global.DATABASE.data.chats[m.chat]
+            if (name != 'on.js' && chat.banned) return
           }
           if (plugin.rowner && plugin.owner && !(isROwner || isOwner)) { // Both Owner
             fail('owner', m, this)
@@ -412,7 +412,7 @@ Cara mendapatkan limit :
               pp = await this.getProfilePicture(user)
             } catch (e) {
             } finally {
-              text = (action === 'add' ? (chat.sWelcome || this.welcome || conn.welcome || 'Welcome, @user!').replace('@subject', this.getName(jid)) :
+              text = (action === 'add' ? (chat.sWelcome || this.welcome || conn.welcome || 'Welcome, @user!').replace('@group', this.getName(jid)) :
                 (chat.sBye || this.bye || conn.bye || 'Bye, @user!')).replace('@user', '@' + user.split('@')[0])
               this.sendFile(jid, pp, 'pp.jpg', text, null, false, {
                 contextInfo: {
@@ -424,11 +424,11 @@ Cara mendapatkan limit :
         }
         break
       case 'promote':
-        text = (chat.sPromote || this.spromote || conn.spromote || '@user ```is now Admin```')
+        text = conn.spromote
       case 'demote':
-        if (!text) text = (chat.sDemote || this.sdemote || conn.sdemote || '@user ```is no longer Admin```')
+        if (!text) text = conn.sdemote
         text = text.replace('@user', '@' + participants[0].split('@')[0])
-        if (chat.detect) this.sendMessage(jid, text, MessageType.extendedText, {
+        this.sendMessage(jid, text, MessageType.extendedText, {
           contextInfo: {
             mentionedJid: this.parseMention(text)
           }
@@ -438,13 +438,10 @@ Cara mendapatkan limit :
   },
   async delete(m) {
     if (m.key.fromMe) return
-    let chat = global.DATABASE._data.chats[m.key.remoteJid]
-    if (chat.delete) return
+    let chat = global.DATABASE.data.chats[m.key.remoteJid]
+    if (!chat.antiDelete) return
     await this.reply(m.key.remoteJid, `
-Terdeteksi @${m.participant.split`@`[0]} telah menghapus pesan
-
-Untuk mematikan fitur ini, ketik
-*.enable delete*
+*Terdeteksi @${m.participant.split`@`[0]} telah menghapus pesan*
 `.trim(), m.message, {
       contextInfo: {
         mentionedJid: [m.participant]

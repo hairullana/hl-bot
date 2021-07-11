@@ -1,11 +1,9 @@
 let handler = async (m, { conn, args }) => {
-  
-  let sortedExp = Object.entries(global.DATABASE.data.users).sort((a, b) => b[1].money - a[1].money)
+  let sortedMoney = Object.entries(global.DATABASE.data.users).sort((a, b) => b[1].money - a[1].money)
   let sortedLim = Object.entries(global.DATABASE.data.users).sort((a, b) => b[1].limit - a[1].limit)
-  let name = conn.getName(m.sender)
-  let usersExp = sortedExp.map(v => v[0])
+  let usersMoney = sortedMoney.map(v => v[0])
   let usersLim = sortedLim.map(v => v[0])
-  let len = args[0] && args[0].length > 0 ? Math.min(1000, Math.max(parseInt(args[0]), 5)) : Math.min(10, sortedExp.length)
+  let len = args[0] && args[0].length > 0 ? Math.min(1000, Math.max(parseInt(args[0]), 5)) : Math.min(10, sortedMoney.length)
   if (isNaN(len)) len = 10
 
   if (args[0] > 100) {
@@ -14,9 +12,9 @@ let handler = async (m, { conn, args }) => {
     let text = `
 *❏ TOP ${len} TERKAYA GLOBAL*\n
 _Kamu punya *Rp. ${global.DATABASE.data.users[m.sender].money.toLocaleString()}* dan *${global.DATABASE.data.users[m.sender].limit.toLocaleString()} Limit*_
-_Kamu peringkat *${usersExp.indexOf(m.sender) + 1}* dari *${usersExp.length}* orang_
+_Kamu peringkat *${usersMoney.indexOf(m.sender) + 1}* dari *${usersMoney.length}* orang_
   
-${sortedExp.slice(0, len).map(([user, data], i) => (i + 1) + '. '  + conn.getName(user) + '\n    wa.me/' + user.split('@')[0] + '\n    *Rp. ' + data.exp.toLocaleString() + '*').join`\n`}
+${sortedMoney.slice(0, len).map(([user, data], i) => (i + 1) + '. '  + conn.getName(user) + '\n    wa.me/' + user.split('@')[0] + '\n    *Rp. ' + data.money.toLocaleString() + '*').join`\n`}
     `.trim()
   
     conn.reply(m.chat, text, m)

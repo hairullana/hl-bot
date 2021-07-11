@@ -5,9 +5,9 @@ let handler  = async (m, { conn, usedPrefix: _p }) => {
     let pp = './src/avatar_contact.png'
 	  pp = await conn.getProfilePicture(global.conn.user.jid)
 
-    let exp = global.DATABASE.data.users[m.sender].money.toLocaleString()
-    let limit = global.DATABASE.data.users[m.sender].limit.toLocaleString()
-    let xp = global.DATABASE.data.users[m.sender].xp.toLocaleString()
+    let exp = global.DATABASE.data.users[m.sender].money
+    let limit = global.DATABASE.data.users[m.sender].limit
+    let xp = global.DATABASE.data.users[m.sender].xp
     let name = conn.getName(m.sender)
     let d = new Date
     let locale = 'id'
@@ -76,11 +76,11 @@ let handler  = async (m, { conn, usedPrefix: _p }) => {
     conn.menu = conn.menu ? conn.menu : {}
     let before = conn.menu.before || `
 Hai *%name* (Lv. ${conn.level(xp)[0].toLocaleString()})
-Saldo Rp. %exp (%limit Limit)
+Saldo Rp. ${exp.toLocaleString()} (${limit.toLocaleString()} Limit)
 
-🗿 Bingung dg bot ? ketik *.help*
-🗿 Upgrade premium ? ketik *.infopremium*
-🗿 Sewa bot ? ketik *.sewabot*
+» Tutorial bot ? ketik *.help*
+» Sewa bot ? ketik *.infosewa*
+» User premium ? ketik *.infoprem*
 %readmore`
     let header = conn.menu.header || '❏  *%category*\n'
     let body   = conn.menu.body   || '  » %cmd%islimit'

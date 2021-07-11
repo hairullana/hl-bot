@@ -3,14 +3,13 @@ let handler = async (m, { conn, args }) => {
 	await conn.updatePresence(m.chat, Presence.composing) 
 	let list = Object.entries(global.DATABASE.data.users)
 
-	limit = 0
-	exp = 0
-	x = 0
+	let limit = 0
+	let money = 0
 
 	list.slice(0, list.length).map(([user, data], i) => (limit += data.limit))
-	list.slice(0, list.length).map(([user, data], i) => (exp += data.exp))
+	list.slice(0, list.length).map(([user, data], i) => (money += data.money))
 
-	conn.reply(m.chat, `*❏ HARTA USER*\n\nTotal Uang : Rp. ${exp.toLocaleString()}\nTotal Limit : ${limit.toLocaleString()}\n\nRata-Rata Uang : Rp. ${Math.floor(exp/list.length).toLocaleString()}\nRata-Rata Limit : ${Math.floor(limit/list.length).toLocaleString()}\n\nTotal User : ${list.length.toLocaleString()}`, m)
+	conn.reply(m.chat, `*❏ HARTA USER*\n\nTotal Uang : Rp. ${money.toLocaleString()}\nTotal Limit : ${limit.toLocaleString()}\n\nRata-Rata Uang : Rp. ${Math.floor(money/list.length).toLocaleString()}\nRata-Rata Limit : ${Math.floor(limit/list.length).toLocaleString()}\n\nTotal User : ${list.length.toLocaleString()}`, m)
 }
 handler.help = ['total']
 handler.tags = ['exp']
