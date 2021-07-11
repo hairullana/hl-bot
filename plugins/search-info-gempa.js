@@ -9,17 +9,5 @@ let handler = async(m, { conn, text, usedPrefix }) => {
 handler.help = ['infogempa', 'gempa']
 handler.tags = ['data']
 handler.command = /^(infogempa|gempa)$/i
-handler.owner = false
-handler.mods = false
-handler.premium = false
-handler.group = false
-handler.private = false
-
-handler.admin = false
-handler.botAdmin = false
-
 handler.fail = null
-handler.exp = 0
-handler.limit = true
-
 module.exports = handler

@@ -42,7 +42,7 @@ let handler = async (m, { conn, text }) => {
 		// +minutes+":"+sec;
   }
 	
-	if(number.length > 15 || (number.length < 9 && number.length > 0)) return conn.reply(m.chat, `*Masukkan nomor dengan format yang benar !*`, m)
+	if(typeof global.DATABASE.data.users[number + '@s.whatsapp.net'] == 'undefined') return m.reply(`*Nomor "${text}" tidak terdaftar di bot.*`)
   try {
 		if (!text && !m.quoted){
 			user = m.sender
@@ -57,7 +57,7 @@ let handler = async (m, { conn, text }) => {
 	} catch (e) {
 	} finally {
 		if(typeof global.DATABASE.data.users[user] !== 'undefined'){
-			var money = global.DATABASE.data.users[user].exp
+			var money = global.DATABASE.data.users[user].money
 			var xp = global.DATABASE.data.users[user].xp
 			var limit = global.DATABASE.data.users[user].limit
 			var warn = global.DATABASE.data.users[user].warning

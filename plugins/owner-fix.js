@@ -7,11 +7,11 @@ let handler  = async (m, { conn, text }) => {
       users[jid].limit = 0
       total+=1
     }
-    if (users[jid].exp < 0){
-      users[jid].exp = 0
+    if (users[jid].money < 0){
+      users[jid].money = 0
       total+=1
     }
-    users[jid].exp = Math.floor(users[jid].exp)
+    users[jid].money = Math.floor(users[jid].money)
     users[jid].limit = Math.floor(users[jid].limit)
   }
   return conn.reply(m.chat,`*Berhasil memperbaiki ${total} error di database.*`,m)

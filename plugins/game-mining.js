@@ -56,7 +56,7 @@ let handler = async (m, { conn }) => {
       var namaHarta = "Harta Karun"
     }
     
-    global.DATABASE._data.users[m.sender].exp += hargaHarta * jumlahHarta
+    global.DATABASE._data.users[m.sender].money += hargaHarta * jumlahHarta
     conn.updatePresence(m.chat, Presence.composing)
 
     conn.reply(m.chat, `*❏ MINING*\n\nBerhasil mendapatkan ${hasilMining} x ${jumlahHarta}\nHasil penjualan ${jumlahHarta} buah ${namaHarta} *Rp. ${Number(hargaHarta*jumlahHarta).toLocaleString()}*`, m)

@@ -7,16 +7,16 @@ handler.before = async function (m) {
     if (m.quoted.id == conn.tebakgambar[id][0].id) {
         let json = JSON.parse(JSON.stringify(conn.tebakgambar[id][1]))
         if (m.text.toLowerCase() == json.jawaban.toLowerCase()) {
-            global.DATABASE._data.users[m.sender].exp += conn.tebakgambar[id][2]
+            global.DATABASE._data.users[m.sender].money += conn.tebakgambar[id][2]
             m.reply(`*Jawabanmu benar ! Bonus Rp. ${conn.tebakgambar[id][2].toLocaleString()}*`)
             clearTimeout(conn.tebakgambar[id][3])
             delete conn.tebakgambar[id]
         } else if (m.text.toLowerCase().endsWith(json.jawaban.split` `[1])) m.reply(`*Dikit Lagi!*`)
         else {
-          if (global.DATABASE.data.users[m.sender].exp < 50000){
-            global.DATABASE.data.users[m.sender].exp = 0
+          if (global.DATABASE.data.users[m.sender].money < 50000){
+            global.DATABASE.data.users[m.sender].money = 0
           }else {
-            global.DATABASE.data.users[m.sender].exp -= 50000
+            global.DATABASE.data.users[m.sender].money -= 50000
           }
           m.reply(`*Jawabanmu salah ! Uangmu berkurang Rp. 50.000*`)
         }

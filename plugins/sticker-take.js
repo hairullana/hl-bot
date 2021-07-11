@@ -28,5 +28,6 @@ let handler  = async (m, { conn, text, usedPrefix, command }) => {
 handler.help = ['take']
 handler.tags = ['sticker','premium']
 handler.command = /^(take)$/i
+handler.premium = true
 handler.limit = true
 module.exports = handler

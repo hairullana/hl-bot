@@ -36,8 +36,8 @@ try {
 			if(global.DATABASE._data.users[user].isBanned == false){
 			  conn.reply(m.chat, `User tidak masuk ke dalam list banned`, m)
 			}else{
-				denda = Math.ceil((global.DATABASE._data.users[user].exp/100) * 50)
-				global.DATABASE._data.users[user].exp -= denda
+				denda = Math.ceil((global.DATABASE._data.users[user].money/100) * 50)
+				global.DATABASE._data.users[user].money -= denda
 				global.DATABASE._data.users[user].isBanned = false
 
 				let users = global.DATABASE.data.users

@@ -19,15 +19,6 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
 handler.command = /^(fitnah)$/
 handler.help = ['fitnah *text @tag text*']
 handler.tags = ['fun','game']
-handler.owner = false
-handler.mods = false
-handler.premium = false
-handler.group = false
-handler.private = false
-handler.exp = 4000
-handler.limit = true
-
-
 module.exports = handler
 
 function copy(obj) {

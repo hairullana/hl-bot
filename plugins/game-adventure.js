@@ -31,12 +31,12 @@ let handler = async (m, { conn, participants, text }) => {
 
   if (hasil == 1){
     let hadiah = getRandom(1,7)
-    global.DATABASE.data.users[m.sender].exp += Math.floor(global.DATABASE.data.users[m.sender].exp / 100 * hadiah)
-    m.reply(`*Kamu* dan *${conn.getName(lawan)}* berhasil mengalahkan ${musuh[getRandom(0,musuh.length-1)]} karena kalian berdua ${alasanMenang[getRandom(0,alasanMenang.length-1)]}\n\nHadiah Rp. ${Math.floor(global.DATABASE.data.users[m.sender].exp / 100 * hadiah).toLocaleString()}`)
+    global.DATABASE.data.users[m.sender].money += Math.floor(global.DATABASE.data.users[m.sender].money / 100 * hadiah)
+    m.reply(`*Kamu* dan *${conn.getName(lawan)}* berhasil mengalahkan ${musuh[getRandom(0,musuh.length-1)]} karena kalian berdua ${alasanMenang[getRandom(0,alasanMenang.length-1)]}\n\nHadiah Rp. ${Math.floor(global.DATABASE.data.users[m.sender].money / 100 * hadiah).toLocaleString()}`)
   }else{
     let denda = getRandom(5,10)
-    global.DATABASE.data.users[m.sender].exp -= Math.floor(global.DATABASE.data.users[m.sender].exp / 100 * denda)
-    m.reply(`*Kamu* dan *${conn.getName(lawan)}* gagal mengalahkan ${musuh[getRandom(0,musuh.length-1)]} karena kalian berdua ${alasanKalah[getRandom(0,alasanKalah.length-1)]}.\n\nUang kamu berkurang Rp. ${Math.floor(global.DATABASE.data.users[m.sender].exp / 100 * denda).toLocaleString()}`)
+    global.DATABASE.data.users[m.sender].money -= Math.floor(global.DATABASE.data.users[m.sender].money / 100 * denda)
+    m.reply(`*Kamu* dan *${conn.getName(lawan)}* gagal mengalahkan ${musuh[getRandom(0,musuh.length-1)]} karena kalian berdua ${alasanKalah[getRandom(0,alasanKalah.length-1)]}.\n\nUang kamu berkurang Rp. ${Math.floor(global.DATABASE.data.users[m.sender].money / 100 * denda).toLocaleString()}`)
   }
 
   delete conn.adventure[m.sender]

@@ -5,7 +5,7 @@ let handler  = async (m, { conn, usedPrefix: _p }) => {
     let pp = './src/avatar_contact.png'
 	  pp = await conn.getProfilePicture(global.conn.user.jid)
 
-    let exp = global.DATABASE.data.users[m.sender].exp.toLocaleString()
+    let exp = global.DATABASE.data.users[m.sender].money.toLocaleString()
     let limit = global.DATABASE.data.users[m.sender].limit.toLocaleString()
     let xp = global.DATABASE.data.users[m.sender].xp.toLocaleString()
     let name = conn.getName(m.sender)
@@ -71,24 +71,16 @@ let handler  = async (m, { conn, usedPrefix: _p }) => {
 
     var update = `*❏  U P D A T E*
 
-  » FB downloader
-  » Game .fight .adventure .mining
-  » Fitur .take
-  » GroupMode dihapus
-  » Kirim file ytmp3 & mp4
-  » Downloader igstory
-  » Antilink tidak kick link gc sendiri
-  » Update antivirtex`
+  » `
 
     conn.menu = conn.menu ? conn.menu : {}
-    let before = conn.menu.before || `Hai *%name* (Lv. ${conn.level(xp)[0].toLocaleString()})
+    let before = conn.menu.before || `
+Hai *%name* (Lv. ${conn.level(xp)[0].toLocaleString()})
 Saldo Rp. %exp (%limit Limit)
 
 🗿 Bingung dg bot ? ketik *.help*
 🗿 Upgrade premium ? ketik *.infopremium*
 🗿 Sewa bot ? ketik *.sewabot*
-
-${update}
 %readmore`
     let header = conn.menu.header || '❏  *%category*\n'
     let body   = conn.menu.body   || '  » %cmd%islimit'

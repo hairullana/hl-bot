@@ -5,7 +5,7 @@ let handler = async (m, { conn }) => {
 	conn.reply(m.chat, `BOT Berhasil *DI AKTIFKAN* Di Grup Ini !`, m)
 }
 handler.help = ['on']
-handler.tags = ['group admin']
+handler.tags = ['owner']
 handler.command = /^on$/i
 handler.owner = true
 module.exports = handler

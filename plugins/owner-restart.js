@@ -7,8 +7,8 @@ let handler  = async (m, { conn }) => {
     process.send('reset')
   } else throw '*Error!*'
 }
-handler.help = ['']
-handler.tags = ['']
+handler.help = ['restart']
+handler.tags = ['owner']
 handler.command = /^restart$/i
 handler.rowner = true
 handler.fail = null

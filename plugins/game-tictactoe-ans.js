@@ -77,9 +77,9 @@ Room ID: ${room.id}
             }
         })
         if (isTie || isWin) {
-            users[room.game.playerX].exp += playScore
-            users[room.game.playerO].exp += playScore
-            if (isWin) users[winner].exp += winScore - playScore
+            users[room.game.playerX].money += playScore
+            users[room.game.playerO].money += playScore
+            if (isWin) users[winner].money += winScore - playScore
             if (debugMode) m.reply('[DEBUG]\n' + require('util').format(room))
             delete this.game[room.id]
         }

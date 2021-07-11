@@ -18,14 +18,14 @@ let handler = async (m, { conn }) => {
 
 	function expired(gc){
 		if (typeof global.DATABASE.data.chats[gc] != "undefined"){
-			return msToDate(global.DATABASE.data.chats[gc].expired - new Date())
+			return msToDate(global.DATABASE.data.chats[gc].moneyired - new Date())
 		}else {
 			return "Tidak terdaftar di database"
 		}
 	}
 
 	var total = 0
-  let txt = conn.chats.array.filter(v => v.jid.endsWith('g.us')).map(v =>`*${conn.getGroup(v.jid)}*\n${v.jid}\n${expired(v.jid)} [${v.read_only ? 'Left' : 'Joined'}]`).join`\n\n`
+  let txt = conn.chats.array.filter(v => v.jid.endsWith('g.us')).map(v =>`*${conn.getName(v.jid)}*\n${v.jid}\n${expired(v.jid)} [${v.read_only ? 'Left' : 'Joined'}]`).join`\n\n`
 
   conn.chats.array.filter(v => v.jid.endsWith('g.us')).map(v => total+=1 )
   conn.reply(m.chat,`❏ Total Group : ${total}
@@ -34,7 +34,7 @@ let handler = async (m, { conn }) => {
 
 ` + txt, m)
 }
-handler.help = ['grouplist','grouplist']
+handler.help = ['grouplist','listgroup']
 handler.tags = ['group tools']
 handler.command = /^(grouplist|listgroup)$/i
 module.exports = handler

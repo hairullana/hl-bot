@@ -28,7 +28,7 @@ try {
       }})
 	}	
 }
-handler.help = ['*@tag','*(reply)*'].map(v => 'admin ' + v)
+handler.help = ['*@tag*','*(reply)*'].map(v => 'admin ' + v)
 handler.tags = ['group admin']
 handler.command = /^(admin)$/i
 handler.group = true

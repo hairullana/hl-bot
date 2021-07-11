@@ -27,16 +27,7 @@ let handler  = async (m, { conn, args, usedPrefix, command }) => {
 handler.help = ['ytsearch','yts'].map(v => v + ' *query*')
 handler.tags = ['downloader','data']
 handler.command = /^(yts|ytsearch)$/i
-handler.owner = false
-handler.mods = false
-handler.premium = false
-handler.group = false
-handler.private = false
-handler.admin = false
-handler.botAdmin = false
 handler.fail = null
-handler.limit = true
-handler.exp = 178900
 module.exports = handler
 
 function getDuration(s) {

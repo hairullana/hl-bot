@@ -22,7 +22,7 @@ let handler  = async (m, { conn, args }) => {
     await conn.modifyChat(args[1], 'delete').catch(console.log)
     m.reply(`*Berhasil menghapus chat grup dan menghapus data dari db.*`)
   }else if(args[0] == "link"){
-    conn.reply(m.chat, `*${conn.getGroup(args[1])}*\n\nhttps://chat.whatsapp.com/` + (await conn.groupInviteCode(args[1])), m)
+    conn.reply(m.chat, `*${conn.getName(args[1])}*\n\nhttps://chat.whatsapp.com/` + (await conn.groupInviteCode(args[1])), m)
   }else if(args[0] == "clear"){
     await conn.modifyChat(args[1], 'delete').catch(console.log)
   }else if(args[0] == "info"){
@@ -41,20 +41,20 @@ let handler  = async (m, { conn, args }) => {
         return days+" Hari "+hours+" Jam "+ minutes + " Menit";
       }
     }
-    m.reply(`Expired Grup *${conn.getName(args[1])}*\n\n` + msToDate(global.DATABASE.data.chats[args[1]].expired - new Date()))
+    m.reply(`Expired Grup *${conn.getName(args[1])}*\n\n` + msToDate(global.DATABASE.data.chats[args[1]].moneyired - new Date()))
   }else if(args[0] == "expired"){
     var jumlahHari = 86400000 * args[1]
     var now = new Date() * 1
-    if (now < global.DATABASE.data.chats[args[2]].expired) global.DATABASE.data.chats[args[2]].expired += jumlahHari
-    else global.DATABASE.data.chats[args[2]].expired = now + jumlahHari
-    conn.reply(m.chat,`*❏ EXPIRED GROUP*\n\nBerhasil menetapkan _expired day_ untuk *${conn.getGroup(m.chat)}* selama *${args[1]
-    } hari*.\n\nTotal Expired : ${msToDate(global.DATABASE.data.chats[args[2]].expired - now)}`)
-    conn.reply(args[2],`*❏ EXPIRED GROUP*\n\nBerhasil menetapkan _expired day_ untuk *${conn.getGroup(m.chat)}* selama *${args[1]} hari*.\n\nTotal Expired : ${msToDate(global.DATABASE.data.chats[args[2]].expired - now)}`)
+    if (now < global.DATABASE.data.chats[args[2]].moneyired) global.DATABASE.data.chats[args[2]].moneyired += jumlahHari
+    else global.DATABASE.data.chats[args[2]].moneyired = now + jumlahHari
+    conn.reply(m.chat,`*❏ EXPIRED GROUP*\n\nBerhasil menetapkan _expired day_ untuk *${conn.getName(m.chat)}* selama *${args[1]
+    } hari*.\n\nTotal Expired : ${msToDate(global.DATABASE.data.chats[args[2]].moneyired - now)}`)
+    conn.reply(args[2],`*❏ EXPIRED GROUP*\n\nBerhasil menetapkan _expired day_ untuk *${conn.getName(m.chat)}* selama *${args[1]} hari*.\n\nTotal Expired : ${msToDate(global.DATABASE.data.chats[args[2]].moneyired - now)}`)
   }else{
     m.reply(`*Hanya tersedia fitur :*\n\n- left\n- del/delete\n- clear\n- link\n- expired\n- info`)
   }
 }
-handler.help = ['gc']
+handler.help = ['gc *option*']
 handler.tags = ['owner']
 handler.command = /^(gc)$/i
 handler.owner = true

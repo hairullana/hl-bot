@@ -15,7 +15,7 @@ let handler = async (m, { conn }) => {
 		let adminMode = global.DATABASE.data.chats[m.chat].adminMode
 		let antiSpam = global.DATABASE.data.chats[m.chat].antiSpam
     
-	var name = conn.getGroup(m.chat)
+	var name = conn.getName(m.chat)
 	function msToDate(ms) {
 		temp = ms
 		days = Math.floor(ms / (24*60*60*1000));
@@ -33,7 +33,7 @@ let handler = async (m, { conn }) => {
 		// +minutes+":"+sec;
   }
 
-	conn.sendFile(m.chat, pp, 'profile.jpg', `*${ucword(name)}*\n\n*Expired* : ${msToDate(global.DATABASE.data.chats[m.chat].expired - new Date())}\n\n*${data(adminMode)} Admin Mode*\n*${data(antiLink)} Anti Link*\n*${data(antiSpam)} Anti Spam*\n*${data(antiVirtex)} Anti Virtex*\n*${data(antiBadword)} Anti Badword*\n*${data(welcome)} Welcome Message*\n*${data(left)} Leave Message*`, m)
+	conn.sendFile(m.chat, pp, 'profile.jpg', `*${ucword(name)}*\n\n*Expired* : ${msToDate(global.DATABASE.data.chats[m.chat].moneyired - new Date())}\n\n*${data(adminMode)} Admin Mode*\n*${data(antiLink)} Anti Link*\n*${data(antiSpam)} Anti Spam*\n*${data(antiVirtex)} Anti Virtex*\n*${data(antiBadword)} Anti Badword*\n*${data(welcome)} Welcome Message*\n*${data(left)} Leave Message*`, m)
 	}
 }
 handler.help = ['groupinfo']

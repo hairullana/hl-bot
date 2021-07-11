@@ -28,7 +28,6 @@ handler.command = /^(antiasing)$/i
 handler.group = true
 handler.admin = true
 handler.botAdmin = true
-handler.limit = true
 handler.fail = null
 handler.exp = 5000
 

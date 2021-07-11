@@ -4,9 +4,9 @@ let handler = async (m, { conn, text }) => {
 
   var jumlahHari = 86400000 * text
   var now = new Date() * 1
-  if (now < global.DATABASE.data.chats[m.chat].expired) global.DATABASE.data.chats[m.chat].expired += jumlahHari
-  else global.DATABASE.data.chats[m.chat].expired = now + jumlahHari
-  conn.reply(m.chat,`*❏ EXPIRED GROUP*\n\nBerhasil menetapkan _expired day_ untuk *${conn.getGroup(m.chat)}* selama *${text} hari*.\n\nTotal Expired : ${msToDate(global.DATABASE.data.chats[m.chat].expired - now)}`)
+  if (now < global.DATABASE.data.chats[m.chat].moneyired) global.DATABASE.data.chats[m.chat].moneyired += jumlahHari
+  else global.DATABASE.data.chats[m.chat].moneyired = now + jumlahHari
+  conn.reply(m.chat,`*❏ EXPIRED GROUP*\n\nBerhasil menetapkan _expired day_ untuk *${conn.getName(m.chat)}* selama *${text} hari*.\n\nTotal Expired : ${msToDate(global.DATABASE.data.chats[m.chat].moneyired - now)}`)
 
 }
 handler.help = ['expired *days*']

@@ -11,7 +11,7 @@ const format = num => {
 let handler = async (m, { conn, usedPrefix, command, args }) => {
   
 
-  var money = global.DATABASE._data.users[m.sender].exp
+  var money = global.DATABASE._data.users[m.sender].money
   // harga limit 
   var hargaLimit = 100000
   if (money <= 10000000){
@@ -34,14 +34,14 @@ let handler = async (m, { conn, usedPrefix, command, args }) => {
     var hargaLimit = 2000000
   }
   let count = command.replace(/^buy/i, '')
-  count = count ? /all/i.test(count) ? Math.floor(global.DATABASE._data.users[m.sender].exp / hargaLimit) : parseInt(count) : args[0] ? parseInt(args[0]) : 1
+  count = count ? /all/i.test(count) ? Math.floor(global.DATABASE._data.users[m.sender].money / hargaLimit) : parseInt(count) : args[0] ? parseInt(args[0]) : 1
   count = Math.max(1, count)
   if (isNaN(count)) return m.reply(`*Contoh Format Yang Benar :*\n\n*${usedPrefix}buy 1*\n*${usedPrefix}buyall*`)
-  if (global.DATABASE._data.users[m.sender].exp >= hargaLimit * count) {
-    global.DATABASE._data.users[m.sender].exp -= hargaLimit * count
+  if (global.DATABASE._data.users[m.sender].money >= hargaLimit * count) {
+    global.DATABASE._data.users[m.sender].money -= hargaLimit * count
     global.DATABASE._data.users[m.sender].limit += count
-    conn.reply(m.chat, `Berhasil membeli *${count} Limit* seharga *Rp. ${format(hargaLimit * count)}*\n\nSisa uangmu Rp. ${format(global.DATABASE._data.users[m.sender].exp)}`, m)
-  } else conn.reply(m.chat, `Dasar miskin ! Uangmu tidak mencukupi untuk membeli ${count} limit sat !\n\n1 Limit = Rp. ${format(hargaLimit)}\nUangmu cuma Rp. ${format(global.DATABASE._data.users[m.sender].exp)}`, m)
+    conn.reply(m.chat, `Berhasil membeli *${count} Limit* seharga *Rp. ${format(hargaLimit * count)}*\n\nSisa uangmu Rp. ${format(global.DATABASE._data.users[m.sender].money)}`, m)
+  } else conn.reply(m.chat, `Dasar miskin ! Uangmu tidak mencukupi untuk membeli ${count} limit sat !\n\n1 Limit = Rp. ${format(hargaLimit)}\nUangmu cuma Rp. ${format(global.DATABASE._data.users[m.sender].money)}`, m)
 }
 handler.help = ['buy *total*', 'buyall']
 handler.tags = ['xp']

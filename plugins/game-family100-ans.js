@@ -13,7 +13,7 @@ handler.before = async function (m) {
 		if((conn.quiz[id][4]).includes(x)) return m.reply(`"${x}" sudah terjawab silahkan cari jawaban lain!`)
         if (json.jawaban.includes(x)) {
 			reward = rwd(500000, 2000000)
-			global.DATABASE.data.users[m.sender].exp += reward
+			global.DATABASE.data.users[m.sender].money += reward
 			conn.quiz[id][4].push(x)
 			conn.quiz[id][5].push(m.sender)
 			conn.quiz[id][6].push(reward)
@@ -37,7 +37,7 @@ handler.before = async function (m) {
 				}
 			})
 		} else {
-			sender_money = global.DATABASE.data.users[m.sender].exp 
+			sender_money = global.DATABASE.data.users[m.sender].money 
         	zonk = rwd(500000, 1000000)
         	if(sender_money < zonk) {
         		sender_money = 0

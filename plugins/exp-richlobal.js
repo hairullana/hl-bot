@@ -1,6 +1,6 @@
 let handler = async (m, { conn, args }) => {
   
-  let sortedExp = Object.entries(global.DATABASE.data.users).sort((a, b) => b[1].exp - a[1].exp)
+  let sortedExp = Object.entries(global.DATABASE.data.users).sort((a, b) => b[1].money - a[1].money)
   let sortedLim = Object.entries(global.DATABASE.data.users).sort((a, b) => b[1].limit - a[1].limit)
   let name = conn.getName(m.sender)
   let usersExp = sortedExp.map(v => v[0])
@@ -13,7 +13,7 @@ let handler = async (m, { conn, args }) => {
   }else {
     let text = `
 *❏ TOP ${len} TERKAYA GLOBAL*\n
-_Kamu punya *Rp. ${global.DATABASE.data.users[m.sender].exp.toLocaleString()}* dan *${global.DATABASE.data.users[m.sender].limit.toLocaleString()} Limit*_
+_Kamu punya *Rp. ${global.DATABASE.data.users[m.sender].money.toLocaleString()}* dan *${global.DATABASE.data.users[m.sender].limit.toLocaleString()} Limit*_
 _Kamu peringkat *${usersExp.indexOf(m.sender) + 1}* dari *${usersExp.length}* orang_
   
 ${sortedExp.slice(0, len).map(([user, data], i) => (i + 1) + '. '  + conn.getName(user) + '\n    wa.me/' + user.split('@')[0] + '\n    *Rp. ' + data.exp.toLocaleString() + '*').join`\n`}

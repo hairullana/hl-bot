@@ -25,9 +25,9 @@ let handler  = async (m, { conn, text, command }) => {
     quoted: m
   })
 }
-handler.help = ['swm *author|name*']
+handler.help = ['swm *author|name*', 'wm *author|name*']
 handler.tags = ['sticker', 'premium']
-handler.command = /^swm$/i
+handler.command = /^(swm|wm)$/i
 handler.premium = true
 handler.limit = true
 module.exports = handler

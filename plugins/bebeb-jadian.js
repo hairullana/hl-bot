@@ -39,16 +39,16 @@ let handler = async (m, { conn, text }) => {
     if (typeof global.DATABASE.data.users[user] == "undefined") return m.reply("*Orang yang anda tag tidak terdaftar di bot.*")
     
     if(global.DATABASE.data.users[m.sender].pasangan != "" && global.DATABASE.data.users[global.DATABASE.data.users[m.sender].pasangan].pasangan == m.sender && global.DATABASE.data.users[m.sender].pasangan != user){
-      var denda = Math.ceil(global.DATABASE.data.users[m.sender].exp/100*20)
-      global.DATABASE.data.users[m.sender].exp -= denda
+      var denda = Math.ceil(global.DATABASE.data.users[m.sender].money/100*20)
+      global.DATABASE.data.users[m.sender].money -= denda
       conn.reply(m.chat,`*Kamu sudah berpacaran dengan @${global.DATABASE.data.users[m.sender].pasangan.split('@')[0]}*\n\nSilahkan putus dulu (.putus) untuk menembak @${user.split('@')[0]}\n\nBtw yang setia dikit bangsat !\nDenda : Rp. ${format(denda)} (20% saldo)`,m,{contextInfo: {
         mentionedJid: [user,global.DATABASE.data.users[m.sender].pasangan]
       }})
     }else if(global.DATABASE.data.users[user].pasangan != ""){
       var pacar = global.DATABASE.data.users[user].pasangan
       if (global.DATABASE.data.users[pacar].pasangan == user){
-        var denda = Math.ceil(global.DATABASE.data.users[m.sender].exp/100*20)
-        global.DATABASE.data.users[m.sender].exp -= denda
+        var denda = Math.ceil(global.DATABASE.data.users[m.sender].money/100*20)
+        global.DATABASE.data.users[m.sender].money -= denda
         if (m.sender == pacar && global.DATABASE.data.users[m.sender].pasangan == user) return conn.reply(m.chat,`*Anda sudah berpacaran dengan @${beb.split('@')[0]}*\n\n*Yang setia jadi orang bosss*\n\n*Denda : Rp. ${format(denda)} (20% saldo)*`,m,{contextInfo: {
           mentionedJid: [beb]
         }})

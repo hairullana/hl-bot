@@ -4,7 +4,7 @@ let handler = async (m, { conn, text }) => {
   conn.sendMessage(m.chat, text, MessageType.extendedText, { contextInfo: { mentionedJid: users } })
 }
 handler.help = ['hidetag','tag'].map(v => v + ' *text*')
-handler.tags = ['owner']
+handler.tags = ['group admin']
 handler.command = /^(hidetag|tag)$/i
 handler.group = true
 handler.admin = true

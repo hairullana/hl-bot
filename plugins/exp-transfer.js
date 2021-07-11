@@ -68,22 +68,22 @@ let handler = async (m, { conn, command, text }) => {
 
   jumlah = Number(jumlah)
 
-  if (global.DATABASE.data.users[m.sender].exp < jumlah){
-    maxTF = Math.floor(global.DATABASE.data.users[m.sender].exp / 105 * 100)
+  if (global.DATABASE.data.users[m.sender].money < jumlah){
+    maxTF = Math.floor(global.DATABASE.data.users[m.sender].money / 105 * 100)
     return conn.reply(m.chat,`*Uang anda tidak mencukupi untuk melakukan transfer dengan jumlah Rp. ${jumlah.toLocaleString()}*
   
-*Saldo anda : Rp. ${global.DATABASE.data.users[m.sender].exp.toLocaleString()}*`,m)
+*Saldo anda : Rp. ${global.DATABASE.data.users[m.sender].money.toLocaleString()}*`,m)
   }
 
-  global.DATABASE.data.users[m.sender].exp -= jumlah
-  global.DATABASE.data.users[target].exp += jumlah
+  global.DATABASE.data.users[m.sender].money -= jumlah
+  global.DATABASE.data.users[target].money += jumlah
 
   conn.reply(m.chat, `*❏ TRANSFER*
 
 Transfer *Rp. ${jumlah.toLocaleString()}* kepada @${target.split('@')[0]}
 
-@${target.split('@')[0]} : Rp. ${global.DATABASE._data.users[target].exp.toLocaleString()}
-@${m.sender.split('@')[0]} : Rp. ${global.DATABASE._data.users[m.sender].exp.toLocaleString()}`, m, {contextInfo: {
+@${target.split('@')[0]} : Rp. ${global.DATABASE._data.users[target].money.toLocaleString()}
+@${m.sender.split('@')[0]} : Rp. ${global.DATABASE._data.users[m.sender].money.toLocaleString()}`, m, {contextInfo: {
     mentionedJid: [target,m.sender]
   }})
 }

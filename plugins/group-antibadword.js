@@ -24,7 +24,6 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
 handler.help = ['antibadword *on/off*']
 handler.tags = ['group admin']
 handler.command = /^(antibadword)$/i
-handler.limit = true
 handler.admin = true
 handler.botAdmin = true
 handler.group = true

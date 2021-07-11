@@ -1,4 +1,6 @@
 let handler = async (m, { conn, usedPrefix, args, command }) => {
+  conn.war = conn.war ? conn.war : {}
+  conn.war2 = conn.war2 ? conn.war2 : {}
   // fungsi delay
   function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
@@ -37,14 +39,14 @@ let handler = async (m, { conn, usedPrefix, args, command }) => {
             var teamAB = []
             for (j=0;j<5;j++){
               if (conn.war[m.chat][j].user != ""){
-                global.DATABASE.data.users[conn.war[m.chat][j].user].exp -= Number(conn.war2[m.chat].money)
+                global.DATABASE.data.users[conn.war[m.chat][j].user].money -= Number(conn.war2[m.chat].money)
                 teamA.push(conn.war[m.chat][j].user)
                 teamAB.push(conn.war[m.chat][j].user)
               }
             }
             for (j=5;j<10;j++){
               if (conn.war[m.chat][j].user != ""){
-                global.DATABASE.data.users[conn.war[m.chat][j].user].exp += Number(conn.war2[m.chat].money)
+                global.DATABASE.data.users[conn.war[m.chat][j].user].money += Number(conn.war2[m.chat].money)
                 teamB.push(conn.war[m.chat][j].user)
                 teamAB.push(conn.war[m.chat][j].user)
               }
@@ -70,14 +72,14 @@ let handler = async (m, { conn, usedPrefix, args, command }) => {
             var teamAB = []
             for (j=0;j<5;j++){
               if (conn.war[m.chat][j].user != ""){
-                global.DATABASE.data.users[conn.war[m.chat][j].user].exp += Number(conn.war2[m.chat].money)
+                global.DATABASE.data.users[conn.war[m.chat][j].user].money += Number(conn.war2[m.chat].money)
                 teamA.push(conn.war[m.chat][j].user)
                 teamAB.push(conn.war[m.chat][j].user)
               }
             }
             for (j=5;j<10;j++){
               if (conn.war[m.chat][j].user != ""){
-                global.DATABASE.data.users[conn.war[m.chat][j].user].exp -= Number(conn.war2[m.chat].money)
+                global.DATABASE.data.users[conn.war[m.chat][j].user].money -= Number(conn.war2[m.chat].money)
                 teamB.push(conn.war[m.chat][j].user)
                 teamAB.push(conn.war[m.chat][j].user)
               }
@@ -245,14 +247,14 @@ let handler = async (m, { conn, usedPrefix, args, command }) => {
       var teamAB = []
       for (j=0;j<5;j++){
         if (conn.war[m.chat][j].user != ""){
-          global.DATABASE.data.users[conn.war[m.chat][j].user].exp += Number(conn.war2[m.chat].money)
+          global.DATABASE.data.users[conn.war[m.chat][j].user].money += Number(conn.war2[m.chat].money)
           teamA.push(conn.war[m.chat][j].user)
           teamAB.push(conn.war[m.chat][j].user)
         }
       }
       for (j=5;j<10;j++){
         if (conn.war[m.chat][j].user != ""){
-          global.DATABASE.data.users[conn.war[m.chat][j].user].exp -= Number(conn.war2[m.chat].money)
+          global.DATABASE.data.users[conn.war[m.chat][j].user].money -= Number(conn.war2[m.chat].money)
           teamB.push(conn.war[m.chat][j].user)
           teamAB.push(conn.war[m.chat][j].user)
         }
@@ -303,14 +305,14 @@ let handler = async (m, { conn, usedPrefix, args, command }) => {
       var teamAB = []
       for (j=0;j<5;j++){
         if (conn.war[m.chat][j].user != ""){
-          global.DATABASE.data.users[conn.war[m.chat][j].user].exp -= Number(conn.war2[m.chat].money)
+          global.DATABASE.data.users[conn.war[m.chat][j].user].money -= Number(conn.war2[m.chat].money)
           teamA.push(conn.war[m.chat][j].user)
           teamAB.push(conn.war[m.chat][j].user)
         }
       }
       for (j=5;j<10;j++){
         if (conn.war[m.chat][j].user != ""){
-          global.DATABASE.data.users[conn.war[m.chat][j].user].exp += Number(conn.war2[m.chat].money)
+          global.DATABASE.data.users[conn.war[m.chat][j].user].money += Number(conn.war2[m.chat].money)
           teamB.push(conn.war[m.chat][j].user)
           teamAB.push(conn.war[m.chat][j].user)
         }

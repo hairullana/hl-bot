@@ -37,11 +37,11 @@ let handler = async (m, { conn, participants }) => {
 
   if (pointPemain > pointLawan){
     let hadiah = (pointPemain - pointLawan) * 50000
-    global.DATABASE.data.users[m.sender].exp += hadiah
+    global.DATABASE.data.users[m.sender].money += hadiah
     m.reply(`*${conn.getName(m.sender)}* [${pointPemain * 10}] - [${pointLawan * 10}] *${conn.getName(lawan)}*\n\n*Kamu* (level ${conn.level(global.DATABASE.data.users[m.sender].xp)[0]}) MENANG melawan *${conn.getName(lawan)}* (level ${conn.level(global.DATABASE.data.users[lawan].xp)[0]}) karena kamu ${alasanMenang[getRandom(0,alasanMenang.length-1)]}\n\nHadiah Rp. ${hadiah.toLocaleString()}`)
   }else if (pointPemain < pointLawan){
     let denda = (pointLawan - pointPemain) * 50000
-    global.DATABASE.data.users[m.sender].exp -= denda
+    global.DATABASE.data.users[m.sender].money -= denda
     m.reply(`*${conn.getName(m.sender)}* [${pointPemain * 10}] - [${pointLawan * 10}] *${conn.getName(lawan)}*\n\n*Kamu* (level ${conn.level(global.DATABASE.data.users[m.sender].xp)[0]}) KALAH melawan *${conn.getName(lawan)}* (level ${conn.level(global.DATABASE.data.users[lawan].xp)[0]}) karena kamu ${alasanKalah[getRandom(0,alasanKalah.length-1)]}\n\nUang kamu berkurang Rp. ${denda.toLocaleString()}`)
   }else {
     m.reply(`*${conn.getName(m.sender)}* [${pointPemain * 10}] - [${pointLawan * 10}] *${conn.getName(lawan)}*\n\nHasil imbang kack, ga dapet apa apa :v`)

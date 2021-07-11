@@ -5,7 +5,7 @@ let handler  = async (m, { conn, usedPrefix: _p }) => {
 	  pp = await conn.getProfilePicture(global.conn.user.jid)
     
 
-    let exp = format(global.DATABASE.data.users[m.sender].exp)
+    let exp = format(global.DATABASE.data.users[m.sender].money)
     let limit = format(global.DATABASE.data.users[m.sender].limit)
     let name = conn.getName(m.sender)
     let d = new Date

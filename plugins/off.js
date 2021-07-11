@@ -3,7 +3,7 @@ let handler = async (m, { conn, participants }) => {
   m.reply('BOT Berhasil *DI NONAKTIFKAN* Untuk Grup Ini !')
 }
 handler.help = ['off']
-handler.tags = ['group admin']
+handler.tags = ['owner']
 handler.command = /^off$/i
 handler.owner = true
 

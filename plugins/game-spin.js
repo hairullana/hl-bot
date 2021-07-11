@@ -1,8 +1,8 @@
 let { Presence } = require('@adiwajshing/baileys')
 let handler = async (m, { conn, args }) => {
-	let money = global.DATABASE._data.users[m.sender].exp
+	let money = global.DATABASE._data.users[m.sender].money
 	if (args[0] == "all"){
-		args[0] = global.DATABASE._data.users[m.sender].exp
+		args[0] = global.DATABASE._data.users[m.sender].money
 	}
 	if(!args || !args[0] || args[0] == 0) {
 		await conn.updatePresence(m.chat, Presence.composing) 
@@ -20,7 +20,7 @@ let handler = async (m, { conn, args }) => {
 		await conn.updatePresence(m.chat, Presence.composing) 
 		conn.reply(m.chat, `*Tidak bisa melakukan spin dengan nominal di bawah Rp. 10.000,-*`, m)
 	}else {
-		global.DATABASE._data.users[m.sender].exp -= args[0]
+		global.DATABASE._data.users[m.sender].money -= args[0]
 		await conn.updatePresence(m.chat, Presence.composing)
 		setTimeout(() => {
 			var maxReward = 5
@@ -90,8 +90,8 @@ let handler = async (m, { conn, args }) => {
 				}
 			}
 			
-			global.DATABASE._data.users[m.sender].exp += reward  
-			let last = global.DATABASE._data.users[m.sender].exp
+			global.DATABASE._data.users[m.sender].money += reward  
+			let last = global.DATABASE._data.users[m.sender].money
 			let total = last
 
 			conn.updatePresence(m.chat, Presence.composing)

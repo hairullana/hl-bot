@@ -33,6 +33,7 @@ Hadiah: Rp. ${poin.toLocaleString()}`.trim()
 handler.help = ['susunkata']
 handler.tags = ['game']
 handler.command = /^(susunkata)$/i
+handler.limit = true
 module.exports = handler
 
 // function susunkata() {

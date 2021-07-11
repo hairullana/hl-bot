@@ -1,25 +1,21 @@
 let { MessageType, Presence } = require('@adiwajshing/baileys')
 let handler = async (m, { conn, text, participants }) => {
-	await conn.updatePresence(m.chat, Presence.composing) 
+	await conn.updatePresence(m.chat, Presence.composing)
+	conn.job = conn.job ? conn.job : {}
 	let member = participants.map(u => u.jid)
-	if(!text) {
-		var sum = member.length
-	} else {
-		var sum = text
-	}
+	var sum = member.length
 	var total = 0
 	var user = []
 	for(let i = 0; i < sum; i++) {
-		let users = m.isGroup ? participants.find(u => u.jid == member[i]) : {}
 		if(typeof global.DATABASE.data.users[member[i]] != 'undefined') {
-      if (global.DATABASE.data.users[member[i]].job != "x"){
+      if (typeof conn.job[member[i]] != "undefined"){
         total += 1
         user.push(member[i])
       }
 		}
 	}
 	if(total == 0) return conn.reply(m.chat, `*❏ LIST JOB*\n\nTidak ada yang menawarkan jasa apapun di grup ini`, m) 
-	conn.reply(m.chat, `*❏ LIST JOB*\n\n${user.map(v => '  ○ @' + v.replace(/@.+/, '') + ' [ ' + global.DATABASE.data.users[v].job + ' - Rp. ' + global.DATABASE.data.users[v].price.toLocaleString()  +' ]').join('\n')}\n\nKetik .sewa @user untuk menyewa orang`, m,{ contextInfo: { mentionedJid: user } })
+	conn.reply(m.chat, `*❏ LIST JOB*\n\n${user.map(v => '  ○ @' + v.replace(/@.+/, '') + ' [ ' + conn.job[v].job + ' - Rp. ' + conn.job[v].price.toLocaleString()  +' ]').join('\n')}\n\nKetik .sewa @user untuk menyewa orang`, m,{ contextInfo: { mentionedJid: user } })
 }
 handler.help = ['listjob']
 handler.tags = ['game']

@@ -19,7 +19,6 @@ handler.command = /^(adminmode)$/i
 handler.admin = true
 handler.group = true
 handler.botAdmin = true
-handler.limit = true
 handler.fail = null
 handler.exp = 5000
 module.exports = handler

@@ -19,8 +19,8 @@ let handler = async (m, { conn }) => {
   if (m.quoted.id == global.math[id][0].id) {
   let math = global.math[id][1]
   if (m.text == math.result) {
-    global.DATABASE._data.users[m.sender].exp += math.bonus
-    conn.reply(m.chat, `*Jawaban Benar!*\n\nUangmu bertambah *Rp. ${format(math.bonus)}*\nTotal uangmu : *Rp. ${format(global.DATABASE._data.users[m.sender].exp)}*`, m)
+    global.DATABASE._data.users[m.sender].money += math.bonus
+    conn.reply(m.chat, `*Jawaban Benar!*\n\nUangmu bertambah *Rp. ${format(math.bonus)}*\nTotal uangmu : *Rp. ${format(global.DATABASE._data.users[m.sender].money)}*`, m)
     clearTimeout(global.math[id][3])
     delete global.math[id]
   } else {
@@ -29,11 +29,11 @@ let handler = async (m, { conn }) => {
       clearTimeout(global.math[id][3])
       delete global.math[id]
     } else {
-      global.DATABASE._data.users[m.sender].exp -= math.bonus/4
-      if (global.DATABASE._data.users[m.sender].exp < 0){
-        global.DATABASE._data.users[m.sender].exp = 0
+      global.DATABASE._data.users[m.sender].money -= math.bonus/4
+      if (global.DATABASE._data.users[m.sender].money < 0){
+        global.DATABASE._data.users[m.sender].money = 0
       }
-      conn.reply(m.chat, `*Jawaban Salah!*\nMasih ada ${global.math[id][2]} kesempatan\n\nUangmu berkurang *Rp. ${format(math.bonus/4)}*\nTotal uangmu *Rp. ${format(global.DATABASE._data.users[m.sender].exp)}*`, m)
+      conn.reply(m.chat, `*Jawaban Salah!*\nMasih ada ${global.math[id][2]} kesempatan\n\nUangmu berkurang *Rp. ${format(math.bonus/4)}*\nTotal uangmu *Rp. ${format(global.DATABASE._data.users[m.sender].money)}*`, m)
     }
   }
  }
