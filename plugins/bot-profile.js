@@ -4,14 +4,19 @@ let handler = async (m, { conn, text }) => {
     return number.replace(/\s/g,'').replace(/([@+-])/g,'')
   }
 
-  text = no(text)
-	
-  let pp = './src/avatar_contact.png'
-  if(isNaN(text)) {
-		var number = text.split`@`[1]
-	}else if(!isNaN(text)) {
-		var number = text
+	if (!text){
+		number = m.sender
+	}else {
+		text = no(text)
+		
+		let pp = './src/avatar_contact.png'
+		if(isNaN(text)) {
+			var number = text.split`@`[1]
+		}else if(!isNaN(text)) {
+			var number = text
+		}
 	}
+
 
 	function msToDate(ms) {
 		temp = ms
