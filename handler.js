@@ -46,7 +46,7 @@ module.exports = {
           afkReason: '',
           pasangan: '',
           whitelist: false,
-          banned: false,
+          banned: false
         }
 
         let chat
@@ -79,7 +79,7 @@ module.exports = {
           antiSpam: false,
           lastseen: 0,
           expired: 0,
-          command: 0,
+          command: 0
         }
       } catch (e) {
         console.log(e, global.DATABASE.data)

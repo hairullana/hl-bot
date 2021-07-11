@@ -33,7 +33,7 @@ if (!global.DATABASE.data.users) global.DATABASE.data = {
   msgs: {},
   maintenance: true,
   cleanDB: 0,
-  backupDB: 0,
+  backupDB: 0
 }
 if (!global.DATABASE.data.chats) global.DATABASE.data.chats = {}
 if (!global.DATABASE.data.stats) global.DATABASE.data.stats = {}
