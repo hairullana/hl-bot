@@ -9,7 +9,7 @@ let handler = async (m, { conn }) => {
 		minutesms = ms % (60*1000);
 		sec = Math.floor((minutesms)/(1000));
 		if (temp < 0){
-			return "Ilegal / Belum Set Expired"
+			return "Ilegal"
 		}else {
 			return days+" Hari "+hours+" Jam "+ minutes + " Menit";
 		}
@@ -18,7 +18,7 @@ let handler = async (m, { conn }) => {
 
 	function expired(gc){
 		if (typeof global.DATABASE.data.chats[gc] != "undefined"){
-			return msToDate(global.DATABASE.data.chats[gc].moneyired - new Date())
+			return msToDate(global.DATABASE.data.chats[gc].expired - new Date())
 		}else {
 			return "Tidak terdaftar di database"
 		}

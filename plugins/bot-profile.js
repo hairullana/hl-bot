@@ -4,19 +4,14 @@ let handler = async (m, { conn, text }) => {
     return number.replace(/\s/g,'').replace(/([@+-])/g,'')
   }
 
-	if (!text){
-		number = m.sender
-	}else {
-		text = no(text)
-		
-		let pp = './src/avatar_contact.png'
-		if(isNaN(text)) {
-			var number = text.split`@`[1]
-		}else if(!isNaN(text)) {
-			var number = text
-		}
+  text = no(text)
+	
+  let pp = './src/avatar_contact.png'
+  if(isNaN(text)) {
+		var number = text.split`@`[1]
+	}else if(!isNaN(text)) {
+		var number = text
 	}
-
 
 	function msToDate(ms) {
 		temp = ms
@@ -31,6 +26,7 @@ let handler = async (m, { conn, text }) => {
 		// +minutes+":"+sec;
   }
 	function msToDate2(ms) {
+		if (ms ==  0) return `Tidak Pernah`
 		temp = ms
 		days = Math.floor(ms / (24*60*60*1000));
 		daysms = ms % (24*60*60*1000);
@@ -47,7 +43,7 @@ let handler = async (m, { conn, text }) => {
 		// +minutes+":"+sec;
   }
 	
-	if(typeof global.DATABASE.data.users[number + '@s.whatsapp.net'] == 'undefined') return m.reply(`*Nomor "${text}" tidak terdaftar di bot.*`)
+	if(number.length > 15 || (number.length < 9 && number.length > 0)) return conn.reply(m.chat, `*Masukkan nomor dengan format yang benar !*`, m)
   try {
 		if (!text && !m.quoted){
 			user = m.sender
@@ -100,7 +96,6 @@ let handler = async (m, { conn, text }) => {
 			} else {
 				var name = '(Tanpa Nama)'
 			} conn.sendFile(m.chat, pp, 'profile.jpg', `*❏ PROFILE USER*
-
 *Nama* : ${name}
 *Tentang*  : ${about}
 *Nomor* : ${nomor}

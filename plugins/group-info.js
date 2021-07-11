@@ -26,14 +26,14 @@ let handler = async (m, { conn }) => {
 		minutesms = ms % (60*1000);
 		sec = Math.floor((minutesms)/(1000));
 		if (temp < 0){
-			return "Forever"
+			return "Ilegal"
 		}else {
 			return days+" Hari "+hours+" Jam "+ minutes + " Menit";
 		}
 		// +minutes+":"+sec;
   }
 
-	conn.sendFile(m.chat, pp, 'profile.jpg', `*${ucword(name)}*\n\n*Expired* : ${msToDate(global.DATABASE.data.chats[m.chat].moneyired - new Date())}\n\n*${data(adminMode)} Admin Mode*\n*${data(antiLink)} Anti Link*\n*${data(antiSpam)} Anti Spam*\n*${data(antiVirtex)} Anti Virtex*\n*${data(antiBadword)} Anti Badword*\n*${data(welcome)} Welcome Message*\n*${data(left)} Leave Message*`, m)
+	conn.sendFile(m.chat, pp, 'profile.jpg', `*${ucword(name)}*\n\n*Expired* : ${msToDate(global.DATABASE.data.chats[m.chat].expired - new Date())}\n\n*${data(adminMode)} Admin Mode*\n*${data(antiLink)} Anti Link*\n*${data(antiSpam)} Anti Spam*\n*${data(antiVirtex)} Anti Virtex*\n*${data(antiBadword)} Anti Badword*\n*${data(welcome)} Welcome Message*\n*${data(left)} Leave Message*`, m)
 	}
 }
 handler.help = ['groupinfo']

@@ -350,7 +350,7 @@ Cara mendapatkan limit :
           if (user.premium == true) {
             user.limit -= m.limit * 1
             user.xp += m.limit * 1
-          } else if (user.limit > 100 || user.exp > 500000000) {
+          } else if (user.limit > 100 || user.money > 500000000) {
             user.limit -= m.limit * limitAsli
           } else {
             user.limit -= m.limit * 1
@@ -456,15 +456,14 @@ Untuk mematikan fitur ini, ketik
 
 global.dfail = (type, m, conn) => {
   let msg = {
-    rowner: 'Perintah ini hanya dapat digunakan oleh _*OWWNER!1!1!*_',
-    owner: 'Perintah ini hanya dapat digunakan oleh _*Owner Bot*_!',
-    mods: 'Perintah ini hanya dapat digunakan oleh _*Moderator*_ !',
-    premium: 'Perintah ini hanya untuk member _*Premium*_ !',
-    group: 'Perintah ini hanya dapat digunakan di grup!',
-    private: 'Perintah ini hanya dapat digunakan di Chat Pribadi!',
-    admin: 'Perintah ini hanya untuk *Admin* grup!',
-    botAdmin: 'Jadikan bot sebagai *Admin* untuk menggunakan perintah ini!',
-    unreg: 'Silahkan daftar untuk menggunakan fitur ini dengan cara mengetik:\n\n*#daftar nama.umur*\n\nContoh: *#daftar Manusia.16*'
+    rowner: '*❏ AKSES DITOLAK*\n\nFitur ini khusus untuk owner.',
+    owner: '*❏ AKSES DITOLAK*\n\nFitur ini khusus untuk owner.',
+    mods: '*❏ AKSES DITOLAK*\n\nFitur ini khusus untuk owner.',
+    premium: '*❏ AKSES DITOLAK*\n\nFitur ini khusus untuk user premium.\nHubungi owner ( *.owner* ) untuk upgrade premium',
+    group: '*❏ AKSES DITOLAK*\n\nFitur ini khusus untuk di dalam grup.',
+    private: '*❏ AKSES DITOLAK*\n\nFitur ini khusus untuk di chat pribadi bot.',
+    admin: '*❏ AKSES DITOLAK*\n\nFitur ini khusus untuk owner.',
+    botAdmin: '*❏ AKSES DITOLAK*\n\nJadikan bot sebagai admin terlebih dahulu.'
   }[type]
   if (msg) return m.reply(msg)
 }
