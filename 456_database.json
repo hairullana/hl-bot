@@ -1,0 +1,52 @@
+{
+  "users": {
+    "6283119526456@s.whatsapp.net": {
+      "money": 2000,
+      "limit": 10,
+      "xp": 0,
+      "lastclaim": 0,
+      "lastseen": 1626130103515,
+      "usebot": 1626130103515,
+      "warning": 0,
+      "spam": 0,
+      "afk": -1,
+      "premium": false,
+      "premiumDate": 0,
+      "afkReason": "",
+      "pasangan": "",
+      "whitelist": false,
+      "banned": false
+    }
+  },
+  "chats": {
+    "62822152153994@s.whatsapp.net": {
+      "banned": false,
+      "welcome": false,
+      "left": false,
+      "sWelcome": "",
+      "sBye": "",
+      "delete": true,
+      "adminMode": false,
+      "antiLink": false,
+      "antiVirtex": false,
+      "antiBadword": false,
+      "antiSpam": false,
+      "antiDelete": false,
+      "lastseen": 1626130103515,
+      "expired": 0,
+      "command": 0
+    }
+  },
+  "stats": {
+    "owner-selfmode.js": {
+      "total": 2,
+      "success": 2,
+      "last": 1626130096993,
+      "lastSuccess": 1626130096993
+    }
+  },
+  "msgs": {},
+  "maintenance": true,
+  "cleanDB": 1626130104242,
+  "backupDB": 1626130104241
+}

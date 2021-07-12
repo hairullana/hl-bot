@@ -5,9 +5,9 @@ let handler  = async (m, { conn,text }) => {
 	// let name
 	// let number
 	// if (text == global.modsName[0]){
-		let name = 'Loli'
-		let number = global.mods[0]
-		conn.sendVcard(m.chat, name, number, m)
+	let name = 'Loli'
+	let number = global.mods[0]
+	conn.sendVcard(m.chat, name, number, m)
 	// }else if (text == global.modsName[1]){
 	// 	name = global.modsName[1]
 	// 	number = global.mods[1]

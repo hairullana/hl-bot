@@ -1,7 +1,7 @@
 global.hl = '.'   // prefix hl bot
 
 global.owner = ['6283119526456','6282215215399']
-global.mods = []
+global.mods = ['6281257735703']
 global.APIs = {
   nrtm: 'https://nurutomo.herokuapp.com',
   xteam: 'https://api.xteam.xyz',
