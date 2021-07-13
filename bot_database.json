@@ -301,12 +301,12 @@
       "command": 0
     },
     "6283119526456@s.whatsapp.net": {
-      "money": 255964,
+      "money": 256964,
       "limit": 8,
       "xp": 3,
       "lastclaim": 0,
-      "lastseen": 1626011625461,
-      "usebot": 1626011625461,
+      "lastseen": 1626178858512,
+      "usebot": 1626178858512,
       "warning": 0,
       "spam": 0,
       "afk": -1,
@@ -1650,7 +1650,7 @@
       "antiVirtex": false,
       "antiBadword": false,
       "antiSpam": false,
-      "lastseen": 1626010985593,
+      "lastseen": 1626178858512,
       "expired": 0,
       "command": 0
     }
@@ -1723,9 +1723,9 @@
       "lastSuccess": 1625981926445
     },
     "bot-menu.js": {
-      "total": 25,
+      "total": 26,
       "success": 25,
-      "last": 1626009175979,
+      "last": 1626178858553,
       "lastSuccess": 1626009175979
     },
     "audio-nightcore.js": {
