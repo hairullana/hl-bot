@@ -30,7 +30,7 @@ let handler = async (m, { conn, text }) => {
 	if(user === m.sender) return conn.reply(m.chat, `*Tidak bisa meng-kick diri sendiri.*`, m)
 	if(user === conn.user.jid) return conn.reply(m.chat, `*Tidak bisa meng-kick bot dari grup.*`, m)
 	let isAdmin = users.isAdmin || users.isSuperAdmin || false
-	let number = user.split('@')[0]
+	if(isAdmin) return conn.reply(m.chat, `*Tidak bisa kick sesama admin !*`, m)
 	await conn.groupRemove(m.chat, [user])
 	}	
 }
