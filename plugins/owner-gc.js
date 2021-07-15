@@ -15,10 +15,10 @@ let handler  = async (m, { conn, args }) => {
   if (args[0] == "left"){
     conn.groupLeave(args[1])
     await conn.modifyChat(args[1], 'delete').catch(console.log)
-    delete global.DATABASE.data.chats[args[0]]
+    delete global.DATABASE.data.chats[args[1]]
     m.reply(`*❏ Berhasil mengeluarkan bot dari grup ${conn.getName(args[1])} dan menghapus data dari DB.*`)
   }else if (args[0] == "delete" || args[0] == "del"){
-    delete global.DATABASE.data.chats[args[0]]
+    delete global.DATABASE.data.chats[args[1]]
     await conn.modifyChat(args[1], 'delete').catch(console.log)
     m.reply(`*Berhasil menghapus chat grup ${conn.getName(args[1])} dan menghapus data dari DB.*`)
   }else if(args[0] == "link"){

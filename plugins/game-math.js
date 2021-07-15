@@ -1,51 +1,40 @@
-global.math = global.math ? global.math : {}
-let handler  = async (m, { conn, args, usedPrefix }) => {
-  // format mata uang
-  const format = num => {
-    const n = String(num),
-          p = n.indexOf('.')
-    return n.replace(
-        /\d(?=(?:\d{3})+(?:\.|$))/g,
-        (m, i) => p < 0 || i < p ? `${m},` : m
-    )
-  }
-  if (args.length < 1) return conn.reply(m.chat, `
+let handler = async (m, { conn, args, usedPrefix }) => {
+  conn.math = conn.math ? conn.math : {}
+  if (args.length < 1) throw `
 Mode: ${Object.keys(modes).join(' | ')}
-
-Contoh penggunaan: ${usedPrefix}math hard
-`.trim(), m)
+Contoh penggunaan: ${usedPrefix}math medium
+`.trim()
   let mode = args[0].toLowerCase()
-  if (!(mode in modes)) return conn.reply(m.chat, `
+  if (!(mode in modes)) throw `
 Mode: ${Object.keys(modes).join(' | ')}
-
-Contoh penggunaan: ${usedPrefix}math hard
-`.trim(), m)
+Contoh penggunaan: ${usedPrefix}math medium
+`.trim()
   let id = m.chat
-  if (id in global.math) return conn.reply(m.chat, 'Soal yang lama aja belum dijawab, malah minta soal baru anak ajg', global.math[id][0])
+  if (id in conn.math) return conn.reply(m.chat, 'Masih ada soal belum terjawab di chat ini', conn.math[id][0])
   let math = genMath(mode)
-  global.math[id] = [
-    await conn.reply(m.chat, `Berapa hasil dari *${math.str}*?\n\nTimeout : ${(math.time / 1000).toFixed(2)} detik\nHadiah : + Rp. ${format(math.bonus)}\nJika Salah : - Rp ${format(math.bonus/4)}`, m),
+  conn.math[id] = [
+    await conn.reply(m.chat, `Berapa hasil dari *${math.str}*?\n\nTimeout: ${(math.time / 1000).toFixed(2)} detik\nBonus Jawaban Benar: ${math.bonus} XP`, m),
     math, 4,
     setTimeout(() => {
-      if (global.math[id]) conn.reply(m.chat, `Waktu habis cok !\nJawabannya adalah ${math.result}`, global.math[id][0])
-      delete global.math[id]
+      if (conn.math[id]) conn.reply(m.chat, `Waktu habis!\nJawabannya adalah ${math.result}`, conn.math[id][0])
+      delete conn.math[id]
     }, math.time)
   ]
 }
-handler.help = ['math *level*']
+handler.help = ['math <mode>']
 handler.tags = ['game']
 handler.command = /^math/i
 
 module.exports = handler
 
 let modes = {
-  noob: [-3, 3,-3, 3, '+-', 15000, 5000],
-  easy: [-10, 10, -10, 10, '*/+-', 20000, 10000],
-  medium: [-40, 40, -20, 20, '*/+-', 40000, 20000],
-  hard: [-100, 100, -70, 70, '*/+-', 60000, 40000],
-  extreme: [-999999, 999999, -999999, 999999, '*/', 99999, 60000],
-  impossible: [-999999999999999, 999999999999999, -999, 999, '/', 30000, 80000],
-  impossible2: [-99999999999, 99999999999, -99999999999, 999999999999, '*/', 30000, 100000]
+  noob: [-3, 3,-3, 3, '+-', 15000, 10],
+  easy: [-10, 10, -10, 10, '*/+-', 20000, 40],
+  medium: [-40, 40, -20, 20, '*/+-', 40000, 150],
+  hard: [-100, 100, -70, 70, '*/+-', 60000, 350],
+  extreme: [-999999, 999999, -999999, 999999, '*/', 99999, 9999],
+  impossible: [-99999999999, 99999999999, -99999999999, 999999999999, '*/', 30000, 35000],
+  impossible2: [-999999999999999, 999999999999999, -999, 999, '/', 30000, 50000]
 } 
 
 let operators = {

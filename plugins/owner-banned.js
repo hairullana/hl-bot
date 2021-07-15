@@ -48,7 +48,7 @@ try {
 
 handler.help = ['*@tag*','*(reply)*'].map(v => 'ban ' + v)
 handler.tags = ['owner']
-handler.command = /^ban|banned$/i
+handler.command = /^(ban|banned)$/i
 // handler.owner = true
 handler.mods = true
 module.exports = handler
