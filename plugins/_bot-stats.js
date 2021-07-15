@@ -11,6 +11,19 @@ handler.before = async (m, { conn, isOwner }) => {
     var chatTotal = 0
     conn.chats.array.filter(v => v.jid.endsWith('net')).map(v => chatTotal += 1)
 
+    let withoutContact = global.DATABASE.data.withoutContact
+    let autoRead = global.DATABASE.data.autoRead
+    let autoClear = global.DATABASE.data.autoClear
+    let antiCall = global.DATABASE.data.antiCall
+
+    function cekActive(param){
+      if (param) {
+        return `Aktif`
+      }else {
+        return `Nonaktif`
+      }
+    }
+
     if (global.DATABASE.data.maintenance) {
       var maintenanceText = "Maintenance"
     } else {
@@ -37,7 +50,7 @@ handler.before = async (m, { conn, isOwner }) => {
     let usersDB = global.DATABASE.data.users
     var totalBanned = 0
     for (let jid in usersDB){
-      if (usersDB[jid].isBanned){
+      if (usersDB[jid].banned){
         totalBanned += 1
       }
     }
@@ -53,6 +66,9 @@ handler.before = async (m, { conn, isOwner }) => {
   *Status :* ${maintenanceText}
   *Group :* ${groupTotal} grup
   *Chat :* ${chatTotal} chat
+  *Without Contact :* ${cekActive(global.DATABASE.data.withoutContact)}
+  *Auto Read :* ${cekActive(global.DATABASE.data.autoRead)}
+  *Anti Call :* ${cekActive(global.DATABASE.data.antiCall)}
 
 *❏ BOT USER*
 

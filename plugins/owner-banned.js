@@ -24,15 +24,15 @@ try {
 	} 
 } catch (e) {
 		} finally {
-			if(global.DATABASE._data.users[user].isBanned == true){
+			if(global.DATABASE._data.users[user].banned == true){
 			  conn.reply(m.chat, `*Target sudah masuk ke dalam list banned*`, m)
 			}else {
-        global.DATABASE._data.users[user].isBanned = true
+        global.DATABASE._data.users[user].banned = true
 
 				let users = global.DATABASE.data.users
 				var totalBanned = 0
 				for (let jid in users){
-					if (users[jid].isBanned){
+					if (users[jid].banned){
 						totalBanned += 1
 					}
 				}

@@ -4,7 +4,7 @@ let handler  = async (m, { conn, text }) => {
   var text = ""
   var i = 0
   for (let jid in users){
-    if (users[jid].isBanned){
+    if (users[jid].banned){
       i += 1
       text += `\n${i}. ${conn.getName(jid)}\n    wa.me/${jid.split('@')[0]}`
     }

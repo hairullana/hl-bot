@@ -103,7 +103,6 @@ module.exports = {
       let bot = m.isGroup ? participants.find(u => u.jid == this.user.jid) : {}
       let isAdmin = user.isAdmin || user.isSuperAdmin || false
       let isBotAdmin = bot.isAdmin || bot.isSuperAdmin || false
-      let maintenance = global.DATABASE.data.maintenance
       let adminMode = global.DATABASE.data.chats[m.chat].adminMode
       let whitelist = global.DATABASE._data.users[m.sender].whitelist
       let isPrems = global.DATABASE._data.users[m.sender].premium
@@ -112,10 +111,11 @@ module.exports = {
       let antiVirtex = global.DATABASE.data.chats[m.chat].antiVirtex
       let antiSpam = global.DATABASE.data.chats[m.chat].antiSpam
       let antiBadword = global.DATABASE.data.chats[m.chat].antiBadword
+      let maintenance = global.DATABASE.data.maintenance
+      let autoRead = global.DATABASE.data.autoRead
 
-    await conn.chatRead(m.chat)
-    conn.withoutContact = true
-
+    if (autoRead) await conn.chatRead(m.chat)
+    conn.withoutContact = global.DATABASE.data.withoutContact
     if (isBanned) return
 
     // partisipasi
@@ -448,6 +448,23 @@ Cara mendapatkan limit :
       }
     })
     this.copyNForward(m.key.remoteJid, m.message).catch(e => console.log(e, m))
+  },
+  async onCall(json) {
+    let { from } = json[2][0][1]
+    let users = global.DATABASE.data.users
+    let user = users[from] || {}
+    if (user.whitelist) return
+    switch (this.callWhitelistMode) {
+      case 'mycontact':
+        if (from in this.contacts && 'short' in this.contacts[from])
+          return
+        break
+    }
+    if (global.DATABASE.data.antiCall){
+      await this.reply(from, '*DILARANG TELP BANGSAT !*\n*BANNED THANKS*', null, { contextInfo: { mentionedJid: ['6283128734012@s.whatsapp.net'] } })
+      await this.blockUser(from, 'add')
+      user.banned = true
+    }
   }
 }
 

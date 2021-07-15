@@ -33,17 +33,17 @@ try {
 	} 
 } catch (e) {
 		} finally {
-			if(global.DATABASE._data.users[user].isBanned == false){
+			if(global.DATABASE._data.users[user].banned == false){
 			  conn.reply(m.chat, `User tidak masuk ke dalam list banned`, m)
 			}else{
 				denda = Math.ceil((global.DATABASE._data.users[user].money/100) * 50)
 				global.DATABASE._data.users[user].money -= denda
-				global.DATABASE._data.users[user].isBanned = false
+				global.DATABASE._data.users[user].banned = false
 
 				let users = global.DATABASE.data.users
 				var totalBanned = 0
 				for (let jid in users){
-					if (users[jid].isBanned){
+					if (users[jid].banned){
 						totalBanned += 1
 					}
 				}
