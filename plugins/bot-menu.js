@@ -81,27 +81,26 @@ ${ltm}
 
     let header = '❏  *%category*\n'
     let body   = '  » %cmd%islimit'
-    let _text  = before + '\n'
+    let caption  = before + '\n'
     for (let tag in groups) {
-      _text += header.replace(/%category/g, 'M E N U  ' + tags[tag]) + '\n'
+      caption += header.replace(/%category/g, 'M E N U  ' + tags[tag]) + '\n'
       for (let menu of groups[tag]) {
         for (let help of menu.help)
-          _text += body.replace(/%cmd/g, menu.prefix ? help : '%p' + help).replace(/%islimit/g, menu.limit ? ' (L)' : '')  + '\n'
+          caption += body.replace(/%cmd/g, menu.prefix ? help : '%p' + help).replace(/%islimit/g, menu.limit ? ' (L)' : '')  + '\n'
       }
-      _text += '\n'
+      caption += '\n'
     }
     if (command != 'menu'){
-      _text += ltm
+      caption += ltm
     }
-    text =  typeof conn.menu == 'string' ? conn.menu : typeof conn.menu == 'object' ? _text : ''
     let replace = {
       '%': '%',
       p: _p,
       exp, limit, name, totalreg,
       readmore: readMore
     }
-    text = text.replace(new RegExp(`%(${Object.keys(replace).join`|`})`, 'g'), (_, name) => replace[name])
-    conn.sendFile(m.chat, fs.readFileSync(`./media/images/thumb.jpg`), 'pp.jpg', text,m)
+    caption = caption.replace(new RegExp(`%(${Object.keys(replace).join`|`})`, 'g'), (_, name) => replace[name])
+    conn.sendFile(m.chat, fs.readFileSync(`./media/images/thumb.jpg`), 'pp.jpg', caption,m)
   } catch (e) {
     conn.reply(m.chat, 'Maaf, menu sedang error', m)
     throw e
