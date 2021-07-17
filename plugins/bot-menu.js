@@ -76,6 +76,7 @@ Saldo Rp. ${exp.toLocaleString()} (${limit.toLocaleString()} Limit)
 » User premium ? ketik *.infoprem*
 
 ${ltm}
+
 %readmore`
 
     let header = '❏  *%category*\n'
