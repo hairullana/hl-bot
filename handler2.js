@@ -404,6 +404,7 @@ Cara mendapatkan limit :
     let text = ''
     switch (action) {
       case 'add':
+      case 'remove':
         if (chat.welcome) {
           for (let user of participants) {
             let pp = './src/avatar_contact.png'
@@ -411,25 +412,8 @@ Cara mendapatkan limit :
               pp = await this.getProfilePicture(user)
             } catch (e) {
             } finally {
-              text = (chat.sWelcome || this.welcome || conn.welcome || 'Welcome, @user!').replace('@group', this.getName(jid)).replace('@user', '@' + user.split('@')[0])
-              this.sendFile(jid, pp, 'pp.jpg', text, null, false, {
-                contextInfo: {
-                  mentionedJid: [user]
-                }
-              })
-            }
-          }
-        }
-        break
-      case 'remove':
-        if (chat.left) {
-          for (let user of participants) {
-            let pp = './src/avatar_contact.png'
-            try {
-              pp = await this.getProfilePicture(user)
-            } catch (e) {
-            } finally {
-              text = (chat.sBye || this.bye || conn.bye || 'Bye, @user!').replace('@user', '@' + user.split('@')[0]).replace('@group', this.getName(jid))
+              text = (action === 'add' ? (chat.sWelcome || this.welcome || conn.welcome || 'Welcome, @user!').replace('@group', this.getName(jid)) :
+                (chat.sBye || this.bye || conn.bye || 'Bye, @user!')).replace('@user', '@' + user.split('@')[0])
               this.sendFile(jid, pp, 'pp.jpg', text, null, false, {
                 contextInfo: {
                   mentionedJid: [user]

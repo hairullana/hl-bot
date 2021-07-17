@@ -118,6 +118,7 @@ let isInit = true
 global.reloadHandler = function () {
   let handler = require('./handler')
   if (!isInit) {
+    // conn.off('message-new', conn.handler)
     conn.off('chat-update', conn.handler)
     conn.off('message-delete', conn.onDelete)
     conn.off('group-participants-update', conn.onParticipantsUpdate)
@@ -131,6 +132,7 @@ global.reloadHandler = function () {
   conn.onDelete = handler.delete
   conn.onParticipantsUpdate = handler.participantsUpdate
   conn.onCall = handler.onCall
+  // conn.on('message-new', conn.handler)
   conn.on('chat-update', conn.handler)
   conn.on('message-delete', conn.onDelete)
   conn.on('group-participants-update', conn.onParticipantsUpdate)
