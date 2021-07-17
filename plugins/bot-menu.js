@@ -1,6 +1,6 @@
 let fs = require ('fs')
 const { MessageType } = require('@adiwajshing/baileys')
-let handler  = async (m, { conn, usedPrefix: _p }) => {
+let handler  = async (m, { conn, usedPrefix: _p, command }) => {
   try {
     let pp = './src/avatar_contact.png'
 	  pp = await conn.getProfilePicture(global.conn.user.jid)
@@ -9,46 +9,45 @@ let handler  = async (m, { conn, usedPrefix: _p }) => {
     let limit = global.DATABASE.data.users[m.sender].limit
     let xp = global.DATABASE.data.users[m.sender].xp
     let name = conn.getName(m.sender)
-    let d = new Date
-    let locale = 'id'
-    let gmt = new Date(0).getTime() - new Date('1 January 1970').getTime()
-    let weton = ['Pahing', 'Pon','Wage','Kliwon','Legi'][Math.floor(((d * 1) + gmt) / 84600000) % 5]
-    let week = d.toLocaleDateString(locale, { weekday: 'long' })
-    let date = d.toLocaleDateString(locale, {
-      day: 'numeric',
-      month: 'long',
-      year: 'numeric'
-    })
-    let time = d.toLocaleTimeString(locale, {
-      hour: 'numeric',
-      minute: 'numeric',
-      second: 'numeric'
-    })
-    let _uptime = process.uptime() * 1000
-    let uptime = clockString(_uptime)
     let totalreg = Object.keys(global.DATABASE._data.users).length.toLocaleString()
+    let before = ''
     let tags = {
-      'info': 'I N F O  B O T',
-      'xp': 'M O N E Y  &  L I M I T',
+      'info': 'B O T',
+      'xp': 'X P',
       'premium': 'P R E M I U M',
       'game': 'G A M E',
-      'gabut': 'J A D I A N',
+      'jadian': 'J A D I A N',
       'sticker': 'S T I C K E R',
       'creator': 'C R E A T O R',
-      'logo': 'L O G O',
-      'images' : 'I M A G E S',
-      'data' : 'S E A R C H I N G',
-      'tools': 'T O O L S',
+      'data' : 'S E A R C H',
+      'tools': 'T O O L',
       'information': 'I N F O R M A T I O N',
       'fun': 'F U N',
-      'tag': 'T A G S',
+      'tag': 'T A G',
       'audio': 'A U D I O',
-      'text': 'R A N D O M  T E X T',
-      'downloader': ' D O W N L O A D E R',
-      'group tools' : 'G R O U P  T O O L S',
-      'group admin': 'G R O U P  A D M I N',
-      'owner': 'O W N E R & M O D S'
+      'text': 'T E X T',
+      'downloader': ' D O W N L O A D',
+      'group tools' : 'G R O U P',
+      'group admin': 'A D M I N'
     }
+    if (command == 'menubot') tags = {'info': 'B O T'}
+    else if (command == 'menuxp') tags = {'xp': 'XP'}
+    else if (command == 'menupremium') tags = {'premium': 'P R E M I U M'}
+    else if (command == 'menugame') tags = {'game': 'G A M E'}
+    else if (command == 'menujadian') tags = {'jadian': 'J A D I A N'}
+    else if (command == 'menusticker') tags = {'sticker': 'S T I C K E R'}
+    else if (command == 'menucreator') tags = {'creator': 'C R E A T O R'}
+    else if (command == 'menusearch') tags = {'data' : 'S E A R C H'}
+    else if (command == 'menutool') tags = {'tools': 'T O O L'}
+    else if (command == 'menuinfo') tags = {'information': 'I N F O R M A T I O N'}
+    else if (command == 'menufun') tags = {'fun': 'F U N'}
+    else if (command == 'menutag') tags = {'tag': 'T A G'}
+    else if (command == 'menuaudio') tags = {'audio': 'A U D I O'}
+    else if (command == 'menutext') tags = {'text': 'T E X T'}
+    else if (command == 'menudownload') tags = {'downloader': 'D O W N L O A D'}
+    else if (command == 'menugroup') tags = {'group tools' : 'G R O U P'}
+    else if (command == 'menuadmin') tags = {'group admin': 'A D M I N'}
+    else if (command == 'menuowner') tags = {'owner': 'O W N E R'}
     for (let plugin of Object.values(global.plugins))
       if (plugin && 'tags' in plugin)
         for (let tag of plugin.tags)
@@ -69,39 +68,35 @@ let handler  = async (m, { conn, usedPrefix: _p }) => {
           if (menu.help) groups[tag].push(menu)
     }
 
-    var update = `*❏  U P D A T E*
-
-  » `
-
-    conn.menu = conn.menu ? conn.menu : {}
-    let before = conn.menu.before || `
-Hai *%name* (Lv. ${conn.level(xp)[0].toLocaleString()})
+    if (command == 'menu') before = `Hai *%name* (Lv. ${conn.level(xp)[0].toLocaleString()})
 Saldo Rp. ${exp.toLocaleString()} (${limit.toLocaleString()} Limit)
 
 » Tutorial bot ? ketik *.help*
 » Sewa bot ? ketik *.infosewa*
 » User premium ? ketik *.infoprem*
+
+${ltm}
 %readmore`
-    let header = conn.menu.header || '❏  *%category*\n'
-    let body   = conn.menu.body   || '  » %cmd%islimit'
-    // let footer = conn.menu.footer || '╚════════════════\n'
-    let after  = conn.menu.after  || conn.user.jid == global.conn.user.jid ? '' : `\nPowered by https://wa.me/${global.conn.user.jid.split`@`[0]}`
+
+    let header = '❏  *%category*\n'
+    let body   = '  » %cmd%islimit'
     let _text  = before + '\n'
     for (let tag in groups) {
-      _text += header.replace(/%category/g, tags[tag]) + '\n'
+      _text += header.replace(/%category/g, 'M E N U  ' + tags[tag]) + '\n'
       for (let menu of groups[tag]) {
         for (let help of menu.help)
           _text += body.replace(/%cmd/g, menu.prefix ? help : '%p' + help).replace(/%islimit/g, menu.limit ? ' (L)' : '')  + '\n'
       }
-      // _text += footer + '\n'
       _text += '\n'
     }
-    _text += after
+    if (command != 'menu'){
+      _text += ltm
+    }
     text =  typeof conn.menu == 'string' ? conn.menu : typeof conn.menu == 'object' ? _text : ''
     let replace = {
       '%': '%',
-      p: _p, uptime,
-      exp, limit, name, weton, week, date, time, totalreg,
+      p: _p,
+      exp, limit, name, totalreg,
       readmore: readMore
     }
     text = text.replace(new RegExp(`%(${Object.keys(replace).join`|`})`, 'g'), (_, name) => replace[name])
@@ -113,7 +108,7 @@ Saldo Rp. ${exp.toLocaleString()} (${limit.toLocaleString()} Limit)
 }
 handler.help = ['menu']
 handler.tags = ['info']
-handler.command = /^(menu)$/i
+handler.command = /^(menu(|bot|xp|premium|game|jadian|sticker|creator|search|tool|info|fun|tag|audio|text|download|group|admin|owner))$/i
 handler.fail = null
 module.exports = handler
 

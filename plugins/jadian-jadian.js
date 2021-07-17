@@ -75,7 +75,7 @@ let handler = async (m, { conn, text }) => {
 	}	
 }
 handler.help = ['tembak *@tag*']
-handler.tags = ['gabut']
+handler.tags = ['jadian']
 handler.command = /^(tembak)$/i
 handler.group = true
 handler.limit = true

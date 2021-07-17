@@ -25,7 +25,7 @@ let handler = async (m, { conn }) => {
   }
 }
 handler.help = ['putus']
-handler.tags = ['gabut']
+handler.tags = ['jadian']
 handler.command = /^(putus)$/i
 handler.group = true
 handler.fail = null

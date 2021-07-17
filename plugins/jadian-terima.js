@@ -41,18 +41,16 @@ let handler = async (m, { conn, text }) => {
         mentionedJid: [user]
       }})
     }else{
-      global.DATABASE.data.users[user].pasangan = ""
-      conn.reply(m.chat,`*Anda baru saja telah menolak @${user.split('@')[0]} awokawok*`,m,{contextInfo: {
-        mentionedJid: [user]
+      global.DATABASE.data.users[m.sender].pasangan = user
+      conn.reply(m.chat,`*Selamat anda resmi berpacaran dengan @${user.split('@')[0]}*\n\n*Semoga langgeng dan bahagia selalu @${user.split('@')[0]} 💓 @${m.sender.split('@')[0]} 🥳🥳🥳*`,m,{contextInfo: {
+        mentionedJid: [m.sender,user]
       }})
     }
 	}	
 }
-handler.help = ['tolak *@tag*']
-handler.tags = ['gabut']
-handler.command = /^(tolak)$/i
-handler.mods = false
-handler.premium = false
+handler.help = ['terima *@tag*']
+handler.tags = ['jadian']
+handler.command = /^(terima)$/i
 handler.group = true
 handler.limit = true
 handler.fail = null
