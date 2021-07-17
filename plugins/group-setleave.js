@@ -1,4 +1,5 @@
 let handler = async (m, { conn, text }) => {
+  return m.reply(`*❏ Fitur Leave Dinonaktifkan Secara Global*`)
   if (text) {
 		global.DATABASE._data.chats[m.chat].sBye = text
     conn.reply(m.chat, `*Leave Message berhasil di set.*\n\n@user = Nama User\n@group = Nama Grup`, m)

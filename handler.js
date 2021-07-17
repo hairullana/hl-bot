@@ -97,7 +97,7 @@ module.exports = {
       let isROwner = [global.conn.user.jid, ...global.owner].map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').includes(m.sender)
       let isOwner = isROwner || m.fromMe
       let isMods = isOwner || global.mods.map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').includes(m.sender)
-      let groupMetadata = m.isGroup ? await this.groupMetadata(m.chat) : {}
+      let groupMetadata = m.isGroup ? this.chats.get(m.chat).metadata || await this.groupMetadata(m.chat) : {} || {}
       let participants = m.isGroup ? groupMetadata.participants : []
       let user = m.isGroup ? participants.find(u => u.jid == m.sender) : {}
       let bot = m.isGroup ? participants.find(u => u.jid == this.user.jid) : {}
@@ -405,13 +405,14 @@ Cara mendapatkan limit :
     switch (action) {
       case 'add':
         if (chat.welcome) {
+          let groupMetadata = await this.groupMetadata(jid)
           for (let user of participants) {
             let pp = './src/avatar_contact.png'
             try {
               pp = await this.getProfilePicture(user)
             } catch (e) {
             } finally {
-              text = (chat.sWelcome || this.welcome || conn.welcome || 'Welcome, @user!').replace('@group', this.getName(jid)).replace('@user', '@' + user.split('@')[0])
+              text = (chat.sWelcome || this.welcome || conn.welcome || 'Welcome, @user!').replace('@group', this.getName(jid)).replace('@user', '@' + user.split('@')[0]).replace('@desc', groupMetadata.desc)
               this.sendFile(jid, pp, 'pp.jpg', text, null, false, {
                 contextInfo: {
                   mentionedJid: [user]
@@ -422,34 +423,35 @@ Cara mendapatkan limit :
         }
         break
       case 'remove':
-        if (chat.left) {
-          for (let user of participants) {
-            let pp = './src/avatar_contact.png'
-            try {
-              pp = await this.getProfilePicture(user)
-            } catch (e) {
-            } finally {
-              text = (chat.sBye || this.bye || conn.bye || 'Bye, @user!').replace('@user', '@' + user.split('@')[0]).replace('@group', this.getName(jid))
-              this.sendFile(jid, pp, 'pp.jpg', text, null, false, {
-                contextInfo: {
-                  mentionedJid: [user]
-                }
-              })
-            }
-          }
-        }
-        break
-      case 'promote':
-        text = conn.spromote
-      case 'demote':
-        if (!text) text = conn.sdemote
-        text = text.replace('@user', '@' + participants[0].split('@')[0])
-        this.sendMessage(jid, text, MessageType.extendedText, {
-          contextInfo: {
-            mentionedJid: this.parseMention(text)
-          }
-        })
-        break
+        // if (chat.left) {
+        //   for (let user of participants) {
+        //     let pp = './src/avatar_contact.png'
+        //     try {
+        //       pp = await this.getProfilePicture(user)
+        //     } catch (e) {
+        //     } finally {
+        //       text = (chat.sBye || this.bye || conn.bye || 'Bye, @user!').replace('@user', '@' + user.split('@')[0]).replace('@group', this.getName(jid))
+        //       this.sendFile(jid, pp, 'pp.jpg', text, null, false, {
+        //         contextInfo: {
+        //           mentionedJid: [user]
+        //         }
+        //       })
+        //     }
+        //   }
+        // }
+        // break
+
+      // case 'promote':
+      //   text = conn.spromote
+      // case 'demote':
+      //   if (!text) text = conn.sdemote
+      //   text = text.replace('@user', '@' + participants[0].split('@')[0])
+      //   this.sendMessage(jid, text, MessageType.extendedText, {
+      //     contextInfo: {
+      //       mentionedJid: this.parseMention(text)
+      //     }
+      //   })
+      //   break
     }
   },
   async delete(m) {

@@ -1,5 +1,6 @@
 let { Presence } = require('@adiwajshing/baileys')
 let handler = async (m, { conn, args, usedPrefix, command }) => {
+	return m.reply(`*❏ Fitur Leave Dinonaktifkan Secara Global*`)
 	if(!args || !args[0]) {
 		await conn.updatePresence(m.chat, Presence.composing) 
 		conn.reply(m.chat, `*Format salah! Contoh :*\n\n	*○ ${usedPrefix + command} on*\n	*○ ${usedPrefix + command} off*`, m)

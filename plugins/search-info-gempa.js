@@ -1,4 +1,4 @@
-const axios = require('axios')
+
 
 let handler = async(m, { conn, text, usedPrefix }) => {
     axios.get(`https://mnazria.herokuapp.com/api/bmkg-gempa`).then(res => {
