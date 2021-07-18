@@ -307,7 +307,7 @@ Cara mendapatkan limit :
       //console.log(global.DATABASE._data.users[m.sender])
       let user, stats = global.DATABASE._data.stats
       if (m) {
-        if (m.sender && (user = global.DATABASE._data.users[m.sender])) {
+        if (m.sender && (user = global.DATABASE.data.users[m.sender])) {
           // user.money += m.money
           // user.limit -= m.limit * 1
 
@@ -347,16 +347,17 @@ Cara mendapatkan limit :
           )
 
           levelAwal = conn.level(user.xp)[0]
-          if (user.premium == true) {
+          if (user.premium) {
             user.limit -= m.limit * 1
-            user.xp += m.limit * 1
+            user.xp += m.limit * 2
           } else if (user.limit > 100 || user.money > 500000000) {
             user.limit -= m.limit * limitAsli
+            user.xp += m.limit * 1
           } else {
             user.limit -= m.limit * 1
+            user.xp += m.limit * 1
           }
           // nambah level
-          user.xp += m.limit * 1
 
           levelAkhir = conn.level(user.xp)[0]
           if (levelAwal != levelAkhir) {
@@ -441,17 +442,17 @@ Cara mendapatkan limit :
         // }
         // break
 
-      // case 'promote':
-      //   text = conn.spromote
-      // case 'demote':
-      //   if (!text) text = conn.sdemote
-      //   text = text.replace('@user', '@' + participants[0].split('@')[0])
-      //   this.sendMessage(jid, text, MessageType.extendedText, {
-      //     contextInfo: {
-      //       mentionedJid: this.parseMention(text)
-      //     }
-      //   })
-      //   break
+      case 'promote':
+        text = conn.spromote
+      case 'demote':
+        if (!text) text = conn.sdemote
+        text = text.replace('@user', '@' + participants[0].split('@')[0])
+        this.sendMessage(jid, text, MessageType.extendedText, {
+          contextInfo: {
+            mentionedJid: this.parseMention(text)
+          }
+        })
+        break
     }
   },
   async delete(m) {

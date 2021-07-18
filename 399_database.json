@@ -35,11 +35,11 @@
       "banned": false
     },
     "6282215215399@s.whatsapp.net": {
-      "money": 37000,
-      "limit": 10,
-      "xp": 0,
+      "money": 41000,
+      "limit": 0,
+      "xp": 10,
       "lastclaim": 0,
-      "lastseen": 1626500717316,
+      "lastseen": 1626580961956,
       "usebot": 0,
       "warning": 0,
       "spam": 0,
@@ -52,12 +52,12 @@
       "banned": false
     },
     "6285155482898@s.whatsapp.net": {
-      "money": 84000,
-      "limit": 10,
-      "xp": 0,
+      "money": 92000,
+      "limit": 8,
+      "xp": 2,
       "lastclaim": 0,
-      "lastseen": 1626501478738,
-      "usebot": 1626501395231,
+      "lastseen": 1626580848056,
+      "usebot": 1626580817860,
       "warning": 0,
       "spam": 0,
       "afk": -1,
@@ -154,11 +154,11 @@
       "banned": false
     },
     "6282142008494@s.whatsapp.net": {
-      "money": 35000,
-      "limit": 10,
-      "xp": 0,
+      "money": 44000,
+      "limit": 9,
+      "xp": 1,
       "lastclaim": 0,
-      "lastseen": 1626492572375,
+      "lastseen": 1626580959609,
       "usebot": 0,
       "warning": 0,
       "spam": 0,
@@ -273,11 +273,11 @@
       "banned": false
     },
     "6285733105277@s.whatsapp.net": {
-      "money": 3000,
+      "money": 5000,
       "limit": 10,
       "xp": 0,
       "lastclaim": 0,
-      "lastseen": 1626446638915,
+      "lastseen": 1626580963219,
       "usebot": 1626446638915,
       "warning": 0,
       "spam": 0,
@@ -374,23 +374,6 @@
       "whitelist": false,
       "banned": false
     },
-    "6283119526456@s.whatsapp.net": {
-      "money": 138000,
-      "limit": 12,
-      "xp": 19,
-      "lastclaim": 1626494528373,
-      "lastseen": 1626501758409,
-      "usebot": 1626501758409,
-      "warning": 0,
-      "spam": 0,
-      "afk": -1,
-      "premium": false,
-      "premiumDate": 0,
-      "afkReason": "",
-      "pasangan": "",
-      "whitelist": false,
-      "banned": false
-    },
     "6282145141001@s.whatsapp.net": {
       "money": 3000,
       "limit": 10,
@@ -460,12 +443,12 @@
       "banned": false
     },
     "6289620394668@s.whatsapp.net": {
-      "money": 42000,
+      "money": 44000,
       "limit": 10,
       "xp": 0,
       "lastclaim": 0,
-      "lastseen": 1626446647924,
-      "usebot": 0,
+      "lastseen": 1626580687454,
+      "usebot": 1626580687454,
       "warning": 0,
       "spam": 0,
       "afk": -1,
@@ -902,46 +885,12 @@
       "banned": false
     },
     "6287725989466@s.whatsapp.net": {
-      "money": 49000,
+      "money": 54000,
       "limit": 10,
       "xp": 0,
       "lastclaim": 0,
-      "lastseen": 1626497204730,
+      "lastseen": 1626580860278,
       "usebot": 1626497186923,
-      "warning": 0,
-      "spam": 0,
-      "afk": -1,
-      "premium": false,
-      "premiumDate": 0,
-      "afkReason": "",
-      "pasangan": "",
-      "whitelist": false,
-      "banned": false
-    },
-    "62895413911311@s.whatsapp.net": {
-      "money": 0,
-      "limit": 10,
-      "xp": 0,
-      "lastclaim": 0,
-      "lastseen": 0,
-      "usebot": 0,
-      "warning": 0,
-      "spam": 0,
-      "afk": -1,
-      "premium": false,
-      "premiumDate": 0,
-      "afkReason": "",
-      "pasangan": "",
-      "whitelist": false,
-      "banned": false
-    },
-    "62822152153997@s.whatsapp.net": {
-      "money": 0,
-      "limit": 10,
-      "xp": 0,
-      "lastclaim": 0,
-      "lastseen": 0,
-      "usebot": 0,
       "warning": 0,
       "spam": 0,
       "afk": -1,
@@ -1055,11 +1004,11 @@
       "banned": false
     },
     "6281257735703@s.whatsapp.net": {
-      "money": 29000,
+      "money": 30000,
       "limit": 10,
       "xp": 0,
       "lastclaim": 0,
-      "lastseen": 1626499802975,
+      "lastseen": 1626580961381,
       "usebot": 1626499248556,
       "warning": 0,
       "spam": 0,
@@ -1378,11 +1327,11 @@
       "banned": false
     },
     "6285225479909@s.whatsapp.net": {
-      "money": 3000,
+      "money": 4000,
       "limit": 10,
       "xp": 0,
       "lastclaim": 0,
-      "lastseen": 1626499071140,
+      "lastseen": 1626580883253,
       "usebot": 1626497127775,
       "warning": 0,
       "spam": 0,
@@ -1497,11 +1446,11 @@
       "banned": false
     },
     "6281519324778@s.whatsapp.net": {
-      "money": 5000,
-      "limit": 10,
-      "xp": 0,
+      "money": 11000,
+      "limit": 6,
+      "xp": 4,
       "lastclaim": 0,
-      "lastseen": 1626498953062,
+      "lastseen": 1626580870478,
       "usebot": 0,
       "warning": 0,
       "spam": 0,
@@ -1546,6 +1495,74 @@
       "pasangan": "",
       "whitelist": false,
       "banned": false
+    },
+    "6281396806170@s.whatsapp.net": {
+      "money": 2000,
+      "limit": 9,
+      "xp": 1,
+      "lastclaim": 0,
+      "lastseen": 1626580723831,
+      "usebot": 0,
+      "warning": 0,
+      "spam": 0,
+      "afk": -1,
+      "premium": false,
+      "premiumDate": 0,
+      "afkReason": "",
+      "pasangan": "",
+      "whitelist": false,
+      "banned": false
+    },
+    "62822152153997@s.whatsapp.net": {
+      "money": 0,
+      "limit": 9,
+      "xp": 1,
+      "lastclaim": 0,
+      "lastseen": 0,
+      "usebot": 0,
+      "warning": 0,
+      "spam": 0,
+      "afk": -1,
+      "premium": false,
+      "premiumDate": 0,
+      "afkReason": "",
+      "pasangan": "",
+      "whitelist": false,
+      "banned": false
+    },
+    "6283119526456@s.whatsapp.net": {
+      "money": 9000,
+      "limit": 6,
+      "xp": 4,
+      "lastclaim": 0,
+      "lastseen": 1626580875410,
+      "usebot": 1626580731913,
+      "warning": 0,
+      "spam": 0,
+      "afk": -1,
+      "premium": false,
+      "premiumDate": 0,
+      "afkReason": "",
+      "pasangan": "",
+      "whitelist": false,
+      "banned": false
+    },
+    "6285157336614@s.whatsapp.net": {
+      "money": 0,
+      "limit": 10,
+      "xp": 0,
+      "lastclaim": 0,
+      "lastseen": 0,
+      "usebot": 0,
+      "warning": 0,
+      "spam": 0,
+      "afk": -1,
+      "premium": false,
+      "premiumDate": 0,
+      "afkReason": "",
+      "pasangan": "",
+      "whitelist": false,
+      "banned": false
     }
   },
   "chats": {
@@ -1562,7 +1579,7 @@
       "antiBadword": false,
       "antiSpam": false,
       "antiDelete": false,
-      "lastseen": 1626501898733,
+      "lastseen": 1626580961381,
       "expired": 0,
       "command": 0
     },
@@ -1579,7 +1596,7 @@
       "antiBadword": false,
       "antiSpam": false,
       "antiDelete": false,
-      "lastseen": 1626501559795,
+      "lastseen": 1626580959609,
       "expired": 0,
       "command": 0
     },
@@ -1596,7 +1613,7 @@
       "antiBadword": false,
       "antiSpam": false,
       "antiDelete": false,
-      "lastseen": 1626501758409,
+      "lastseen": 1626580875410,
       "expired": 0,
       "command": 0
     },
@@ -1634,23 +1651,6 @@
       "expired": 0,
       "command": 0
     },
-    "6283119526456@s.whatsapp.net": {
-      "banned": false,
-      "welcome": false,
-      "left": false,
-      "sWelcome": "",
-      "sBye": "",
-      "delete": true,
-      "adminMode": false,
-      "antiLink": false,
-      "antiVirtex": false,
-      "antiBadword": false,
-      "antiSpam": false,
-      "antiDelete": false,
-      "lastseen": 0,
-      "expired": 0,
-      "command": 0
-    },
     "6285338659872@s.whatsapp.net": {
       "banned": false,
       "welcome": false,
@@ -1682,6 +1682,40 @@
       "antiSpam": false,
       "antiDelete": false,
       "lastseen": 1626498987946,
+      "expired": 0,
+      "command": 0
+    },
+    "6283119526456@s.whatsapp.net": {
+      "banned": false,
+      "welcome": false,
+      "left": false,
+      "sWelcome": "",
+      "sBye": "",
+      "delete": true,
+      "adminMode": false,
+      "antiLink": false,
+      "antiVirtex": false,
+      "antiBadword": false,
+      "antiSpam": false,
+      "antiDelete": false,
+      "lastseen": 0,
+      "expired": 0,
+      "command": 0
+    },
+    "6285733105277@s.whatsapp.net": {
+      "banned": false,
+      "welcome": false,
+      "left": false,
+      "sWelcome": "",
+      "sBye": "",
+      "delete": true,
+      "adminMode": false,
+      "antiLink": false,
+      "antiVirtex": false,
+      "antiBadword": false,
+      "antiSpam": false,
+      "antiDelete": false,
+      "lastseen": 1626580963219,
       "expired": 0,
       "command": 0
     }
@@ -1766,14 +1800,32 @@
       "lastSuccess": 1626501758721
     },
     "exec.js": {
-      "total": 9,
-      "success": 9,
-      "last": 1626499911699,
-      "lastSuccess": 1626499911699
+      "total": 11,
+      "success": 11,
+      "last": 1626580875411,
+      "lastSuccess": 1626580875411
+    },
+    "exp-rek.js": {
+      "total": 5,
+      "success": 5,
+      "last": 1626580714445,
+      "lastSuccess": 1626580714445
+    },
+    "owner-reset.js": {
+      "total": 2,
+      "success": 2,
+      "last": 1626580626608,
+      "lastSuccess": 1626580626608
+    },
+    "game-spin.js": {
+      "total": 5,
+      "success": 5,
+      "last": 1626580731915,
+      "lastSuccess": 1626580731915
     }
   },
   "msgs": {},
   "maintenance": true,
-  "cleanDB": 1626487540375,
-  "backupDB": 1626499415083
+  "cleanDB": 1626580589700,
+  "backupDB": 1626580589697
 }
