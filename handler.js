@@ -307,7 +307,7 @@ Cara mendapatkan limit :
       //console.log(global.DATABASE._data.users[m.sender])
       let user, stats = global.DATABASE._data.stats
       if (m) {
-        if (m.sender && (user = global.DATABASE.data.users[m.sender])) {
+        if (m.sender && (user = global.DATABASE._data.users[m.sender])) {
           // user.money += m.money
           // user.limit -= m.limit * 1
 
@@ -440,8 +440,7 @@ Cara mendapatkan limit :
         //     }
         //   }
         // }
-        // break
-
+        break
       case 'promote':
         text = conn.spromote
       case 'demote':
