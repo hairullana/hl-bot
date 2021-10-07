@@ -75,13 +75,7 @@ let handler  = async (m, { conn, usedPrefix: _p, command }) => {
     if (command == 'menu') before = `Hai *%name* (Lv. ${conn.level(xp)[0].toLocaleString()})
 Saldo Rp. ${exp.toLocaleString()} (${limit.toLocaleString()} Limit)
 
-Dengan begitu banyak pertimbangan, HL BOT otw pensiun
-Makasih udah setia jadi user HL
-Yang premiumnya masih chat owner aja, kelipatan 30 hari diganti 5rb
-Kalo mau sisa kelipatan 6 hari juga diganti 1rb (tapi pakai e-wallet)
-Begitupun dengan sewa bot (30 hari 10rb, 3 hari 1rb)
-
-Kuy mutualan sama owner https://instagram.com/hairullana_
+SC HL Bot : https://github.com/hairullana/hl-bot
 
 %readmore`
 
