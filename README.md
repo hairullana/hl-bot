@@ -1,8 +1,9 @@
 # HL BOT
 
 Simple WhatsApp Bot
+Feel free to clone, fork or contribute to this repo
 
-## FOR TERMUX USER
+## FOR TERMUX USER (install via termux)
 
 ```bash
 > pkg update && pkg upgrade
@@ -32,7 +33,7 @@ Simple WhatsApp Bot
 
 ---------
 
-## Run
+## RUN (run bot after installation)
 
 ```bash
 > node . [<session name>] (session name is optional)
@@ -45,15 +46,35 @@ And then you scan QR Code to your Whatsapp
 
 ---------
 
-## Prefix `.`
+## PREFiX `.` (important command in HL Bot)
+
+### `.`
+
+To see bot stats
 
 ### `.menu`
 
-See all menu bot or one of the menus like `.menugroup .menuxp` etc.
+See all menu bot
 
 ### `.menuowner`
 
-All menu that only you as owner can use
+All menu that only you as owner can use, add premium for example
+
+### `.menuxp`
+
+To see user property like money, limit or level, OR rank of user (its feel like a game haha)
+
+### `.menugame`
+
+All of game and will give you a gift to increase your money, limit or level
+
+### `.menugroup`
+
+Only use it on whatsapp group, *.sider* is the best command I think
+
+### `.menuadmin`
+
+All menu that only you as admin group can use (.kick .promote .demote etc)
 
 ### `.selfmode`
 
