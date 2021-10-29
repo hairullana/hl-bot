@@ -34,7 +34,7 @@ global.author = 'LTM Bot'
 
 global.wait = '_Sedang diproses . . ._'
 global.error = '_Fitur Error !_'
-global.ltm = '*❏ Instagram*\nhttps://instagram.com/loadingtomastah\n*❏ Telegram*\nhttps://t.me/loadingtomastah'
+global.ltm = '*❏ Instagram*\nhttps://instagram.com/hairullana'
 
 // global.multiplier = 69 // The higher, The harder levelup
 
