@@ -1,7 +1,8 @@
 # HL BOT
 
 Simple WhatsApp Bot
-Feel free to clone, fork or contribute to this repo
+<br/>Feel free to clone, fork or contribute to this repo
+
 
 ## FOR TERMUX USER (install via termux)
 
@@ -60,6 +61,10 @@ See all menu bot
 
 All menu that only you as owner can use, add premium for example
 
+### `.menusticker`
+
+Create sticker, gif, change sticker to image
+
 ### `.menuxp`
 
 To see user property like money, limit or level, OR rank of user (its feel like a game haha)
@@ -79,6 +84,13 @@ All menu that only you as admin group can use (.kick .promote .demote etc)
 ### `.selfmode`
 
 You can change bot mode to self or public mode
+
+---------
+
+## HOW TO EDIT THIS BOT (create / update / delete)
+
+* BOT FEATURES : go to "plugins" directory
+* APIs & Global Var : edit config.js
 
 ---------
 
