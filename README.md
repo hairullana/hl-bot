@@ -11,7 +11,7 @@ Simple WhatsApp Bot
 > pkg install ffmpeg -y
 > pkg install imagemagick -y
 > git clone https://github.com/hairullana/hl-bot
-> cd wabot-aq
+> cd hl-bot
 > npm install
 ```
 
@@ -37,58 +37,29 @@ Simple WhatsApp Bot
 ```bash
 > node . [<session name>] (session name is optional)
 ```
+Example
+```bash
+> node . bot
+```
+And then you scan QR Code to your Whatsapp
 
 ---------
 
-## Arguments `node . [--options] [<session name>]`
+## Prefix `.`
 
-### `--self`
+### `.menu`
 
-Activate self mode (Ignores other)
+See all menu bot or one of the menus like `.menugroup .menuxp` etc.
 
-### `--prefix <prefixes>`
+### `.menuowner`
 
-* `prefixes` are seperated by each character
-Set prefix
+All menu that only you as owner can use
 
-### `--server`
+### `.selfmode`
 
-Used for [heroku](https://heroku.com/) or scan through website
-
-### `--big-qr`
-
-If small qr unicode doesn't support
-
-### `--restrict`
-
-Enables restricted plugins (which can lead your number to be **banned** if used too often)
-
-* Group Administration `add, kick`
-
-### `--img`
-
-Enable image inspector through terminal
-
-### `--nyimak`
-
-No bot, just print received messages and add users to database
-
-### `--test`
-
-**Development** Testing Mode
-
-### `--trace`
-
-```js
-conn.logger.level = 'trace'
-```
-
-### `--debug`
-
-```js
-conn.logger.level = 'debug'
-```
+You can change bot mode to self or public mode
 
 ---------
 
 #### Author / Creator : [`Nurutomo`](https://GitHub.com/Nurutomo)
+#### Recode with love by : [`Hairul Lana`](https://GitHub.com/hairullana)

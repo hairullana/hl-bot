@@ -68,14 +68,13 @@ let handler  = async (m, { conn, usedPrefix: _p, command }) => {
           if (menu.help) groups[tag].push(menu)
     }
 
-    // » Tutorial bot ? ketik *.help*
-    // » Sewa bot ? ketik *.infosewa*
-    // » User premium ? ketik *.infoprem*
+    
 
     if (command == 'menu') before = `Hai *%name* (Lv. ${conn.level(xp)[0].toLocaleString()})
 Saldo Rp. ${exp.toLocaleString()} (${limit.toLocaleString()} Limit)
 
-SC HL Bot : https://github.com/hairullana/hl-bot
+» Tutorial bot ? ketik *.help*
+» SC HL Bot : https://github.com/hairullana/hl-bot
 
 %readmore`
 
