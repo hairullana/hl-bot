@@ -1,5 +1,6 @@
 let fetch = require('node-fetch')
 let handler = async (m, { conn, args }) => {
+  return 'Fitur download dinonaktifkan'
   if (!args[0]) throw '*Masukkan username instagram nya.*'
   let res = await fetch(global.API('xteam', '/dl/igs', {
     nama: args[0]

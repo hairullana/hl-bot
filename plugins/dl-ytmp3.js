@@ -2,6 +2,7 @@ let limit = 30
 let yts = require('yt-search')
 const { servers, yta, ytv } = require('../lib/y2mate')
 let handler = async (m, { conn, command, text, isPrems, isOwner }) => {
+  return 'Fitur download dinonaktifkan'
   if (!text) throw `Masukkan command yang benar, misal :\n*.${command} pale pale*`
   conn.reply(m.chat,global.wait,m)
   let results = await yts(text)

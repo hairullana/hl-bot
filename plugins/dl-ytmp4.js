@@ -1,6 +1,7 @@
 let fetch = require('node-fetch')
 let { JSDOM } = require('jsdom')
 let handler = async (m, { conn, args, isPrems }) => {
+    return 'Fitur download dinonaktifkan'
   if (!args || !args[0]) return conn.reply(m.chat, '*Masukkan URL Youtube yang ingin di download videonya*', m)
   conn.reply(m.chat,global.wait,m)
   let { dl_link, thumb, title, filesize, filesizeF} = await ytv(args[0])

@@ -1,5 +1,6 @@
 let fetch = require('node-fetch')
 let handler = async (m, { conn, args, isPrems, isOwner, usedPrefix, command }) => {
+	return 'Fitur download dinonaktifkan'
 	if (!args || !args[0]) return conn.reply(m.chat, `*❏ Format Salah !*\n\n*Contoh* : _${usedPrefix + command} lathi_`, m)
 	let text = args.join` `
 	fetch('https://mnazria.herokuapp.com/api/jooxnich?search=' + encodeURIComponent(text))

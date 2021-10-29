@@ -1,5 +1,6 @@
 let fetch = require('node-fetch')
 let handler = async (m, { conn, args }) => {
+  return 'Fitur download dinonaktifkan'
   if (!args[0]) throw '*Masukkan url yang benar*'
   args[0] = args[0].replace('reel','p')
   let res = await fetch(global.API('pcode', '/api/ig', {
