@@ -1,5 +1,5 @@
 {
-  "name": "HL Bot",
+  "name": "wabot-aq",
   "version": "2.0.0",
   "description": "Customizable WhatsApp Bot",
   "depecrated": false,
@@ -19,16 +19,16 @@
     "whatsapp",
     "js-whatsapp"
   ],
-  "homepage": "https://github.com/hairullana/hl-bot",
+  "homepage": "https://github.com/Nurutomo/wabot-aq",
   "author": {
-    "name": "Hairul Lana"
+    "name": "Nurutomo"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/hairullana/hl-bot.git"
+    "url": "git+https://github.com/Nurutomo/wabot-aq.git"
   },
   "bugs": {
-    "url": "https://github.com/hairullana/hl-bot/issues"
+    "url": "https://github.com/Nurutomo/wabot-aq/issues"
   },
   "license": "GPL-3.0-or-later",
   "dependencies": {
