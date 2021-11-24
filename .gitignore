@@ -1,6 +1,3 @@
 .*.swp
-hl_database.json
-hl.data.json
 node_modules/*
 package-lock.json
-media/*
