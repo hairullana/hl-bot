@@ -41,7 +41,7 @@ let handler = async (m, { conn, text }) => {
     if(global.DATABASE.data.users[m.sender].pasangan != "" && global.DATABASE.data.users[global.DATABASE.data.users[m.sender].pasangan].pasangan == m.sender && global.DATABASE.data.users[m.sender].pasangan != user){
       var denda = Math.ceil(global.DATABASE.data.users[m.sender].money/100*20)
       global.DATABASE.data.users[m.sender].money -= denda
-      conn.reply(m.chat,`*Kamu sudah berpacaran dengan @${global.DATABASE.data.users[m.sender].pasangan.split('@')[0]}*\n\nSilahkan putus dulu (.putus) untuk menembak @${user.split('@')[0]}\n\nBtw yang setia dikit bangsat !\nDenda : Rp. ${format(denda)} (20% saldo)`,m,{contextInfo: {
+      conn.reply(m.chat,`*Kamu sudah berpacaran dengan @${global.DATABASE.data.users[m.sender].pasangan.split('@')[0]}*\n\nSilahkan putus dulu (.putus) untuk menembak @${user.split('@')[0]}\n\nBtw yang setia dikit bro !\nDenda : Rp. ${format(denda)} (20% saldo)`,m,{contextInfo: {
         mentionedJid: [user,global.DATABASE.data.users[m.sender].pasangan]
       }})
     }else if(global.DATABASE.data.users[user].pasangan != ""){
@@ -57,7 +57,7 @@ let handler = async (m, { conn, text }) => {
         }})
       }else{
         global.DATABASE.data.users[m.sender].pasangan = user
-        conn.reply(m.chat,`*Anda baru saja mengajak @${user.split('@')[0]} berpacaran*\n\n*Silahkan menunggu jawabannya saja ya bangsat !*\n*Ketik .terima @user atau .tolak @user*`,m,{contextInfo: {
+        conn.reply(m.chat,`*Anda baru saja mengajak @${user.split('@')[0]} berpacaran*\n\n*Silahkan menunggu jawabannya saja ya bro !*\n*Ketik .terima @user atau .tolak @user*`,m,{contextInfo: {
           mentionedJid: [user]
         }})
       }
@@ -68,7 +68,7 @@ let handler = async (m, { conn, text }) => {
       }})
     }else {
       global.DATABASE.data.users[m.sender].pasangan = user
-      conn.reply(m.chat,`*Kamu baru saja mengajak @${user.split('@')[0]} berpacaran*\n\n*Silahkan menunggu jawabannya saja ya bangsat !*\n*Ketik .terima @user atau .tolak @user*`,m,{contextInfo: {
+      conn.reply(m.chat,`*Kamu baru saja mengajak @${user.split('@')[0]} berpacaran*\n\n*Silahkan menunggu jawabannya saja ya bro !*\n*Ketik .terima @user atau .tolak @user*`,m,{contextInfo: {
         mentionedJid: [user]
       }})
     }

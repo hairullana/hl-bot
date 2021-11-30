@@ -29782,12 +29782,12 @@
       "banned": false
     },
     "6281995241246@s.whatsapp.net": {
-      "money": 1000,
+      "money": 2000,
       "limit": 10,
       "xp": 0,
       "lastclaim": 0,
-      "lastseen": 1638245820375,
-      "usebot": 1638245820375,
+      "lastseen": 1638245978505,
+      "usebot": 1638245978505,
       "warning": 0,
       "spam": 0,
       "afk": -1,
@@ -54814,7 +54814,7 @@
       "antiBadword": false,
       "antiSpam": false,
       "antiDelete": false,
-      "lastseen": 1638245820375,
+      "lastseen": 1638245978505,
       "expired": 0,
       "command": 0
     },

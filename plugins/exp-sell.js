@@ -6,7 +6,7 @@ let handler = async (m, { conn, command, args }) => {
   }else if (args[0] > 1000000000 || args[0] < 1){
     return conn.reply(m.chat,`Kamu bisa menjual limit minimal 1 dan maksimal 1.000.000.000 !`,m)
   }else if (args[0] > stok){
-    return conn.reply(m.chat,`Sadar diri bangsat, limit kamu cuma ${stok} !`,m)
+    return conn.reply(m.chat,`Sadar diri bang, limit kamu cuma ${stok} !`,m)
   }else {
     var jualLimit = args[0]
   }

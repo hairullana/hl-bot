@@ -47,7 +47,7 @@ try {
 						totalBanned += 1
 					}
 				}
-				conn.reply(m.chat, `*Sukses men-unbanned @${user.split('@')[0]} dan menghapus status user bangsat dengan denda Rp. ${format(denda)} (50% saldo)*\n\n*Total Banned : ${totalBanned}*`, m,{
+				conn.reply(m.chat, `*Sukses men-unbanned @${user.split('@')[0]} dengan denda Rp. ${format(denda)} (50% saldo)*\n\n*Total Banned : ${totalBanned}*`, m,{
 					contextInfo: {
 						mentionedJid: [user]
 					}

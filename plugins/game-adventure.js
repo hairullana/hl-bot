@@ -16,7 +16,7 @@ let handler = async (m, { conn, participants, text }) => {
   let lamaPertarungan = getRandom(1,5)
 
   let kegiatan = ['mengocok','cipokan','gelud','menari','mengautis','memuja kerang ajaib','gibahin owner','tertidur pulas','bermain layangan','melempar jumroh','melakukan makar','berjualan bakso','ngegay','merangkak','berenang','makan babi']
-  let sifat = ['sangean','raja ngocok','ratu colmek','lord senja','kang bakso','kang gibah','culun','cupu','jagoan','abang jago','anak bangsat','anjing','pemuja setan']
+  let sifat = ['sangean','raja ngocok','ratu colmek','lord senja','kang bakso','kang gibah','culun','cupu','jagoan','abang jago','anjing','pemuja setan']
   m.reply(`*Kamu* dan *${conn.getName(lawan)}* si ${sifat[getRandom(0,sifat.length-1)]} dalam petualangan dan sedang ${kegiatan[getRandom(0,kegiatan.length-1)]} bersama.\n\nTunggu ${lamaPertarungan} menit lagi.`)
 
   conn.adventure[m.sender] = true

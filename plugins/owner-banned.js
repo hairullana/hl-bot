@@ -36,7 +36,7 @@ try {
 						totalBanned += 1
 					}
 				}
-				conn.reply(m.chat, `*Sukses mem-banned @${user.split('@')[0]} dan memberikan status user bangsat*\n\n*Total Banned : ${totalBanned}*`, m,{
+				conn.reply(m.chat, `*Sukses mem-banned @${user.split('@')[0]}*\n\n*Total Banned : ${totalBanned}*`, m,{
 					contextInfo: {
 						mentionedJid: [user]
 					}
