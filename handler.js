@@ -210,15 +210,15 @@ module.exports = {
             if (name != 'on.js' && chat.banned) return
           }
           if (plugin.rowner && plugin.owner && !(isROwner || isOwner)) { // Both Owner
-            fail('owner', m, this)
+            // fail('owner', m, this)
             continue
           }
           if (plugin.rowner && !isROwner) { // Real Owner
-            fail('rowner', m, this)
+            // fail('rowner', m, this)
             continue
           }
           if (plugin.owner && !isOwner) { // Number Owner
-            fail('owner', m, this)
+            // fail('owner', m, this)
             continue
           }
           if (plugin.mods && !isMods) { // Moderator
@@ -479,7 +479,7 @@ Cara mendapatkan limit :
         break
     }
     if (global.DATABASE.data.antiCall){
-      await this.reply(from, '*DILARANG TELP BANGSAT !*\n*BANNED THANKS*', null, { contextInfo: { mentionedJid: ['6283128734012@s.whatsapp.net'] } })
+      await this.reply(from, '*DILARANG MENELPON BOT ! MAAF ANDA AKAN DIBLOKIR.*', null)
       await this.blockUser(from, 'add')
       user.banned = true
     }

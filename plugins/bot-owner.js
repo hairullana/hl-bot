@@ -1,11 +1,13 @@
 let { Presence } = require('@adiwajshing/baileys')
 let handler  = async (m, { conn }) => {
 	await conn.updatePresence(m.chat, Presence.composing)
-	var name = 'Hairul Lana'
-	var number = global.owner[1]
-	conn.sendVcard(m.chat, name, number, m).then(() =>{
-		conn.reply(m.chat,`*Harap chat owner jika penting saja dan to the point.*\n*Makasih :)*`,m)
-	})
+	// var name = 'Hairul Lana'
+	// var number = global.owner[1]
+	// conn.sendVcard(m.chat, name, number, m).then(() =>{
+		// conn.reply(m.chat,`*Harap chat owner jika penting saja dan to the point.*\n*Makasih :)*`,m)
+	// })
+
+	conn.reply(m.chat,`https://instagram.com/hairullana_\n\n*Harap chat owner jika penting saja dan to the point.*\n*Makasih :)*`,m)
 }
 handler.help = ['owner']
 handler.tags = ['info']
