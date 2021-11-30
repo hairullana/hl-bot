@@ -21,7 +21,7 @@ ${sortedLim.slice(0, len).map(([user, data], i) => (i + 1) + '. ' + conn.getName
   
   conn.reply(m.chat, isi, m)
 }
-handler.help = ['topglobal','topglobal *total*']
+handler.help = ['topglobal']
 handler.tags = ['xp']
 handler.command = /^(topglobal)$/i
 handler.fail = null

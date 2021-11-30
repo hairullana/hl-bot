@@ -21,7 +21,7 @@ ${sortedMoney.slice(0, len).map(([user, data], i) => (i + 1) + '. '  + conn.getN
   }
 
 }
-handler.help = ['richglobal','richglobal *total*']
+handler.help = ['richglobal']
 handler.tags = ['xp']
 handler.command = /^(richglobal)$/i
 handler.fail = null

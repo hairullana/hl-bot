@@ -14,7 +14,7 @@ let handler  = async (m, { conn, usedPrefix: _p, command }) => {
     let tags = {
       'info': 'B O T',
       'xp': 'X P',
-      'premium': 'P R E M I U M',
+      // 'premium': 'P R E M I U M',
       'game': 'G A M E',
       'jadian': 'J A D I A N',
       'sticker': 'S T I C K E R',
@@ -32,7 +32,7 @@ let handler  = async (m, { conn, usedPrefix: _p, command }) => {
     }
     if (command == 'menubot') tags = {'info': 'B O T'}
     else if (command == 'menuxp') tags = {'xp': 'XP'}
-    else if (command == 'menupremium') tags = {'premium': 'P R E M I U M'}
+    // else if (command == 'menupremium') tags = {'premium': 'P R E M I U M'}
     else if (command == 'menugame') tags = {'game': 'G A M E'}
     else if (command == 'menujadian') tags = {'jadian': 'J A D I A N'}
     else if (command == 'menusticker') tags = {'sticker': 'S T I C K E R'}

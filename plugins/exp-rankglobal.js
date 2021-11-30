@@ -20,7 +20,7 @@ ${sortedXP.slice(0, len).map(([user, data], i) => '*' + (i + 1) + '. '  + conn.g
   }
 
 }
-handler.help = ['rankglobal','rankglobal *total*']
+handler.help = ['rankglobal']
 handler.tags = ['xp']
 handler.command = /^(rankglobal)$/i
 handler.fail = null
