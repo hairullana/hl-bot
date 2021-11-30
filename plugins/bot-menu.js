@@ -74,7 +74,7 @@ let handler  = async (m, { conn, usedPrefix: _p, command }) => {
 Saldo Rp. ${exp.toLocaleString()} (${limit.toLocaleString()} Limit)
 
 » Tutorial bot ? ketik *.help*
-» SC HL Bot : https://github.com/hairullana/hl-bot
+» Owner instagram.com/hairullana_
 
 %readmore`
 

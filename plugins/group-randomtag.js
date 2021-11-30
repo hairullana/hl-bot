@@ -11,7 +11,7 @@ let handler = async (m, { conn, participants, text }) => {
 	conn.reply(m.chat, `*${text}* ➡️ @${tag.replace(/@.+/, '')}`, null, { contextInfo: { mentionedJid: [tag] } })
 }
 handler.help = ['tag *text*']
-handler.tags = ['tag']
+handler.tags = ['fun']
 handler.command = /^(tag)$/i
 handler.owner = false
 handler.limit = true
