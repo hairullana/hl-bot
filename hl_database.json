@@ -1397,9 +1397,9 @@
     },
     "6285156972228@s.whatsapp.net": {
       "xp": 1178,
-      "usebot": 1638242401847,
-      "lastseen": 1638242907884,
-      "money": 3220519,
+      "usebot": 1638243899417,
+      "lastseen": 1638243899417,
+      "money": 3226519,
       "limit": 7776254.9,
       "lastclaim": 1626269754991,
       "warning": 1,
@@ -4075,11 +4075,11 @@
       "spam": 0
     },
     "6283119526456@s.whatsapp.net": {
-      "xp": 292,
-      "usebot": 1638243254077,
-      "lastseen": 1638243256645,
-      "money": 25973000,
-      "limit": -10,
+      "xp": 294,
+      "usebot": 1638243519925,
+      "lastseen": 1638243519925,
+      "money": 25977000,
+      "limit": -11,
       "lastclaim": 1625397367359,
       "warning": 0,
       "afk": -1,
@@ -4093,11 +4093,11 @@
       "spam": 0
     },
     "6282215215399@s.whatsapp.net": {
-      "xp": 323,
-      "usebot": 1626495003325,
-      "lastseen": 1638240604945,
-      "money": 2404210262920,
-      "limit": 89954,
+      "xp": 330,
+      "usebot": 1638243998877,
+      "lastseen": 1638243998877,
+      "money": 2404210274920,
+      "limit": 19954,
       "lastclaim": 1624761698796,
       "warning": 0,
       "afk": -1,
@@ -29510,12 +29510,12 @@
       "banned": false
     },
     "6287891751905@s.whatsapp.net": {
-      "money": 467000,
+      "money": 472000,
       "limit": 7,
       "xp": 5,
       "lastclaim": 0,
-      "lastseen": 1638243161696,
-      "usebot": 1638243161696,
+      "lastseen": 1638243381744,
+      "usebot": 1638243381744,
       "warning": 0,
       "spam": 0,
       "afk": -1,
@@ -29561,12 +29561,12 @@
       "banned": false
     },
     "380944649449@s.whatsapp.net": {
-      "money": 21000,
+      "money": 25000,
       "limit": 10,
       "xp": 0,
       "lastclaim": 0,
-      "lastseen": 1638243296229,
-      "usebot": 0,
+      "lastseen": 1638243644911,
+      "usebot": 1638243620336,
       "warning": 0,
       "spam": 0,
       "afk": -1,
@@ -29678,6 +29678,40 @@
       "pasangan": "",
       "whitelist": false,
       "banned": false
+    },
+    "6285333678679@s.whatsapp.net": {
+      "money": 1000,
+      "limit": 10,
+      "xp": 0,
+      "lastclaim": 0,
+      "lastseen": 1638243434026,
+      "usebot": 0,
+      "warning": 0,
+      "spam": 0,
+      "afk": -1,
+      "premium": false,
+      "premiumDate": 0,
+      "afkReason": "",
+      "pasangan": "",
+      "whitelist": false,
+      "banned": false
+    },
+    "6281953627943@s.whatsapp.net": {
+      "money": 1000,
+      "limit": 10,
+      "xp": 0,
+      "lastclaim": 0,
+      "lastseen": 1638243806313,
+      "usebot": 0,
+      "warning": 0,
+      "spam": 0,
+      "afk": -1,
+      "premium": false,
+      "premiumDate": 0,
+      "afkReason": "",
+      "pasangan": "",
+      "whitelist": false,
+      "banned": false
     }
   },
   "chats": {
@@ -29685,7 +29719,7 @@
       "antiSpam": true,
       "xp": 0,
       "usebot": 0,
-      "lastseen": 1638243206568,
+      "lastseen": 1638243899417,
       "adminMode": false,
       "isBanned": false,
       "expired": 1653536785901,
@@ -29730,7 +29764,7 @@
       "antiSpam": true,
       "xp": 0,
       "usebot": 0,
-      "lastseen": 1638242569439
+      "lastseen": 1638243434026
     },
     "6283119526456@s.whatsapp.net": {
       "isBanned": true,
@@ -32271,7 +32305,7 @@
       "antiSpam": true,
       "xp": 0,
       "usebot": 0,
-      "lastseen": 1638240604945
+      "lastseen": 1638243998877
     },
     "6282363173075@s.whatsapp.net": {
       "isBanned": false,
@@ -54695,7 +54729,7 @@
       "antiBadword": false,
       "antiSpam": false,
       "antiDelete": false,
-      "lastseen": 1638243296229,
+      "lastseen": 1638243644911,
       "expired": 0,
       "command": 0
     },
@@ -54725,10 +54759,10 @@
       "lastSuccess": 1626501835219
     },
     "bot-menu.js": {
-      "total": 423,
-      "success": 423,
-      "last": 1638242962342,
-      "lastSuccess": 1638242962342
+      "total": 424,
+      "success": 424,
+      "last": 1638243520262,
+      "lastSuccess": 1638243520262
     },
     "bot-ping.js": {
       "total": 556,
@@ -55091,10 +55125,10 @@
       "lastSuccess": 0
     },
     "sticker-attp.js": {
-      "total": 143,
-      "success": 141,
-      "last": 1626496526354,
-      "lastSuccess": 1626496526354
+      "total": 144,
+      "success": 142,
+      "last": 1638243618350,
+      "lastSuccess": 1638243618350
     },
     "group-adminmode.js": {
       "total": 9,
@@ -55115,10 +55149,10 @@
       "lastSuccess": 1626479016587
     },
     "search-pinterest.js": {
-      "total": 361,
-      "success": 361,
-      "last": 1626499200579,
-      "lastSuccess": 1626499200579
+      "total": 362,
+      "success": 362,
+      "last": 1638243851003,
+      "lastSuccess": 1638243851003
     },
     "owner-gc.js": {
       "total": 20,
@@ -55133,10 +55167,10 @@
       "lastSuccess": 1626310311111
     },
     "bot-owner.js": {
-      "total": 34,
-      "success": 34,
-      "last": 1638242907705,
-      "lastSuccess": 1638242907705
+      "total": 36,
+      "success": 36,
+      "last": 1638243487455,
+      "lastSuccess": 1638243487455
     },
     "bot-listmsg.js": {
       "total": 14,
@@ -55277,10 +55311,10 @@
       "lastSuccess": 1626498718685
     },
     "dl-ytmp3.js": {
-      "total": 139,
-      "success": 133,
-      "last": 1626501323403,
-      "lastSuccess": 1626501323403
+      "total": 140,
+      "success": 134,
+      "last": 1638243321641,
+      "lastSuccess": 1638243321641
     },
     "game-tictactoe.js": {
       "total": 29,
@@ -55337,10 +55371,10 @@
       "lastSuccess": 1626497153276
     },
     "search-brainly.js": {
-      "total": 9,
-      "success": 1,
-      "last": 1626496298270,
-      "lastSuccess": 1626302204724
+      "total": 10,
+      "success": 2,
+      "last": 1638243760175,
+      "lastSuccess": 1638243760175
     },
     "dl-joox.js": {
       "total": 3,
@@ -55379,10 +55413,10 @@
       "lastSuccess": 1626492452246
     },
     "search-artinama.js": {
-      "total": 22,
-      "success": 22,
-      "last": 1626307011021,
-      "lastSuccess": 1626307011021
+      "total": 23,
+      "success": 23,
+      "last": 1638243746732,
+      "lastSuccess": 1638243746732
     },
     "owner-unbanned.js": {
       "total": 3,
@@ -55445,10 +55479,10 @@
       "lastSuccess": 1626488837192
     },
     "search-info-cuaca.js": {
-      "total": 10,
-      "success": 10,
-      "last": 1626168892306,
-      "lastSuccess": 1626168892306
+      "total": 11,
+      "success": 11,
+      "last": 1638243991003,
+      "lastSuccess": 1638243991003
     },
     "random-anime.js": {
       "total": 35,
@@ -55457,10 +55491,10 @@
       "lastSuccess": 1626495383920
     },
     "search-anime.js": {
-      "total": 5,
-      "success": 5,
-      "last": 1626283817846,
-      "lastSuccess": 1626283817846
+      "total": 6,
+      "success": 6,
+      "last": 1638243692503,
+      "lastSuccess": 1638243692503
     },
     "sticker-ttp.js": {
       "total": 7,
@@ -55691,10 +55725,10 @@
       "lastSuccess": 1626174566056
     },
     "search-yt.js": {
-      "total": 3,
-      "success": 3,
-      "last": 1626292161550,
-      "lastSuccess": 1626292161550
+      "total": 4,
+      "success": 4,
+      "last": 1638243863167,
+      "lastSuccess": 1638243863167
     },
     "dl-tiktok.js": {
       "total": 9,
@@ -55793,10 +55827,10 @@
       "lastSuccess": 1626492523005
     },
     "search-kbbi.js": {
-      "total": 3,
-      "success": 3,
-      "last": 1626328111655,
-      "lastSuccess": 1626328111655
+      "total": 4,
+      "success": 4,
+      "last": 1638243842102,
+      "lastSuccess": 1638243842102
     },
     "owner-whitelist.js": {
       "total": 2,
@@ -55923,6 +55957,30 @@
       "success": 2,
       "last": 1638240661151,
       "lastSuccess": 1638240661151
+    },
+    "search-covid.js": {
+      "total": 2,
+      "success": 2,
+      "last": 1638243778796,
+      "lastSuccess": 1638243778796
+    },
+    "search-goimg.js": {
+      "total": 2,
+      "success": 2,
+      "last": 1638243805625,
+      "lastSuccess": 1638243805625
+    },
+    "search-ip.js": {
+      "total": 2,
+      "success": 2,
+      "last": 1638243917775,
+      "lastSuccess": 1638243917775
+    },
+    "search-jadwalsholat.js": {
+      "total": 2,
+      "success": 2,
+      "last": 1638243998883,
+      "lastSuccess": 1638243998883
     }
   },
   "msgs": {

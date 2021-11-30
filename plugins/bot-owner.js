@@ -11,7 +11,7 @@ let handler  = async (m, { conn, text }) => {
 		return conn.reply(m.chat,`*Masukkan pesan yang ingin disampaikan ke owner.*`)
 	}
 
-	conn.reply(owner[1] + `@s.whatsapp.net`, `*Dari: ${m.sender.split('@')[0]}*\n\n${text}`)
+	conn.reply(owner[1] + `@s.whatsapp.net`, `*Dari: ${conn.getName(m.sender)}*\n*wa.me/${m.sender.split('@')[0]}*\n\n${text}`)
 	conn.reply(m.chat,`_Pesan sudah diteruskan ke owner, harap chat jika ada hal penting saja :)_`,m)
 }
 handler.help = ['owner']

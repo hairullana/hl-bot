@@ -36,7 +36,6 @@ let handler  = async (m, { conn, usedPrefix: _p, command }) => {
     else if (command == 'menugame') tags = {'game': 'G A M E'}
     else if (command == 'menujadian') tags = {'jadian': 'J A D I A N'}
     else if (command == 'menusticker') tags = {'sticker': 'S T I C K E R'}
-    else if (command == 'menucreator') tags = {'creator': 'C R E A T O R'}
     else if (command == 'menusearch') tags = {'data' : 'S E A R C H'}
     else if (command == 'menutool') tags = {'tools': 'T O O L'}
     else if (command == 'menuinfo') tags = {'information': 'I N F O R M A T I O N'}
