@@ -1,20 +1,23 @@
-let fetch = require('node-fetch')
-let googleIt = require('google-it')
-let handler = async (m, { conn, command, args }) => {
-  let full = /f$/i.test(command)
-  let text = args.join` `
-  if (!text) return conn.reply(m.chat, 'Tidak ada teks untuk di cari', m)
-  let url = 'https://google.com/search?q=' + encodeURIComponent(text)
-  let search = await googleIt({ query: text })
-  let msg = search.map(({ title, link, snippet}) => {
-    return `*${title}*\n_${link}_\n_${snippet}_`
-  }).join`\n\n`
-  let ss = await (await fetch(global.API('nrtm', '/api/ssweb', { delay: 1000, url, full }))).buffer()
-  conn.sendFile(m.chat, ss, 'screenshot.png', url + '\n\n' + msg, m)
+let google = require('google-it')
+let handler = async (m, { conn, command, text }) => {
+  m.reply(wait)
+  try {
+		if (!text) return conn.reply(m.chat, Func.example(isPrefix, command, `nodejs tutorial`), m)
+		let json = await google({ 'query': text })
+		let teks = `❏  G O O G L E - S E A R C H\n\n`
+		for (let i=0; i<json.length; i++) {
+			teks += '' + (i + 1) + '. ' + json[i].title + '\n'
+			teks += '	›  Snippet : ' + json[i].snippet + '\n'
+			teks += '	›  Link : ' + json[i].link + '\n\n'
+		}
+		conn.reply(m.chat, teks, m)
+	} catch {
+		return conn.reply(m.chat, 'tes', m)
+	}
 }
-handler.help = ['google', 'googlef'].map(v => v + ' *query*')
+handler.help = ['google'].map(v => v + ' *query*')
 handler.tags = ['internet']
-handler.command = /^googlef?$/i
+handler.command = /^google?$/i
 handler.owner = false
 handler.mods = false
 handler.premium = false
