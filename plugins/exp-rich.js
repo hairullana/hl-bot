@@ -33,9 +33,9 @@ ${sortedMoney.slice(0, len).map(([user, data], i) => (i + 1) + '. '  + conn.getN
   }
 
 }
-handler.help = ['rich (Rank Money)','rich *total*','sultan','sultan *total*']
+handler.help = ['rich']
 handler.tags = ['xp']
-handler.command = /^(rich|sultan)$/i
+handler.command = /^(rich)$/i
 handler.group = true
 handler.fail = null
 handler.exp = 100
