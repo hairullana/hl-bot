@@ -479,9 +479,9 @@ Cara mendapatkan limit :
         break
     }
     if (global.DATABASE.data.antiCall){
-      await this.reply(from, '*DILARANG MENELPON BOT ! MAAF ANDA AKAN DIBLOKIR.*', null)
-      await this.blockUser(from, 'add')
-      user.banned = true
+      await this.reply(from, '*Penolakan Panggilan Otomatis*\n\n*Sedang tidak bisa mengangkat telp, silahkan tinggalkan pesan . . .*', null)
+      // await this.blockUser(from, 'add')
+      // user.banned = true
     }
   }
 }
