@@ -8,11 +8,11 @@ let handler  = async (m, { conn, text }) => {
 	// })
 
 	if(!text){
-		return conn.reply(m.chat,`*Masukkan pesan yang ingin disampaikan ke owner.*`)
+		return conn.reply(m.chat,`*Masukkan pesan yang ingin disampaikan ke owner.*\n\nContoh:\n.owner sayang kamu <3`)
 	}
 
 	conn.reply(owner[1] + `@s.whatsapp.net`, `*Dari: ${conn.getName(m.sender)}*\n*wa.me/${m.sender.split('@')[0]}*\n\n${text}`)
-	conn.reply(m.chat,`_Pesan sudah diteruskan ke owner, harap chat jika ada hal penting saja :)_`,m)
+	conn.reply(m.chat,`_Pesan sudah diteruskan ke owner, harap chat jika ada hal penting saja kecuali kamu ingin dibanned :)_`,m)
 }
 handler.help = ['owner']
 handler.tags = ['info']
