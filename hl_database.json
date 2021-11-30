@@ -4076,9 +4076,9 @@
     },
     "6283119526456@s.whatsapp.net": {
       "xp": 294,
-      "usebot": 1638245367582,
-      "lastseen": 1638245367582,
-      "money": 25994000,
+      "usebot": 1638245538529,
+      "lastseen": 1638245538529,
+      "money": 25995000,
       "limit": 0,
       "lastclaim": 1625397367359,
       "warning": 0,
@@ -29780,6 +29780,23 @@
       "pasangan": "",
       "whitelist": false,
       "banned": false
+    },
+    "6281995241246@s.whatsapp.net": {
+      "money": 1000,
+      "limit": 10,
+      "xp": 0,
+      "lastclaim": 0,
+      "lastseen": 1638245820375,
+      "usebot": 1638245820375,
+      "warning": 0,
+      "spam": 0,
+      "afk": -1,
+      "premium": false,
+      "premiumDate": 0,
+      "afkReason": "",
+      "pasangan": "",
+      "whitelist": false,
+      "banned": false
     }
   },
   "chats": {
@@ -54797,7 +54814,7 @@
       "antiBadword": false,
       "antiSpam": false,
       "antiDelete": false,
-      "lastseen": 1638245367582,
+      "lastseen": 1638245820375,
       "expired": 0,
       "command": 0
     },
@@ -54827,10 +54844,10 @@
       "lastSuccess": 1626501835219
     },
     "bot-menu.js": {
-      "total": 429,
-      "success": 429,
-      "last": 1638245367929,
-      "lastSuccess": 1638245367929
+      "total": 430,
+      "success": 430,
+      "last": 1638245538887,
+      "lastSuccess": 1638245538887
     },
     "bot-ping.js": {
       "total": 556,

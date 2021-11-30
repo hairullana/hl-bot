@@ -17,7 +17,7 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
     quoted: m
   })
 }
-handler.help = ['sticker *caption|reply*', 'sticker *url*', 'stickergif *caption|reply*', 'stickergif *url*']
+handler.help = ['sticker', 'stickergif']
 handler.tags = ['sticker']
 handler.command = /^(sk|sticker|stiker|gif|sgif|skgif|stickergif|stikergif)$/i
 handler.limit = true
