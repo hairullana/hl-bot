@@ -21,7 +21,7 @@ let handler = async (m, { text, usedPrefix }) => {
     }
 
 }
-handler.help = ['translate'].map(v => v + ' *lang*|*text*')
+handler.help = ['translate'].map(v => v + ' *lang* | *text*')
 handler.tags = ['tools']
 handler.command = /^(tr(anslate)?)$/i
 handler.limit = true

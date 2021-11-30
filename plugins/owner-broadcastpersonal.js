@@ -11,7 +11,7 @@ let handler  = async (m, { conn, text, isROwner }) => {
   }
   conn.reply(m.chat, `*Mengirim pesan broadcast ke ${personalChat.length} chat bos*`, m)
 }
-handler.help = ['bcpc'].map(v => v + ' *text*')
+handler.help = ['bcpc']
 handler.tags = ['owner']
 handler.command = /^(bcpc)$/i
 handler.owner = true

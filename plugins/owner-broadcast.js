@@ -9,9 +9,9 @@ let handler  = async (m, { conn, text }) => {
   }
   conn.reply(m.chat, `*Mengirim pesan broadcast ke ${chats.length} chat*`, m)
 }
-handler.help = ['broadcast','bc'].map(v => v + ' *text*')
+handler.help = ['bc']
 handler.tags = ['owner']
-handler.command = /^(broadcast|bc)$/i
+handler.command = /^(bc)$/i
 handler.owner = true
 handler.fail = null
 module.exports = handler

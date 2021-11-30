@@ -22,7 +22,7 @@ try {
 			await conn.groupAdd(m.chat, [user])
 	}	
 }
-handler.help = ['add *62xx*','add *(reply)*']
+handler.help = ['add']
 handler.tags = ['group admin']
 handler.command = /^(add)$/i
 handler.group = true

@@ -18,7 +18,6 @@ let handler  = async (m, { conn, usedPrefix: _p, command }) => {
       'game': 'G A M E',
       'jadian': 'J A D I A N',
       'sticker': 'S T I C K E R',
-      'creator': 'C R E A T O R',
       'data' : 'S E A R C H',
       'tools': 'T O O L',
       'information': 'I N F O R M A T I O N',

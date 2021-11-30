@@ -24,7 +24,7 @@ let handler = async (m, { conn, text }) => {
 	}
 }
 
-handler.help = ['*@tag*','*(reply)*'].map(v => 'unmark ' + v)
+handler.help = ['unmark']
 handler.tags = ['owner']
 handler.command = /^unmark$/i
 handler.mods = true

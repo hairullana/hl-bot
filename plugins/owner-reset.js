@@ -41,7 +41,7 @@ let handler = async (m, { conn, text }) => {
  
  }
 }
-handler.help = ['reset *62xx*', 'reset *(reply)*','reset *@tag*']
+handler.help = ['reset']
 handler.tags = ['owner']
 handler.command = /^reset$/i
 handler.admin = false

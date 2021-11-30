@@ -31,7 +31,7 @@ let handler  = async (m, { conn, text, participants }) => {
 		await delay(2500)
 	} conn.reply(m.chat, `*Sukses mengirim broadcast ke ${groups.length} grup tuan.*`, m)
 }
-handler.help = ['bctag'].map(v => v + ' *text*')
+handler.help = ['bctag']
 handler.tags = ['owner']
 handler.command = /^(bctag)$/i
 handler.owner = true

@@ -25,7 +25,7 @@ let handler = async (m, { conn, command, args }) => {
   }
   conn.reply(m.chat, `*` + chats.length + ' chat grup telah dib' + (isDelete ? 'ersihkan tuan*' : 'isukan selamanya'), m)
 }
-handler.help = ['clear', 'clear *all*', 'clear *pc*']
+handler.help = ['clear']
 handler.tags = ['owner']
 handler.command = /^(clear)$/i
 handler.owner = true
