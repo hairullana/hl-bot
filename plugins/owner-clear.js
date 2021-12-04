@@ -5,15 +5,15 @@ let handler = async (m, { conn, command, args }) => {
     for (let chat of chats) {
       if (chat.jid != "6283182859981@s.whatsapp.net"){
         total += 1
-        conn.modifyChat(chat.jid, 'delete')
+        conn.modifyChat(chat.jid, 'clear')
       }
     }
     return m.reply(`*Berhasil menghapus ${total} private chat bos.*`)
   }
 
   if (args[0] == "all"){
-    conn.chats.array.filter(v => v.jid.endsWith('g.us')).map(v => conn.modifyChat(v.jid, 'delete').catch(console.log))
-    conn.chats.array.filter(v => v.jid.endsWith('s.whatsapp.net')).map(v => conn.modifyChat(v.jid, 'delete').catch(console.log))
+    conn.chats.array.filter(v => v.jid.endsWith('g.us')).map(v => conn.modifyChat(v.jid, 'clear').catch(console.log))
+    conn.chats.array.filter(v => v.jid.endsWith('s.whatsapp.net')).map(v => conn.modifyChat(v.jid, 'clear').catch(console.log))
     return m.reply("*Semua chat telah dibersihkan tuan*")
   }
 
