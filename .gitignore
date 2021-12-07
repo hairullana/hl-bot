@@ -1,3 +1,19 @@
+# Node.js Modules
+node_modules
+
+# important session
+*.data.json
+
+# vim state
 .*.swp
-node_modules/*
+
+# Databases
+database.json
+*_database.json
+
+tmp/*
+
 package-lock.json
+
+# Vscode Settings
+.vscode
