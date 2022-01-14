@@ -129,7 +129,7 @@ module.exports = {
     }
 
 
-    if(!(m.text.startsWith('.claim') || m.text.startsWith('.sk') || m.text.startsWith('.sticker') || m.text.startsWith('.stiker') || m.text.startsWith('.sgif') || m.text.startsWith('.skgif') || m.text.startsWith('.stickergif') || m.text.startsWith('.stikergif') || m.text.startsWith('.stickergif2') || m.text.startsWith('.stikergif2') || m.text.startsWith('.sgif2') || m.text.startsWith('.skgif2'))){
+    if(!(m.text.startsWith('.claim') || m.text.startsWith('.sk')){
       if (maintenance && !isOwner && m.text.slice(0, 1) == hl) return
     }
 
